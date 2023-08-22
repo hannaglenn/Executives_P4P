@@ -14,6 +14,8 @@ library(stringr)
 # have to do this by looping on every state b/c of pagniation in API
 # CA is the only state that still needs further parsing, leave this one out and add at the end
 
+source("paths.R")
+
 # create empty list to store data
 state_hospital_ein_data <- vector(mode='list', length=49)
 state_abbreviations <- c("AL", "AK", "AZ", "AR", "CO", "CT", "DE", "FL", "GA", 
@@ -88,4 +90,4 @@ all_hospital_ein_data <- rbind(all_hospital_ein_data, CA_hospital_ein_data)
 ein_list <- all_hospital_ein_data$ein
 
 #save ein_list
-saveRDS(ein_list, file=paste0(windows_path,'/created_data/ein_list.rds'))
+saveRDS(ein_list, file=paste0(created_data_path,'/ein_list.rds'))

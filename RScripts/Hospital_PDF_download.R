@@ -15,13 +15,16 @@ library(tidytext)
 source("paths.R")
 
 # Read in "hospital_pdf_locations" dataset
-hospital_pdf_locations <- readRDS(paste0(windows_path, "created_data/hospital_pdf_locations.rds"))
+hospital_pdf_locations <- readRDS(paste0(created_data_path, "/hospital_pdf_locations.rds")))
 
 # Do this if it's the first time running this code, otherwise comment out
 #hospital_text_list <- vector("list", nrow(hospital_pdf_locations))
 
 # uncomment this if you already have some elements of hospital_text_list saved
-hospital_text_list <- readRDS(paste0(windows_path, "created_data/hospital_text_list.rds"))
+hospital_text_list <- readRDS(paste0(created_data_path, "/hospital_text_list.rds"))
+
+# create list of unique eins in hospital_pdf_locations
+unique_eins <- unique(hospital_pdf_locations$ein)
 
 start_time <- Sys.time()
 for (i in 401:700) {

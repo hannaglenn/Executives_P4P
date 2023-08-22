@@ -7,7 +7,7 @@ library(tidyr)
 
 # This script uses the list of hospital EINs created in "Hospital_EINs.R" 
 # to dowload data on each hospital from the API, including name, state, zip code,
-# and pdf urls for each tax year. I then download each pdf locally.
+# and pdf urls for each tax year.
 
 ##### ORDER : 2 #####
 
@@ -15,7 +15,7 @@ library(tidyr)
 source("paths.R")
 
 # Read in list of hospital EIN numbers
-ein_list <- readRDS(paste0(windows_path, "created_data/ein_list.rds"))
+ein_list <- readRDS(paste0(created_data_path, "/ein_list.rds"))
 
 # use the API to create a data set with information on each EIN
 count=0 #keep track of how many hospitals have pdfs available
@@ -50,7 +50,7 @@ hospital_pdf_locations <- hospital_pdf_locations %>%
   filter(!is.na(pdf_url)) 
 
 # save the data frame
-saveRDS(hospital_pdf_locations, paste0(windows_path, "created_data/hospital_pdf_locations.rds"))
+saveRDS(hospital_pdf_locations, paste0("./created_data/hospital_pdf_locations.rds"))
 
 
 
