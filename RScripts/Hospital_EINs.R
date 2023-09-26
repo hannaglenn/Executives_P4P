@@ -11,7 +11,7 @@ library(stringr)
 ###### ORDER : 1 ######
 
 # get EINs for nonprofits categorized as hospitals (NTEE codes E20, E21, E22, E24)
-# have to do this by looping on every state b/c of pagniation in API
+# have to do this by looping on every state b/c of pagination in API
 # CA is the only state that still needs further parsing, leave this one out and add at the end
 
 source("paths.R")

@@ -1,6 +1,5 @@
 library(readr)
 library(pdftools)
-library(tm)
 library(tidytext)
 library(dplyr)
 library(stringr)
@@ -15,52 +14,165 @@ library(tidytext)
 source("paths.R")
 
 # Read in "hospital_pdf_locations" dataset
-hospital_pdf_locations <- readRDS(paste0(created_data_path, "/hospital_pdf_locations.rds")))
+hospital_pdf_locations <- readRDS(paste0(created_data_path, "/hospital_pdf_locations.rds"))
 
-# Do this if it's the first time running this code, otherwise comment out
-#hospital_text_list <- vector("list", nrow(hospital_pdf_locations))
+# first, extract years 2016-2020
+#hospital_pdf_locations_20162020 <- hospital_pdf_locations %>% 
+    #filter(tax_prd_yr >= 2016 & tax_prd_yr <= 2020)
 
-# uncomment this if you already have some elements of hospital_text_list saved
-hospital_text_list <- readRDS(paste0(created_data_path, "/hospital_text_list.rds"))
+# extract years 2010-2015
+hospital_pdf_locations_20102015 <- hospital_pdf_locations %>% 
+    filter(tax_prd_yr >= 2010 & tax_prd_yr <= 2015)
 
 # create list of unique eins in hospital_pdf_locations
-unique_eins <- unique(hospital_pdf_locations$ein)
+#unique_eins <- unique(hospital_pdf_locations_20162020$ein)
+unique_eins <- unique(hospital_pdf_locations_20102015$ein)
 
-start_time <- Sys.time()
-for (i in 401:700) {
-  tryCatch({
-  url <- hospital_pdf_locations$pdf_url[i]
-  ein <- hospital_pdf_locations$ein[i]
-  year <- hospital_pdf_locations$tax_prd_yr[i]
-  # download the pdfs locally
-  download.file(url, destfile = paste0(windows_path, "/PDFs/", ein, '_', year, ".pdf"),
-                method="auto", quiet=FALSE, mode="wb")
-  
-  text <- pdf_ocr_text(paste0(windows_path, "/PDFs/", ein, '_', year, ".pdf"),
-                        dpi = 600,
-                        opw = "",
-                        upw = "",
-                        language = "eng")
-  text <- str_split(text, "\n")
-  # combine elements to one list
-  text <- str_c(text, collapse = " ")
-  # change to tibble
-  text <- tibble(line = 1:length(text), text = text)
-  # one row for each phrase
-  text <- text %>% 
-        tidytext::unnest_tokens(phrase, text, token = "regex", pattern = "\"") %>%
-        filter(phrase != ", " & phrase != ", \n") %>%
-        select(phrase)
-  # replace ith element with list of ein, year, and text
-  hospital_text_list[[i]] <- list(ein = ein, year = year, text = text)
-  }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
-}
-end_time <- Sys.time()
-print(end_time - start_time)
+# sort unique_eins in ascending order
+unique_eins <- sort(unique_eins, decreasing = FALSE)
 
-saveRDS(hospital_text_list, paste0(windows_path, "created_data/hospital_text_list.rds"))
+# make a list where all the data for each ein will be stored
+#all_ein_list_20102015 <- vector("list", length(unique_eins))
+#all_ein_list_20162020 <- readRDS(paste0(created_data_path, "/all_ein_list_2016_2020.rds"))
+#all_ein_list_20102015 <- readRDS(paste0(created_data_path, "/all_ein_list_2010_2015.rds"))
+
+# write a for loop for each ein number
+for (i in 1:length(unique_eins)){
+    tryCatch({
+    # filter to only this ein
+    ein_locations <- hospital_pdf_locations_20102015 %>% 
+        filter(ein == unique_eins[i])
     
-# rows 1-100 done in 6 hours
-# rows 101-300 done in 10 hours
-# rows 301-400 done in 5 hours
-# rows 401-700 done in 15 hours
+    # create a list the length of the number of rows
+    individual_ein_list <- vector("list", length(ein_locations$ein))
+
+    # loop through each row of data
+    for (row in seq_along(ein_locations$ein)) {
+        url <- ein_locations$pdf_url[row]
+        ein <- ein_locations$ein[row]
+        year <- ein_locations$tax_prd_yr[row]
+        num <- ein_locations$num[row]
+
+        # download the pdfs locally
+        download.file(url, destfile = paste0(created_data_path, "/pdfs/", ein, '_', year, '_', num, ".pdf"),
+                method="auto", quiet=FALSE, mode="wb")
+        total_pages <- pdf_info(paste0(created_data_path, "/pdfs/", ein, '_', year,  '_', num,".pdf"))$pages
+
+        if (total_pages > 8){
+            # use OCR to extract text fom pages 7-9 (typical location of names)
+            text <- pdf_ocr_text(paste0(created_data_path, "/pdfs/", ein, '_', year, '_', num, ".pdf"),
+                                pages = c(7:9),
+                                dpi = 600,
+                                opw = "",
+                                upw = "",
+                                language = "eng")
+        
+            # get text into workable format
+            text <- str_split(text, "\n")
+            # combine elements to one list
+            text <- str_c(text, collapse = " ")
+            # change to tibble
+            text <- tibble(line = 1:length(text), text = text)
+            # one row for each phrase
+            text <- text %>% 
+                tidytext::unnest_tokens(phrase, text, token = "regex", pattern = "\"") %>%
+                filter(phrase != ", " & phrase != ", \n") %>%
+                select(phrase)
+        
+            # detect if the right pages were collected
+            text <- text %>%
+                    mutate(officer_keyword=ifelse(str_detect(phrase,"president|ceo|cfo|chief|chair|secretary|treasurer|physician"), 1, 0))
+            contains_keywords <- ifelse(sum(text$officer_keyword)>0,1,0)
+
+            # if the right pages were collected, then save the objects to individual_ein_list
+            if (contains_keywords == 1) {
+            individual_ein_list[[row]] <- list(ein = ein,
+                                               year = year,
+                                               text = text)
+            }
+
+            # if the right pages were not collected, loop through the pages until the right pages are collected
+            if (contains_keywords == 0) {
+                num_pages <- pdf_info(paste0(created_data_path, "/pdfs/", ein, '_', year, '_', num, ".pdf"))$pages
+
+                found_page <- 0
+
+                # extract text starting at the last page and working backwards
+                while (found_page == 0) {
+                    text <- pdf_ocr_text(paste0(created_data_path, "/pdfs/", ein, '_', year, '_', num, ".pdf"),
+                                    pages = num_pages,
+                                    dpi = 600,
+                                    opw = "",
+                                    upw = "",
+                                    language = "eng")
+                    text <- str_split(text, "\n")
+                    # combine elements to one list
+                    text <- str_c(text, collapse = " ")
+                    # change to tibble
+                    text <- tibble(line = 1:length(text), text = text)
+                    # one row for each phrase
+                    text <- text %>% 
+                        tidytext::unnest_tokens(phrase, text, token = "regex", pattern = "\"") %>%
+                        filter(phrase != ", " & phrase != ", \n") %>%
+                        select(phrase)
+                    text <- text %>%
+                        mutate(officer_keyword=ifelse(str_detect(phrase,"president|ceo|cfo|chief|chair|secretary|treasurer"), 1, 0),
+                               section_keyword=ifelse(str_detect(phrase,"officers, directors, trustees, key employees, and highest compensated employees|
+                                                                officers, directors, trustees, key employees, highest compensated employees"), 1, 0))
+                    contains_both_keywords <- ifelse(sum(text$officer_keyword)>0 & sum(text$section_keyword)>0,1,0)
+
+                    if (contains_both_keywords == 1) {
+                        # get the text from the pages around the page where it found the key words
+                        text <- pdf_ocr_text(paste0(created_data_path, "/pdfs/", ein, '_', year, '_', num, ".pdf"),
+                                        pages = c((num_pages-2):(num_pages+1)),
+                                        dpi = 600,
+                                        opw = "",
+                                        upw = "",
+                                        language = "eng")
+                        text <- str_split(text, "\n")
+                        # combine elements to one list
+                        text <- str_c(text, collapse = " ")
+                        # change to tibble
+                        text <- tibble(line = 1:length(text), text = text)
+                        # one row for each phrase
+                        text <- text %>% 
+                            tidytext::unnest_tokens(phrase, text, token = "regex", pattern = "\"") %>%
+                            filter(phrase != ", " & phrase != ", \n") %>%
+                            select(phrase)
+                    
+                        # save the objects to individual_ein_list
+                        individual_ein_list[[row]] <- list(ein = ein,
+                                                       year = year,
+                                                       text = text)
+
+                        # get out of while loop
+                        found_page <- 1
+                        }
+
+                if (contains_both_keywords == 0) {
+                    # if the key words were not found, then go to the next page unless you are at page 9,then exit loop
+                    if (num_pages <= 9) {
+                        found_page <- 1
+                        individual_ein_list[[row]] <- list(ein = ein,
+                                                           year = year,
+                                                           text = "relevant text not found")
+                    } else {
+                        num_pages <- num_pages - 1
+                    }
+                }
+                
+                }
+             }
+        } 
+        
+        else {
+            individual_ein_list[[row]] <- list(year = year,
+                                               text = "document too short")
+        }
+    }
+    # combine each element of individual_ein_list into one list of lists
+    all_ein_list_20102015[[i]] <- list(ein_data=individual_ein_list, ein=unique_eins[i])
+    saveRDS(all_ein_list_20102015, paste0(created_data_path, "/all_ein_list_2010_2015.rds"))
+    }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
+}
+
