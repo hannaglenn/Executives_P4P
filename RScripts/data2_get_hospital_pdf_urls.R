@@ -5,8 +5,8 @@ library(dplyr)
 library(stringr)
 library(tidyr)
 
-# This script uses the list of hospital EINs created in "Hospital_EINs.R" 
-# to dowload data on each hospital from the API, including name, state, zip code,
+# This script uses the list of hospital EINs created in "data1_get_hospital_eins.R" 
+# to download data on each hospital from the API, including name, state, zip code,
 # and pdf urls for each tax year.
 
 ##### ORDER : 2 #####
@@ -20,23 +20,27 @@ ein_list <- readRDS(paste0(created_data_path, "/ein_list.rds"))
 # use the API to create a data set with information on each EIN
 count=0 #keep track of how many hospitals have pdfs available
 hospital_data_list <- vector(mode='list', length=length(ein_list))
-for (x in seq_along(ein_list)) {
+for (i in 365:length(ein_list)) {
   tryCatch({
     url <- paste0('https://projects.propublica.org/nonprofits/api/v2/organizations/',ein_list[i],'.json')
     data <- GET(url)
     data <- fromJSON(rawToChar(data$content), flatten=TRUE)
-    org <- as.data.frame(list(data$organization$ein, 
-                                data$organization$name, 
-                                data$organization$state, 
-                                data$organization$zipcode))
-    colnames(org) <- c("ein", "name", "state", "zipcode")
+    org <- vector(mode='list', length=5)
+    org[1] <- data$organization$ein
+    org[2] <- data$organization$name
+    org[3] <- data$organization$state
+    org[4] <- data$organization$zipcode
+    if (!is.null(data$organization$sort_name)) {org[5] <- data$organization$sort_name}
+    if (is.null(data$organization$sort_name)) {org[5] <- NA}
+    org <- as.data.frame(org)
+    colnames(org) <- c("ein", "name", "state", "zipcode", "sort_name")
     without_data <- data$filings_without_data %>%
         select(tax_prd_yr, pdf_url, formtype)
     with_data <- data$filings_with_data %>%
         select(tax_prd_yr, pdf_url, formtype)
     pdf_locations <- rbind(without_data, with_data)
     cross <- crossing(org, pdf_locations)
-    hospital_data_list[[x]] <- cross
+    hospital_data_list[[i]] <- cross
     count=count+1
   }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
 }
@@ -69,5 +73,7 @@ multiple_pdfs <- hospital_pdf_locations %>%
 # save the data frame
 saveRDS(hospital_pdf_locations, paste0(created_data_path,"/hospital_pdf_locations.rds"))
 
+num_eins <- hospital_pdf_locations %>%
+  distinct(ein)
 
 
