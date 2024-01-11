@@ -8,7 +8,7 @@ clean_text <- function(text_data, firstnames_list, lastnames_list, positions_lis
   text_data$phrase <- str_replace_all(text_data$phrase, "[:digit:]", "")
   
   # remove brackets
-  text_data$phrase <- str_remove_all(text_data$phrase, '\\[|\\]|\\)|\\(|\\||\\{|\\}|~|=|\\s-\\s|_|—|>|<|\\.|\\*|,|°|:|\\"|\\”|“|‘|!|\\?|’|\\&|«|\\$')
+  text_data$phrase <- str_remove_all(text_data$phrase, '\\[|\\]|\\)|\\(|\\||\\{|\\}|~|=|\\s-\\s|_|—|>|<|\\.|\\*|,|°|:|\\"|\\”|“|‘|!|\\?|’|\\&|«|\\$|\\+')
   
   # remove any letters that occur by themselves (so that names don't have a middle initial)
   text_data$phrase <- str_replace_all(text_data$phrase, "\\b\\w\\b", " ")

@@ -7,11 +7,12 @@ library(stringr)
 
 # Data on which hospitals in the tax data have AHA matches
 AHA_ein_matches <- read_rds(paste0(created_data_path,"AHA_ein_matches.rds"))
+manual_matched_eins <- read_rds(paste0(created_data_path, "manual_matched_eins.rds"))
 # Data from AHA 
 AHA_hosp_names <- read_csv(paste0(created_data_path, "raw data/AHA_hosp_names.csv"))
 # HCRIS data that has HRRP penalty information (and beds)
-final_HCRIS_v2010 <- read_csv(paste0(created_data_path, "raw data/final_HCRIS_v2010.csv"))
-final_HCRIS_v1996 <- read_csv(paste0(created_data_path, "raw data/final_HCRIS_v1996.csv"))
+# final_HCRIS_v2010 <- read_csv(paste0(created_data_path, "raw data/final_HCRIS_v2010.csv"))
+# final_HCRIS_v1996 <- read_csv(paste0(created_data_path, "raw data/final_HCRIS_v1996.csv"))
 # Hospital Compare data that also has penalty information
 hc_readm_2012 <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/vwhqi_readm_reduction_2012.csv"))
 hc_readm_2013 <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/vwhqi_readm_reduction_2013.csv"))
@@ -27,7 +28,8 @@ outcomes_data <- read_rds(paste0(created_data_path, "hosp_outcomes.rds"))
 # Start with the sample of hospitals that have AHA matches and merge in the relevant info from all data sets
 # complete to include years 2008-2015
 # for now, only consider hospitals with a direct hospital match (not just system)
-hospital_data <- AHA_ein_matches %>%
+hospital_data <- rbind(AHA_ein_matches, manual_matched_eins)
+hospital_data <- hospital_data %>%
   mutate(year=2008) %>%
   filter(!is.na(ein_hosp)) %>%
   select(-ein_sys)
@@ -40,6 +42,9 @@ hospital_data <- complete(hospital_data,ID, year=2008:2015) %>%
 hospital_data <- hospital_data %>%
   mutate(ein_hosp = as.character(ein_hosp)) %>%
   left_join(ein_leadership_data, by=c("year", "ein_hosp"="ein"))
+
+observe <- hospital_data %>%
+  distinct(ein_hosp)
 
 # only keep rows that had values in that data set
 hospital_data <- hospital_data %>%
@@ -54,60 +59,60 @@ hospital_data <- hospital_data %>%
   fill(MCRNUM, .direction="downup") %>%
   ungroup() %>%
   select(ID, ein_hosp, MCRNUM, year, no_changes_ever, no_changes_2010_2014, no_changes_2011_2013, no_small_changes_ever, no_small_changes_2010_2014,
-         no_small_changes_2011_2013, no_md_changes_ever, no_md_changes_2010_2014, no_md_changes_2011_2013, total_people, total_docs)
+         no_small_changes_2011_2013, no_md_changes_ever, no_md_changes_2010_2014, no_md_changes_2011_2013, total_execs, total_docs)
 
-# Join HCRIS data ############
-# first, investigate duplicates in the cost report data
-HCRIS_dups <- final_HCRIS_v2010 %>%
-  mutate(count=1) %>%
-  group_by(provider_number, year) %>%
-  mutate(sum=sum(count)) %>%
-  ungroup() %>%
-  filter(sum>1)
-  # A lot of duplicates have multiple reports for the same year. I add together the penalties in this case to get one line per provider, year
-  # Any duplicates left are due to differences in bed count. This isnt a huge deal, just pick one of the years to keep
-
-final_HCRIS_v2010 <- final_HCRIS_v2010 %>%
-  group_by(provider_number, year) %>%
-  mutate(penalty_sum = sum(hrrp_payment, NA.rm=T),
-         beds_distinct = max(beds, na.rm=T)) %>%
-  ungroup() %>%
-  distinct(provider_number, year, penalty_sum, beds_distinct) 
-  # no more duplicates! 
-
-final_HCRIS_v2010 <- final_HCRIS_v2010 %>%
-  rename(hrrp_payment = penalty_sum, beds = beds_distinct) %>%
-  mutate(hrrp_payment = abs(hrrp_payment),
-         beds=ifelse(beds=="-Inf",NA,beds))
-
-# join to main dataset
-hospital_data <- hospital_data %>%
-  left_join(final_HCRIS_v2010, by=c("year", "MCRNUM"="provider_number"))
-
-# I only need beds from v1996 for years 2008 and 2009. First, get rid of duplicates.
-final_HCRIS_v1996 <- final_HCRIS_v1996 %>%
-  select(year, provider_number, beds) %>%
-  filter(year==2008 | year==2009 | year==2010) %>%
-  group_by(provider_number, year) %>%
-  mutate(beds_distinct = max(beds, na.rm=T)) %>%
-  ungroup() %>%
-  distinct(year, provider_number, beds_distinct) %>%
-  rename(beds = beds_distinct) %>%
-  mutate(beds=ifelse(beds=="-Inf",NA,beds))
-
-hospital_data <- hospital_data %>%
-  left_join(final_HCRIS_v1996, by=c("year", "MCRNUM"="provider_number")) %>%
-  mutate(beds.x=ifelse(is.na(beds.x),beds.y,beds.x)) %>%
-  rename(beds=beds.x) %>%
-  select(-beds.y) 
-
+# # Join HCRIS data ############
+# # first, investigate duplicates in the cost report data
+# HCRIS_dups <- final_HCRIS_v2010 %>%
+#   mutate(count=1) %>%
+#   group_by(provider_number, year) %>%
+#   mutate(sum=sum(count)) %>%
+#   ungroup() %>%
+#   filter(sum>1)
+#   # A lot of duplicates have multiple reports for the same year. I add together the penalties in this case to get one line per provider, year
+#   # Any duplicates left are due to differences in bed count. This isnt a huge deal, just pick one of the years to keep
+# 
+# final_HCRIS_v2010 <- final_HCRIS_v2010 %>%
+#   group_by(provider_number, year) %>%
+#   mutate(penalty_sum = sum(hrrp_payment, NA.rm=T),
+#          beds_distinct = max(beds, na.rm=T)) %>%
+#   ungroup() %>%
+#   distinct(provider_number, year, penalty_sum, beds_distinct) 
+#   # no more duplicates! 
+# 
+# final_HCRIS_v2010 <- final_HCRIS_v2010 %>%
+#   rename(hrrp_payment = penalty_sum, beds = beds_distinct) %>%
+#   mutate(hrrp_payment = abs(hrrp_payment),
+#          beds=ifelse(beds=="-Inf",NA,beds))
+# 
+# # join to main dataset
+# hospital_data <- hospital_data %>%
+#   left_join(final_HCRIS_v2010, by=c("year", "MCRNUM"="provider_number"))
+# 
+# # I only need beds from v1996 for years 2008 and 2009. First, get rid of duplicates.
+# final_HCRIS_v1996 <- final_HCRIS_v1996 %>%
+#   select(year, provider_number, beds) %>%
+#   filter(year==2008 | year==2009 | year==2010) %>%
+#   group_by(provider_number, year) %>%
+#   mutate(beds_distinct = max(beds, na.rm=T)) %>%
+#   ungroup() %>%
+#   distinct(year, provider_number, beds_distinct) %>%
+#   rename(beds = beds_distinct) %>%
+#   mutate(beds=ifelse(beds=="-Inf",NA,beds))
+# 
+# hospital_data <- hospital_data %>%
+#   left_join(final_HCRIS_v1996, by=c("year", "MCRNUM"="provider_number")) %>%
+#   mutate(beds.x=ifelse(is.na(beds.x),beds.y,beds.x)) %>%
+#   rename(beds=beds.x) %>%
+#   select(-beds.y) 
+# 
 # drop data I don't need anymore
 rm(final_HCRIS_v1996, final_HCRIS_v2010, HCRIS_dups, AHA_ein_matches, AHA_hosp_names, ein_leadership_data)
 
-# create indicator for whether the hospital was penalized (from HCRIS data)
-hospital_data <- hospital_data %>%
-  mutate(penalized_HCRIS=ifelse(hrrp_payment>0,1,0)) %>%
-  mutate(penalized_HCRIS=ifelse(year>=2012 & is.na(hrrp_payment),0,penalized_HCRIS))
+# # create indicator for whether the hospital was penalized (from HCRIS data)
+# hospital_data <- hospital_data %>%
+#   mutate(penalized_HCRIS=ifelse(hrrp_payment>0,1,0)) %>%
+#   mutate(penalized_HCRIS=ifelse(year>=2012 & is.na(hrrp_payment),0,penalized_HCRIS))
 
 # Join Hospital Compare HRRP Data ##################
 hc_readm_2012 <- hc_readm_2012 %>%
@@ -149,14 +154,20 @@ hc_dups <- hc_readm %>%
 hospital_data <- hospital_data %>%
   left_join(hc_readm, by=c("MCRNUM"="provider", "year"))
 
-# look at hospitals who are penalized according to HC but not HCRIS
 observe <- hospital_data %>%
-  filter(penalized_HC!=penalized_HCRIS)
+  select(year, MCRNUM, penalized_HC) %>%
+  filter(year>=2012)
 
-# Look at mean of penalized over time to compare
-penalized_means <- hospital_data %>%
-  group_by(year) %>%
-  summarise_at(c("penalized_HCRIS", "penalized_HC"), list(mean), na.rm=T)
+
+# # some hospitals not found in the hospital compare data?
+# hospital_data <- hospital_data %>%
+#   mutate(penalized_HC = ifelse(is.na(penalized_HC), penalized_HCRIS, penalized_HC))
+
+
+# # Look at mean of penalized over time to compare
+# penalized_means <- hospital_data %>%
+#   group_by(year) %>%
+#   summarise_at(c("penalized_HCRIS", "penalized_HC"), list(mean), na.rm=T)
 
 rm(hc_readm, hc_readm_2012, hc_readm_2013, hc_readm_2014, hc_readm_2015, hc_dups, observe)
 
@@ -176,6 +187,10 @@ num_pen_hospitals <- penalized_hospital_data %>%
 
 # save the data #####
 saveRDS(penalized_hospital_data, paste0(created_data_path, "penalized_hospital_data.rds"))
+
+observe <- penalized_hospital_data %>%
+  filter(no_md_changes_2010_2014==1) %>%
+  distinct(ein_hosp)
 
 
 # Summary Statistics ######

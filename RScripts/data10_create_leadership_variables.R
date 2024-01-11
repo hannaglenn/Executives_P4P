@@ -6,7 +6,7 @@ library(tidyr)
 source("paths.R")
 
 # read in names data
-cleaned_text <- read_rds(paste0(created_data_path, "cleaned_text_notfinished.rds"))
+cleaned_text <- read_rds(paste0(created_data_path, "cleaned_text.rds"))
 
 # First objective is to identify whether someone is part of the board or part of the actual day to day decision making
 # if the only position is physician, drop them as they are just a high compensated employee
@@ -16,7 +16,9 @@ cleaned_text <- cleaned_text %>%
 # ceo sometimes got stuck in the "extra" text, move it to position 1 (this is always an exec person)
 cleaned_text <- cleaned_text %>%
   mutate(position1 = ifelse(!is.na(extra) & str_detect(extra,"ceo\\b"),"ceo",position1)) %>%
-  mutate(position1 = ifelse(!is.na(extra) & str_detect(extra,"cfo\\b"),"cfo",position1))
+  mutate(position1 = ifelse(!is.na(extra) & str_detect(extra,"cfo\\b"),"cfo",position1)) %>%
+  mutate(position1 = ifelse(!is.na(extra) & str_detect(extra,"cmo\\b"),"cmo",position1)) %>%
+  mutate(position1 = ifelse(!is.na(extra) & str_detect(extra,"cqo\\b"),"cqo",position1))
 
 # First goal: categorize each name as board member or executive (decision maker) ####
 
@@ -25,6 +27,7 @@ cleaned_text <- cleaned_text %>%
 # 2. do they have an "executive" title?
 # 3. are they a physician on top of another position?
 # 4. president is tricky. have a different indicator
+# 5. Keep an indicator for whether they are a vice president *I may drop these as robustness check later)
 
 # make indicators for whether position 1 and position 2 are board or not
 cleaned_text <- cleaned_text %>%
@@ -33,13 +36,15 @@ cleaned_text <- cleaned_text %>%
 
 # make indicators for whether position1 and position2 are for sure executive members (leave president out for now)
 cleaned_text <- cleaned_text %>%
-  mutate(pos1_exec = ifelse(position1 %in% c("medical director", "ceo", "cfo", "system executive", "executive", "coo", "chief medical officer", "chief executive officer", "chief financial officer", "cpo", "cmo", "cno"), 1, 0)) %>%
-  mutate(pos2_exec = ifelse(position2 %in% c("medical director", "ceo", "cfo", "system executive", "executive", "coo", "chief medical officer", "chief executive officer", "chief financial officer", "cpo", "cmo", "cno"), 1, 0))
+  mutate(pos1_exec = ifelse(position1 %in% c("medical director", "ceo", "cfo", "system executive", "executive", "coo", "chief medical officer", "chief executive officer", "chief financial officer", "cpo", "cmo", "cno", "cqo", "chief quality officer"), 1, 0)) %>%
+  mutate(pos2_exec = ifelse(position2 %in% c("medical director", "ceo", "cfo", "system executive", "executive", "coo", "chief medical officer", "chief executive officer", "chief financial officer", "cpo", "cmo", "cno", "cqo", "chief quality officer"), 1, 0))
 
 # make indicators for whether position1 or position2 indicate president or vice president
 cleaned_text <- cleaned_text %>%
   mutate(pos1_pres = ifelse(position1 %in% c("president", "pres", "vp", "vice president", "peesident"), 1, 0)) %>%
-  mutate(pos2_pres = ifelse(position2 %in% c("president", "pres", "vp", "vice president", "peesident"), 1, 0))
+  mutate(pos2_pres = ifelse(position2 %in% c("president", "pres", "vp", "vice president", "peesident"), 1, 0)) %>%
+  mutate(pos1_vp = ifelse(position1 %in% c("vp", "vice president"), 1, 0)) %>%
+  mutate(pos2_vp = ifelse(position2 %in% c("vp", "vice president"), 1, 0))
 
 # make indicators for whether position1 or position2 indicate physician
 cleaned_text <- cleaned_text %>%
@@ -49,9 +54,6 @@ cleaned_text <- cleaned_text %>%
 
 # create indicator for extra text being informative of hospital leadership
 cleaned_text <- cleaned_text %>%
-  mutate(first_name = ifelse(first_name=="mary" & last_name=="jo","mary jo",first_name),
-         last_name = ifelse(first_name=="mary jo",extra,last_name)) %>%
-  mutate(extra = ifelse(extra=="jr ",NA,extra)) %>%
   mutate(extra_text_hosp = ifelse(!is.na(extra) & str_detect(extra, "\\bof\\b|^of\\b|medical staff|mc\\b|officer|senior|center|professional|network|project|hhc|clinic|qual|relation|facilit|manage|support|revenue|strategic|affairs|acute|planning|legal|oficer|region|development|info|develop|counsel|external|hosp|community|chief|finan|service|admin|health|business|care|general|tech|exec|oper|practice|market|med|fiscal|nursing|human|hs\\b|corporate|hr|services|medical|patient"),1,0))
 
 # Conditions on the position of the person
@@ -70,11 +72,15 @@ cleaned_text <- cleaned_text %>%
   mutate(position = ifelse(is.na(position) & pos1_pres==1 & pos2_board==1, "board", position)) %>% #4
   mutate(position = ifelse(is.na(position) & pos2_pres==1 & pos1_board==1, "board", position)) %>% #4
   mutate(position = ifelse(is.na(position), "president (board or executive)", position)) #5
+
+observe <- cleaned_text %>%
+  select(position1, position2, extra, extra_text_hosp, position)
   
 executive_data <- cleaned_text %>%
+  mutate(vp = ifelse(pos1_vp==1 | pos2_vp==1, 1, 0)) %>%
   filter(position == "executive") %>%
   mutate(name = paste0(first_name, " ", last_name)) %>%
-  select(ein, year, name, position, title, former) %>%
+  select(ein, year, name, position, title, former, vp) %>%
   filter(!(former %in% c("past", "former", "past interim")))
 
 # loop through eins to fill in any missing years that happen between nonmissing years
@@ -114,24 +120,11 @@ for (i in seq_along(eins)){
   }
 }  
 
-# investigate multiple of the same person in the same year
-executive_data_filled <- executive_data_filled %>%
-  mutate(count=1) %>%
-  distinct() %>%
-  group_by(name, year, ein) %>%
-  mutate(sum=sum(count)) %>%
-  ungroup() %>%
-  filter(!(sum>1 & position=="president (board or executive)"))
-
 # fill MD
 executive_data_filled <- executive_data_filled %>%
   group_by(ein, id) %>%
   fill(title, .direction="downup") %>%
   ungroup()
-
-# get rid of variables I don't need
-executive_data_filled <- executive_data_filled %>%
-  select(-count, -sum)
 
 # goal 2: identify whether changes occur from year to year ####
 
@@ -141,16 +134,30 @@ executive_data_filled <- executive_data_filled %>%
 
 # get rid of hospitals who are not present in the data at least for 2011-2013
 executive_data_filled <- executive_data_filled %>%
-  mutate(in_2011 = ifelse(year==2011,1,NA),
+  mutate(in_2010 = ifelse(year==2010,1,NA),
+         in_2011 = ifelse(year==2011,1,NA),
          in_2012 = ifelse(year==2012,1,NA),
-         in_2013 = ifelse(year==2013,1,NA)) %>%
+         in_2013 = ifelse(year==2013,1,NA),
+         in_2014 = ifelse(year==2014,1,NA)) %>%
   group_by(ein) %>%
-  fill(in_2011, in_2012, in_2013, .direction="downup") %>%
+  fill(in_2010, in_2011, in_2012, in_2013, in_2014, .direction="downup") %>%
   ungroup() %>%
-  filter(in_2011==1 & in_2012==1 & in_2013==1)
+  mutate(present_2010_2014 = ifelse(in_2010==1 & in_2011==1 & in_2012==1 & in_2013==1 & in_2014==1, 1, 0)) %>%
+  mutate(present_2010_2014 = ifelse(is.na(present_2010_2014), 0 ,present_2010_2014)) 
+  # 65% of observations are in the data
+
+# keep a record of those that aren't to see if we can manually fill in some missing info caused by OCR
+executive_data_notin20102014 <- executive_data_filled %>%
+  filter(present_2010_2014==0)
+
+saveRDS(executive_data_notin20102014, paste0(created_data_path, "executive_data_notin20102014.rds"))
+write.csv(executive_data_notin20102014, paste0(created_data_path, "executive_data_notin20102014.csv"))
+
+# now filter out those who are not in the data for this time period
+executive_data_filled <- executive_data_filled %>%
+  filter(present_2010_2014==1)
 
 # figure out whether the leadership team has changed in a given year
-
 detect_changes <- executive_data_filled %>% 
   group_by(ein, year) %>% 
   summarize(list_of_ids = paste(sort(unique(id)),collapse=", ")) %>%
@@ -244,21 +251,27 @@ years_of_change <- years_of_change %>%
 executive_data_filled <- executive_data_filled %>%
   left_join(years_of_change, by="ein")
 
-# create ein-level summary stats about number of doctors and number of total people
+# create ein-level summary stats about number of doctors and number of total of executives
 executive_data_filled <- executive_data_filled %>%
   group_by(ein, year) %>%
   mutate(count=1) %>%
-  mutate(total_people = sum(count),
+  mutate(total_execs = sum(count),
          total_docs = sum(doctor)) %>%
   ungroup()
 
 # aggregate to the hospital level
 ein_leadership_changes_data <- executive_data_filled %>%
   distinct(ein, year, no_changes_ever, no_changes_2010_2014, no_changes_2011_2013, no_small_changes_ever, no_small_changes_2010_2014, no_small_changes_2011_2013,
-           no_md_changes_ever, no_md_changes_2010_2014, no_md_changes_2011_2013, total_people, total_docs)
+           no_md_changes_ever, no_md_changes_2010_2014, no_md_changes_2011_2013, total_execs, total_docs)
 
 saveRDS(ein_leadership_changes_data, paste0(created_data_path, "ein_leadership_changes_data.rds"))
 
+num <- ein_leadership_changes_data %>%
+  distinct(ein)
+
+summary <- ein_leadership_changes_data %>%
+  group_by(year) %>%
+  summarise_at()
 
 
 

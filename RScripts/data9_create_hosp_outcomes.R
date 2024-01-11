@@ -80,14 +80,12 @@ mort2015 <- mort2015 %>%
 mortality_data <- rbind(mort2008, mort2009, mort2010, mort2011, mort2012, mort2013, mort2014, mort2015)
 rm(mort2008, mort2009, mort2010, mort2011, mort2012, mort2013, mort2014, mort2015)
 
-observe <- mortality_data %>%
-  filter(year==2014 | year==2015)
-
 # fix condition variable for years that didn't have it
 mortality_data <- mortality_data %>%
   mutate(condition = ifelse(is.na(condition) & str_detect(measurename, fixed('pneumonia', ignore_case=T)), "Pneumonia", condition)) %>%
   mutate(condition = ifelse(is.na(condition) & str_detect(measurename, fixed('heart failure', ignore_case=T)), "Heart Failure", condition)) %>%
-  mutate(condition = ifelse(is.na(condition) & str_detect(measurename, fixed('heart attack', ignore_case=T)), "Heart Attack", condition)) %>%
+  mutate(condition = ifelse(is.na(condition) & str_detect(measurename, fixed('heart attack', ignore_case=T)), "Heart Attack", condition),
+         condition = ifelse(is.na(condition) & str_detect(measurename, fixed('ami', ignore_case=T)), "Heart Attack", condition)) %>%
   filter(condition %in% c("Pneumonia", "Heart Failure", "Heart Attack")) %>%
   mutate(condition = ifelse(condition=="Pneumonia", "pneum", condition)) %>%
   mutate(condition = ifelse(condition=="Heart Attack", "heartattack", condition)) %>%
@@ -104,7 +102,7 @@ mortality_data <- mortality_data %>%
 # save data 
 saveRDS(mortality_data, paste0(created_data_path, "hosp_outcomes.rds"))
 
-num_hosp <- hosp_outcomes %>%
+num_hosp <- mortality_data %>%
   distinct(providerid)
 
 

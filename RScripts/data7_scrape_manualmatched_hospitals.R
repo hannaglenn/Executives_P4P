@@ -7,15 +7,14 @@ library(tesseract)
 
 # In this script, I read in the pdfs that were manually downloaded after finding errors from the 
 # first pull of pdfs. 
-# (run this for both 1a and 1b errors)
 
 source("paths.R")
 
 # Read in and clean text from all pdfs in the "AHA Manual PDFs" folder
-pdfs <- list.files(paste0(created_data_path, "AHA_pdfs_manual"),
+pdfs <- list.files(paste0(created_data_path, "AHA_pdfs_manual_matched"),
                    full.names=FALSE)
 # create empty list to store information in 
-AHA_ein_list_errors1b <- vector("list", length(pdfs))
+AHA_ein_list_manualmatched <- vector("list", length(pdfs))
 
 
 # write for loop to extract text from all files
@@ -27,14 +26,14 @@ for (i in seq_along(pdfs)){
   year <- str_remove(file_name[[1]][[3]], ".pdf")
   
   # get total number of pages
-  total_pages <- pdf_info(paste0(created_data_path, "/AHA_pdfs_manual/",pdfs[[i]]))$pages
+  total_pages <- pdf_info(paste0(created_data_path, "/AHA_pdfs_manual_matched/",pdfs[[i]]))$pages
   # create empty list to store data from each page
   individual_page_list <- vector("list", total_pages)
 
   # loop through each of the pages
   for (page in 1:total_pages){
     tryCatch({
-    text <- pdf_ocr_text(paste0(created_data_path, "/AHA_pdfs_manual/",pdfs[[i]]),
+    text <- pdf_ocr_text(paste0(created_data_path, "/AHA_pdfs_manual_matched/",pdfs[[i]]),
                          pages = page,
                          dpi = 600,
                          opw = "",
@@ -66,11 +65,10 @@ for (i in seq_along(pdfs)){
   }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
   }
   text_data <- do.call(rbind, individual_page_list)
-  AHA_ein_list_errors1b[[i]] <- c(ein, year, text_data)
-  saveRDS(AHA_ein_list_errors1b, paste0(created_data_path, "AHA_ein_list_errors1b.rds"))
+  AHA_ein_list_manualmatched[[i]] <- c(ein, year, text_data)
+  saveRDS(AHA_ein_list_manualmatched, paste0(created_data_path, "AHA_ein_list_manualmatched.rds"))
   }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
 }
-
 
 
 
