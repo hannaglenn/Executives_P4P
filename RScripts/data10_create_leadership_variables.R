@@ -128,6 +128,9 @@ executive_data_filled <- executive_data_filled %>%
 
 # goal 2: identify whether changes occur from year to year ####
 
+# fill in information where OCR failed
+executive_data_notin20102014 <- readRDS(paste0(created_data_path, "/executive_data_notin20102014.rds"))
+
 # change tax year to actual year
 executive_data_filled <- executive_data_filled %>%
   mutate(year=year-1)
