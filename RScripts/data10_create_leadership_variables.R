@@ -72,14 +72,10 @@ cleaned_text <- cleaned_text %>%
   mutate(position = ifelse(is.na(position) & pos1_pres==1 & pos2_board==1, "board", position)) %>% #4
   mutate(position = ifelse(is.na(position) & pos2_pres==1 & pos1_board==1, "board", position)) %>% #4
   mutate(position = ifelse(is.na(position), "president (board or executive)", position)) #5
-
-observe <- cleaned_text %>%
-  select(position1, position2, extra, extra_text_hosp, position)
   
 executive_data <- cleaned_text %>%
   mutate(vp = ifelse(pos1_vp==1 | pos2_vp==1, 1, 0)) %>%
   filter(position == "executive") %>%
-  mutate(name = paste0(first_name, " ", last_name)) %>%
   select(ein, year, name, position, title, former, vp) %>%
   filter(!(former %in% c("past", "former", "past interim")))
 
@@ -94,8 +90,8 @@ for (i in seq_along(eins)){
     filter(ein == eins[[i]]) %>%
     group_by(name, position) %>%
     mutate(id = cur_group_id()) %>%
-    ungroup() %>%
-    mutate(year=as.integer(year))
+    arrange(year) %>%
+    ungroup() 
   
   # complete so that each group has a row in each year (only for now)
   data <- complete(data, year=2009:2016, id)
@@ -128,14 +124,7 @@ executive_data_filled <- executive_data_filled %>%
 
 # goal 2: identify whether changes occur from year to year ####
 
-# fill in information where OCR failed
-executive_data_notin20102014 <- readRDS(paste0(created_data_path, "/executive_data_notin20102014.rds"))
-
-# change tax year to actual year
-executive_data_filled <- executive_data_filled %>%
-  mutate(year=year-1)
-
-# get rid of hospitals who are not present in the data at least for 2011-2013
+# get rid of hospitals who are not present in the data at least for 2010-2014
 executive_data_filled <- executive_data_filled %>%
   mutate(in_2010 = ifelse(year==2010,1,NA),
          in_2011 = ifelse(year==2011,1,NA),
@@ -147,14 +136,14 @@ executive_data_filled <- executive_data_filled %>%
   ungroup() %>%
   mutate(present_2010_2014 = ifelse(in_2010==1 & in_2011==1 & in_2012==1 & in_2013==1 & in_2014==1, 1, 0)) %>%
   mutate(present_2010_2014 = ifelse(is.na(present_2010_2014), 0 ,present_2010_2014)) 
-  # 65% of observations are in the data
+  # 75% of observations are in the data
 
 # keep a record of those that aren't to see if we can manually fill in some missing info caused by OCR
 executive_data_notin20102014 <- executive_data_filled %>%
   filter(present_2010_2014==0)
 
-saveRDS(executive_data_notin20102014, paste0(created_data_path, "executive_data_notin20102014.rds"))
-write.csv(executive_data_notin20102014, paste0(created_data_path, "executive_data_notin20102014.csv"))
+# saveRDS(executive_data_notin20102014, paste0(created_data_path, "executive_data_notin20102014.rds"))
+# write.csv(executive_data_notin20102014, paste0(created_data_path, "executive_data_notin20102014.csv"))
 
 # now filter out those who are not in the data for this time period
 executive_data_filled <- executive_data_filled %>%
@@ -267,10 +256,11 @@ ein_leadership_changes_data <- executive_data_filled %>%
   distinct(ein, year, no_changes_ever, no_changes_2010_2014, no_changes_2011_2013, no_small_changes_ever, no_small_changes_2010_2014, no_small_changes_2011_2013,
            no_md_changes_ever, no_md_changes_2010_2014, no_md_changes_2011_2013, total_execs, total_docs)
 
-saveRDS(ein_leadership_changes_data, paste0(created_data_path, "ein_leadership_changes_data.rds"))
+saveRDS(ein_leadership_changes_data, paste0(created_data_path, "ein_leadership_changes_data(temp).rds"))
 
 num <- ein_leadership_changes_data %>%
   distinct(ein)
+  # up to 716 eins after the first batch of manually fixing OCR mess ups 
 
 summary <- ein_leadership_changes_data %>%
   group_by(year) %>%

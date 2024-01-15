@@ -19,7 +19,7 @@ hc_readm_2013 <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/v
 hc_readm_2014 <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/vwhqi_readm_reduction_2014.csv"))
 hc_readm_2015 <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/vwhqi_readm_reduction_2015.csv"))
 # Data that I created on leadership teams from the tax forms
-ein_leadership_data <- read_rds(paste0(created_data_path, "ein_leadership_changes_data.rds"))
+ein_leadership_data <- read_rds(paste0(created_data_path, "ein_leadership_changes_data(temp).rds"))
 # Data that I created on outcomes from Hospital Compare
 outcomes_data <- read_rds(paste0(created_data_path, "hosp_outcomes.rds"))
 
@@ -45,10 +45,12 @@ hospital_data <- hospital_data %>%
 
 observe <- hospital_data %>%
   distinct(ein_hosp)
+  # 1133 eins
 
 # only keep rows that had values in that data set
 hospital_data <- hospital_data %>%
   filter(!is.na(no_changes_ever))
+  # takes us down to 680 eins
 
 # join AHA data to get medicare number
 hospital_data <- hospital_data %>%
@@ -131,15 +133,24 @@ hc_readm_2015 <- hc_readm_2015 %>%
 
 hc_readm <- rbind(hc_readm_2012, hc_readm_2013, hc_readm_2014, hc_readm_2015)
 
+# create variables that indicate being penalized for a certain condition
+hc_readm <- hc_readm %>%
+  mutate(pen_hf = ifelse(measurename %in% c("Heart Failure (HF) 30-Day Readmissions", "READM-30-HF-HRRP") & readratexc>1, 1, NA),
+         pen_ha = ifelse(measurename %in% c("Acute Myocardial Infarction (AMI) 30-Day Readmissions", "READM-30-AMI-HRRP") & readratexc>1, 1, NA),
+         pen_pnem = ifelse(measurename %in% c("Pneumonia (PN) 30-Day Readmissions", "READM-30-PN-HRRP") & readratexc>1, 1, NA))
+
 # Create penalty variable that equals 1 if the hospital goes over readmissions in any category in pneumonia, heart failure, or AMI
 hc_readm <- hc_readm %>%
   filter(!(measurename %in% c("READM-30-HIP-KNEE-HRRP", "READM-30-COPD-HRRP"))) %>%
-  mutate(penalized_HC = ifelse(readratexc>1,1,NA)) %>%
   group_by(provider, year) %>%
-  fill(penalized_HC, .direction="downup") %>%
+  fill(pen_hf, pen_ha, pen_pnem, .direction="downup") %>%
   ungroup() %>%
-  distinct(provider, year, penalized_HC) %>%
-  mutate(penalized_HC=ifelse(is.na(penalized_HC),0,penalized_HC))
+  mutate(penalized_HC = ifelse(pen_hf==1 | pen_ha==1 | pen_pnem==1, 1, 0)) %>%
+  distinct(provider, year, pen_hf, pen_ha, pen_pnem, penalized_HC) %>%
+  mutate(penalized_HC=ifelse(is.na(penalized_HC),0,penalized_HC),
+         pen_hf = ifelse(is.na(pen_hf), 0, pen_hf),
+         pen_ha = ifelse(is.na(pen_ha), 0, pen_ha),
+         pen_pnem = ifelse(is.na(pen_pnem), 0, pen_pnem))
 
 # any duplicates?
 hc_dups <- hc_readm %>%
@@ -155,8 +166,7 @@ hospital_data <- hospital_data %>%
   left_join(hc_readm, by=c("MCRNUM"="provider", "year"))
 
 observe <- hospital_data %>%
-  select(year, MCRNUM, penalized_HC) %>%
-  filter(year>=2012)
+  filter(year>=2013 & is.na(penalized_HC))
 
 
 # # some hospitals not found in the hospital compare data?
@@ -179,6 +189,9 @@ hospital_data <- hospital_data %>%
 penalized_hospital_data <- hospital_data %>%
   group_by(MCRNUM) %>%
   mutate(ever_penalized = sum(penalized_HC, na.rm=T)) %>%
+  mutate(ever_pen_ha = sum(pen_ha, na.rm=T),
+         ever_pen_hf = sum(pen_hf, na.rm=T),
+         ever_pen_pnem = sum(pen_pnem, na.rm=T)) %>%
   ungroup() %>%
   filter(ever_penalized>0)
 
@@ -186,7 +199,7 @@ num_pen_hospitals <- penalized_hospital_data %>%
   distinct(ein_hosp)
 
 # save the data #####
-saveRDS(penalized_hospital_data, paste0(created_data_path, "penalized_hospital_data.rds"))
+saveRDS(penalized_hospital_data, paste0(created_data_path, "penalized_hospital_data(temp).rds"))
 
 observe <- penalized_hospital_data %>%
   filter(no_md_changes_2010_2014==1) %>%
