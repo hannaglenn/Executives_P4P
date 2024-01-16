@@ -933,108 +933,221 @@ cleaned_text <- cleaned_text %>%
   add_row(year = 2012, ein = "581649541", name = "kenneth kunze", position1 = "cmo", title = "md") %>%
   add_row(year = 2012, ein = "581649541", name = "michael graue", position1 = "coo") %>%
   add_row(year = 2012, ein = "581649541", name = "ellen langford", position1 = "coo") %>%
-  add_row(year = 2012, ein = "581649541", name = "robert jansen", position1 = "pres", extra = "medical group", title = "md") 
-
-
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
-  add_row(year = 2010, ein = "", name = "", position1 = ) %>%
+  add_row(year = 2012, ein = "581649541", name = "robert jansen", position1 = "pres", extra = "medical group", title = "md") %>%
+  add_row(year = 2010, ein = "581694098", name = "james gardner", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "581694098", name = "carrol burrell", position1 = "coo") %>%
+  add_row(year = 2010, ein = "581694098", name = "anthony herdener", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "581694098", name = "samuel johnson", position1 = "cmo") %>%
+  add_row(year = 2010, ein = "581954432", name = "robert quattrocchi", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "581954432", name = "deborah mitcham", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "581954432", name = "robert quattrocchi", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2011, ein = "581954432", name = "deborah mitcham", position1 = "cfo") %>%
+  add_row(year = 2014, ein = "582149127", name = "ninfa saunders", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2014, ein = "582149127", name = "rhonda perry", position1 = "cfo") %>%
+  add_row(year = 2014, ein = "582179986", name = "james moore", position1 = "cmo", title = "md") %>%
+  add_row(year = 2010, ein = "582200195", name = "charles scott", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "582200195", name = "claude carruth", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "582200195", name = "john edwards", position1 = "coo") %>%
+  add_row(year = 2011, ein = "582200195", name = "charles scott", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "582200195", name = "gary chawk", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "582200195", name = "john edward", position1 = "coo") %>%
+  add_row(year = 2012, ein = "586002701", name = "douglas keir", position1 = "ceo") %>%
+  add_row(year = 2012, ein = "586002701", name = "patricia parris", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "590724462", name = "lance anastasio", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "590747311", name = "hugh green", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "590747311", name = "john wilbanks", position1 = "coo") %>%
+  add_row(year = 2010, ein = "590747311", name = "michael lukaszewski", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "590747311", name = "keith stein", position1 = "cmo", title = "md") %>%
+  add_row(year = 2010, ein = "590747311", name = "jerry bridgham", position1 = "cmo", extra = "wch", title = "md") %>%
+  add_row(year = 2010, ein = "590872594", name = "guillermo pol", position1 = "president", extra = "medical staff", title = "md") %>%
+  add_row(year = 2010, ein = "590872594", name = "lincoln mendez", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "590872594", name = "richard freeburg", position1 = "coo") %>%
+  add_row(year = 2013, ein = "590872594", name = "yvonne johnson", position1 = "president", extra = "medical staff", title = "md") %>%
+  add_row(year = 2013, ein = "590872594", name = "lincoln mendez", position1 = "ceo") %>%
+  add_row(year = 2013, ein = "590872594", name = "jeanette stone", position1 = "vp", extra = "operations") %>%
+  add_row(year = 2014, ein = "590872594", name = "lincoln mendez", position1 = "ceo") %>%
+  add_row(year = 2014, ein = "590872594", name = "jeanette stone", position1 = "vp", extra = "operations") %>%
+  add_row(year = 2010, ein = "591987355", name = "elisa brown", position1 = "president", extra = "medical staff", title = "md") %>%
+  add_row(year = 2010, ein = "591987355", name = "rick freeburg", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "592425149", name = "kerry vermillion", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "592425149", name = "kerry vermillion", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "592477479", name = "roy wright", position1 = "president", extra = "cch") %>%
+  add_row(year = 2010, ein = "592477479", name = "michael mcgoohan", position1 = "president", extra = "medical staff", title = "do") %>%
+  add_row(year = 2010, ein = "592477479", name = "robert galloway", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "592477479", name = "rodney moore", position1 = "vp", extra = "medical affairs") %>%
+  add_row(year = 2011, ein = "592477479", name = "alphonse pecoraro", position1 = "president", extra = "medical staff", title = "md") %>%
+  add_row(year = 2010, ein = "592650456", name = "paul powers", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "592650456", name = "edwin sammer", position1 = "cmo", title = "md") %>%
+  add_row(year = 2010, ein = "592650456", name = "jack stephens", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "592650456", name = "jeffrey payne", position1 = "vp", extra = "hr") %>%
+  add_row(year = 2010, ein = "592980620", name = "john wilbanks", position1 = "vp", extra = "exec") %>%
+  add_row(year = 2010, ein = "592980620", name = "michael lukaszewski", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "593051173", name = "ronald gilliard", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "593051173", name = "nathan ebersole", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "593051173", name = "nathan ebersole", position1 = "cfo") %>%
+  add_row(year = 2012, ein = "593051173", name = "nathan ebersole", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "593122517", name = "richard huth", position1 = "ceo") %>%
+  add_row(year = 2013, ein = "593122517", name = "geri forbes", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "610461767", name = "william kindred", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "610461767", name = "anthony sudduth", position1 = "cfo", position2 = "coo") %>%
+  add_row(year = 2010, ein = "610461940", name = "robert hudson", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "610461940", name = "christopher jones", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "610461940", name = "chris mcclurg", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "610461940", name = "christopher jones", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "610461940", name = "chris mcclurg", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "610471581", name = "alisa coleman", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "610471581", name = "bethany goss", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "610624096", name = "steve burns", position1 = "coo") %>%
+  add_row(year = 2010, ein = "610624096", name = "richard neikirk", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "610624096", name = "richie capps", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "611286361", name = "barber jeffrey", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "611286361", name = "hackbarth john", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "611286361", name = "medley richard", position1 = "cmo") %>%
+  add_row(year = 2010, ein = "611286361", name = "strahan greg", position1 = "coo") %>%
+  add_row(year = 2010, ein = "611286361", name = "jones lisa", position1 = "vp", extra = "clinical services") %>%
+  add_row(year = 2010, ein = "611286361", name = "ranallo russell", position1 = "vp", extra = "financial services") %>%
+  add_row(year = 2011, ein = "620988604", name = "thomas kidd", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "620988604", name = "dennis wolford", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "621373691", name = "anthony spezia", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "621373691", name = "john gepps", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "621373691", name = "greg sommers", position1 = "cfo") %>%
+  add_row(year = 2013, ein = "621373691", name = "anthony spezia", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2013, ein = "621373691", name = "john gepps", position1 = "cfo") %>%
+  add_row(year = 2013, ein = "621373691", name = "michael hamilton", position1 = "vp", extra = "financial services") %>%
+  add_row(year = 2014, ein = "621373691", name = "anthony spezia", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2014, ein = "621373691", name = "john gepps", position1 = "cfo") %>%
+  add_row(year = 2014, ein = "621373691", name = "michael hamilton", position1 = "vp", extra = "financial services") %>%
+  add_row(year = 2010, ein = "621519754", name = "edwin cade", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "621519754", name = "james robertson", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "631058174", name = "jim weidner", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "631058174", name = "jete edmisson", position1 = "cfo", position2 = "coo") %>%
+  add_row(year = 2010, ein = "640333594", name = "alvin hoover", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "640333594", name = "randy pirtle", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "640362400", name = "william casey", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "640362400", name = "leland ray", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "640663760", name = "walter grace", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "640663760", name = "josh harmond", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "640663760", name = "kyle armstrong", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "640663760", name = "donovan leonard", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "710329353", name = "robert atkinson", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "710329353", name = "walter johnson", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "710329353", name = "thomas harbuck", position1 = "vp", extra = "executive") %>%
+  add_row(year = 2014, ein = "710329353", name = "walter johnson", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2014, ein = "710329353", name = "thomas harbuck", position1 = "vp", extra = "executive") %>%
+  add_row(year = 2014, ein = "710329353", name = "brian thomas", position1 = "coo") %>%
+  add_row(year = 2010, ein = "720423659", name = "james montgomery", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "720423659", name = "kevin jordan", position1 = "cmo") %>%
+  add_row(year = 2010, ein = "720423659", name = "robert ficken", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "720423659", name = "susan pitoscia", position1 = "coo") %>%
+  add_row(year = 2010, ein = "720423659", name = "suzanne haggard", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "720423659", name = "chad courrege", position1 = "vp", extra = "hr") %>%
+  add_row(year = 2011, ein = "720423659", name = "susan pitoscia", position1 = "coo") %>%
+  add_row(year = 2011, ein = "720423659", name = "penny menge", position1 = "vp", extra = "patient care services") %>%
+  add_row(year = 2011, ein = "720423659", name = "chad courrege", position1 = "vp", extra = "hr") %>%
+  add_row(year = 2010, ein = "720445607", name = "pamela primeaux", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "720445607", name = "terry terrebone", position1 = "executive") %>%
+  add_row(year = 2010, ein = "720445607", name = "keith simpson", position1 = "coo") %>%
+  add_row(year = 2010, ein = "720445607", name = "dana williams", position1 = "coo") %>%
+  add_row(year = 2011, ein = "720445607", name = "pamela primeaux", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "720445607", name = "keith simpson", position1 = "coo") %>%
+  add_row(year = 2011, ein = "720445607", name = "dana williams", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "721479692", name = "todd epler", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "721479692", name = "layla chase", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "730700090", name = "jake henry", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2011, ein = "730700090", name = "barry steichen", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "730700090", name = "thomas neff", position1 = "coo") %>%
+  add_row(year = 2010, ein = "730790960", name = "james berry", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "730790960", name = "jennifer warren", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "730790960", name = "jennifer warren", position1 = "cfo") %>%
+  add_row(year = 2012, ein = "730790960", name = "victor pascual", position1 = "cmo", title = "md") %>%
+  add_row(year = 2010, ein = "731235996", name = "dan clements", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "731235996", name = "diane downard", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "731235996", name = "bill johnson", position1 = "coo") %>%
+  add_row(year = 2011, ein = "731235996", name = "dan clements", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "731235996", name = "diane downard", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "731235996", name = "bill johnson", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "741461220", name = "michael thompson", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "741471231", name = "julie butler", position1 = "coo") %>%
+  add_row(year = 2011, ein = "741471231", name = "julie butler", position1 = "coo") %>%
+  add_row(year = 2014, ein = "741471231", name = "willis reese", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "742851819", name = "kenneth randall", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "742851819", name = "william zemanek", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "750711276", name = "edward wilson", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "760698013", name = "cherri waites", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "760698013", name = "cherri waites", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "810231787", name = "david henry", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "810231787", name = "suzanne swietnicki", position1 = "cmo", title = "md") %>%
+  add_row(year = 2010, ein = "810231787", name = "kim lucke", position1 = "vp", extra = "finance") %>%
+  add_row(year = 2011, ein = "810231787", name = "david henry", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2011, ein = "810231787", name = "kim lucke", position1 = "vp", extra = "finance") %>%
+  add_row(year = 2010, ein = "810236460", name = "pete brekhus", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "810236460", name = "jamie davis", position1 = "coo") %>%
+  add_row(year = 2010, ein = "810236460", name = "tom mitchell", position1 = "ceo") %>%
+  add_row(year = 2012, ein = "810269223", name = "nancy rosaaen", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "826000422", name = "max long", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "826000422", name = "larry droppers", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "840398876", name = "karl gills", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "840398876", name = "frank may", position1 = "coo") %>%
+  add_row(year = 2011, ein = "840398876", name = "julie johnson", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "860208451", name = "richard smith", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "860208451", name = "john munson", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "860260959", name = "victoria clark", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "860260959", name = "james ehasz", position1 = "cfo") %>%
+  add_row(year = 2012, ein = "860427850", name = "rona curphy", position1 = "ceo") %>%
+  add_row(year = 2012, ein = "860427850", name = "karen francis", position1 = "cfo") %>%
+  add_row(year = 2012, ein = "860427850", name = "william stubbs", position1 = "vp", extra = "medical affairs", title = "md") %>%
+  add_row(year = 2014, ein = "860427850", name = "rona curphy", position1 = "ceo") %>%
+  add_row(year = 2014, ein = "860427850", name = "karen francis", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "870276435", name = "bradley lebaron", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "870276435", name = "brent hales", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "870276435", name = "brent hales", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "870276435", name = "bradley lebaron", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "870543342", name = "roy barraclough", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "870543342", name = "ken knight", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "870741588", name = "scott kelly", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "870741588", name = "randall neely", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "910567263", name = "richard linneweh", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "910567263", name = "john vornbrock", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "930430029", name = "richard stenson", position1 = "ceo", position2 = "president") %>%
+  add_row(year = 2010, ein = "930430029", name = "manuel berman", position1 = "coo") %>%
+  add_row(year = 2010, ein = "930430029", name = "tim fleischmann", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "930430029", name = "eugene zurbrugg", position1 = "ceo", position2 = "president") %>%
+  add_row(year = 2011, ein = "930430029", name = "richard stenson", position1 = "ceo", position2 = "president") %>%
+  add_row(year = 2011, ein = "930430029", name = "manuel berman", position1 = "coo") %>%
+  add_row(year = 2011, ein = "930430029", name = "tim fleischmann", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "930430029", name = "marc lewis", position1 = "president", extra = "medical staff", title = "md") %>%
+  add_row(year = 2010, ein = "930602940", name = "james diegel", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2010, ein = "930602940", name = "karen shepard", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "930602940", name = "james henry", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "930602940", name = "alan ertle", position1 = "vp", extra = "med affairs") %>%
+  add_row(year = 2010, ein = "930602940", name = "katherine vitcovich", position1 = "vp", position2 = "hr") %>%
+  add_row(year = 2010, ein = "930602940", name = "patrick varga", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "952082686", name = "sharon johansson", position1 = "cfo") %>%
+  add_row(year = 2010, ein = "952082686", name = "james suver", position1 = "ceo") %>%
+  add_row(year = 2010, ein = "952082686", name = "david mechtenberg", position1 = "ceo") %>%
+  add_row(year = 2011, ein = "952082686", name = "lois johnson", position1 = "cfo") %>%
+  add_row(year = 2011, ein = "952082686", name = "james suver", position1 = "ceo") %>%
+  add_row(year = 2013, ein = "952224265", name = "ronald werft", position1 = "ceo") %>%
+  add_row(year = 2013, ein = "952224265", name = "steven fellows", position1 = "coo") %>%
+  add_row(year = 2013, ein = "952224265", name = "joan bricher", position1 = "cfo") %>%
+  add_row(year = 2014, ein = "952224265", name = "joan bricher", position1 = "cfo") %>%
+  add_row(year = 2014, ein = "952224265", name = "ronald werft", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2014, ein = "952224265", name = "steven fellows", position1 = "coo") %>%
+  add_row(year = 2013, ein = "952413596", name = "ronald werft", position1 = "ceo") %>%
+  add_row(year = 2013, ein = "952413596", name = "steven fellows", position1 = "coo") %>%
+  add_row(year = 2013, ein = "952413596", name = "joan bricher", position1 = "cfo") %>%
+  add_row(year = 2014, ein = "952413596", name = "joan bricher", position1 = "cfo") %>%
+  add_row(year = 2014, ein = "952413596", name = "ronald werft", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2014, ein = "952413596", name = "steven fellows", position1 = "coo") %>%
+  add_row(year = 2014, ein = "952821104", name = "roger seaver", position1 = "president", position2 = "ceo") %>%
+  add_row(year = 2014, ein = "952821104", name = "john schleif", position1 = "coo") %>%
+  add_row(year = 2014, ein = "952821104", name = "bob hudson", position1 = "cfo") %>%
+  add_row(year = 2014, ein = "952821104", name = "mark puleo", position1 = "vp", extra = "hr") %>%
+  add_row(year = 2013, ein = "990260423", name = "lowell johnson", position1 = "ceo") %>%
+  add_row(year = 2013, ein = "990260423", name = "jason paret", position1 = "cfo") %>%
+  add_row(year = 2013, ein = "990260423", name = "william brown", position1 = "vp", extra = "hr") %>%
+  add_row(year = 2013, ein = "990260423", name = "lorie ann", position1 = "vp", extra = "patient care") %>%
+  add_row(year = 2014, ein = "", name = "", position1 = ) %>%
   add_row(year = 2010, ein = "", name = "", position1 = ) %>%
   add_row(year = 2010, ein = "", name = "", position1 = ) %>%
   add_row(year = 2010, ein = "", name = "", position1 = ) %>%
