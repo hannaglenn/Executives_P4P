@@ -137,7 +137,7 @@ cleaned_text <- cleaned_text %>%
   distinct() %>%
   filter(first_name!="" & last_name!="") %>%
   mutate(extra = str_remove(extra, "ae eaeeeeeeeaneeees")) %>%
-  filter(!first_name %in% c("otherassets", "ct", "vp", "ac", "eco", "al", "eee", "po")) %>%
+  filter(!first_name %in% c("otherassets", "ct", "vp", "ac", "eco", "al", "eee", "po", "al", "hc")) %>%
   mutate(name = paste0(first_name, " ", last_name)) %>%
   mutate(year = as.double(year)) %>%
   mutate(year = year-1)
@@ -1146,7 +1146,10 @@ cleaned_text <- cleaned_text %>%
   add_row(year = 2013, ein = "990260423", name = "lowell johnson", position1 = "ceo") %>%
   add_row(year = 2013, ein = "990260423", name = "jason paret", position1 = "cfo") %>%
   add_row(year = 2013, ein = "990260423", name = "william brown", position1 = "vp", extra = "hr") %>%
-  add_row(year = 2013, ein = "990260423", name = "lorie ann", position1 = "vp", extra = "patient care") %>%
+  add_row(year = 2013, ein = "990260423", name = "lorie ann", position1 = "vp", extra = "patient care") 
+
+
+
   add_row(year = 2014, ein = "", name = "", position1 = ) %>%
   add_row(year = 2010, ein = "", name = "", position1 = ) %>%
   add_row(year = 2010, ein = "", name = "", position1 = ) %>%

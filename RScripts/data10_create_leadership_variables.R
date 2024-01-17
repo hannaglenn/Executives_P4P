@@ -136,7 +136,7 @@ executive_data_filled <- executive_data_filled %>%
   ungroup() %>%
   mutate(present_2010_2014 = ifelse(in_2010==1 & in_2011==1 & in_2012==1 & in_2013==1 & in_2014==1, 1, 0)) %>%
   mutate(present_2010_2014 = ifelse(is.na(present_2010_2014), 0 ,present_2010_2014)) 
-  # 75% of observations are in the data
+  # 79% of observations are in the data
 
 # keep a record of those that aren't to see if we can manually fill in some missing info caused by OCR
 executive_data_notin20102014 <- executive_data_filled %>%
@@ -260,11 +260,8 @@ saveRDS(ein_leadership_changes_data, paste0(created_data_path, "ein_leadership_c
 
 num <- ein_leadership_changes_data %>%
   distinct(ein)
-  # up to 716 eins after the first batch of manually fixing OCR mess ups 
+  # up to 767 eins after the first batch of manually fixing OCR mess ups 
 
-summary <- ein_leadership_changes_data %>%
-  group_by(year) %>%
-  summarise_at()
 
 
 

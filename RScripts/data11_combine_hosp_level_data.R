@@ -2,6 +2,7 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(stringr)
+library(fabricatr)
 
 # Read in Data ##################
 
@@ -131,13 +132,23 @@ hc_readm_2015 <- hc_readm_2015 %>%
   mutate(year=2015) %>%
   rename(provider=provider_number, measurename=measure_name, readratexc=excess_readmission_ratio)
 
-hc_readm <- rbind(hc_readm_2012, hc_readm_2013, hc_readm_2014, hc_readm_2015)
+hc_readm <- rbind(hc_readm_2012, hc_readm_2013, hc_readm_2014, hc_readm_2015) %>%
+  mutate(readratexc = ifelse(readratexc=="Not Available", NA, readratexc)) %>%
+  mutate(readratexc = as.numeric(readratexc))
 
 # create variables that indicate being penalized for a certain condition
 hc_readm <- hc_readm %>%
   mutate(pen_hf = ifelse(measurename %in% c("Heart Failure (HF) 30-Day Readmissions", "READM-30-HF-HRRP") & readratexc>1, 1, NA),
          pen_ha = ifelse(measurename %in% c("Acute Myocardial Infarction (AMI) 30-Day Readmissions", "READM-30-AMI-HRRP") & readratexc>1, 1, NA),
          pen_pnem = ifelse(measurename %in% c("Pneumonia (PN) 30-Day Readmissions", "READM-30-PN-HRRP") & readratexc>1, 1, NA))
+
+# create variables for penalties
+hc_readm <- hc_readm %>%
+  mutate(hf_rate = ifelse(measurename %in% c("Heart Failure (HF) 30-Day Readmissions", "READM-30-HF-HRRP"), readratexc, NA),
+         ha_rate = ifelse(measurename %in% c("Acute Myocardial Infarction (AMI) 30-Day Readmissions", "READM-30-AMI-HRRP"), readratexc, NA),
+         pnem_rate = ifelse(measurename %in% c("Pneumonia (PN) 30-Day Readmissions", "READM-30-PN-HRRP"), readratexc, NA)) %>%
+  group_by(provider, year) %>%
+  fill(hf_rate, ha_rate, pnem_rate, .direction="downup")
 
 # Create penalty variable that equals 1 if the hospital goes over readmissions in any category in pneumonia, heart failure, or AMI
 hc_readm <- hc_readm %>%
@@ -146,7 +157,7 @@ hc_readm <- hc_readm %>%
   fill(pen_hf, pen_ha, pen_pnem, .direction="downup") %>%
   ungroup() %>%
   mutate(penalized_HC = ifelse(pen_hf==1 | pen_ha==1 | pen_pnem==1, 1, 0)) %>%
-  distinct(provider, year, pen_hf, pen_ha, pen_pnem, penalized_HC) %>%
+  distinct(provider, year, pen_hf, pen_ha, pen_pnem, penalized_HC, hf_rate, ha_rate, pnem_rate) %>%
   mutate(penalized_HC=ifelse(is.na(penalized_HC),0,penalized_HC),
          pen_hf = ifelse(is.na(pen_hf), 0, pen_hf),
          pen_ha = ifelse(is.na(pen_ha), 0, pen_ha),
@@ -197,6 +208,24 @@ penalized_hospital_data <- hospital_data %>%
 
 num_pen_hospitals <- penalized_hospital_data %>%
   distinct(ein_hosp)
+
+# find out the percentile of the hospital's highest rate in the first year they were penalized
+perc <- penalized_hospital_data %>%
+  filter(penalized_HC==1) %>%
+  group_by(MCRNUM) %>%
+  mutate(minyr = min(year)) %>%
+  ungroup() %>%
+  filter(year==minyr) %>%
+  group_by(MCRNUM) %>%
+  mutate(max_rate = max(hf_rate, ha_rate, pnem_rate, na.rm=T)) %>%
+  ungroup() %>%
+  distinct(MCRNUM, max_rate) %>%
+  mutate(rate_tercile = split_quantile(max_rate, 3)) %>%
+  distinct(MCRNUM, rate_tercile)
+
+penalized_hospital_data <- penalized_hospital_data %>%
+  left_join(perc, by = "MCRNUM")
+  
 
 # save the data #####
 saveRDS(penalized_hospital_data, paste0(created_data_path, "penalized_hospital_data(temp).rds"))
