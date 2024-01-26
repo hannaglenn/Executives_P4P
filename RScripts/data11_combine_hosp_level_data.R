@@ -233,7 +233,7 @@ saveRDS(penalized_hospital_data, paste0(created_data_path, "penalized_hospital_d
 observe <- penalized_hospital_data %>%
   filter(no_md_changes_2010_2014==1) %>%
   distinct(ein_hosp)
-
+  # got up to 299 hospitals! 
 
 # Summary Statistics ######
 

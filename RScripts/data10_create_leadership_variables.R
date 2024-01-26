@@ -136,7 +136,7 @@ executive_data_filled <- executive_data_filled %>%
   ungroup() %>%
   mutate(present_2010_2014 = ifelse(in_2010==1 & in_2011==1 & in_2012==1 & in_2013==1 & in_2014==1, 1, 0)) %>%
   mutate(present_2010_2014 = ifelse(is.na(present_2010_2014), 0 ,present_2010_2014)) 
-  # 79% of observations are in the data
+  # 91% of observations are in the data
 
 # keep a record of those that aren't to see if we can manually fill in some missing info caused by OCR
 executive_data_notin20102014 <- executive_data_filled %>%
@@ -243,6 +243,16 @@ years_of_change <- years_of_change %>%
 executive_data_filled <- executive_data_filled %>%
   left_join(years_of_change, by="ein")
 
+# make a separate data set of ein, name, title, and years in data to be used for physician name matching
+# only keep the ones with no MD changes from 2010-2014
+names_data <- executive_data_filled %>%
+  filter(no_md_changes_2010_2014==1) %>%
+  group_by(ein, name, title) %>%
+  summarize(years = paste(sort(unique(year)), collapse=", ")) %>%
+  ungroup()
+
+saveRDS(names_data, paste0(created_data_path, "names_data.rds"))
+
 # create ein-level summary stats about number of doctors and number of total of executives
 executive_data_filled <- executive_data_filled %>%
   group_by(ein, year) %>%
@@ -260,7 +270,7 @@ saveRDS(ein_leadership_changes_data, paste0(created_data_path, "ein_leadership_c
 
 num <- ein_leadership_changes_data %>%
   distinct(ein)
-  # up to 767 eins after the first batch of manually fixing OCR mess ups 
+  # up to 911 eins after manually fixing some OCR mess ups
 
 
 

@@ -558,3 +558,15 @@ saveRDS(manual_matches, paste0(created_data_path, "manual_matched_eins.rds"))
 
 
 
+# put together one list of all the EINs that I need
+ein_hosp <- manual_matched_eins$ein_hosp
+ein_sys <- manual_matched_eins$ein_sys
+
+manual_eins <- c(ein_hosp, ein_sys)
+
+manual_eins <- as.data.frame(manual_eins) %>%
+  rename(ein = manual_eins)
+
+eins <- rbind(einlist_AHAmatching_1, manual_eins) %>%
+  distinct()
+write.csv(eins, "all_ein_list.csv")

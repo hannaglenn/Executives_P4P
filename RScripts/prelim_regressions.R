@@ -18,7 +18,8 @@ hospital_data <- readRDS(paste0(created_data_path, "penalized_hospital_data(temp
          heartfailure_mortality = rate_heartfailure_mortality,
          heartfailure_readmission = rate_heartfailure_readmission,
          pneum_mortality = rate_pneum_mortality,
-         pneum_readmission = rate_pneum_readmission)
+         pneum_readmission = rate_pneum_readmission) %>%
+  mutate(post_2012 = ifelse(year>=2012, 1, 0))
 
 # create min year penalized variable
 minyr_penalized <- hospital_data %>%
@@ -39,7 +40,7 @@ hospital_data <- hospital_data %>%
 noMDchg_pen_sample <- hospital_data %>%
   filter(no_md_changes_2010_2014==1) %>%
   mutate(has_any_md = ifelse(total_docs>0, 1, 0)) %>%
-  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort) %>%
+  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort, post_2012) %>%
   mutate(post = ifelse(year>=minyr_pen, 1, 0))
 
 # 2. No MD changes, penalized for HF
@@ -47,7 +48,7 @@ noMDchg_hfpen_sample <- hospital_data %>%
   filter(no_md_changes_2010_2014==1) %>%
   filter(ever_pen_hf>0) %>%
   mutate(has_any_md = ifelse(total_docs>0, 1, 0)) %>%
-  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort) %>%
+  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort, post_2012) %>%
   mutate(post = ifelse(year>=minyr_pen, 1, 0))
 
 # 3. No MD changes, penalized for HA
@@ -55,7 +56,7 @@ noMDchg_hapen_sample <- hospital_data %>%
   filter(no_md_changes_2010_2014==1) %>%
   filter(ever_pen_ha>0) %>%
   mutate(has_any_md = ifelse(total_docs>0, 1, 0)) %>%
-  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort) %>%
+  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort, post_2012) %>%
   mutate(post = ifelse(year>=minyr_pen, 1, 0))
 
 # 4. No MD changes, penalized for pnem
@@ -63,7 +64,7 @@ noMDchg_pnempen_sample <- hospital_data %>%
   filter(no_md_changes_2010_2014==1) %>%
   filter(ever_pen_pnem>0) %>%
   mutate(has_any_md = ifelse(total_docs>0, 1, 0)) %>%
-  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort) %>%
+  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort, post_2012) %>%
   mutate(post = ifelse(year>=minyr_pen, 1, 0))
 
 # 5. No MD changes, bottom tercile for excess readmissions
@@ -71,7 +72,7 @@ noMDchg_bottom_sample <- hospital_data %>%
   filter(no_md_changes_2010_2014==1) %>%
   filter(rate_tercile==1) %>%
   mutate(has_any_md = ifelse(total_docs>0, 1, 0)) %>%
-  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort) %>%
+  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort, post_2012) %>%
   mutate(post = ifelse(year>=minyr_pen, 1, 0))
 
 # 6. No MD changes, middle tercile for excess readmissions
@@ -79,7 +80,7 @@ noMDchg_middle_sample <- hospital_data %>%
   filter(no_md_changes_2010_2014==1) %>%
   filter(rate_tercile==2) %>%
   mutate(has_any_md = ifelse(total_docs>0, 1, 0)) %>%
-  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort) %>%
+  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort, post_2012) %>%
   mutate(post = ifelse(year>=minyr_pen, 1, 0))
 
 # 7. No MD changes, top tercile for excess readmissions
@@ -87,7 +88,7 @@ noMDchg_top_sample <- hospital_data %>%
   filter(no_md_changes_2010_2014==1) %>%
   filter(rate_tercile==3) %>%
   mutate(has_any_md = ifelse(total_docs>0, 1, 0)) %>%
-  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort) %>%
+  select(ID, year, heartattack_mortality, heartattack_readmission, pneum_mortality, pneum_readmission, heartfailure_mortality, heartfailure_readmission, has_any_md, minyr_pen, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, weightedavg_read, weightedavg_mort, post_2012) %>%
   mutate(post = ifelse(year>=minyr_pen, 1, 0))
 
 
@@ -256,16 +257,16 @@ annotate_figure(noMDchg_terc_mort_plot, top = text_grob("Average Mortality Rates
 
 # 1. run basic 2x2 diff in diff for each sample on each outcome
 # 1a. all penalized hospitals
-noMDchg_pen_pnem_read_did <- fixest::feols(pneum_readmission ~ has_any_md + post + has_any_md*post, data=noMDchg_pen_sample)
-noMDchg_pen_hf_read_did <- fixest::feols(heartfailure_readmission ~ has_any_md + post + has_any_md*post, data=noMDchg_pen_sample)
-noMDchg_pen_ha_read_did <- fixest::feols(heartattack_readmission ~ has_any_md + post + has_any_md*post, data=noMDchg_pen_sample)
-noMDchg_pen_pnem_mort_did <- fixest::feols(pneum_mortality ~ has_any_md + post + has_any_md*post, data=noMDchg_pen_sample)
-noMDchg_pen_hf_mort_did <- fixest::feols(heartfailure_mortality ~ has_any_md + post + has_any_md*post, data=noMDchg_pen_sample)
-noMDchg_pen_ha_mort_did <- fixest::feols(heartattack_mortality ~ has_any_md + post + has_any_md*post, data=noMDchg_pen_sample)
+noMDchg_pen_pnem_read_did <- fixest::feols(pneum_readmission ~ has_any_md + post_2012 + has_any_md*post_2012, data=noMDchg_pen_sample)
+noMDchg_pen_hf_read_did <- fixest::feols(heartfailure_readmission ~ has_any_md + post_2012 + has_any_md*post_2012, data=noMDchg_pen_sample)
+noMDchg_pen_ha_read_did <- fixest::feols(heartattack_readmission ~ has_any_md + post_2012 + has_any_md*post_2012, data=noMDchg_pen_sample)
+noMDchg_pen_pnem_mort_did <- fixest::feols(pneum_mortality ~ has_any_md + post_2012 + has_any_md*post_2012, data=noMDchg_pen_sample)
+noMDchg_pen_hf_mort_did <- fixest::feols(heartfailure_mortality ~ has_any_md + post_2012 + has_any_md*post_2012, data=noMDchg_pen_sample)
+noMDchg_pen_ha_mort_did <- fixest::feols(heartattack_mortality ~ has_any_md + post_2012 + has_any_md*post_2012, data=noMDchg_pen_sample)
 etable(noMDchg_pen_pnem_read_did, noMDchg_pen_hf_read_did, noMDchg_pen_ha_read_did, noMDchg_pen_pnem_mort_did, noMDchg_pen_hf_mort_did, noMDchg_pen_ha_mort_did)
 
-noMDchg_pen_wa_read_did <- fixest::feols(weightedavg_read ~ has_any_md + post + has_any_md*post, data=noMDchg_pen_sample)
-noMDchg_pen_wa_mort_did <- fixest::feols(weightedavg_mort ~ has_any_md + post + has_any_md*post, data=noMDchg_pen_sample)
+noMDchg_pen_wa_read_did <- fixest::feols(weightedavg_read ~ has_any_md + post_2012 + has_any_md*post_2012, data=noMDchg_pen_sample)
+noMDchg_pen_wa_mort_did <- fixest::feols(weightedavg_mort ~ has_any_md + post_2012 + has_any_md*post_2012, data=noMDchg_pen_sample)
 etable(noMDchg_pen_wa_read_did, noMDchg_pen_wa_mort_did)
 
 # 1b. penalized for pneumonia

@@ -6,85 +6,12 @@ library(tidyr)
 source("paths.R")
 
 # read in names data
-cleaned_text <- read_rds(paste0(created_data_path, "names_data.rds"))
-
-# create common names for the positions that can be grouped
-cleaned_text <- cleaned_text %>%
-  mutate(position1 = ifelse(position1 %in% c("president", "pres"), "president", position1)) %>%
-  mutate(position1 = ifelse(position1 %in% c("ceo", "ceocfo", "chief executive officer"), "ceo", position1)) %>%
-  mutate(position1 = ifelse(position1 %in% c("system executive", "medical director", "executive", "treasurer", "secretary", "vice chairman", "chairman", "vice chair", "chairperson", "chair", "vice-chair", "director", "trustee", "board"), "board", position1)) %>%
-  mutate(position1 = ifelse(position1 %in% c("vice president", "vp"), "vice president", position1)) %>%
-  mutate(position1 = ifelse(position1 %in% c("dermatologist", "anesthesiologist", "surgeon"), "physician", position1)) %>%
-  mutate(position1 = ifelse(position1=="chief financial officer", "cfo", position1)) %>%
-  mutate(position1 = ifelse(position1=="chief medical officer", "cmo", position1)) %>%
-  mutate(position2 = ifelse(position2 %in% c("president", "pres"), "president", position2)) %>%
-  mutate(position2 = ifelse(position2 %in% c("ceo", "ceocfo", "chief executive officer"), "ceo", position2)) %>%
-  mutate(position2 = ifelse(position2 %in% c("system executive", "medical director", "executive", "treasurer", "secretary", "vice chairman", "chairman", "vice chair", "chairperson", "chair", "vice-chair", "director", "trustee", "board"), "board", position2)) %>%
-  mutate(position2 = ifelse(position2 %in% c("vice president", "vp"), "vice president", position2)) %>%
-  mutate(position2 = ifelse(position2 %in% c("dermatologist", "anesthesiologist", "surgeon"), "physician", position2)) %>%
-  mutate(position2 = ifelse(position2=="chief financial officer", "cfo", position2)) %>%
-  mutate(position2 = ifelse(position2=="chief medical officer", "cmo", position2))
-
-# fix year to reflect actual year instead of tax filing year
-cleaned_text <- cleaned_text %>%
-  mutate(year=year-1)
-
-# get rid of physicians and board members, auxiliary presidents, and vice presidents
-cleaned_text <- cleaned_text %>%
-  filter(position1 %in% c("ceo", "president", "cfo", "cmo", "coo") | position2 %in% c("ceo", "president", "cfo", "cmo", "coo")) %>%
-  filter(!str_detect(extra, "auxiliary|aux"))
-
-# convert separate name variables to one 
-cleaned_text <- cleaned_text %>%
-  mutate(name = paste0(first_name, " ", last_name)) %>%
-  select(-first_name, -last_name)
-
-# get rid of those who are past officers
-cleaned_text <- cleaned_text %>%
-  filter(is.na(former))
-
-# create one position variable
-cleaned_text <- cleaned_text %>%
-  mutate(position = ifelse(is.na(position2), position1, NA)) %>%
-  mutate(position = ifelse(is.na(position) & (position1=="ceo" | position2=="ceo"), "ceo", position), 
-         position = ifelse(is.na(position) & (position1=="president" | position2=="president"), "president", position), 
-         position = ifelse(is.na(position) & (position1=="cfo" | position2=="cfo"), "cfo", position), 
-         position = ifelse(is.na(position) & (position1=="cmo" | position2=="cmo"), "cmo", position), 
-         position = ifelse(is.na(position) & (position1=="coo" | position2=="coo"), "coo", position)) %>%
-  select(-position1, -position2) %>%
-  distinct() 
-
-# get rid of those with odd names or serve in auxiliary roles
-cleaned_text <- cleaned_text %>%
-  filter(!str_detect(extra, "auxiliary|senior vice|sr vice") | is.na(extra))
-
-# impute names in years where they are listed before and after that year
-# how can I do this when some hospitals have multiple people in the same poition???
-# also what do I do with "part year" people?
-multiples <- cleaned_text %>%
-  group_by(ein, year, position) %>%
-  mutate(count=1) %>%
-  mutate(sum=sum(count)) %>%
-  ungroup() %>%
-  filter(sum>1)
-
-
+names_data <- read_rds(paste0(created_data_path, "names_data.rds"))
 
 # create an indicator for MD
-cleaned_text <- cleaned_text %>%
+names_data <- names_data %>%
   mutate(doctor = ifelse(title %in% c("md", "dr", "do"), 1, NA))
-  # 7.6% of obs. have a doctor title
-
-# first, fill in doctor grouping by ein, name
-cleaned_text <- cleaned_text %>%
-  group_by(ein, name) %>%
-  fill(doctor, .direction="downup") %>%
-  ungroup()
-  # Now 8.1% of obs. have doctor title
-
-
-
-
+  # 3.6% of people have a doctor title
 
 
 # read in npi data of physician names
@@ -121,19 +48,20 @@ npidata <- npidata %>%
   mutate(sum=sum(count)) %>%
   ungroup()
 max <- max(npidata$sum)
+  # 136
 
 # create a data set that will be used to store matches 
-name_matches <- cleaned_text %>%
-  distinct(ein, name) %>%
+names_data <- names_data %>%
+  distinct(ein, name, title, doctor, years) %>%
   mutate(num_matches=NA)
 
 # create list of names in the NPPES data
 nppes_list <- paste(as.list(npidata)[["name"]], collapse="|")
 
 # First find out how many matches each name has
-for (i in 1:dim(name_matches)[1]){
+for (i in 1:dim(names_data)[1]){
   
-  match <- str_extract(nppes_list, paste0("(?<=\\|)(",name_matches$name[[i]],")(?=\\|)"))
+  match <- str_extract(nppes_list, paste0("(?<=\\|)(",names_data$name[[i]],")(?=\\|)"))
   
   if (!is.na(match)) {
     match_info <- npidata %>%
@@ -142,21 +70,19 @@ for (i in 1:dim(name_matches)[1]){
     
     num_matches <- dim(match_info)[1]
     
-    name_matches$num_matches[[i]] <- num_matches
+    names_data$num_matches[[i]] <- num_matches
   }
   
   if (is.na(match)) {
-    name_matches$num_matches[[i]] <- 0
+    names_data$num_matches[[i]] <- 0
   }
 }
 
-# join this to cleaned_text
-cleaned_text <- cleaned_text %>%
-  left_join(name_matches, by=c("name", "ein"))
-
 # filter to sure matches to get specialty and npi
-sure_matches <- cleaned_text %>%
-  filter(doctor==1 & num_matches==1)
+sure_matches <- names_data %>%
+  filter(doctor==1 & num_matches==1) %>%
+  select(name, ein)
+  # 76 people
 
 npidata <- npidata %>%
   select(npi, name, t_class)
@@ -165,18 +91,34 @@ sure_matches <- sure_matches %>%
   left_join(npidata, by=c("name"))
 
 # join back to cleaned_text
-cleaned_text <- cleaned_text %>%
-  left_join(sure_matches) 
-cleaned_text <- cleaned_text %>%
-  distinct()
+names_data <- names_data %>%
+  left_join(sure_matches, by=c("name", "ein")) 
 
-# create a variable that indicates the person is a potential MD: they didn't indicate being a doctor but their name is in NPPES at least once
-cleaned_text <- cleaned_text %>%
-  mutate(potential_doctor = ifelse(is.na(doctor) & num_matches>0,1,NA))
+# we don't need names of those who say they aren't a doctor and don't match
+# set doctor to zero if they are an RN or they don't have a title + num_matches=0
+names_data <- names_data %>%
+  mutate(doctor = ifelse(title=="rn",0,doctor)) %>%
+  mutate(doctor = ifelse(num_matches==0 & is.na(title), 0, doctor))
 
-# change doctor to 0 if they don't claim to be a doctor and their name doesn't match anyone in NPPES
-cleaned_text <- cleaned_text %>%
-  mutate(doctor=ifelse(is.na(doctor) & num_matches==0,0,doctor))
+# only keep the observations we are unsure about
+unsure_names_data <- names_data %>%
+  filter(is.na(doctor) | (doctor==1 & is.na(npi))) %>%
+  filter(years!="2008")
+
+unsure_names_data_RAs <- names_data %>%
+  filter(is.na(doctor)) %>%
+  select(ein, name, years)
+
+hosp_names <- hospital_pdf_locations %>%
+  distinct(ein, name, sort_name, state) %>%
+  rename(hosp_name = name)
+
+unsure_names_data_RAs <- unsure_names_data_RAs %>%
+  mutate(ein = as.numeric(ein)) %>%
+  left_join(hosp_names, by="ein")
+
+write.csv(unsure_names_data_RAs, paste0(created_data_path, "unsure_names_data.csv"))
+
 
 # drop eins that have issues with names
 cleaned_text <- cleaned_text %>%

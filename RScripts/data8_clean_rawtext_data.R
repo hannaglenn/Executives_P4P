@@ -1218,7 +1218,9 @@ cleaned_text <- cleaned_text %>%
   add_row(year = 2010, ein = "131624070", name = "michael breslin", position1 = "cfo") %>%
   add_row(year = 2010, ein = "131624070", name = "marc napp", position1 = "vp", extra = "patient quality") %>%
   add_row(year = 2010, ein = "131624096", name = "kenneth davis", position1 = "ceo", title = "md") %>%
-  add_row(year = 2010, ein = "131624096", name = "wayne keathley", position1 = "president", position2 = "coo") %>%
+  add_row(year = 2010, ein = "131624096", name = "wayne keathley", position1 = "president", position2 = "coo") 
+
+  cleaned_text <- cleaned_text %>%
   add_row(year = 2010, ein = "131624096", name = "donald scnlon", position1 = "vp", extra = "exec") %>%
   add_row(year = 2010, ein = "131624096", name = "jeffrey silberstein", position1 = "vp", extra = "exec") %>%
   add_row(year = 2010, ein = "131624096", name = "jane maksoud", position1 = "vp", extra = "hr") %>%
@@ -2168,7 +2170,9 @@ cleaned_text <- cleaned_text %>%
   add_row(year = 2011, ein = "920162721", name = "don kashevaroff", position1 = "ceo") %>%
   add_row(year = 2011, ein = "920162721", name = "garvin federenko", position1 = "cfo") 
   
-  
+cleaned_text <- cleaned_text %>%
+  distinct()
+
 
 saveRDS(cleaned_text, paste0(created_data_path, "cleaned_text.rds"))
 
