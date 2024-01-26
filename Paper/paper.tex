@@ -139,6 +139,13 @@
 
     The Hospital Compare excess readmissions files contain hospital level information on the excess readmission measure used by CMS to determine whether a hospital should be penalized. This variable is also condition specific, where a hospital is penalized if any of the three excess readmission ratios are greater than one. Further, Hospital Compare also publishes hospital level readmission and mortality rates for heart failure, heart attack, and pneumonia. For my main outcomes of interest, I take an average across conditions and weight it using the total number of patients in that condition. For further analysis, I create samples of hospitals who were penalized for specific conditions and investigate the change in readmission and mortality rates for the condition they were penalized for. 
 
+    \begin{figure}
+        \centering
+        \caption{Rates over time in all penalized hospitals}
+        \includegraphics[scale=.7]{Objects/weighted_read_mort_graph.pdf}
+        \label{fig:enter-label}
+    \end{figure}
+
     \section{Model and Empirical Strategy}
 
     Hospital that are not traditional for-profits maximize an 
