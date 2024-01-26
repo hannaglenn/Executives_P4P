@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+
+\usepackage{tgtermes}
+\usepackage{epsf}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage{dcolumn}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{mwe}
+\usepackage{url}
+\usepackage{natbib}
+%\usepackage{harvard}
+\usepackage{fancyheadings}
+\usepackage{longtable}
+\usepackage{authblk}
+\usepackage{setspace}
+%\usepackage[nomarkers]{endfloat}
+\usepackage{float}
+\usepackage{bbm}
+%\usepackage{titling}
+\usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{import}
+%\usepackage[nomarkers,nofiglist,notablist]{endfloat}
+
+\onehalfspacing
+\textwidth 6.5in \oddsidemargin 0in \evensidemargin -0.6in
+\textheight 8.5in \topmargin -0.2in
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\
+		\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\
+		\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\
+		\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{P}[1]{>{\raggedright\tabularxbackslash}p{#1}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\usepackage{geometry}
+ \geometry{,
+ left=15mm,
+ top=20mm,
+ right=15mm,
+ bottom=20mm
+ }
+ 
+
+\newcommand{\xsub}[1]{%
+	\mbox{\scriptsize\begin{tabular}{@{}c@{}}#1\end{tabular}}%
+}
+
+%\renewcommand{\thetable}{\Roman{table}}
+
+\begin{document}
+
+\large 
+\begin{center}
+    Does Hospital Leadership Matter? 
+    \normalsize \vspace{-1mm}
+    
+    Evidence from the Hospital Readmissions Reduction Program
+\end{center}
+
+\normalsize
+
+\noindent \underline{Objective:}
+
+An extensive literature has sought to understand the objectives and behaviors of firms that are not classic for-profits. Researchers have speculated a variety of objective functions that could motivate nonprofits such as maximizing prestige, income, or a quality/quantity tradeoff (Steinberg, 1986). An important contribution to this literature is the use of empirical strategies to analyze how firm behavior reveals attributes of the underlying objective function. It remains unclear what type of objective function drives nonprofit hospitals, a common focus in this literature (Erus \& Weisbrod, 2002; Deneffee \& Masson, 2002; Horwitz \& Nichols, 2009). What has not been considered is how differential characteristics within nonprofits drive objectives. For example, the composition of people making decisions on behalf of the hospital likely drives hospital behaviors. There is variation in whether hospitals employ executives with clinical experience or not, which has potential to change how much weight the hospital places on profit vs. quality of care. I contribute to our understanding of hospital behaviors by investigating whether clinical experience on an executive team affects hospital behavior after being financially penalized.
+
+\vspace{2mm}
+
+\noindent \underline{Methods}
+
+Using publicly available tax forms, I construct a novel data set of nonprofit hospitals from 2009-2015 that captures the identities of executives tied to that hospital. I link this data to hospital characteristics in the American Hospital Association survey and Hospital Compare data. With these sources, I limit the sample only to hospitals penalized by the Hospital Readmissions Reduction Program (HRRP) of 2012, which reduced Medicare payments to hospitals with above average readmission rates. I further limit the sample to hospitals with stable executive teams over time and characterize hospitals as having clinical experience on their team or not. I then estimate the difference in readmission and mortality rates between hospitals with and without clinical experience before and after the penalties began, identifying the effect of having a clinical executive on a hospital’s response to the penalty. I assume that before the penalty, clinical and non-clinical team hospitals had similar readmission and mortality trends, and that the composition of hospital executive teams determined prior to the penalties are, conditional on being penalized, exogenous.
+
+\vspace{2mm}
+
+\noindent \underline{Results}
+
+Preliminary evidence suggests that prior to being penalized, non-clinical team hospitals had higher readmission rates relative to clinical team hospitals. Once penalties occurred, the non-clinical team hospitals reduced readmissions at a faster rate, converging with clinical team hospital rates. 
+
+\vspace{2mm}
+
+\noindent \underline{Discussion}
+
+This result suggests that non-clinical executive teams respond more drastically to quality-related financial incentives than clinical teams, indicating that non-clinical teams are relatively more profit driven. Further goals include investigation of the mechanisms by which different hospitals reduce readmissions, whether it is through quality improvement or selective patient practices.  
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+	
+	
+	
+
+
+\end{document}
