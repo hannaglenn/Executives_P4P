@@ -109,18 +109,21 @@ noMDchg_top_sample <- hospital_data %>%
 
 # Create Graphs for Paper ################
 # 1. weighted average readmissions and mortality on same graph
-weighted_read_mort_graph_data <- noMDchg_pen_sample %>%
+weighted_read_graph_data <- noMDchg_pen_sample %>%
   group_by(has_any_md, year) %>%
-  summarise_at(c("weightedavg_read", "weightedavg_mort"), list(mean), na.rm=T) %>%
+  summarise_at(c("weightedavg_read", "heartattack_readmission", "heartfailure_readmission", "pneum_readmission"), list(mean), na.rm=T) %>%
   filter(year!=2008) %>%
   mutate(has_any_md = as.factor(has_any_md)) %>%
-  pivot_longer(c("weightedavg_read", "weightedavg_mort"), names_to = "outcome", values_to = "rate") %>%
-  mutate(outcome = ifelse(outcome=="weightedavg_mort", "mortality", "readmission")) %>%
-  rename(`clinical experience`=has_any_md)
-weighted_read_mort_graph <- ggplot(weighted_read_mort_graph_data, aes(x=year, y=rate, color=outcome, linetype=`clinical experience`)) + geom_vline(xintercept = 2012, linetype = "dotted") + 
-  geom_line(size=.75) + theme_bw() + 
-  ylim(11,23) + theme(text=element_text(size=18))
-ggsave(plot = weighted_read_mort_graph, filename = paste0(objects_path, "weighted_read_mort_graph.pdf"), width = 9, height = 6, units = "in")
+  pivot_longer(c("weightedavg_read", "heartattack_readmission", "heartfailure_readmission", "pneum_readmission"), names_to = "outcome", values_to = "rate") %>%
+  mutate(outcome = ifelse(outcome=="weightedavg_read", "weighted average", outcome)) %>%
+  mutate(outcome = ifelse(outcome=="heartattack_readmission", "AMI", outcome)) %>%
+  mutate(outcome = ifelse(outcome=="heartfailure_readmission", "heart failure", outcome)) %>%
+  mutate(outcome = ifelse(outcome=="pneum_readmission", "pneumonia", outcome)) %>%
+  rename(`clinical experience`=has_any_md, `category`=outcome)
+weighted_read_graph <- ggplot(weighted_read_graph_data, aes(x=year, y=rate, color=category, linetype=`clinical experience`)) + geom_vline(xintercept = 2012, linetype = "dotted") + 
+  geom_line(size=.75) + theme_bw() + xlab("\nyear") +
+  ylim(15,30) + theme(text=element_text(size=18)) + scale_color_brewer(palette="BrBG")
+ggsave(plot = weighted_read_mort_graph, filename = paste0(objects_path, "weighted_read_mort_graph.pdf"), width = 11, height = 6, units = "in")
 
 
 # Create tables for paper #########
@@ -180,11 +183,12 @@ read_es <- ggplot(data, aes(vars, Estimate)) +
   geom_errorbar(aes(ymin=Estimate - 1.96*se, ymax=Estimate + 1.96*se, color=category), 
                 lwd=.5, width=.18) +
   geom_point(aes(fill=category, color=category), size=1.5, pch=21) +
-  theme_bw() + theme(text=element_text(size=10),
-                     legend.title = element_blank()) + xlab("Event Time") +
+  theme_bw() + theme(text=element_text(size=18),
+                     legend.title = element_blank()) + xlab("\nyear") +
   ylab("Estimate and 95% CI") +
   scale_color_manual(labels = c("Post", "Pre"), values=c("#E69F00", "#999999"),name="") +
-  scale_fill_manual(labels = c("Post", "Pre"), values=c("#E69F00", "#999999"),name="") + ylim(-1,1) + ggtitle("Weighted Average Readmission Rate")
+  scale_fill_manual(labels = c("Post", "Pre"), values=c("#E69F00", "#999999"),name="") + ylim(-1,1)
+ggsave(read_es, filename = paste0(objects_path, "read_es_graph.pdf"), height = 11, width = 6, units = "in")
 
 # weighted average mortality
 noMDchg_pen_wa_mort_es <- fixest::feols(weightedavg_mort ~ es2009 + es2010 + es2012 + es2013 + es2014 + es2015 | ID + year, cluster = ~ID,
@@ -202,16 +206,16 @@ mort_es <- ggplot(data, aes(vars, Estimate)) +
   geom_errorbar(aes(ymin=Estimate - 1.96*se, ymax=Estimate + 1.96*se, color=category), 
                 lwd=.5, width=.18) +
   geom_point(aes(fill=category, color=category), size=1.5, pch=21) +
-  theme_bw() + theme(text=element_text(size=10),
-                     legend.title = element_blank()) + xlab("Event Time") +
-  ylab("Estimate and 95% CI") +
+  theme_bw() + theme(text=element_text(size=18),
+                     legend.title = element_blank()) + xlab("\nyear") +
+  ylab(" ") +
   scale_color_manual(labels = c("Post", "Pre"), values=c("#E69F00", "#999999"),name="") +
   scale_fill_manual(labels = c("Post", "Pre"), values=c("#E69F00", "#999999"),name="") + ylim(-1,1) + ggtitle("Weighted Average Mortality Rate")
 
 plot <- ggarrange(read_es, mort_es, nrow = 1,
                   common.legend = TRUE, legend = "right")
 
-ggsave(plot, filename = paste0(objects_path, "wa_eventstudy.pdf"), width = 9, height = 6, units = "in")
+ggsave(plot, filename = paste0(objects_path, "wa_eventstudy.pdf"), width = 14, height = 6, units = "in")
 
 # Create Graphs for each Sample ##################
 
