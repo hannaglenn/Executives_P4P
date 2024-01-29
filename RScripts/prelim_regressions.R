@@ -123,7 +123,7 @@ weighted_read_graph_data <- noMDchg_pen_sample %>%
 weighted_read_graph <- ggplot(weighted_read_graph_data, aes(x=year, y=rate, color=category, linetype=`clinical experience`)) + geom_vline(xintercept = 2012, linetype = "dotted") + 
   geom_line(size=.75) + theme_bw() + xlab("\nyear") +
   ylim(15,30) + theme(text=element_text(size=18)) + scale_color_brewer(palette="BrBG")
-ggsave(plot = weighted_read_mort_graph, filename = paste0(objects_path, "weighted_read_mort_graph.pdf"), width = 11, height = 6, units = "in")
+ggsave(plot = weighted_read_graph, filename = paste0(objects_path, "weighted_read_graph.pdf"), width = 11, height = 6, units = "in")
 
 
 # Create tables for paper #########
@@ -188,7 +188,7 @@ read_es <- ggplot(data, aes(vars, Estimate)) +
   ylab("Estimate and 95% CI") +
   scale_color_manual(labels = c("Post", "Pre"), values=c("#E69F00", "#999999"),name="") +
   scale_fill_manual(labels = c("Post", "Pre"), values=c("#E69F00", "#999999"),name="") + ylim(-1,1)
-ggsave(read_es, filename = paste0(objects_path, "read_es_graph.pdf"), height = 11, width = 6, units = "in")
+ggsave(read_es, filename = paste0(objects_path, "read_es_graph.pdf"), width = 11, height = 6, units = "in")
 
 # weighted average mortality
 noMDchg_pen_wa_mort_es <- fixest::feols(weightedavg_mort ~ es2009 + es2010 + es2012 + es2013 + es2014 + es2015 | ID + year, cluster = ~ID,
