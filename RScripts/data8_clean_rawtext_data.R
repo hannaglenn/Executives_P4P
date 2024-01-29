@@ -132,6 +132,8 @@ for (i in 1:length(AHA_ein_list_manualmatched)){
   }
 }
 
+cleaned_text <- readRDS(paste0(created_data_path, "cleaned_text.rds"))
+
 # Further clean text data
 cleaned_text <- cleaned_text %>%
   distinct() %>%

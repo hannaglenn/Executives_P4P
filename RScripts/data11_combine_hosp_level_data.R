@@ -3,6 +3,8 @@ library(dplyr)
 library(tidyr)
 library(stringr)
 library(fabricatr)
+library(knitr)
+library(kableExtra)
 
 # Read in Data ##################
 
@@ -12,8 +14,8 @@ manual_matched_eins <- read_rds(paste0(created_data_path, "manual_matched_eins.r
 # Data from AHA 
 AHA_hosp_names <- read_csv(paste0(created_data_path, "raw data/AHA_hosp_names.csv"))
 # HCRIS data that has HRRP penalty information (and beds)
-# final_HCRIS_v2010 <- read_csv(paste0(created_data_path, "raw data/final_HCRIS_v2010.csv"))
-# final_HCRIS_v1996 <- read_csv(paste0(created_data_path, "raw data/final_HCRIS_v1996.csv"))
+final_HCRIS_v2010 <- read_csv(paste0(created_data_path, "raw data/final_HCRIS_v2010.csv"))
+final_HCRIS_v1996 <- read_csv(paste0(created_data_path, "raw data/final_HCRIS_v1996.csv"))
 # Hospital Compare data that also has penalty information
 hc_readm_2012 <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/vwhqi_readm_reduction_2012.csv"))
 hc_readm_2013 <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/vwhqi_readm_reduction_2013.csv"))
@@ -51,64 +53,64 @@ observe <- hospital_data %>%
 # only keep rows that had values in that data set
 hospital_data <- hospital_data %>%
   filter(!is.na(no_changes_ever))
-  # takes us down to 680 eins
+  # takes us down to 850 eins
 
 # join AHA data to get medicare number
 hospital_data <- hospital_data %>%
-  mutate(ID=as.character(ID)) %>%
+  mutate(ID = as.numeric(ID)) %>%
   left_join(AHA_hosp_names, by=c("ID", "year"="YEAR"))
 hospital_data <- hospital_data %>%
   group_by(ID) %>%
   fill(MCRNUM, .direction="downup") %>%
   ungroup() %>%
   select(ID, ein_hosp, MCRNUM, year, no_changes_ever, no_changes_2010_2014, no_changes_2011_2013, no_small_changes_ever, no_small_changes_2010_2014,
-         no_small_changes_2011_2013, no_md_changes_ever, no_md_changes_2010_2014, no_md_changes_2011_2013, total_execs, total_docs)
+         no_small_changes_2011_2013, no_md_changes_ever, no_md_changes_2010_2014, no_md_changes_2011_2013, no_ceo_changes_2010_2014, total_execs, total_docs)
 
-# # Join HCRIS data ############
-# # first, investigate duplicates in the cost report data
-# HCRIS_dups <- final_HCRIS_v2010 %>%
-#   mutate(count=1) %>%
-#   group_by(provider_number, year) %>%
-#   mutate(sum=sum(count)) %>%
-#   ungroup() %>%
-#   filter(sum>1)
-#   # A lot of duplicates have multiple reports for the same year. I add together the penalties in this case to get one line per provider, year
-#   # Any duplicates left are due to differences in bed count. This isnt a huge deal, just pick one of the years to keep
-# 
-# final_HCRIS_v2010 <- final_HCRIS_v2010 %>%
-#   group_by(provider_number, year) %>%
-#   mutate(penalty_sum = sum(hrrp_payment, NA.rm=T),
-#          beds_distinct = max(beds, na.rm=T)) %>%
-#   ungroup() %>%
-#   distinct(provider_number, year, penalty_sum, beds_distinct) 
-#   # no more duplicates! 
-# 
-# final_HCRIS_v2010 <- final_HCRIS_v2010 %>%
-#   rename(hrrp_payment = penalty_sum, beds = beds_distinct) %>%
-#   mutate(hrrp_payment = abs(hrrp_payment),
-#          beds=ifelse(beds=="-Inf",NA,beds))
-# 
-# # join to main dataset
-# hospital_data <- hospital_data %>%
-#   left_join(final_HCRIS_v2010, by=c("year", "MCRNUM"="provider_number"))
-# 
-# # I only need beds from v1996 for years 2008 and 2009. First, get rid of duplicates.
-# final_HCRIS_v1996 <- final_HCRIS_v1996 %>%
-#   select(year, provider_number, beds) %>%
-#   filter(year==2008 | year==2009 | year==2010) %>%
-#   group_by(provider_number, year) %>%
-#   mutate(beds_distinct = max(beds, na.rm=T)) %>%
-#   ungroup() %>%
-#   distinct(year, provider_number, beds_distinct) %>%
-#   rename(beds = beds_distinct) %>%
-#   mutate(beds=ifelse(beds=="-Inf",NA,beds))
-# 
-# hospital_data <- hospital_data %>%
-#   left_join(final_HCRIS_v1996, by=c("year", "MCRNUM"="provider_number")) %>%
-#   mutate(beds.x=ifelse(is.na(beds.x),beds.y,beds.x)) %>%
-#   rename(beds=beds.x) %>%
-#   select(-beds.y) 
-# 
+ # Join HCRIS data ############
+ # first, investigate duplicates in the cost report data
+ HCRIS_dups <- final_HCRIS_v2010 %>%
+   mutate(count=1) %>%
+   group_by(provider_number, year) %>%
+   mutate(sum=sum(count)) %>%
+   ungroup() %>%
+   filter(sum>1)
+   # A lot of duplicates have multiple reports for the same year. I add together the penalties in this case to get one line per provider, year
+   # Any duplicates left are due to differences in bed count. This isnt a huge deal, just pick one of the years to keep
+ 
+ final_HCRIS_v2010 <- final_HCRIS_v2010 %>%
+   group_by(provider_number, year) %>%
+   mutate(penalty_sum = sum(hrrp_payment, NA.rm=T),
+          beds_distinct = max(beds, na.rm=T)) %>%
+   ungroup() %>%
+   distinct(provider_number, year, penalty_sum, beds_distinct) 
+   # no more duplicates! 
+ 
+ final_HCRIS_v2010 <- final_HCRIS_v2010 %>%
+   rename(hrrp_payment = penalty_sum, beds = beds_distinct) %>%
+   mutate(hrrp_payment = abs(hrrp_payment),
+          beds=ifelse(beds=="-Inf",NA,beds))
+ 
+ # join to main dataset
+ hospital_data <- hospital_data %>%
+   left_join(final_HCRIS_v2010, by=c("year", "MCRNUM"="provider_number"))
+ 
+ # I only need beds from v1996 for years 2008 and 2009. First, get rid of duplicates.
+ final_HCRIS_v1996 <- final_HCRIS_v1996 %>%
+   select(year, provider_number, beds) %>%
+   filter(year==2008 | year==2009 | year==2010) %>%
+   group_by(provider_number, year) %>%
+   mutate(beds_distinct = max(beds, na.rm=T)) %>%
+   ungroup() %>%
+   distinct(year, provider_number, beds_distinct) %>%
+   rename(beds = beds_distinct) %>%
+   mutate(beds=ifelse(beds=="-Inf",NA,beds))
+ 
+ hospital_data <- hospital_data %>%
+   left_join(final_HCRIS_v1996, by=c("year", "MCRNUM"="provider_number")) %>%
+   mutate(beds.x=ifelse(is.na(beds.x),beds.y,beds.x)) %>%
+   rename(beds=beds.x) %>%
+   select(-beds.y) 
+ 
 # drop data I don't need anymore
 rm(final_HCRIS_v1996, final_HCRIS_v2010, HCRIS_dups, AHA_ein_matches, AHA_hosp_names, ein_leadership_data)
 
@@ -176,9 +178,6 @@ hc_dups <- hc_readm %>%
 hospital_data <- hospital_data %>%
   left_join(hc_readm, by=c("MCRNUM"="provider", "year"))
 
-observe <- hospital_data %>%
-  filter(year>=2013 & is.na(penalized_HC))
-
 
 # # some hospitals not found in the hospital compare data?
 # hospital_data <- hospital_data %>%
@@ -208,6 +207,7 @@ penalized_hospital_data <- hospital_data %>%
 
 num_pen_hospitals <- penalized_hospital_data %>%
   distinct(ein_hosp)
+  # 511
 
 # find out the percentile of the hospital's highest rate in the first year they were penalized
 perc <- penalized_hospital_data %>%
@@ -224,7 +224,10 @@ perc <- penalized_hospital_data %>%
   distinct(MCRNUM, rate_tercile)
 
 penalized_hospital_data <- penalized_hospital_data %>%
-  left_join(perc, by = "MCRNUM")
+  left_join(perc, by = "MCRNUM") %>%
+  mutate(ever_pen_ha = ifelse(ever_pen_ha>0,1,0),
+         ever_pen_hf = ifelse(ever_pen_hf>0,1,0),
+         ever_pen_pnem = ifelse(ever_pen_pnem>0,1,0))
   
 
 # save the data #####
@@ -233,7 +236,92 @@ saveRDS(penalized_hospital_data, paste0(created_data_path, "penalized_hospital_d
 observe <- penalized_hospital_data %>%
   filter(no_md_changes_2010_2014==1) %>%
   distinct(ein_hosp)
-  # got up to 299 hospitals! 
+  # got up to 300 hospitals! 
+
+
+# create summary stats table for paper ###################
+
+noMDchg_stats <- penalized_hospital_data %>% 
+  filter(no_md_changes_2010_2014==1) %>%
+  summarise_at(c("Number Beds"="beds",
+                 "Penalized for AMI"="ever_pen_ha", "Penalized for HF"="ever_pen_hf",
+                 "Penalized for Pneumonia"="ever_pen_pnem",
+                 "Weighted Avg. Readmission Rate"="weightedavg_read",
+                 "Weighted Avg. Mortality Rate"="weightedavg_mort",
+                 "HF Readmission Rate" = "rate_heartfailure_readmission",
+                 "AMI Readmission Rate" = "rate_heartattack_readmission",
+                 "Pneum. Readmission Rate" = "rate_pneum_readmission",
+                 "HF Mortality Rate" = "rate_heartfailure_mortality",
+                 "AMI Mortliaty Rate" = "rate_heartattack_mortality",
+                 "Pneum. Mortality Rate" = "rate_pneum_mortality"), 
+               list(m=mean,sd=sd,min=min,max=max,n=~sum(!is.na(.))/6), na.rm=TRUE) %>%
+  mutate_if(is.numeric, ~ifelse(abs(.)==Inf,NA,.))  %>%
+  gather(key=var,value=value) %>%
+  extract(col="var",into=c("variable", "statistic"), regex=("(.*)_(.*)$")) %>%
+  spread(key=statistic, value=value) %>%
+  relocate(variable,n,m,sd,min,max) %>%
+  mutate(n=round(n, digits=0))
+
+knitr::kable(noMDchg_stats[c(5,6,7,8,12,2,4,10,11,1,3,9),],
+             format="latex",
+             table.envir="table",
+             col.names=c("Variable","No. Hospitals","Mean","Std. Dev.", "Min", "Max"),
+             digits=2,
+             caption="Summary Statistics",
+             booktabs=TRUE,
+             escape=F,
+             align=c("l","c","c","c","c","c"),
+             position="h") %>%
+  kable_styling(full_width=F) %>%
+  pack_rows(index = c(" " = 1, "Penalty Variables" = 3, "Readmission Outcome Variables" = 4, "Mortality Outcome Variables"=4))
+
+noCEOchg_stats <- penalized_hospital_data %>% 
+  filter(no_ceo_changes_2010_2014==1 & no_md_changes_2010_2014==1) %>%
+  summarise_at(c("Number Beds"="beds",
+                 "Penalized for AMI"="ever_pen_ha", "Penalized for HF"="ever_pen_hf",
+                 "Penalized for Pneumonia"="ever_pen_pnem",
+                 "Weighted Avg. Readmission Rate"="weightedavg_read",
+                 "Weighted Avg. Mortality Rate"="weightedavg_mort",
+                 "HF Readmission Rate" = "rate_heartfailure_readmission",
+                 "AMI Readmission Rate" = "rate_heartattack_readmission",
+                 "Pneum. Readmission Rate" = "rate_pneum_readmission",
+                 "HF Mortality Rate" = "rate_heartfailure_mortality",
+                 "AMI Mortliaty Rate" = "rate_heartattack_mortality",
+                 "Pneum. Mortality Rate" = "rate_pneum_mortality"), 
+               list(m=mean,sd=sd,min=min,max=max,n=~sum(!is.na(.))/6), na.rm=TRUE) %>%
+  mutate_if(is.numeric, ~ifelse(abs(.)==Inf,NA,.))  %>%
+  gather(key=var,value=value) %>%
+  extract(col="var",into=c("variable", "statistic"), regex=("(.*)_(.*)$")) %>%
+  spread(key=statistic, value=value) %>%
+  relocate(variable,n,m,sd,min,max) %>%
+  mutate(n=round(n, digits=0))
+
+knitr::kable(noMDchg_stats[c(5,6,7,8,12,2,4,10,11,1,3,9),],
+             format="latex",
+             table.envir="table",
+             col.names=c("Variable","No. Hospitals","Mean","Std. Dev.", "Min", "Max"),
+             digits=2,
+             caption="Summary Statistics",
+             booktabs=TRUE,
+             escape=F,
+             align=c("l","c","c","c","c","c"),
+             position="h") %>%
+  kable_styling(full_width=F) %>%
+  pack_rows(index = c(" " = 1, "Penalty Variables" = 3, "Readmission Outcome Variables" = 4, "Mortality Outcome Variables"=4))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Summary Statistics ######
 

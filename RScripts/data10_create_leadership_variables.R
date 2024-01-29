@@ -72,11 +72,15 @@ cleaned_text <- cleaned_text %>%
   mutate(position = ifelse(is.na(position) & pos1_pres==1 & pos2_board==1, "board", position)) %>% #4
   mutate(position = ifelse(is.na(position) & pos2_pres==1 & pos1_board==1, "board", position)) %>% #4
   mutate(position = ifelse(is.na(position), "president (board or executive)", position)) #5
+
+cleaned_text <- cleaned_text %>%
+  mutate(ceo = ifelse(position1=="ceo" | position2 == "ceo" | position1 == "chief executive officer" | position2 == "chief executive officer", 1,0)) %>%
+  mutate(ceo = ifelse(is.na(ceo),0,ceo))
   
 executive_data <- cleaned_text %>%
   mutate(vp = ifelse(pos1_vp==1 | pos2_vp==1, 1, 0)) %>%
   filter(position == "executive") %>%
-  select(ein, year, name, position, title, former, vp) %>%
+  select(ein, year, name, position, title, former, vp, ceo) %>%
   filter(!(former %in% c("past", "former", "past interim")))
 
 # loop through eins to fill in any missing years that happen between nonmissing years
@@ -119,7 +123,7 @@ for (i in seq_along(eins)){
 # fill MD
 executive_data_filled <- executive_data_filled %>%
   group_by(ein, id) %>%
-  fill(title, .direction="downup") %>%
+  fill(title, vp, ceo, .direction="downup") %>%
   ungroup()
 
 # goal 2: identify whether changes occur from year to year ####
@@ -139,8 +143,8 @@ executive_data_filled <- executive_data_filled %>%
   # 91% of observations are in the data
 
 # keep a record of those that aren't to see if we can manually fill in some missing info caused by OCR
-executive_data_notin20102014 <- executive_data_filled %>%
-  filter(present_2010_2014==0)
+#executive_data_notin20102014 <- executive_data_filled %>%
+  #filter(present_2010_2014==0)
 
 # saveRDS(executive_data_notin20102014, paste0(created_data_path, "executive_data_notin20102014.rds"))
 # write.csv(executive_data_notin20102014, paste0(created_data_path, "executive_data_notin20102014.csv"))
@@ -243,6 +247,39 @@ years_of_change <- years_of_change %>%
 executive_data_filled <- executive_data_filled %>%
   left_join(years_of_change, by="ein")
 
+# figure out whether ceo changed over time
+detect_changes <- executive_data_filled %>% 
+  filter(ceo==1) %>%
+  group_by(ein, year) %>% 
+  summarize(list_of_ids = paste(sort(unique(id)),collapse=", ")) %>%
+  mutate(count=1) %>%
+  group_by(ein) %>%
+  mutate(lag_list = lag(list_of_ids)) %>%
+  ungroup %>%
+  mutate(any_change = ifelse(list_of_ids!=lag_list, 1, 0)) %>%
+  mutate(any_change = ifelse(is.na(any_change), 0, any_change)) 
+
+detect_changes <- detect_changes %>%
+  mutate(year_of_any_change = ifelse(any_change==1, year, NA))
+
+years_of_change <- detect_changes %>%
+  group_by(ein) %>%
+  summarize(any_change_years = paste(sort(unique(year_of_any_change)), collapse=", ")) %>%
+  ungroup()
+
+# create indicators for whether to keep the hospital in the case of using certain samples
+years_of_change <- years_of_change %>%
+  mutate(no_ceo_changes_ever = ifelse(any_change_years=="", 1, 0),
+         no_ceo_changes_2010_2014 = ifelse(any_change_years=="" | !str_detect(any_change_years, "2010|2011|2012|2013|2014"), 1, 0),
+         no_ceo_changes_2011_2013 = ifelse(any_change_years=="" | !str_detect(any_change_years, "2011|2012|2013"), 1, 0)) %>%
+  select(-any_change_years)
+
+# merge back to executive data filled
+executive_data_filled <- executive_data_filled %>%
+  left_join(years_of_change, by="ein")
+
+
+
 # make a separate data set of ein, name, title, and years in data to be used for physician name matching
 # only keep the ones with no MD changes from 2010-2014
 names_data <- executive_data_filled %>%
@@ -264,13 +301,17 @@ executive_data_filled <- executive_data_filled %>%
 # aggregate to the hospital level
 ein_leadership_changes_data <- executive_data_filled %>%
   distinct(ein, year, no_changes_ever, no_changes_2010_2014, no_changes_2011_2013, no_small_changes_ever, no_small_changes_2010_2014, no_small_changes_2011_2013,
-           no_md_changes_ever, no_md_changes_2010_2014, no_md_changes_2011_2013, total_execs, total_docs)
+           no_md_changes_ever, no_md_changes_2010_2014, no_md_changes_2011_2013, no_ceo_changes_ever, no_ceo_changes_2010_2014, 
+           no_ceo_changes_2011_2013, total_execs, total_docs)
 
 saveRDS(ein_leadership_changes_data, paste0(created_data_path, "ein_leadership_changes_data(temp).rds"))
 
 num <- ein_leadership_changes_data %>%
   distinct(ein)
   # up to 911 eins after manually fixing some OCR mess ups
+
+
+
 
 
 
