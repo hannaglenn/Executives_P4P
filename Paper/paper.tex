@@ -124,7 +124,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
   
 	
-	\section{Data}
+	\section{Data}\label{sec:data}
 
     \subsection{Names of Hospital Leaders}
 
@@ -149,36 +149,40 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     \begin{figure}[h!]
         \centering
-        \caption{Rates over time in all penalized hospitals}
-        \includegraphics[scale=.7]{Objects/weighted_read_mort_graph.pdf}
+        \caption{Readmission rates over time in all penalized hospitals}
+        \includegraphics[scale=.6]{Objects/weighted_read_mort_graph.pdf}
         \label{weighted_read_mort_graph}
     \end{figure}
 
     \section{Model and Empirical Strategy}
 
-    Not knowing the true form of nonprofit hospital objective functions, we can assume that they maximize some weighted average of revenue and output. Specifically,     
+    Not knowing the true form of nonprofit hospital objective functions, we can assume that they maximize some weighted average of revenue and quality. At a basic level, we can think of nonprofits behaving according to:     
     
-    $$\max\hspace{2mm} \delta R + (1-\delta) u(q,\theta)$$
+    $$\max\hspace{2mm} \delta R + (1-\delta) u(\theta)$$
 
-    \noindent where $R$ is net revenue, $q$ is quantity, and $\theta$ is quality of care. While previous research has set out to understand the average $\delta$ for nonprofit hospitals, $\delta$ may also be dependent on the leadership teams within nonprofit hospitals. 
+    \noindent where $R$ is net revenue, $u(.)$ is an increasing function that captures utility from quality of care, and $\theta$ is some quality of care measure. In this setting, we care about hospital responding to a penalty by adjusting readmission rates, so $\theta = 1-r$ where $r$ is the readmission rate. While previous research has set out to understand the average $\delta$ for nonprofit hospitals, $\delta$ may also be dependent on the leadership teams within nonprofit hospitals. Further, introducing the HRRP means that $R$ is directly dependent on $\theta$. We can then write the hospital's problem as 
 
-    Thus, I directly estimate the effect of having clinical experience on readmission and mortality rates. However, looking purely at this correlation is likely a biased picture of the effect of clinical since it likely captures reverse causality: certain types of hospitals may be more likely to hire doctors as executives. Therefore, I leverage the HRRP shock, which allows me to identify hospitals similar in quality along readmission rates. For all penalized hospitals, I further categorize their type as having clinical experience on their executive team or not. This categorization should be time invariant since I cannot rule out changes in leadership teams being correlated with being penalized. For this purpose I drop hospitals who had significant changes in their leadership team. My preferred specification defines a stable leadership team as one which does not change their propensity to hire a doctor executive. 
+    $$\max\hspace{2mm} \delta(L) R(\theta) + (1-\delta(L)) u(\theta)$$
 
-    For this restricted sample, I estimate the following regression equation:
+    \noindent where $L$ captures the composition of the leadership team. Therefore, when maximizing this function, $\theta$ is dependent on $L$ through its impact on how the hospital values profit vs. quality of care.
 
-    $$y_{ht} = (clinical \times post\_penalty)_{ht} + \alpha_{h} + \delta_t + \epsilon_{ht}$$
+    Thus, I directly estimate the effect of having clinical experience on readmission rates. However, looking purely at this correlation is likely a biased picture of the effect of clinical experience since it likely captures reverse causality: certain types of hospitals may be more likely to hire doctors as executives. I do two things to address this issue. First, as discussed in detail in Section \ref{sec:data}, I only consider hospitals with stable leadership teams over time. Second, I leverage the HRRP shock, limiting the sample to those that were penalized, which allows me to identify hospitals similar in quality along readmission rates, and to observe changes in behavior after the shock. For the hospitals in my sample, I define their type as having clinical experience on their executive team or not, a time invariant categorization. 
 
-    \noindent where $y_{ht}$ is one of the readmission or mortality outcome variables discussed in section DATA, $(clinical \times post\_penalty)_{ht}$, is the variable of interest capturing the effect of having clinical experience after the penalties took place, $\alpha_h$ and $\delta_t$ are hospital and time fixed effects, respectively, and $\epsilon$ is an error term. 
+    I estimate the following regression equation:
 
-    I further investigate the assumption that non-clinical and clinical hospitals behaved similarly prior to the HRRP by estimating event study coefficients:
+    $$y_{ht} = \beta (clinical \times post\_penalty)_{ht} + \alpha_{h} + \delta_t + \epsilon_{ht}$$
 
-    put event study equation here
+    \noindent where $y_{ht}$ is one of the outcome variables discussed in Section \ref{sec:data}, $\beta$ is the variable of interest capturing the effect of having clinical experience after the penalties took place, $\alpha_h$ and $\delta_t$ are hospital and time fixed effects, respectively. 
+
+    For identification, I rely on the assumption that, prior to being penalized, clinical and non-clinical team hospitals did not differentially change readmission rates for a reason I do not capture here. I investigate this assumption by estimating event study coefficients, where the coefficients $\beta_j$ now capture the effect of having clinical experience in a particular year, and $\beta_{2011}$ is normalized to zero:
+
+    $$y_{ht} = \sum_{j=2009}^{2010}\beta_j(clinical_{ht} \times \mathbf{1}\{y=j\}) + \sum_{j=2012}^{2015}\beta_j (clinical_{ht} \times \mathbf{1}\{y=j\}) + \alpha_{h} + \delta_t + \epsilon_{ht}.$$
+
 
     \section{Results}
 
     \import{Tables}{read_results_table.tex}
 
-    \import{Tables}{mort_results_table.tex}
 
     \begin{figure}
         \centering
