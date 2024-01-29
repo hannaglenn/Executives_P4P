@@ -25,6 +25,9 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{import}
+\usepackage[backend=biber,style=authoryear,
+sorting=ynt,citestyle=authoryear]{biblatex}
+\addbibresource{papercitations.bib}
 %\usepackage[nomarkers,nofiglist,notablist]{endfloat}
 
 \onehalfspacing
@@ -44,6 +47,7 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 
+\captionsetup{justification=raggedright,singlelinecheck=false}
 
 
 \newcommand{\xsub}[1]{%
@@ -90,13 +94,13 @@
 	
 	\newpage
 
-  The objectives and behaviors of firms that are not classic for-profits are not easily determined, and an extensive literature has sought to understand these types of firms. Nonprofits are thought to care about more than just monetary profit, but also gain utility from furthering a mission and other unknown factors. Researchers have speculated a variety of objective functions that could motivate nonprofits such as maximizing prestige, income, or a quality/quantity tradeoff (Steinberg, 1986). An important contribution to this literature is the use of empirical strategies to analyze how firm behavior reveals attributes of the underlying objective function (add citations). 
+  The objectives and behaviors of firms that are not classic for-profits are not easily determined, and an extensive literature has sought to understand these types of firms. Nonprofits are thought to gain utility not solely from monetary profit, but also through accomplishing mission-based purposes. Researchers have speculated a variety of objective functions that could motivate nonprofits such as maximizing prestige, income, or a quality/quantity tradeoff (Steinberg, 1986). An important contribution to this literature is the use of empirical strategies to analyze how firm behavior reveals attributes of the underlying objective function (add citations). In this paper, I leverage a large-scale shock to nonprofit hospitals in the US to investigate whether characteristics of the objective function is revealed by the composition of their leadership team.
   
-  Hospitals in particular have been a common focus when seeking to understand not-for-profit firms. This is because, first, there are different hospital ownership types within the industry, giving researchers the ability to compare the behaviors of nonprofits with that of for-profits. Second, nonprofit hospitals make up over 50\% of all hospitals in the US, and staff, on average, 207 beds. For comparison, for-profits make up around 30\% of hospitals and staff 100 beds. Thus, nonprofit behavior in the hospital industry is relevant and directly affects consumers of health care. However, it remains unclear what type of objective function drives nonprofit hospitals (Erus \& Weisbrod, 2002; Deneffee \& Masson, 2002; Horwitz \& Nichols, 2009). 
+  Hospitals in particular have been a common focus when seeking to understand not-for-profit firms. This is because, first, there are different hospital ownership types within the industry, giving researchers the ability to compare the behaviors of nonprofits with that of for-profits. Second, nonprofit hospitals make up over 50\% of all hospitals in the US, and staff, on average, 207 beds. For comparison, for-profits make up around 36\% of hospitals and staff 107 beds (\cite{ASPE_2023}). Thus, nonprofit behavior in the hospital industry is relevant and directly affects consumers of health care. However, it remains unclear what type of objective function drives nonprofit hospitals (Erus \& Weisbrod, 2002; Deneffee \& Masson, 2002; Horwitz \& Nichols, 2009). 
   
-  What has not been considered is how the leadership make-up within nonprofits potentially drive objectives. In large, publicly traded firms, executive characteristics are shown to be correlated with firm performance, indicating that there is more to firm behavior than just for-profit or not-for-profit status. Within nonprofit hospitals, there is variation in the propensity to hire executives with a background in clinical settings, which could reasonably change how much weight the hospital places on profit vs. quality of care in their objective function. In this paper, I contribute to our understanding of hospital behaviors by investigating whether clinical experience on an executive team affects hospital behavior after being financially penalized.
+  What has not been considered is how the leadership team within nonprofits potentially drives objectives. In large, publicly traded firms, executive characteristics are shown to be correlated with firm performance, indicating that there is more to firm behavior than just for-profit or not-for-profit status. Within nonprofit hospitals, there is variation in the propensity to hire executives with a background in clinical work, which could reasonably change how much weight the hospital places on profit vs. quality of care in their objective function. I contribute to our understanding of hospital and nonprofit behaviors by investigating whether clinical experience on an executive team affects hospital behavior after being financially penalized.
 
-  Using publicly available tax forms, I construct a novel data set of nonprofit hospitals from 2009-2015 which captures the identities of executives tied to that hospital. I link hospitals in this data to hospital level characteristics in the American Hospital Association survey and Hospital Compare data. In order to capture the effect of clinical experience in executives, not just the selection of clinical executives into certain types of hospitals, I specifically investigate hospitals penalized by the Hospital Readmissions Reduction Program (HRRP) of 2012. This program reduced Medicare payments to hospitals with above average readmission rates. I further limit the sample to hospitals with stable executive teams over time, and characterize hospitals as having clinical experience on their team or not. I then estimate the difference in readmission and mortality rates between hospitals with and without clinical experience before and after the penalties began. I assume that before the penalty, clinical and non-clinical team hospitals had similar readmission and mortality trends, and that the composition of hospital executive teams determined prior to the penalties is, conditional on being penalized, exogenous. Under these assumptions, I identify the effect of having a clinical executive on a hospital’s response to the penalty measured in readmission and mortality rates. 
+  Using publicly available tax forms, I construct a novel data set of nonprofit hospitals from 2009-2015 which captures the identities of executives tied to that hospital. I link hospitals in this data to hospital level characteristics in the American Hospital Association survey and Hospital Compare data. In order to capture the effect of clinical experience in executives, not just the selection of clinical executives into certain types of hospitals, I specifically investigate hospitals penalized by the Hospital Readmissions Reduction Program (HRRP) of 2012. This program reduced Medicare payments to hospitals with above average readmission rates, and is plausibly uncorrelated with previously determined leadership teams. I further limit the sample to hospitals with stable executive teams over time, and characterize hospitals as having clinical experience on their team or not. I estimate the difference in readmission and mortality rates between hospitals with and without clinical experience before and after the penalties began, conditional on being penalized. I assume that before the penalty, clinical and non-clinical team hospitals had similar readmission and mortality trends, and that the composition of hospital executive teams determined prior to the penalties is, conditional on being penalized, exogenous. Under these assumptions, I identify the effect of having a clinical executive on a hospital’s response to the penalty measured in readmission and mortality rates. 
 
     I find that
 
@@ -112,11 +116,11 @@
 
     \subsection{Hospital Readmissions Reduction Program}
 
-    Avoidable readmissions are considered a bad outcome for patients. The Hospital Readmissions Reduction Program (HRRP) was enacted as a part of the Affordable Care Act to incentivize hospitals to reduce readmission rates. The goal of the program was to get hospitals to lower readmissions through better care coordination, less initial stay complications, and better post-care instructions. Beginning in October 2012, hospitals with higher readmission rates than the national average (after adjusting for demographic characteristics faced by the hospital) receive a lower reimbursement rate for all Medicare patients they treat. 
+    A readmission is when a patient returns to the hospital within 30 days of being discharged from a previous stay; avoidable readmissions are a bad outcome for patients and increase health care spending. The Hospital Readmissions Reduction Program (HRRP) was enacted in 2010 as a part of the Affordable Care Act to incentivize hospitals to reduce readmission rates. The goal of the program was to get hospitals to lower readmissions through better care coordination, less initial stay complications, and better post-care instructions. Beginning in October 2012, hospitals with higher readmission rates than the national average in pneumonia, heart failure, or AMI (after adjusting for demographic characteristics faced by the hospital) receive a lower reimbursement rate for all Medicare patients they treat. The penalties are based on each hospital's past performance in readmissions, which means hospitals had incentive to react immediately once details of the program were announced in October of 2011. 
 
     \subsection{Nonprofit Hospital Leadership}
 
-    
+    Nonprofits are governed by a board of directors, whose role is to set high level goals and strategies, and provide general oversight. The board is not in charge of day-to-day operations, but the general direction of the firm. They select members of the executive team to carry out day-to-day operations. The executive team usually consists of at least a CEO and CFO. Every nonprofit is different in exactly how they structure an executive team. Some nonprofits hire Chief Medical Officers, Chief Quality Officers, executive directors, vice presidents of various departments, etc. I consider all of these employees as part of the day-to-day management of the hospital and include them in the executive team. 
 
   
 	
@@ -124,33 +128,57 @@
 
     \subsection{Names of Hospital Leaders}
 
-    The main data used for analysis is a novel data set of nonprofit hospitals in the US which contains names and select characteristics of executives tied to the hospital from 2009-2015. I gather this data from each hospital's publicly available Tax Form 990, which is required each year for all nonprofits in the US\footnote{something about different types of forms here}. To my knowledge, this is the first large scale gathering of leadership names from these forms. Thus, I will explain each step in the data extraction process. More details can be found in Appendix blank.  
+    To characterize hospitals as having clinical experience on executive team or not, I construct a novel data set of nonprofit hospitals in the US which contains names and select characteristics of executives tied to the hospital from 2009-2015. I gather this data from each hospital's publicly available Tax Form 990, which is required each year for all nonprofits in the US. To my knowledge, this is the first large scale gathering of leadership names from these forms. I include a very detailed account of the collection of this data in Appendix \ref{appendixdata}.
 
-    The tax forms for all nonprofits are housed by ProPublica\footnote{https://projects.propublica.org/nonprofits/}. I use the NonProfit Explorer API to extract the Employee Identification Numbers (EIN) of all nonprofits classified as a hospital by National Taxonomy of Exempt Entities (NTEE) code. After filtering out associations and specialty hospitals, there are around 3000 nonprofit hospitals left. Importantly, I need to be able to link EINs to other hospital characteristics in the American Hospital Association annual survey and Hospital Compare data. No official crosswalk between the two identification methods exists, so I must rely on matching via location and name of hospital in both data sets. After limiting to only general, nonprofit hospitals in AHA, I confidently match approximately 1200 EINs to an AHA identification number based on exact name matches within the same state. 
+    The tax forms for all nonprofits are housed by ProPublica\footnote{https://projects.propublica.org/nonprofits/}. I use the NonProfit Explorer API to extract the Employee Identification Numbers (EIN) of all nonprofits classified as a hospital according to their National Taxonomy of Exempt Entities (NTEE) code. After filtering out associations and specialty hospitals, there are around 3000 nonprofit hospitals left. Importantly, I need to be able to link EINs to other hospital characteristics, including penalty status and readmission/mortality rates, in the American Hospital Association annual survey and Hospital Compare data. No official crosswalk between the two identification methods exists, so I must rely on matching via location and name of hospital in both data sets. After limiting to only general, nonprofit hospitals in AHA, I confidently match approximately 1200 EINs to an AHA identification number based on exact name matches within the same state. 
     
-    For each of the 1200 EINs, I extract urls to 990 pdfs in each year. I download these locally and use OCR text extraction methods to scrape the relevant section of the pdf, which is titled "Officers, Directors, Trustees, Key Employees, and Highest Compensated Employees". Finally, I use string cleaning methods to identify names and positions for each EIN, year. I also identify titles indicating the person is a physician: md, dr., or do. Using OCR extraction can be unreliable in some instances where the text is handwritten or the font is too small. Therefore, I manually find names, positions, and titles for observations that are missing after the initial extraction.
+    For each of the 1200 EINs, I extract urls to 990 pdfs in each year. I download these locally and use OCR text extraction methods to scrape the relevant section of the pdf, which is titled ``Officers, Directors, Trustees, Key Employees, and Highest Compensated Employees". Finally, I use string cleaning methods to identify names and positions for each EIN, year. I also identify titles indicating the person is a physician: md, dr., or do. Using OCR extraction can be unreliable in some instances where the text is handwritten or the font is too small. Therefore, I manually find names, positions, and titles for observations that are missing after the initial extraction.
 
     My identification strategy relies on hospitals which have stable executive leadership characteristics over time. The ideal sample would be hospitals who have the same people on their team for the entire sample. However, this rarely occurs in reality. Therefore, I proxy for a stable leadership in two ways. First, since my main focus is clinical experience, I limit the sample to hospitals who do not change the presence of a doctor on their leadership team from 2010-2014. Second, I increase the restriction by limiting the sample again to those also who do not change their CEO from 2010-2014. Finally, I aggregate the information up to the hospital level, where an observation captures whether the hospital has clinical experience on their executive team over the course of the sample. 
 
 
     \subsection{Other Hospital Characteristics and Outcomes}
 
-    Based on the AHA ID-EIN matches I found in the first stages of forming the executive leadership teams of hospitals, I merge the aggregated leadership information to both the American Hospital Association (AHA) survey and Hospital Compare data. From AHA, I gather the number of beds in the hospital and the Medicare number, which I use to merge in the Hospital Compare data. Hospital Compare contains multiple datasets which I use to identify hospitals that were penalized in the Hospital Readmissions Reduction Program (HRRP), along with yearly readmission and mortality rates for the relevant HRRP conditions: heart failure, heart attack, and pneumonia, my outcomes of interest.
+    I merge this hospital-level data with the American Hospital Association (AHA) survey using the EIN-AHA links I created based on hospital names. From AHA, I gather the number of beds in the hospital and the Medicare number, which I use to merge in the Hospital Compare data. Hospital Compare contains multiple data sets which I use to identify hospitals that were penalized in the Hospital Readmissions Reduction Program (HRRP), along with yearly readmission and mortality rates for the relevant HRRP conditions: heart failure, heart attack, and pneumonia, my outcomes of interest.
 
     The Hospital Compare excess readmissions files contain hospital level information on the excess readmission measure used by CMS to determine whether a hospital should be penalized. This variable is also condition specific, where a hospital is penalized if any of the three excess readmission ratios are greater than one. Further, Hospital Compare also publishes hospital level readmission and mortality rates for heart failure, heart attack, and pneumonia. For my main outcomes of interest, I take an average across conditions and weight it using the total number of patients in that condition. For further analysis, I create samples of hospitals who were penalized for specific conditions and investigate the change in readmission and mortality rates for the condition they were penalized for. 
 
-    \begin{figure}
+    \import{Tables}{noMDchg_sumstats.tex}
+
+    Figure \ref{weighted_read_mort_graph} shows the average of the main outcomes across all penalized hospitals over time. While mortality rates did not seem to change much after the penalties began in 2012, readmission rates decreased after the penalty for hospitals with and without clinical experience. However, readmission rates for non-clinical hospitals decreased more dramatically than those for clinical hospitals, even dropping below those for clinical teams in 2013 and 2014. While suggestive, this motivates further analysis into the differential responses between clinical and non-clinical research teams. 
+
+    \begin{figure}[h!]
         \centering
         \caption{Rates over time in all penalized hospitals}
         \includegraphics[scale=.7]{Objects/weighted_read_mort_graph.pdf}
-        \label{fig:enter-label}
+        \label{weighted_read_mort_graph}
     \end{figure}
 
     \section{Model and Empirical Strategy}
 
-    Hospital that are not traditional for-profits maximize an 
+    Not knowing the true form of nonprofit hospital objective functions, we can assume that they maximize some weighted average of revenue and output. Specifically,     
+    
+    $$\max\hspace{2mm} \delta R + (1-\delta) u(q,\theta)$$
+
+    \noindent where $R$ is net revenue, $q$ is quantity, and $\theta$ is quality of care. While previous research has set out to understand the average $\delta$ for nonprofit hospitals, $\delta$ may also be dependent on the leadership teams within nonprofit hospitals. 
+
+    Thus, I directly estimate the effect of having clinical experience on readmission and mortality rates. However, looking purely at this correlation is likely a biased picture of the effect of clinical since it likely captures reverse causality: certain types of hospitals may be more likely to hire doctors as executives. Therefore, I leverage the HRRP shock, which allows me to identify hospitals similar in quality along readmission rates. For all penalized hospitals, I further categorize their type as having clinical experience on their executive team or not. This categorization should be time invariant since I cannot rule out changes in leadership teams being correlated with being penalized. For this purpose I drop hospitals who had significant changes in their leadership team. My preferred specification defines a stable leadership team as one which does not change their propensity to hire a doctor executive. 
+
+    For this restricted sample, I estimate the following regression equation:
+
+    $$y_{ht} = (clinical \times post\_penalty)_{ht} + \alpha_{h} + \delta_t + \epsilon_{ht}$$
+
+    \noindent where $y_{ht}$ is one of the readmission or mortality outcome variables discussed in section DATA, $(clinical \times post\_penalty)_{ht}$, is the variable of interest capturing the effect of having clinical experience after the penalties took place, $\alpha_h$ and $\delta_t$ are hospital and time fixed effects, respectively, and $\epsilon$ is an error term. 
+
+    I further investigate the assumption that non-clinical and clinical hospitals behaved similarly prior to the HRRP by estimating event study coefficients:
+
+    put event study equation here
 
     \section{Results}
+
+    \import{Tables}{read_results_table.tex}
+
+    \import{Tables}{mort_results_table.tex}
 
     \section{Conclusion}
 
