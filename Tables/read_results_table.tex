@@ -1,5 +1,5 @@
 \begin{table}[ht!]
-\caption{Results for Readmission Rate Outcomes}
+\caption{Estimates for Readmission Rate Outcomes}
 \begin{tabular}{lcccc}
 \toprule
  & Weighted Avg. & Pneumonia & Heart Failure & AMI\\
@@ -15,9 +15,10 @@ Penalized for AMI &  &  &  & $\checkmark$\\
   &   &   &   &  \\
 Observations & 1,505 & 1,349 & 1,287 & 972\\
   &   &   &   &  \\
-ID fixed effects & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
+hospital fixed effects & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
 year fixed effects & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
 \bottomrule
 \end{tabular}
+\label{tab:mainresults}
 \caption*{\footnotesize{\textit{Notes:} Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05. Standard errors are clustered at the hostpital level.}}
-\end{table}
+\end{table} 
