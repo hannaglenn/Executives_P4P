@@ -6,16 +6,18 @@ library(tidyr)
 
 # This Script uses hospital names from the Nonprofit Explorer API and names from the AHA survey to match hospitals.
 
-##### ORDER : 3 ##########
-
+# Read in AHA data that includes hospital name and AHAID
 AHA <- read_csv(paste0(created_data_path, "/raw data/AHA_hosp_names.csv"))
+
+# Read in data from tax forms that includes EIN number and hospital name
 tax <- readRDS(paste0(created_data_path, "hospital_pdf_locations.rds"))
 
+# Get rid of symbols in AHA ID
 AHA$MNAME <- iconv(AHA$MNAME,from="ISO-8859-1")
 
 # Get AHA into cleaned data with one row per AHAID ####
 # Limit to nonprofit general hospitals
-AHA = AHA %>%
+AHA <- AHA %>%
   filter(FSTCD<=56 & nchar(MLOCZIP)>4 & (CNTRL==23 | (CNTRL>=12 & CNTRL<=16)) & SERV==10) %>%
   dplyr::rename(name.AHA=MNAME) %>%
   mutate(state=fips(FSTCD, to='Abbreviation')) %>%
@@ -36,7 +38,7 @@ AHA <- AHA %>%
   filter(!str_detect(name.AHA, "cancer"))
 
 
-# take a look at hospitals who have changes in ownership or system name
+# look at hospitals that have changes in ownership or system name
 AHA <- AHA %>%
   group_by(ID) %>%
   mutate(lag_sys=lag(SYSID)) %>%

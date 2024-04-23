@@ -27,11 +27,11 @@ AHA_ein_list_manualmatched <- readRDS(paste0(created_data_path, "/AHA_ein_list_m
 AHA_ein_data_frame <- data.frame(first_name = character(), last_name=character(), title=character(), position=character())
 
 #### create the other lists as inputs to clean_text() ####
-lastnames <- read_excel(paste0(created_data_path, "raw data/app_c.xlsx")) %>%
+lastnames <- read_excel(paste0(raw_data_path, "/app_c.xlsx")) %>%
   filter(count>7000) %>%
   select(name) %>%
   mutate(name=tolower(name))
-firstnames <- read_csv(paste0(created_data_path, "raw data/yob2000.txt"), col_names = FALSE) %>% 
+firstnames <- read_csv(paste0(raw_data_path, "/yob2000.txt"), col_names = FALSE) %>% 
   filter(X3>50) %>%
   select(X1) %>%
   rename(name=X1) %>%
@@ -132,10 +132,9 @@ for (i in 1:length(AHA_ein_list_manualmatched)){
   }
 }
 
-cleaned_text <- readRDS(paste0(created_data_path, "cleaned_text.rds"))
 
 # Further clean text data
-cleaned_text <- cleaned_text %>%
+cleaned_text <- AHA_ein_data_frame %>%
   distinct() %>%
   filter(first_name!="" & last_name!="") %>%
   mutate(extra = str_remove(extra, "ae eaeeeeeeeaneeees")) %>%

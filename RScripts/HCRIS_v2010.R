@@ -36,17 +36,44 @@ hcris.vars = rbind(hcris.vars,c('cash','G000000','00100','00100','numeric'))
 hcris.vars = rbind(hcris.vars,c('tot_pat_rev','G300000','00100','00100','numeric'))
 hcris.vars = rbind(hcris.vars,c('allowance','G300000','00200','00100','numeric'))
 hcris.vars = rbind(hcris.vars,c('net_pat_rev','G300000','00300','00100','numeric'))
+
+# variables added by me
+hcris.vars = rbind(hcris.vars,c('land_purch','A700001','00100','00200','numeric'))
+hcris.vars = rbind(hcris.vars,c('land_assets','A700001','00100','00700','numeric'))
+hcris.vars = rbind(hcris.vars,c('landimpr_purch','A700001','00200','00200','numeric'))
+hcris.vars = rbind(hcris.vars,c('landimpr_assets','A700001','00200','00700','numeric'))
+hcris.vars = rbind(hcris.vars,c('build_purch','A700001','00300','00200','numeric'))
+hcris.vars = rbind(hcris.vars,c('build_assets','A700001','00300','00700','numeric'))
+hcris.vars = rbind(hcris.vars,c('buildimpr_purch','A700001','00400','00200','numeric'))
+hcris.vars = rbind(hcris.vars,c('buildimpr_assets','A700001','00400','00700','numeric'))
+hcris.vars = rbind(hcris.vars,c('fixedequipment_purch','A700001','00500','00200','numeric'))
+hcris.vars = rbind(hcris.vars,c('fixedequipment_assets','A700001','00500','00700','numeric'))
+hcris.vars = rbind(hcris.vars,c('movableequipment_purch','A700001','00600','00200','numeric'))
+hcris.vars = rbind(hcris.vars,c('moveableequipment_assets','A700001','00600','00700','numeric'))
+hcris.vars = rbind(hcris.vars,c('HIT_purch','A700001','00700','00200','numeric'))
+hcris.vars = rbind(hcris.vars,c('HIT_assets','A700001','00700','00700','numeric'))
+hcris.vars = rbind(hcris.vars,c('total_purch','A700001','01000','00200','numeric'))
+hcris.vars = rbind(hcris.vars,c('total_assets','A700001','01000','00700','numeric'))
+hcris.vars = rbind(hcris.vars,c('labor_costs','S300003','00600','00200','numeric'))
+hcris.vars = rbind(hcris.vars,c('capital_cost_buildings','A000000','00100','00300','numeric'))
+hcris.vars = rbind(hcris.vars,c('capital_cost_movableequip','A000000','00200','00300','numeric'))
+hcris.vars = rbind(hcris.vars,c('operating_expenses','A000000','20000','00300','numeric'))
+hcris.vars = rbind(hcris.vars,c('medrecords_expenses','A000000','01600','00300','numeric'))
+
+
+
+
 colnames(hcris.vars)=c("variable","WKSHT_CD","LINE_NUM","CLMN_NUM","source")
 
 
 
 # Import data -------------------------------------------------------------
 for (i in 2010:2016) {
-  HCRIS.alpha=read_csv(paste0(created_data_path, "raw data/HCRIS_v2010/HOSP10FY",i,"/HOSP10_",i,"_ALPHA.csv"),
+  HCRIS.alpha=read_csv(paste0(raw_data_path, "/HCRIS_v2010/HOSP10FY",i,"/HOSP10_",i,"_ALPHA.csv"),
                        col_names=c('RPT_REC_NUM','WKSHT_CD','LINE_NUM','CLMN_NUM','ITM_VAL_NUM'))
-  HCRIS.numeric=read_csv(paste0(created_data_path, "raw data/HCRIS_v2010/HOSP10FY",i,"/HOSP10_",i,"_NMRC.csv"),
+  HCRIS.numeric=read_csv(paste0(raw_data_path, "/HCRIS_v2010/HOSP10FY",i,"/HOSP10_",i,"_NMRC.csv"),
                          col_names=c('RPT_REC_NUM','WKSHT_CD','LINE_NUM','CLMN_NUM','ITM_VAL_NUM'))
-  HCRIS.report=read_csv(paste0(created_data_path, "raw data/HCRIS_v2010/HOSP10FY",i,"/HOSP10_",i,"_RPT.csv"),
+  HCRIS.report=read_csv(paste0(raw_data_path, "/HCRIS_v2010/HOSP10FY",i,"/HOSP10_",i,"_RPT.csv"),
                         col_names=c('RPT_REC_NUM','PRVDR_CTRL_TYPE_CD','PRVDR_NUM','NPI',
                                     'RPT_STUS_CD','FY_BGN_DT','FY_END_DT','PROC_DT',
                                     'INITL_RPT_SW','LAST_RPT_SW','TRNSMTL_NUM','FI_NUM',
@@ -76,4 +103,4 @@ for (i in 2010:2016) {
     final.hcris.v2010=rbind(final.hcris.v2010,get(paste0("final.reports.",i)))
   }
 }
-write_csv(final.hcris.v2010,paste0(created_data_path, 'raw data/final_HCRIS_v2010.csv'),append=FALSE,col_names=TRUE)
+write_csv(final.hcris.v2010,paste0(raw_data_path, '/final_HCRIS_v2010.csv'),append=FALSE,col_names=TRUE)

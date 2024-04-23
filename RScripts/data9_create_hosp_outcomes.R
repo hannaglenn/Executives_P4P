@@ -6,27 +6,27 @@ library(stringr)
 # Read in data from hospital compare
 # focus first and mortality and readmissions data
 for (i in 2008){
-  year <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/dbo_vwhqi_hosp_mortality_xwlk_",i,".csv"))
+  year <- read_csv(paste0(raw_data_path, "/Hospital Compare/dbo_vwhqi_hosp_mortality_xwlk_",i,".csv"))
   assign(paste0("mort",i), year)
 }
 for (i in 2009:2011){
-  year <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/dbo_vwhqi_hosp_mortality_readm_xwlk_",i,".csv"))
+  year <- read_csv(paste0(raw_data_path, "/Hospital Compare/dbo_vwhqi_hosp_mortality_readm_xwlk_",i,".csv"))
   assign(paste0("mort",i), year)
 }
 for (i in 2012){
-  year <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/vwhqi_hosp_mortality_",i,".csv"))
+  year <- read_csv(paste0(raw_data_path, "/Hospital Compare/vwhqi_hosp_mortality_",i,".csv"))
   assign(paste0("mort",i), year)
 }
 for (i in 2013){
-  year <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/dbo_vwhqi_hosp_mortality_readm_xwlk_",i,".csv"))
+  year <- read_csv(paste0(raw_data_path, "/Hospital Compare/dbo_vwhqi_hosp_mortality_readm_xwlk_",i,".csv"))
   assign(paste0("mort",i), year)
 }
 for (i in 2014){
-  year <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/hqi_hosp_readmcompdeath_",i,".csv"))
+  year <- read_csv(paste0(raw_data_path, "/Hospital Compare/hqi_hosp_readmcompdeath_",i,".csv"))
   assign(paste0("mort",i), year)
 }
 for (i in 2015){
-  year <- read_csv(paste0(created_data_path, "raw data/Hospital Compare/hqi_hosp_readmdeath_",i,".csv"))
+  year <- read_csv(paste0(raw_data_path, "/Hospital Compare/hqi_hosp_readmdeath_",i,".csv"))
   assign(paste0("mort",i), year)
 }
 
@@ -101,7 +101,7 @@ mortality_data <- mortality_data %>%
   ungroup()
 
 mortality_data <- mortality_data %>%
-  pivot_wider(id_cols=c("providerid", "year"), names_from = c("condition", "rate_type"), values_from = c("rate", "weighted_avg")) %>%
+  pivot_wider(id_cols=c("providerid", "year"), names_from = c("condition", "rate_type"), values_from = c("rate", "weighted_avg", "patnum")) %>%
   select(-weighted_avg_heartattack_mortality, -weighted_avg_heartfailure_mortality, -weighted_avg_heartfailure_readmission, -weighted_avg_heartattack_readmission) %>%
   rename(weightedavg_read = weighted_avg_pneum_readmission, weightedavg_mort = weighted_avg_pneum_mortality)
 
