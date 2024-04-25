@@ -18,10 +18,69 @@ hospital_data$uncomp_care <- abs(hospital_data$uncomp_care)
 hospital_data <- hospital_data %>%
   mutate(uncomp_care=uncomp_care/1000000) 
 
+# drop hospitals with less than 10 beds
+hospital_data <- hospital_data %>%
+  group_by(ID) %>%
+  mutate(maxbeds=max(beds, na.rm=T)) %>%
+  ungroup() %>%
+  filter(maxbeds>=10) %>%
+  select(-maxbeds)
+
+
+# List of Figures:
+# 1. Graph outcomes over time for forprofit and nonprofit
+# 2. Graph outcomes over time for MD and non-MD
+
 
 # List of tables:
 # Table 1: mean, SD, min, max for the whole sample
 # Table 2: means for different sub-samples
+  
+
+
+## FIGURE 1: outcomes for forprofit and nonprofit over time ####
+forprofit_avgs <- hospital_data %>%
+  filter(profit_status=="forprofit") %>%
+  group_by(year) %>%
+  summarise_at(c("Weighted Avg. Readmission Rate"="weightedavg_read",
+                 "Weighted Avg. Mortality Rate"="weightedavg_mort"), list(mean), na.rm=T) %>%
+  mutate(Group="For Profit")
+nonprofit_avgs <- hospital_data %>%
+  filter(profit_status=="nonprofit") %>%
+  group_by(year) %>%
+  summarise_at(c("Weighted Avg. Readmission Rate"="weightedavg_read",
+                 "Weighted Avg. Mortality Rate"="weightedavg_mort"), list(mean), na.rm=T) %>%
+  mutate(Group="All Nonprofits")
+NP_md_avgs <- hospital_data %>%
+  filter(ever_has_md==1 & no_num_md_change_2010_2014==1) %>%
+  group_by(year) %>%
+  summarise_at(c("Weighted Avg. Readmission Rate"="weightedavg_read",
+                 "Weighted Avg. Mortality Rate"="weightedavg_mort"), list(mean), na.rm=T) %>%
+  mutate(Group="Nonprofit w/ MD")
+NP_nomd_avgs <- hospital_data %>%
+  filter(ever_has_md==0 & no_num_md_change_2010_2014==1) %>%
+  group_by(year) %>%
+  summarise_at(c("Weighted Avg. Readmission Rate"="weightedavg_read",
+                 "Weighted Avg. Mortality Rate"="weightedavg_mort"), list(mean), na.rm=T) %>%
+  mutate(Group="Nonprofit w/out MD")
+
+outcomes <- rbind(forprofit_avgs, NP_md_avgs, NP_nomd_avgs)
+
+read <- ggplot(outcomes, aes(x=year, y=`Weighted Avg. Readmission Rate`, color=Group)) + geom_point() + geom_line() +
+  geom_vline(xintercept = 2012, linetype = "dotted") + ylim(18,23) +
+  geom_line(linewidth=.75) + theme_bw() + xlab("\nyear") + ylab("Weighted Avg. Readmission Rate\n") +
+  theme(text=element_text(size=18)) + scale_color_brewer(palette="Set2") 
+mort <- ggplot(outcomes, aes(x=year, y=`Weighted Avg. Mortality Rate`, color=Group)) + geom_point() + geom_line() +
+  geom_vline(xintercept = 2012, linetype = "dotted") + ylim(12,14) +
+  geom_line(linewidth=.75) + theme_bw() + xlab("\nyear") + ylab("Weighted Avg. Mortality Rate\n") +
+  theme(text=element_text(size=18)) + scale_color_brewer(palette="Set2") 
+
+ggarrange(read, NULL, mort,
+          nrow=1, 
+          common.legend = TRUE,
+          widths = c(1, 0.15, 1),
+          legend = "right")
+ggsave(plot=last_plot(), filename="Objects/weighted_read_mort_graph.pdf", width=11, height=5, units="in")
 
 ### TABLE 1: mean, sd, min, max for the whole sample
 stats <- hospital_data %>% 
@@ -55,7 +114,7 @@ n <- hospital_data %>%
 stats <- stats %>%
   add_row(variable="Num. Hospitals", m=n)
 
-knitr::kable(stats[c(9,6,7,8,10,11,12,17,2,5,14,16,1,4,13,15,3,18),],
+stats_tab <- knitr::kable(stats[c(9,6,7,8,10,11,12,17,2,5,14,16,1,4,13,15,3,18),],
              row.names = FALSE,
              format="latex",
              table.envir="table",
@@ -69,6 +128,7 @@ knitr::kable(stats[c(9,6,7,8,10,11,12,17,2,5,14,16,1,4,13,15,3,18),],
   kable_styling(full_width=F) %>%
   pack_rows(index = c("Hospital Characteristics" = 4, "Penalty Variables" = 3, "Readmission Outcome Variables" = 4, "Mortality Outcome Variables" = 4, 
                       "Other Outcome Variables"=2, " " = 1))
+write(stats_tab, file="Tables/overall_sumstats.tex")
 
 ### TABLE 2: table of means for each subsample of hospitals
 n_FP <- hospital_data %>%
@@ -196,7 +256,7 @@ stats <- FP_stats %>%
   left_join(NP_md_stats, by="variable") %>%
   left_join(NP_nomd_stats, by="variable")
 
-knitr::kable(stats[c(9,6,7,8,10,11,12,17,2,5,14,16,1,4,13,15,3,18),],
+subsample_stats_tab <- knitr::kable(stats[c(9,6,7,8,10,11,12,17,2,5,14,16,1,4,13,15,3,18),],
              row.names = FALSE,
              format="latex",
              table.envir="table",
@@ -210,7 +270,7 @@ knitr::kable(stats[c(9,6,7,8,10,11,12,17,2,5,14,16,1,4,13,15,3,18),],
   kable_styling(full_width=F) %>%
   pack_rows(index = c("Hospital Characteristics" = 4, "Penalty Variables" = 3, "Readmission Outcome Variables" = 4, "Mortality Outcome Variables" = 4, 
                       "Other Outcome Variables"=2, " " = 1))
-
+write(subsample_stats_tab, file="Tables/sample_sumstats.tex")
 
 
 
