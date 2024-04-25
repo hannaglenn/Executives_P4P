@@ -166,8 +166,9 @@ sorting=ynt,citestyle=authoryear]{biblatex}
     Figure \ref{fig:weighted_read_mort_graph} shows average readmission and mortality rates across time and across the three different conditions, along with the weighted average. There are multiple notable points the raw data reveals. First, prior to the penalty, hospitals without clinical executives had consistently higher readmission rates than clinical executive hospitals across all conditions. While there is a gap between clinical team and non-clinical team readmission rates, the lines seem to move mostly parallel. In contrast, 2012 begins a decline in readmission rates over all conditions for all types of hospitals. This makes sense and is consistent with previous literature on HRRP, as hospitals have incentive to reduce readmissions in order to reduce future penalties. However, non-clinical hospital teams decrease readmissions at a faster rate, quickly converging with the rates of clinical team hospitals. While suggestive, this motivates further analysis into the differential responses between clinical and non-clinical leadership teams. On the right panel, average mortality rates over time reveal no clear change due to the penalty, and no consistent pattern in the difference between clinical and non-clinical hospital teams. 
 
     \begin{figure}[ht!]
+    \centering
         \caption{Outcomes over time in all penalized hospitals}
-        \includegraphics[scale=.5]{Objects/weighted_read_mort_graph.pdf}
+        \includegraphics[width=\textwidth]{Objects/weighted_read_mort_graph.pdf}
         \label{fig:weighted_read_mort_graph}
     \end{figure}
 
@@ -205,16 +206,20 @@ sorting=ynt,citestyle=authoryear]{biblatex}
     y_{ht} = \sum_{j=2009}^{2010}\beta_j(clinical_{ht} \times \mathbf{1}\{y=j\}) + \sum_{j=2012}^{2015}\beta_j (clinical_{ht} \times \mathbf{1}\{y=j\}) + \alpha_{h} + \delta_t + \epsilon_{ht}.
     \end{equation}
 
+    \section{Endogenous Executive Team Changes?}
+
+    \import{Tables}{change_analysis.tex}
+
     \section{Results}
 
-    \import{Tables}{MD_noMD_readmort_synthdid.tex}
+    \import{Tables}{MD_noMD_readmort_synth.tex}
 
 
-    \import{Tables}{forprofit_synth.tex}
+    \import{Tables}{forprofit_readmort_synth.tex}
 
-    \import{Tables}{MD_noMD_uncompCMI_synth.tex}
+    %\import{Tables}{MD_noMD_uncompCMI_synth.tex}
 
-    \import{Tables}{forprofit_uncompCMI_synth.tex}
+    %\import{Tables}{forprofit_uncompCMI_synth.tex}
 
 
     I present the estimated coefficient of interest from Equation \ref{eq:main}, $\beta$, in Table \ref{tab:mainresults}. In column 1, the outcome is the weighted average of readmission rates. The estimated effect of having clinical experience on the hospital's reaction to the penalty is .47, indicating that hospitals with clinical experience on their executive team have a .47 point higher readmission rate than non-clinical team hospitals after being penalized. Comparing this to an average readmission rate of 21, this is a difference of approximately 2\%. When considering an average total number of patients of 760, this is a difference of 15 readmissions per year. Based on previous studies and on Figure \ref{fig:weighted_read_mort_graph}, both types of hospitals decrease readmission rates after the penalties begin, so a positive $\beta$ indicates that non-clinical team hospitals decrease readmissions at a faster rate than clinical team hospitals. 
@@ -296,7 +301,7 @@ Next, I locate first and last names in the data.
 
 \import{Tables}{MD_noMD_readmort_fullsample.tex}
 
-\import{Tables}{forprofit_fullsample.tex}
+\import{Tables}{forprofit_readmort_fullsample.tex}
 
 \import{Tables}{MD_noMD_uncompCMI_fullsample.tex}
 
@@ -306,7 +311,7 @@ Next, I locate first and last names in the data.
 
 \import{Tables}{MD_noMD_readmort_matchsample.tex}
 
-\import{Tables}{forprofit_matchsample.tex}
+\import{Tables}{forprofit_readmort_matchsample.tex}
 
 \import{Tables}{MD_noMD_uncompCMI_matchsample.tex}
 
