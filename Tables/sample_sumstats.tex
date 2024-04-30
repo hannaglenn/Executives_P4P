@@ -4,36 +4,37 @@
 \centering
 \begin{tabular}[t]{lcccc}
 \toprule
-Variable & For-Profit & NonProfit & NonProfit w/ MD & NonProfit w/out MD\\
+Variable & For-Profit & NonProfit & NonProfit Ever MD & NonProfit Never MD\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Hospital Characteristics}}\\
-\hspace{1em}Number Beds & 152.90 & 146.81 & 203.93 & 108.68\\
-\hspace{1em}Num. Patients AMI & 118.25 & 145.85 & 207.24 & 108.79\\
-\hspace{1em}Num. Patients HF & 278.04 & 302.65 & 434.03 & 255.70\\
-\hspace{1em}Num. Patients Pneumonia & 238.51 & 260.64 & 377.70 & 247.47\\
+\hspace{1em}Number Beds & 153.58 & 147.83 & 223.16 & 108.96\\
+\hspace{1em}Num. Patients AMI & 118.25 & 146.04 & 227.12 & 108.87\\
+\hspace{1em}Num. Patients HF & 278.04 & 303.50 & 464.98 & 256.23\\
+\hspace{1em}Num. Patients Pneumonia & 238.51 & 261.45 & 387.87 & 247.89\\
 \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Penalty Variables}}\\
-\hspace{1em}Penalized for AMI & 0.48 & 0.32 & 0.43 & 0.32\\
-\hspace{1em}Penalized for HF & 0.66 & 0.43 & 0.48 & 0.41\\
-\hspace{1em}Penalized for Pneumonia & 0.64 & 0.43 & 0.54 & 0.41\\
+\multicolumn{5}{l}{\textbf{Penalty/Payment Variables}}\\
+\hspace{1em}Penalized for AMI & 0.48 & 0.32 & 0.48 & 0.32\\
+\hspace{1em}Penalized for HF & 0.66 & 0.43 & 0.52 & 0.41\\
+\hspace{1em}Penalized for Pneumonia & 0.65 & 0.43 & 0.57 & 0.41\\
+\hspace{1em}Ever Received HVBP Incentive & 0.88 & 0.63 & 0.80 & 0.57\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Readmission Outcome Variables}}\\
-\hspace{1em}Weighted Avg. Readmission Rate & 20.80 & 20.22 & 20.59 & 20.24\\
-\hspace{1em}AMI Readmission Rate & 18.94 & 18.89 & 18.79 & 19.07\\
-\hspace{1em}HF Readmission Rate & 24.12 & 23.72 & 23.75 & 23.88\\
-\hspace{1em}Pneum. Readmission Rate & 18.06 & 17.81 & 18.12 & 17.85\\
+\hspace{1em}Weighted Avg. Readmission Rate & 20.80 & 20.23 & 20.50 & 20.24\\
+\hspace{1em}AMI Readmission Rate & 18.94 & 18.89 & 18.93 & 19.07\\
+\hspace{1em}HF Readmission Rate & 24.12 & 23.72 & 23.67 & 23.88\\
+\hspace{1em}Pneum. Readmission Rate & 18.06 & 17.81 & 18.00 & 17.85\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Mortality Outcome Variables}}\\
-\hspace{1em}Weighted Avg. Mortality Rate & 12.23 & 12.16 & 12.33 & 12.30\\
-\hspace{1em}AMI Mortality Rate & 15.68 & 15.37 & 15.19 & 15.55\\
-\hspace{1em}HF Mortality Rate & 11.42 & 11.55 & 11.55 & 11.80\\
-\hspace{1em}Pneum. Mortality Rate & 11.90 & 11.83 & 11.98 & 12.01\\
+\hspace{1em}Weighted Avg. Mortality Rate & 12.23 & 12.16 & 12.32 & 12.31\\
+\hspace{1em}AMI Mortality Rate & 15.68 & 15.37 & 15.28 & 15.55\\
+\hspace{1em}HF Mortality Rate & 11.42 & 11.55 & 11.68 & 11.81\\
+\hspace{1em}Pneum. Mortality Rate & 11.90 & 11.82 & 11.79 & 12.02\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Other Outcome Variables}}\\
-\hspace{1em}Uncomp. Care (Millions) & 42.22 & 38.90 & 38.47 & 23.35\\
-\hspace{1em}Case Mix Index & 1.44 & 1.43 & 1.51 & 1.36\\
-Num. Hospitals & 751.00 & 3214.00 & 57.00 & 470.00\\
+\hspace{1em}Uncomp. Care (as \% of expenses) & 0.28 & 0.21 & 0.14 & 0.13\\
+\hspace{1em}Case Mix Index & 1.44 & 1.43 & 1.49 & 1.36\\
+Num. Hospitals & 744.00 & 3182.00 & 386.00 & 472.00\\
 \bottomrule
 \end{tabular}
 \end{table}
