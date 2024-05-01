@@ -1,18 +1,17 @@
 \begin{table}[ht!]
 
-\caption{\label{tab:MD_noMD_uncompCMI_decomp_synth}Decomposition of Uncompensated Care and CMI for Nonprofits Synthetic DiD Results}
+\caption{\label{tab:MD_noMD_uncompCMI_decomp_synth}Decomposition of Uncompensated Care and CMI Synthetic DiD Results}
 \centering
-\begin{tabular}[t]{lcccl}
+\begin{tabular}[t]{lcccc}
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{2}{c}{Uncompensated Care} & \multicolumn{2}{c}{Case Mix Index} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
  & (1) & (2) & (1) & (2)\\
 \midrule
-Ever MD Executive x Post 2012 & 0.01 &  & 0.01$^{*}$ & \\
+Ever MD Exec x Post 2012 & 0.01 &  & 0.01$^{*}$ & \\
  & (0.01) &  & (0) & \\
-2012 MD Executive x Post 2012 &  & -0.03 &  & 0.01\\
+2012 MD Exec x Post 2012 &  & -0.03 &  & 0.01\\
  &  & (0.03) &  & (0.01)\\
- &  &  &  \vphantom{1} & \\
+ &  &  &  & \\
 \addlinespace
 \textbf{Comparison Group:} &  &  &  & \\
 Never MD & $\checkmark$ &  & $\checkmark$ & \\
@@ -20,5 +19,10 @@ Has MD not in 2012 &  & $\checkmark$ &  & $\checkmark$\\
  &  &  &  & \\
 Observations & 1195 & 635 & 3015 & 1595\\
 \bottomrule
+\multicolumn{5}{l}{\textsuperscript{} Results from Equation with readmission and mortality rates as}\\
+\multicolumn{5}{l}{outcome variables.}\\
+\multicolumn{5}{l}{\textsuperscript{} Standard errors are clustered at the hospital level.}\\
+\multicolumn{5}{l}{\textsuperscript{} Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1}\\
+\multicolumn{5}{l}{\textsuperscript{} Uncompensated care measured as percent of total operating expenses.}\\
 \end{tabular}
 \end{table}
