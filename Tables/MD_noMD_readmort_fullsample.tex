@@ -1,18 +1,23 @@
-\begin{table}[htbp]
-   \caption{\label{tab:MD_noMD_fullsample} Comparison of MD vs. non-MD Nonprofit Readmission and Mortality Regression Results}
+\begin{table}[ht!]
+   \caption{\label{tab:MD_noMD_readmort_fullsample} Non-MD vs. MD Executive Readmission and Mortality Regression Results}
    \bigskip
    \centering
    \begin{tabular}{lcc}
       \toprule
-                                        & Weighted Avg. Readmission Rate & Weighted Avg. Mortality Rate\\  
-                                        & (1)                            & (2)\\  
+                                       & Weighted Avg. Readmission Rate & Weighted Avg. Mortality Rate\\  
+                                       & (1)                            & (2)\\  
       \midrule 
-      NP w/ MD Executive x Post Penalty & -0.40$^{***}$                  & -0.19\\   
-                                        & (0.14)                         & (0.15)\\   
-      \textbf{Comparison Group:}        &                                & \\  
-      NP w/out MD Executive             & $\checkmark$                   & $\checkmark$\\   
+      NP w/out MD Exec x Post Programs & -0.40$^{***}$                  & -0.19\\   
+                                       & (0.14)                         & (0.15)\\   
+      \textbf{Comparison Group:}       &                                & \\  
+      NP w/ MD Exec                    & $\checkmark$                   & $\checkmark$\\   
        \\
-      Observations                      & 2,471                          & 2,462\\  
+      Observations                     & 2,471                          & 2,462\\  
       \bottomrule
    \end{tabular}
+   
+   \par \raggedright 
+   Results from Equation \ref{eq:clinical} with readmission and mortality rates as outcome variables.\\
+   Standard errors are clustered at the hospital level.\\
+   Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1
 \end{table}

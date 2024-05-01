@@ -1,21 +1,24 @@
 \begin{table}[ht!]
 
-\caption{\label{tab:forprofit_synth} Comparison to For-Profit Readmissions and Mortality Synthetic DiD Results}
+\caption{\label{tab:forprofit_readmort_synth}Comparison to For-Profit Readmission and Mortality Synthetic DiD Results}
 \centering
-\begin{tabular}[t]{lcccccc}
+\begin{tabular}[t]{l>{\centering\arraybackslash}p{.2textwidth}>{\centering\arraybackslash}p{.2textwidth}>{\centering\arraybackslash}p{.2textwidth}>{\centering\arraybackslash}p{.2textwidth}>{\centering\arraybackslash}p{.2textwidth}>{\centering\arraybackslash}p{.2textwidth}}
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{3}{c}{Weighted Avg. Readmission Rate} & \multicolumn{3}{c}{Weighted Avg. Mortality Rate} \\
-\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
  & (1) & (2) & (3) & (1) & (2) & (3)\\
 \midrule
-For Profit x Post Penalty & -0.07 & -0.32$^{*}$ & -0.03 & -0.01 & -0.17 & 0.02\\
- & (0.04) & (0.13) & (0.05) & (0.04) & (0.12) & (0.05)\\
+For Profit x Post Programs & -0.07 & -0.32$^{*}$ & -0.03 & -0.01 & -0.17 & 0.02\\
+ & (0.04) & (0.12) & (0.06) & (0.04) & (0.11) & (0.06)\\
 \textbf{Comparison Group:} &  &  &  &  &  & \\
 All Nonprofits & $\checkmark$ &  &  & $\checkmark$ &  & \\
 Nonprofits w/ MD &  & $\checkmark$ &  &  & $\checkmark$ & \\
 \addlinespace
 Nonprofits w/out MD &  &  & $\checkmark$ &  &  & $\checkmark$\\
-Observations & 15585 & 2900 & 4705 & 15505 & 2895 & 4690\\
+ &  &  &  &  &  & \\
+Observations & 15,585 & 2,900 & 4,705 & 15,505 & 2,895 & 4,690\\
 \bottomrule
+\multicolumn{7}{l}{\textsuperscript{} Results from Equation with readmission and mortality rates as outcome variables.}\\
+\multicolumn{7}{l}{\textsuperscript{} Standard errors are clustered at the hospital level.}\\
+\multicolumn{7}{l}{\textsuperscript{} Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1}\\
 \end{tabular}
 \end{table}

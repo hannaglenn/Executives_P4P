@@ -1,18 +1,24 @@
 \begin{table}[ht!]
 
-\caption{\label{tab:MD_noMD_uncompCMI_synth}Comparison of MD vs. non-MD Nonprofit Uncompensated Care and CMI Synthetic DiD Results}
+\caption{\label{tab:MD_noMD_uncompCMI_synth}Non-MD vs. MD Executive Uncompensated Care and CMI Synthetic DiD Results}
 \centering
 \begin{tabular}[t]{lcc}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{1}{c}{Uncomp. Care (Millions)} & \multicolumn{1}{c}{Case Mix Index} \\
-\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3}
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{Uncompensated Care} & \multicolumn{1}{c}{Case Mix Index} \\
  & (1) & (2)\\
 \midrule
-NP w/ MD Executive x Post Penalty & 3.12 & 0.03$^{**}$\\
- & (2.81) & (0.01)\\
+NP w/out MD Exec x Post Programs & 0.02$^{*}$ & 0.03$^{***}$\\
+ & (0.01) & (0.01)\\
 \textbf{Comparison Group:} &  & \\
-NP w/out MD Executive & $\checkmark$ & $\checkmark$\\
-Observations & 625 & 1635\\
+NP w/ MD Exec & $\checkmark$ & $\checkmark$\\
+ &  & \\
+\addlinespace
+Observations & 15,585 & 2,900\\
 \bottomrule
+\multicolumn{3}{l}{\textsuperscript{} Results from Equation with readmission and mortality rates as outcome}\\
+\multicolumn{3}{l}{variables.}\\
+\multicolumn{3}{l}{\textsuperscript{} Standard errors are clustered at the hospital level.}\\
+\multicolumn{3}{l}{\textsuperscript{} Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1}\\
+\multicolumn{3}{l}{\textsuperscript{} Uncompensated care measured as percent of total operating expenses.}\\
 \end{tabular}
 \end{table}
