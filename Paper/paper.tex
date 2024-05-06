@@ -268,14 +268,14 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     \begin{equation}
     \label{eq:forprofit}
-    y_{ht} = \beta (\text{for-profit}_h \times \text{post programs}_t) + \gamma_{h} + \delta_t + \epsilon_{ht}
+    y_{ht} = \beta (\text{For-Profit}_h \times \text{Post Programs}_t) + \gamma_{h} + \delta_t + \epsilon_{ht}
     \end{equation}
 
     \noindent where $y_{ht}$ is one of the outcome variables discussed in Section \ref{sec:data}, $\beta$ is the coefficient of interest capturing the effect of being for-profit after the programs were introduced, and $\gamma_h$ and $\delta_t$ are hospital and time fixed effects, respectively. For each outcome, I estimate three models where the comparison group differs by hospital type: all nonprofits, nonprofits with a clinically trained executive, and nonprofits without a clinically trained executive. I also directly estimate the difference in response of hospitals with and without a clinically trained executive:
 
     \begin{equation}
     \label{eq:clinical}
-    y_{ht} = \beta (\text{no MD exec}_h \times \text{post programs}_t) + \gamma_{h} + \delta_t + \epsilon_{ht}
+    y_{ht} = \beta (\text{No MD Exec}_h \times \text{Post Programs}_t) + \gamma_{h} + \delta_t + \epsilon_{ht}
     \end{equation}
 
     An important distinction is whether the classification of nonprofits as those with or without clinically trained executives is time-varying. For overall ownership status, switching is rare, and I limit to those who never switch. However, hospital executive teams are dynamic, and whether or not a hospital employs a clinically trained executive in each period may change. Therefore, I first present effects of having a clinically trained executive among stable executive teams, i.e., hospitals with no change in their propensity to hire a clinically trained executive. 
@@ -284,7 +284,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     \begin{equation}
     \label{eq:decomp}
-    y_{ht} = \beta (\text{never/no 2012 exec}_h \times \text{post programs}_t) + \gamma_{h} + \delta_t + \epsilon_{ht}
+    y_{ht} = \beta (\text{Never/No 2012 Exec}_h \times \text{Post Programs}_t) + \gamma_{h} + \delta_t + \epsilon_{ht}
     \end{equation}
     
     As discussed in Section \ref{sec:hrrp}, hospitals had incentive to decrease readmissions immediately when the HRRP rules were released in October of 2011, before the penalties were actually determined in October of 2012. However, I still define post penalty as occurring in 2012 or later, the first full of hospital response.
@@ -302,11 +302,21 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
      First, I consider the differential program response of for-profit firms compared to the different sub-samples of nonprofit firms. These results are presented in Table \ref{tab:forprofit_readmort_synth}. Models in the left panel estimate the effect of being for-profit after the programs were enacted, compared to nonprofit sub-samples, on readmission rates. There is no difference between the response of for-profits and nonprofits as a whole, or nonprofits without a clinically trained executive. However, for-profits lower their readmissions by .3ppts compared to nonprofits without clinically trained executives. Models in the right panel estimate the effect of being for-profit after the programs on mortality rates. Here, there is no statistical difference in mortality rate response between different hospital types. 
 
-     \import{Tables}{forprofit_readmort_synth.tex}
+     \begin{figure}
+         \centering
+         \caption{Readmission Results}
+         \includegraphics[width=\textwidth]{Objects/read_synth_plot.pdf}
+         \label{fig:read_synth_plot}
+     \end{figure}
 
      Next, I directly estimate the difference in response by nonprofits with and without clinically trained executives. These results are presented in Table \ref{tab:MD_noMD_readmort_synth}, where the left has models with outcome readmission rates and the right has models with outcome mortality rates. Nonprofits without clinically trained executives have a larger decrease in readmissions than those with clinically trained executive by .3ppts, while there is no difference in change in mortality rates. Tables \ref{tab:forprofit_readmort_synth} and \ref{tab:MD_noMD_readmort_synth} taken together show that, in terms of readmission rates, nonprofits without clinically trained executives behave more similarly to for-profits than they do other nonprofits. Under the assumption that having a clinically trained executive on the leadership team indicates a higher preference for social utility, these findings are consistent with the theoretical prediction presented in Section \ref{sec:model}. 
 
-     \import{Tables}{MD_noMD_readmort_synth.tex}
+      \begin{figure}
+         \centering
+         \caption{Mortality Results}
+         \includegraphics[width=\textwidth]{Objects/mort_synth_plot.pdf}
+         \label{fig:read_synth_plot}
+     \end{figure}
 
     \subsubsection{Decomposition}
 
@@ -380,7 +390,7 @@ Next, I locate first and last names in the data.
 \includegraphics[width=\textwidth]{Objects/has_doc_avg_map.pdf}
 
 
-\section{Full Sample Regression Results}\label{app:fullsample}
+\section{Full Sample Regression and Event Study Results}\label{app:fullsample}
 
 \import{Tables}{MD_noMD_readmort_fullsample.tex}
 
@@ -390,7 +400,11 @@ Next, I locate first and last names in the data.
 
 \import{Tables}{forprofit_uncompCMI_fullsample.tex}
 
+\section{Synthetic Diff-in-Diff Result Tables}
 
+\import{Tables}{forprofit_readmort_synth.tex}
+
+\import{Tables}{MD_noMD_readmort_synth.tex}
 
 
     
