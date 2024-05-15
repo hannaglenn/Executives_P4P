@@ -80,7 +80,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 	
     \begin{abstract}
 		{\small
-        In many industries, not-for-profits (NFP) make up the majority of firms in the market. Understanding the objectives and behaviors of these firms is important when changing incentives. However, NFP firms have goals and missions that make understanding their objectives difficult. For hospitals in particular, there is mixed evidence on whether NFP hospitals differ meaningfully from for-profit (FP) hospitals. In this paper, I investigate whether leadership team composition of not-for-profit hospitals affects how similarly they behave to for-profits. I use a novel data set on NFP hospital executives in the US (2009-2015) to investigate whether the presence of clinically trained executives affects hospital behavior. In particular, I leverage two pay-for-performance initiatives in the US enacted in 2012, and estimate the difference in readmission and mortality rates afterwards between FP, NFP, and NFP with and without clinically trained executives. I find that NFPs without clinically trained executives behave more like FPs than other NFPs. This is consistent with theoretical predictions under the assumption that NFP hospitals with clinically trained executives value societal outcomes more than those without clinically trained executives.
+        In many industries, not-for-profits (NFP) make up the majority of firms in the market. Understanding the objectives of these firms is important as they respond to incentives, but NFP firms have underlying goals that make understanding their objectives difficult. For hospitals in particular, there is mixed evidence on whether NFP hospitals differ meaningfully from for-profit (FP) hospitals. In this paper, I investigate whether leadership team composition of NFP hospitals affects how similarly they behave to for-profits. I use a novel data set on NFP hospital executives in the US (2009-2015) to investigate whether the presence of clinically trained executives affects hospital behavior. In particular, I leverage two pay-for-performance initiatives in the US enacted in 2012, and measure the  readmission and mortality rate responses between FP, NFP, and NFP with and without clinically trained executives. I find that NFPs without clinically trained executives behave more like FPs than other NFPs. This is consistent with theoretical predictions under the assumption that NFP hospitals with clinically trained executives value societal outcomes more than those without clinically trained executives.
 		} 
 	\end{abstract}
 	
@@ -146,13 +146,13 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
 	\section{Data}\label{sec:data}
 
-    One reason that hospital executive teams are understudied is because of the inaccessibility of the information. I construct a novel data set of not-for-profit hospitals in the US that contains names, titles, and positions of all executives tied to the hospital from 2009-2015. I gather this data from publicly available Tax Form 990s, which every sufficiently large not-for-profit files each year in the US. To my knowledge, this is the first large scale gathering of executive names from these forms.\footnote{\citeauthor{brickley2010board} (\citeyear{brickley2010board}) collects compensation information for a select number of hospitals.} 
+    Hospital executive teams are understudied partly because of the inaccessibility of granular information. I construct a novel data set of not-for-profit hospitals in the US that contains names, titles, and positions of all board members and executives tied to the hospital from 2009-2015. I gather this data from publicly available Tax Form 990s, which every sufficiently large not-for-profit files each year in the US. To my knowledge, this is the first large scale gathering of executive names from these forms.\footnote{\citeauthor{brickley2010board} (\citeyear{brickley2010board}) collects compensation information for a select number of hospitals.} 
 
-    The historical tax forms for all not-for-profits are housed by ProPublica.\footnote{https://projects.propublica.org/not-for-profits/} I use the not-for-profit Explorer API to extract Employee Identification Numbers (EIN) of not-for-profits classified as a hospital according to their National Taxonomy of Exempt Entities (NTEE) code. After filtering out associations and specialty hospitals, there are approximately 3,000 not-for-profit EINs. Importantly, linking EINs to other hospital information is crucial for the analysis. I rely on matching by location and name of hospital in the tax forms and AHA data. I confidently match 1200 EINs to an AHA identification number based on exact name matches within the same state. I compare the matched hospitals to non-matched hospitals in Appendix \ref{app:matched}, and find that the matched sample is not qualitatively different than the non-matched hospitals.
+    The historical tax forms for all not-for-profits are housed by ProPublica.\footnote{https://projects.propublica.org/not-for-profits/} I use the NonProfit Explorer API to extract Employee Identification Numbers (EIN) of not-for-profits classified as a hospital according to their National Taxonomy of Exempt Entities (NTEE) code. After filtering out associations and specialty hospitals, there are approximately 3,000 not-for-profit EINs. Importantly, linking EINs to other hospital information is crucial for the analysis. I rely on matching by location and name of hospital in the tax forms and AHA data. I confidently match 1200 EINs to an AHA identification number based on exact name matches within the same state. I compare the matched hospitals to non-matched hospitals in Appendix \ref{app:matched}.
     
     For each of the 1200 EINs, I then extract web URLs to Form 990 PDFs in each year. I download these locally and use optical character recognition (OCR) text extraction methods to scrape the relevant section of the PDF, which is titled ``Officers, Directors, Trustees, Key Employees, and Highest Compensated Employees". Finally, I use string cleaning methods to identify names and positions for each EIN, year. I also identify titles indicating clinical training: MD, Dr., or DO. Using OCR extraction can be unreliable in some instances if the text is handwritten or small. Therefore, I manually record names, positions, and titles for observations that are missing after the initial extraction. This yields 852 not-for-profit hospitals that are matched to AHA data, and are not missing text information. 
 
-    Due to the lack of consistency in organization of executive teams, I focus mainly on the executive teams as a whole instead of specific positions. I drop anyone who is solely a board member, and focus on those who have executive in their title or are labeled as a president or vice president of a department. I create various hospital-level characterizations based on their executive teams, such as the existence of a clinically trained executive, the number of clinically trained executives, the number of total executives, and whether the hospital has a Chief Medical Officer.
+    Due to the lack of consistency in the organization of executive teams, I focus mainly on the executive teams as a whole instead of specific positions. I drop anyone who is solely a board member, and focus on those who have executive in their title or are labeled as a president or vice president of a department. I create various hospital-level characterizations based on their executive teams, such as the existence of a clinically trained executive, the number of clinically trained executives, the number of total executives, and whether the hospital has a Chief Medical Officer. Summary statistics for these variables are shown in Table 
 
     I merge the created sample of not-for-profits with all for-profits in the AHA survey. The main outcomes I consider in this paper are readmission and mortality rates, which are directly targeted in the pay-for-performance policies, and are from the CMS Hospital Compare data. I combine readmission and mortality rates for pneumonia, AMI, and heart failure (the relevant HRRP conditions) into a weighted average based on the number of patients in each condition. I also include as outcomes uncompensated care and case mix index (a measure of patient complexity). While not directly targeted by the policies, uncompensated care is a mechanism by which a hospital might re-allocate resources by taking on less charitable cases, and case mix index reflects potential gamesmanship in the type of patients admitted to the hospital. Uncompensated care comes from the Healthcare Cost Information Reporting Systems (HCRIS) data, and case mix index is from CMS public use files. 
 
@@ -171,8 +171,9 @@ sorting=ynt,citestyle=authoryear]{biblatex}
     \begin{figure}[ht!]
     \centering
         \caption{Outcomes Over Time}
-        \includegraphics[width=\textwidth]{Objects/weighted_read_mort_graph.pdf}
+        \includegraphics[width=\textwidth]{Objects/weighted_read_mort_adjusted_graph.pdf}
         \label{fig:weighted_read_mort_graph}
+        \caption*{\footnotesize{Averages are adjusted for patient complexity.}}
     \end{figure}
 
 
@@ -281,9 +282,6 @@ sorting=ynt,citestyle=authoryear]{biblatex}
     
     \section{Results}
 
-     
-     \subsection{Readmission and Mortality Rates}
-
      I consider the differential program response in readmission rates of for-profit firms compared to the different sub-samples of not-for-profit firms (specification \ref{eq:forprofit}). First, I compare for-profits to all not-for-profits in the sample in Figure \ref{fig:read_synth_plota}, which shows that on average, there is no difference in how for-profits and not-for-profits change their readmission rates in response to the incentive changes. Figures \ref{fig:read_synth_plota} and \ref{fig:read_synth_plotb} compare for-profit readmission rates to NFPs with a clinically trained executive and without a clinically trained executive, respectively. Figure \ref{fig:read_synth_plota} shows that for-profit hospitals decrease readmission rates more than not-for-profits with an MD executive after pay-for-performance incentives. However, while for-profits have higher readmission rates than NFPs without a clinically trained executive, there is no difference in their change in readmission rates after the incentives are enacted, shown in Figure \ref{fig:read_synth_plotb}. 
 
      \begin{figure}
@@ -358,29 +356,14 @@ sorting=ynt,citestyle=authoryear]{biblatex}
         \label{fig:mort_synth_plot}
     \end{figure}
 
-    \subsubsection{Decomposition}
+    \subsection{Decomposition}
 
     While it is telling that executive team composition affects behavior after incentives change, more clarity is needed about the root cause of the differences. It is not clear whether these results are due to clinically trained executives being a signal of underlying hospital objectives, or the leaders themselves making a difference in outcomes. Therefore, I present the results of specification \ref{eq:decomp} in Table \ref{tab:MD_noMD_readmort_decomp_synth}, where the variation in executives is either existence of a hospital executive at any point in time, or whether the hospital has a clinically trained executive in 2012 when the programs were enacted. The left panel on readmission rates shows that the difference in response is fully driven by having a clinically trained executive in 2012 compared to having a clinically trained executive at another point in time. The right panel shows similar magnitudes of coefficients with more noise, as in the main specification.  
 
     \import{Tables}{MD_noMD_readmort_decomp_synth.tex}
 
      
-
-
-    \subsection{Uncompensated Care and Case Mix Index}
-
-    As a secondary analysis, I present estimates of differential response of potential mechanisms. The first is changing input into another societal benefit measure: uncompensated care, and the second is complexity of patients: case mix index. First, I investigate whether for-profits change these differentially than types of not-for-profits in Table \ref{tab:forprofit_uncompCMI_synth}. 
-
-    \import{Tables}{forprofit_uncompCMI_synth.tex}
-
-    Next, I estimate the difference in response for not-for-profits with and without clinically trained executives, shown in Table \ref{tab:MD_noMD_uncompCMI_synth}. 
-
-    \import{Tables}{MD_noMD_uncompCMI_synth.tex}
-
-    \subsubsection{Decomposition}
-
-    \import{Tables}{MD_noMD_uncompCMI_decomp_synth.tex}
-    
+ 
 
     \section{Conclusion}
 
