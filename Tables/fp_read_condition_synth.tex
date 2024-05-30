@@ -1,0 +1,24 @@
+\begin{table}[ht!]
+
+\caption{\label{tab:fp_read_condition_synth}Comparison to For-Profit Readmission Synthetic DiD Results, All Conditions}
+\centering
+\begin{tabular}[t]{lccccccccc}
+\toprule
+\multicolumn{1}{c}{\underline{ }} & \multicolumn{3}{c}{\underline{Heart Attack}} & \multicolumn{3}{c}{\underline{Heart Failure}} & \multicolumn{3}{c}{\underline{Pneumonia}} \\
+ & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9)\\
+\midrule
+For-Profit x Post Program & 0.26$^{***}$ & 0.11 & 0.32$^{**}$ & 0.01 & -0.23 & -0.05 & -0.05 & -0.43$^{**}$ & -0.01\\
+ & (0.07) & (0.16) & (0.1) & (0.08) & (0.21) & (0.1) & (0.07) & (0.15) & (0.08)\\
+\textbf{Comparison Group:} &  &  &  &  &  &  &  &  & \\
+All NFP & $\checkmark$ &  &  & $\checkmark$ &  &  & $\checkmark$ &  & \\
+NFP w/ MD Exec &  & $\checkmark$ &  &  & $\checkmark$ &  &  & $\checkmark$ & \\
+\addlinespace
+NFP w/out MD Exec &  &  & $\checkmark$ &  &  & $\checkmark$ &  &  & $\checkmark$\\
+ &  &  &  &  &  &  &  &  & \\
+Observations & 3,935 & 1,840 & 2,585 & 5,475 & 2,710 & 3,885 & 5,490 & 2,715 & 3,890\\
+\bottomrule
+\multicolumn{10}{l}{\textsuperscript{} Results from Equation with condition specific readmission rates as outcome variables.}\\
+\multicolumn{10}{l}{\textsuperscript{} Standard errors are clustered at the hospital level.}\\
+\multicolumn{10}{l}{\textsuperscript{} Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1}\\
+\end{tabular}
+\end{table}
