@@ -1,46 +1,49 @@
-\begin{table}[h]
+\begin{table}[ht!]
 \centering
 \caption{\label{tab:sumstats_samples} Summary Statistics by Sub-Sample}
 \centering
 \begin{tabular}[t]{lcccccl}
 \toprule
+ & (1) & (2) & (3) & (4) & (5) & (6)\\
+\addlinespace[0.3em]
 \multicolumn{2}{c}{ } & \multicolumn{3}{c}{Not-for-Profit} & \multicolumn{2}{c}{Stable Not-for-Profit} \\
 \cmidrule(l{3pt}r{3pt}){3-5} \cmidrule(l{3pt}r{3pt}){6-7}
 Variable & For-Profit & All & Ever MD & Never MD & Ever MD & Never MD\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{Hospital Characteristics}}\\
-\hspace{1em}Number Beds & 155.16 & 148.83 & 231.79 & 114.57 & 215.73 & 114.57\\
-\hspace{1em}Num. Patients AMI & 112.41 & 138.06 & 228.35 & 109.00 & 209.21 & 108.93\\
-\hspace{1em}Num. Patients HF & 275.70 & 298.96 & 475.38 & 265.60 & 453.20 & 265.34\\
-\hspace{1em}Num. Patients Pneumonia & 234.45 & 258.08 & 393.72 & 255.99 & 390.30 & 255.72\\
+\hspace{1em}Number Beds & 155 & 149 & 232 & 115 & 216 & 115\\
+\hspace{1em}Num. Patients AMI & 112 & 138 & 228 & 109 & 209 & 109\\
+\hspace{1em}Num. Patients HF & 276 & 299 & 475 & 266 & 453 & 265\\
+\hspace{1em}Num. Patients Pneumonia & 234 & 258 & 394 & 256 & 390 & 256\\
 \hspace{1em}Academic Med. Center & 0.17 & 0.27 & 0.40 & 0.24 & 0.48 & 0.24\\
 \hspace{1em}Physician Owned & 0.19 & 0.01 & 0.01 & 0.01 & 0.03 & 0.01\\
 \hspace{1em}System Affiliated & 0.90 & 0.60 & 0.60 & 0.43 & 0.44 & 0.28\\
 \hspace{1em}Case Mix Index & 1.44 & 1.44 & 1.50 & 1.37 & 1.52 & 1.37\\
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{Penalty/Payment Variables}}\\
-\hspace{1em}Ever Received HVBP Incentive & 0.87 & 0.62 & 0.81 & 0.59 & 0.71 & 0.59\\
+\hspace{1em}Ever Received HVBP & 0.87 & 0.62 & 0.81 & 0.59 & 0.71 & 0.59\\
 \hspace{1em}Penalized for AMI & 0.03 & 0.03 & 0.05 & 0.03 & 0.04 & 0.03\\
 \hspace{1em}Penalized for HF & 0.06 & 0.06 & 0.04 & 0.05 & 0.05 & 0.05\\
 \hspace{1em}Penalized for Pneumonia & 0.06 & 0.05 & 0.09 & 0.04 & 0.09 & 0.05\\
 \hspace{1em}Penalized for AMI + HF & 0.06 & 0.04 & 0.06 & 0.04 & 0.05 & 0.04\\
-\hspace{1em}Penalized for AMI + Pneumonia & 0.04 & 0.05 & 0.07 & 0.05 & 0.07 & 0.05\\
-\hspace{1em}Penalized for HF + Pneumonia & 0.20 & 0.13 & 0.12 & 0.12 & 0.11 & 0.12\\
+\hspace{1em}Penalized for AMI + Pneum. & 0.04 & 0.05 & 0.07 & 0.05 & 0.07 & 0.05\\
+\hspace{1em}Penalized for HF + Pneum. & 0.20 & 0.13 & 0.12 & 0.12 & 0.11 & 0.12\\
 \hspace{1em}Penalized for All Conditions & 0.36 & 0.22 & 0.31 & 0.21 & 0.30 & 0.21\\
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{Readmission Outcome Variables}}\\
-\hspace{1em}Weighted Avg. Readmission Rate & 21.09 & 20.47 & 20.63 & 20.44 & 20.79 & 20.44\\
+\hspace{1em}Weighted Avg. Readmission & 21.09 & 20.47 & 20.63 & 20.44 & 20.79 & 20.44\\
 \hspace{1em}AMI Readmission Rate & 19.19 & 19.13 & 19.01 & 19.23 & 18.90 & 19.23\\
 \hspace{1em}HF Readmission Rate & 24.42 & 23.99 & 23.81 & 24.08 & 23.93 & 24.08\\
-\hspace{1em}Pneum. Readmission Rate & 18.30 & 18.00 & 18.10 & 18.00 & 18.26 & 18.00\\
+\hspace{1em}Pneum. Readmission Rate & 18.30 & 18 & 18.10 & 18 & 18.26 & 18\\
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{Mortality Outcome Variables}}\\
 \hspace{1em}Weighted Avg. Mortality Rate & 12.38 & 12.29 & 12.36 & 12.36 & 12.34 & 12.36\\
 \hspace{1em}AMI Mortality Rate & 15.82 & 15.46 & 15.29 & 15.61 & 15.17 & 15.61\\
 \hspace{1em}HF Mortality Rate & 11.52 & 11.67 & 11.71 & 11.83 & 11.57 & 11.82\\
-\hspace{1em}Pneum. Mortality Rate & 12.08 & 11.98 & 11.83 & 12.07 & 12.00 & 12.06\\
-Num. Hospitals & 708.00 & 852.00 & 384.00 & 468.00 & 56.00 & 465.00\\
+\hspace{1em}Pneum. Mortality Rate & 12.08 & 11.98 & 11.83 & 12.07 & 12 & 12.06\\
+\addlinespace[0.3em]
+Num. Hospitals & 708 & 852 & 384 & 468 & 56 & 465\\
 \bottomrule
 \end{tabular}
 \end{table}
