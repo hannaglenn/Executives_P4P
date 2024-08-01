@@ -214,7 +214,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
     I show the results of this estimation with readmission rates as the outcome in Figure \ref{fig:cont_clinicalsynthdid}. In panel \ref{fig:onefourth_read_synth_clinical}, the estimation compares executive teams with no clinical experience to those with up to 25\% of the team having clinical experience. The average treatment effect is .04 and not statistically significant. Thus, there is no significant difference in how these types of teams respond to the incentive change. In panel \ref{fig:onehalf_read_synth_clinical}, I compare hospitals with no clinically trained executives over the course of the sample to hospitals with over a quarter of their team having clinical training. While these hospitals have parallel pre-trends, hospitals without clinically trained executives decrease readmissions by .64 (standard error .33) more than hospitals with clinically trained executives. Thus, the readmission rate response is fully driven by having a higher proportion of clinical executives relative to no clinical executives.
 
     \begin{figure}[ht!]
-     \caption{Effect of Clinical Experience on Readmission Rates, Binned Treatment}
+     \caption{Effect of Clinical Training on Readmission Rates, Binned Treatment}
      \centering
      \begin{subfigure}[b]{0.45\textwidth}
          \centering
@@ -236,7 +236,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
 
     \begin{figure}[ht!]
-     \caption{Effect of Clinical Experience on Mortality Rates, Binned Treatment}
+     \caption{Effect of Clinical Training on Mortality Rates, Binned Treatment}
      \centering
      \begin{subfigure}[b]{0.45\textwidth}
          \centering
@@ -271,7 +271,28 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     \section{Internal Medicine vs. Other Specialties}
 
-    While most doctors still take a hippocratic oath to care for patients with integrity and compassion, doctors with training in certain specialties may be more equipped to improve care for patients with the specific conditions relevant in this context. Specifically, a pulmonologist typically treats pneumonia, and a cardiologist typically treats heart failure and heart attack patients, which are the three conditions considered in the HRRP penalties. Both of these specialties are under the umbrella of internal medicine. My physician specialty information does not get more granular than internal medicine as a specialty. Thus, I estimate the difference in response between 
+    While most doctors still take a hippocratic oath to provide care with integrity and compassion, doctors with training in certain specialties may be more equipped to improve care for patients with the particular conditions relevant in this context. Specifically, a pulmonologist typically treats pneumonia, and a cardiologist typically treats heart failure and heart attack patients, which are the three conditions considered in the HRRP penalties. Both of these specialties are under the umbrella of internal medicine. The physician specialty information in my data does not get more granular than internal medicine as a specialty. Thus, I estimate the difference in response between internal medicine physicians and other specialty physicians. 
+
+    \begin{figure}[ht!]
+     \caption{Effect of Internal Medicine Training on Quality}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{Readmission Rates}
+         \includegraphics[width=\textwidth]{Objects/read_specialty_synth_graph.pdf}
+         \label{fig:read_spec}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{Mortality Rates}
+         \includegraphics[width=\textwidth]{Objects/mort_specialty_synth_graph.pdf}
+         \label{fig:mort_spec}
+     \end{subfigure}
+        \label{fig:specialty}
+    \end{figure}
+
+
 
 
     \section{Are Clinical Executives Less Profit Driven?}\label{sec:forprofit}
