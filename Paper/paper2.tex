@@ -271,7 +271,9 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     \section{Internal Medicine vs. Other Specialties}
 
-    While most doctors still take a hippocratic oath to provide care with integrity and compassion, doctors with training in certain specialties may be more equipped to improve care for patients with the particular conditions relevant in this context. Specifically, a pulmonologist typically treats pneumonia, and a cardiologist typically treats heart failure and heart attack patients, which are the three conditions considered in the HRRP penalties. Both of these specialties are under the umbrella of internal medicine. The physician specialty information in my data does not get more granular than internal medicine as a specialty. Thus, I estimate the difference in response between internal medicine physicians and other specialty physicians. 
+    While most doctors still take a hippocratic oath to provide care with integrity and compassion, doctors with training in certain specialties may be more equipped to improve care for patients with the particular conditions relevant in this context. Specifically, a pulmonologist typically treats pneumonia, and a cardiologist typically treats heart failure and heart attack patients, which are the three conditions considered in the HRRP penalties. Both of these specialties are under the umbrella of internal medicine, which is the most granular specialty type in my data.
+
+    I limit the sample of hospitals to those who always have some type of clinical executive over the sample period. Then, I estimate the difference in readmission and mortality rates after pay-for-performance among hospitals who do and do not have an internal medicine clinical executive. I lose a significant fraction of the sample with this limitation: there are 60 hospitals that consistently have an internal medicine executive or only a different specialty executive. The summary statistics for these samples are in Appendix 
 
     \begin{figure}[ht!]
      \caption{Effect of Internal Medicine Training on Quality}
@@ -491,6 +493,8 @@ I then create a name-level data set that only includes executives. That is, I re
 \section{Additional Summary Statistics}\label{app:sumstats}
 
 \import{Tables}{forprofit_sample_sumstats.tex}
+
+\import{Tables}{specialty_sumstats.tex}
 
 \subsection{Matched vs. Unmatched Not-for-Profits}\label{app:matched}
 
