@@ -1,0 +1,24 @@
+\begin{table}[ht!]
+
+\caption{\label{tab:main_twfe_match}Effect of Clinically Trained Executive, TWFE and Matched Sample}
+\centering
+\begin{tabular}[t]{lcccl}
+\toprule
+\multicolumn{1}{c}{\underline{ }} & \multicolumn{2}{c}{\underline{TWFE}} & \multicolumn{2}{c}{\underline{Matched Sample}} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{Read} & \multicolumn{1}{c}{Mort} & \multicolumn{1}{c}{Read} & \multicolumn{1}{c}{Mort} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3} \cmidrule(l{3pt}r{3pt}){4-4} \cmidrule(l{3pt}r{3pt}){5-5}
+ & (1) & (2) & (3) & (4)\\
+\midrule
+Ever Clinical Exec x Post Program & 0.42$^{**}$ & 0.11 & 0.65$^{*}$ & 0.03\\
+ & (0.15) & (0.15) & (0.3) & (0.4)\\
+ &  &  &  & \\
+Hospital FE & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
+Year FE & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
+\addlinespace
+Observations & 2,387 & 2,381 & 1,025 & 1,023\\
+\bottomrule
+\multicolumn{5}{l}{\textsuperscript{} Standard errors are clustered at the hospital level.}\\
+\multicolumn{5}{l}{\textsuperscript{} Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1}\\
+\end{tabular}
+\end{table}
