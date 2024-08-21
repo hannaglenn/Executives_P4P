@@ -199,6 +199,8 @@ sorting=ynt,citestyle=authoryear]{biblatex}
         \label{fig:clinicalsynthdid}
     \end{figure}
 
+    \subsection{Intensive Margin}
+
     Additionally, I estimate the intensive margin of clinical leadership: whether the fraction of clinically trained executives matters for response to financial incentive changes. I categorize hospitals with clinically trained executives into two bins: above the median and below median fraction of clinically trained executives. Again, I present the unweighted version of the synthetic difference-in-differences that I ultimately employ:
 
     \begin{equation}
@@ -212,7 +214,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     \noindent where $\rho$ is the fraction of clinical executives on hospital $h$'s executive team, $\eta$ is the median fraction of clinically trained executives, which is .2 in this sample, and $\gamma$ and $\delta$ are hospital and time fixed effects. 
 
-    I present the results of this estimation with readmission rates as the outcome in Figure \ref{fig:cont_clinicalsynthdid}. In panel \ref{fig:belowmed_read_synth_clinical}, I compare executive teams with no clinical training to those with a fraction of clinically trained executives up to the median value, 20\%. With an average treatment effect of .21 (standard error .31), hospitals having this range of clinically trained executives are not driving the main finding. However, in panel \ref{fig:abovemed_read_synth_clinical}, I compare hospitals with no clinically trained executives to hospitals with a fraction of clinically trained executives over the median of 20\%. I find that hospitals without clinically trained executives decrease readmissions by .6 (standard error .14) more than hospitals with clinically trained executives. Thus, the readmission rate response is driven by having a higher proportion of clinical executives relative to no clinical executives.
+    I present the results of this estimation with readmission rates as the outcome in Figure \ref{fig:cont_clinicalsynthdid}. In panel \ref{fig:belowmed_read_synth_clinical}, I compare executive teams with no clinical training to those with a fraction of clinically trained executives up to the median value, 20\%. With an average treatment effect of .21 (standard error .31), hospitals having this range of clinically trained executives are not driving the main finding. However, in panel \ref{fig:abovemed_read_synth_clinical}, I compare hospitals with no clinically trained executives to hospitals with a fraction of clinically trained executives over the median of 20\%. I find that hospitals without clinically trained executives decrease readmissions by .6 (standard error .14) more than hospitals with clinically trained executives. Thus, the readmission rate response is driven by having a higher proportion of clinical executives relative to no clinical executives.\footnote{This result holds even when limiting the sample to hospitals with a similar total executive team sizes (Appendix \ref{app:binned})}
 
     \begin{figure}[ht!]
      \caption{Effect of Clinical Training on Readmission Rates, Binned Treatment}
@@ -350,7 +352,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     Given that having clinically trained executives does affect hospital response to financial incentives on quality, an important distinction is whether the existing clinical leaders \textit{reveal} the underlying objectives of the hospital, or \textit{manage} the hospital differently. Up to this point, I have limited the sample of nonprofit hospitals to those that don't change their propensity to hire a clinically trained executive over the sample period, which combines any signaling and managing effects. However, under the assumption that hiring or firing these types of executives is not correlated with the pay-for-performance policy changes, such changes can be leveraged to decompose the effect into signaling versus managing. Since this decomposition depends heavily on the assumption that clinical executive hiring is not endogenous, I first investigate leadership changes in response to the policy change. I provide details of the decomposition estimation in Section \ref{sec:decomp}
 
-    \subsection{Leadership Change Analysis} \label{sec:changes}
+    \subsection{Analysis of Executive Team Changes} \label{sec:changes}
 
     Decomposing the observed difference in response based on timing is dependent on executive team changes not being correlated with the financial incentive changes. First, I present raw means over time that represent the fraction of hospitals who hire a clinical executive, fire a clinical executive, or have any change in their propensity to have a clinical executive in Figure \ref{fig:change_means}. There do not seem to be any drastic changes in 2011 or 2012 when the policies were becoming relevant to hospitals. 
 
@@ -376,7 +378,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
          \label{fig:change_analysis}
      \end{figure}
 
-     \subsection{Estimation and Findings}\label{sec:decomp}
+     \subsection{Estimation}\label{sec:decomp}
 
     To disentangle clinical executives as signals of underlying hospital preferences or a different type of hospital manager, I carefully define the ``treat" and comparison group of hospitals in the following estimating equation. For clarity, I also present the specification details in Figure \ref{fig:decomp_spec}. If clinically trained leaders are simply signals of underlying objectives, it shouldn't matter when hospitals have hired a clinical executive. For example, take two hypothetical hospitals. Hospital A has a clinically trained executive from 2010-2011. Hospital B has a clinical executive from 2010-2013. If clinically trained executives are a signal of underlying objectives, these two hospitals should respond similarly to pay-for-performance objectives despite only one of them having a clinical executive in 2012. However, if clinically trained leaders manage the hospital in a unique way, these two hospitals would respond differently since only one of them has clinical leadership in 2012 when the policy changes occurred. 
 
@@ -474,60 +476,70 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
 \appendix
 
+\newpage
+
  \section{Data}\label{appendixdata}
 
 \subsection{Gathering Hospital Leadership Names}
 
-I use the Nonprofit Explorer API to access the archive of NFP tax form 990s. At the time of writing this, information on using version 2 of the API can be found at \hyperlink{https://projects.propublica.org/not-for-profits/api}{https://projects.propublica.org/not-for-profits/api}. 
-    
-There are over 1.5 million not-for-profit entities in the US, making it crucially important to be able to filter by type of entity before analyzing any PDFs. The API allows this by filtering a query based on National Taxonomy of Exempt Entities (NTEE) code. I query only not-for-profits categorized as E20 (hospitals), E21 (community health systems), and E22 (general hospitals). The API has a pagination limit of 100, meaning I can only pull information on 100 hospitals at a time. Therefore, I filter the query further to only consider one state at a time. The only state that has more than 100 entities registered is California, and thus I subset the California query even further by names that include the word "hospital" and names that don't. I combine all of these subsets and have information on each not-for-profits Employee Identification Number. There are 5,588 EINs total in this list. This acts as a list of entities for which I can pull more information. 
+I use the API of ProPublica's Nonprofit Explorer to access the archive of nonprofit Tax Form 990s.\footnote{At the time of writing this, information on using version 2 of the API can be found at \hyperlink{https://projects.propublica.org/not-for-profits/api}{https://projects.propublica.org/not-for-profits/api}.} I extract the Employee Identification Number (EIN) for all nonprofits categorized with a National Taxonomy of Exempt Entities (NTEE) code of E20 (hospital), E21 (community health system), and E22 (general hospital). There are 5,588 EINs total in this list. 
 
-I loop through the list of EINs found in the previous step and query more detailed information from the API on that specific EIN. I save the name, secondary name, state, and zip code, all of which do not vary by year. I also save each year's URL link to the Tax Form 990 PDF. For the sake of a comprehensive data set, I keep years 2006-2020 (I later limit to 2010-2014 when focusing on pay-for-performance initiatives in 2012). Thus, I finish this step with a panel data set of EIN characteristics and PDF locations. Importantly, there are multiple types of Tax Form 990s depending on the size of the not-for-profit. In many cases, one not-for-profit has at least two different forms filed in a given year. I filter out any EIN-years for which there are no PDFs on file. The data on PDF locations contains 4,012 EINs and 61,363 EIN-year-tax forms.
+I query more detailed information from the API on each hospital EIN. I save the name, secondary name, state, and zip code, all of which do not vary by year. I also record URL links to the Tax Form 990 PDFs, which are unique in each year. For the sake of a comprehensive data set, I keep years 2006-2020 (I later limit to 2010-2014 when focusing on pay-for-performance initiatives in 2012). Thus, I finish this step with a panel data set of EIN characteristics and PDF locations. Importantly, there are multiple types of Tax Form 990s depending on the size of the nonprofit. In many cases, one nonprofit has at least two different forms filed in a given year. I filter out any EIN-years for which there are no PDFs available. There are numerous foundations or auxiliary firms with the purpose of raising funds for the hospital, but do not provide services to patients. I filter out any not-for-profit with ``foundation" or ``auxiliary" in the name. I also filter out various specialty centers such as hospice or cancer centers.  
 
-It is necessary to link these not-for-profits with other sources of data to recover penalties from HRRP, payments from HVBP, bed size, and outcomes of interest. The ideal hospital data set to match to is American Hospital Association (AHA) Survey, which contains hospital characteristics and Medicare ID number. However, an EIN to AHA ID crosswalk does not exist. Therefore, I take a conservative approach to matching EINs to American Hospital Association (AHA) ID based on hospital name and location. First, I will discuss limitations and cleaning of the AHA data and tax form data. 
+For my analysis, I need to link these nonprofits with other sources of data to recover penalties from HRRP, payments from HVBP, bed size, and outcomes of interest. I match to the American Hospital Association (AHA) Survey, which contains hospital characteristics and Medicare ID number, and will easily merge to other data sets used for hospital information. An EIN to AHA ID crosswalk does not exist. Therefore, I take a conservative approach to matching EINs to AHA ID based on hospital name and location. 
 
-In the AHA data, I filter only to hospitals in the contiguous US, Alaska, and Hawaii (excluding places like Puerto Rico), classified as not-for-profit or state/community, and those that are general acute care. I also filter out any hospitals who weren't present in the data (or change system ID) in 2009-2015, meaning they either closed or were acquired. Due to the survey nature of this data, a hospital name may look slightly different from one year to the next. For example, ``Waldo County General Hospital" is also ``Waldo County General Hospital Maine Health". Further, zip codes may change by one or two digits, making them unreliable to match based on. To deal with this, I first keep only unique AHA ID, name, zip, state, and system name combinations. Then, I convert the data from long to wide so that each AHA ID occurs only once, but may have multiple names, zip codes, or system names associated with it.
+In the AHA data, I keep general acute care hospitals in the contiguous US, Alaska, and Hawaii (excluding places like Puerto Rico) that are classified as nonprofit or state/community. I remove hospitals who weren't present in the data or change system ID in 2009-2015, meaning they either closed or were acquired. Due to the survey nature of this data, a hospital name may look slightly different from one year to the next. For example, ``Waldo County General Hospital" is also ``Waldo County General Hospital Maine Health". Further, zip codes often change by one or two digits, making them unreliable to match based on. To deal with this, I first keep only unique AHA ID, name, zip, state, and system name combinations. Then, I convert the data from long to wide so that each AHA ID occurs only once, but may have multiple names, zip codes, or system names associated with it.
 
-I consider which not-for-profit entities are not likely to be hospitals and drop them. There are numerous foundations or auxiliary firms with the purpose of raising funds for the hospital, but do not provide services to patients. I filter out any not-for-profit with "foundation" or "auxiliary" in the name. I also filter out various specialty centers that fell into the general hospital category, such as hospice or cancer centers. 
+I proceed matching based on names in several steps. I focus on exact string matches, so I remove all spaces and common characters that could cause mismatches such as \&, ', -, and ``inc". I loop through each AHA ID, limit to nonprofits in the same state, and extract any exact name matches. When an exact match is found, I record the link between AHA ID and EIN. In this first layer of matching, 860 hospitals in the AHA data are linked to an EIN, equivalent to 31\% of nonprofit hospitals in the sample. In the next layer of matching, I remove common words such as ``healthcare", ``regional", ``hospital", etc. That way if there are subtle differences in names, removing common words may allow for an exact match. Again, I take each AHA hospital name and look for exact matches in the nonprofits in the same state. This adds an additional 90 hospital matches, accounting for a total of 34.5\% of AHA hospitals. Finally, I manually search through unmatched EINs to identify any matches. From google searches, I identify an additional 300 EIN-AHA ID matches. yielding a total of 1200 EINs. 
 
-I then proceed matching based on names in multiple layers. I focus on exact string matches, so I remove all spaces and common characters that could cause mismatches such as \&, ', -, and inc. Next, I take each AHA name and look for exact matches in a not-for-profit's first or secondary name for not-for-profits in the same state as the AHA hospital. When an exact match is found, I record the link between AHA ID and EIN. In this first layer of matching, 860 hospitals in the AHA data are linked to an EIN, equivalent to 31\% of AHA not-for-profit hospitals in the sample. 
+While it would be ideal to analyze all nonprofit hospitals, a sample size of 852 firms is relatively large in the hospital executive literature. I present a comparison of in-sample and out-of-sample nonprofits. I present means and standard deviations of these measures in Table \ref{tab:nfp_sample_compare}. The in-sample nonprofits are slightly larger in terms of beds and patients seen. They are also slightly more likely to be penalized or receive payments under the pay-for-performance incentives. However, average readmission and mortality rates are very similar, as well as case mix index. The largest difference in the two samples is that I under-represent nonprofit hospitals in systems. This is due to the nature of the tax form 990s, where systems often file one tax form for the entire system, making it difficult to discern the true managers of a specific hospital. Because of this, I drop hospitals from the sample who only have leadership information from a system tax form. 
 
-In the next layer of matching, I remove common words such as "healthcare", "regional", "hospital", etc. That way if there are subtle differences in names, removing common words may allow for an exact match. Again, I take each AHA hospital name and look for exact matches in the not-for-profits within the same state. This adds an additional 90 hospital matches, accounting for a total of 34.5\% of AHA hospitals. Finally, I manually search through unmatched EINs to identify any matches. From google searches, I identify an additional 300 EIN-AHA ID matches.
+\import{Tables}{NFP_sample_comparison.tex}
 
 I then extract the names of board members and executives from the Tax Form 990 PDFs of matched hospitals. In the data set of hospital PDF URLs that I collected earlier, I limit to the hospitals with solid matches described above. I then loop through each EIN, downloading PDFs locally and using the tesseract package in R to extract text from the relevant pages of the PDF using OCR text extraction methods. In particular, I loop through each page of the PDF, look for the title associated with leadership names: ``Officers, Directors, Trustees, Key Employees, and Highest Compensated Employees", and save all the text from any pages where this title is found. I save the text to a list of all EIN, years present. 
 
-One tricky aspect of the NonProfit Explorer API is that, only in some cases, if two forms are present for an EIN, year, only the first one (which is typically not the one with the relevant information) is pulled. Therefore, for some hospitals, a couple years will have gaps in text extraction data. I locate EIN, years where this problem is occurring, and a team of RAs locates and downloads the correct forms manually. I extract text from these manually downloaded forms in the same manner as above. 
+One aspect of the NonProfit Explorer API is that, only in some cases, if two forms are present for an EIN, year, only the first one (which is typically not the one with the relevant information) is pulled. Therefore, for some hospitals, a couple years will have gaps in text extraction data. I locate EIN, years where this problem is occurring, and a team of RAs locates and downloads the correct forms manually. I extract text from these manually downloaded forms in the same manner as above. 
 
-The form of the text data is a data frame with one column, where each line of text is saved in a different row. Typically on the same page as the names and positions is a list of the highest compensated employees and their compensation. In order to not record extra names, I filter out any rows after the start of this section. I then remove any digits, parentheses and brackets, other punctuation, letters that occur by themselves, two letter ``words" that have no meaning, and excess space between words. I then split up the phrase into individual words, so one phrase with 5 words is broken up into 5 variables. I write a text cleaning function that locates names, positions, titles, and indications of resigning. I flag name rows using the Census name list data for the year 2000. The columns with the most flags are then identified as name columns. I then extract any text that indicates a doctor title and link it to the name located the closest to it. Similarly, I extract text of all potential positions such as CEO, CFO, CMO, president, board member, etc., and link it to the name most closely located to it. 
+The form of the extracted text data is a data frame with one column, where each line of text is saved in a different row. Typically on the same page as the names and positions is a list of the highest compensated employees and their compensation. In order to not record extra names, I filter out any rows after the start of this section. I then remove any digits, parentheses and brackets, other punctuation, letters that occur by themselves, two letter ``words" that have no meaning, and excess space between words. I then split up the phrase into individual words, so one phrase with 5 words is broken up into 5 variables. I write a text cleaning function that locates names, positions, titles, and indications of resigning. I flag name rows using the Census name list data for the year 2000. The columns with the most flags are then identified as name columns. I then extract any text that indicates a doctor title and link it to the name located the closest to it. Similarly, I extract text of all potential positions such as CEO, CFO, CMO, president, board member, etc., and link it to the name most closely located to it. 
 
-I then create a name-level data set that only includes executives. That is, I remove all board members from the data. I then create hospital level indicators based on the names, titles and positions associated with the hospital: the number of MD executives, the number of total executives, and whether the hospital employs a CMO. In Figure \ref{fig:state_doc}, I show the percent of hospitals with a clinical executive in each state. This figure verifies that clinical executives are not concentrated in a small region geographically. 
+I then create a name-level data set that only includes executives. That is, I remove all board members from the data. I now seek to match people in this data set to existing physicians in the National Plan and Provider Enumeration System (NPPES) data, where all physician National Provider Identifiers (NPI) are recorded. For each executive (not just those identified as doctors), I record the number of name matches found in the NPPES data. There are several steps to identifying physicians with a true match. First, if an executive self-identifies as a doctor and has a unique match in NPPES, I record the unique NPI number for that executive. Second, if an executive self-identifies as a doctor and has multiple name matches in NPPES, I manually search online for information on the executive, and find the unique NPI most likely associated with the executive. Finally, for any executives who do not self-identify as a physician, but have name matches in the NPPES data, I manually research them and record the unique NPI number if they are a physician. 
 
-\begin{figure}[ht!]
+The data is now an executive-year level data set with information on clinical training and specialty when relevant. I then create hospital level indicators based on the names, titles and positions associated with the hospital: the number of clinically trained executives, the number of executives with particular specialties, the number of total executives, and whether the hospital employs a CMO. 
+
+\subsection{Executive Team Changes}\label{app:changes}
+
+For the main analysis, I limit to hospitals who either always have a clinically trained executive or never have a clinically trained executive. In a supplemental analyses, I leverage changes to hospital propensity to hire a clinically trained executive. I explore the exogeneity of such changes in Section \ref{sec:changes}. Additionally, I present the number of hospitals who change their propensity to hire a clinically trained executive at different times in Table \ref{tab:change_timing}. I break the timing up into pre-2012, 2012, and post-2012. I show the number of hospitals who have clinically trained executives in different time combinations. The number of hospitals that only have an MD executive in 2012, but at no other time, is only 6. The majority of hospitals (187) who ever have a clinical executive have one in every time period. 
+
+\import{Tables}{change_num_table_2012.tex}
+
+
+\subsection{Merging to Other Hospital Data}
+
+Using the hospital Medicare ID number found in the AHA survey, I merge the executive information to various publicly available hospital data sets. For information on penalties or payments given by the pay-for-performance policies, I use the Hospital Cost Report Information System (HCRIS) data. For 30-day readmission rates, 30-day mortality rates, and the number of patients in the relevant conditions, I merge in the CMS Hospital Compare data. Finally, to investigate the role of selective patient practices I use a case mix index variable, which comes from the CMS Case Mix Index files. 
+
+
+
+\subsection{Additional Summary Statistics}\label{app:sumstats}
+
+\begin{figure}[p!]
     \centering
     \caption{Percent of Hospitals with Clinical Executives by State}
     \includegraphics[width=\textwidth]{Objects/has_doc_avg_map.pdf}
     \label{fig:state_doc}
+    \caption*{\footnotesize{\textit{Notes:} This graph shows the percent of hospitals with a clinically trained executive in each state.}}
 \end{figure}
 
-\section{Additional Summary Statistics}\label{app:sumstats}
+\newpage
 
 \import{Tables}{forprofit_sample_sumstats.tex}
 
+\newpage
+
 \import{Tables}{specialty_sumstats.tex}
 
-\subsection{Matched vs. Unmatched Non-Profits}\label{app:matched}
+\newpage
 
-The sample of all NFP hospitals that I use for analysis consists of 852 hospitals. In the AHA data, there are 2,258 additional NFP hospitals that either were not matched to tax forms, did not exist in the tax form data, or did not have executive names in the tax forms. While it would be ideal to analyze all NFPs, a sample size of 852 firms is relatively large in the hospital executive literature. 
 
-In this section, I compare the in-sample NFPs to the out-of-sample NFPs along observable measures. I present means and standard deviations of these measures in Table \ref{tab:nfp_sample_compare}. The in-sample NFPs are slightly larger in terms of beds and patients seen. They are also slightly more likely to be penalized or receive payments under the pay-for-performance incentives. However, average readmission and mortality rates are very similar, as well as case mix index. The largest difference in the two samples is that I under-represent NFP hospitals in systems. This is due to the nature of the tax form 990s, where systems often file one tax form for the entire system, making it difficult to discern the true managers of a specific hospital. Because of this, I drop hospitals from the sample who only have leadership information from a system tax form. 
-
-\import{Tables}{NFP_sample_comparison.tex}
-
-\subsection{Executive Team Changes}\label{app:changes}
-
-I present the number of hospitals who change their propensity to hire a clinically trained executive at different times in Table \ref{tab:change_timing}. I break the timing up into pre-2012, 2012, and post-2012. I show the number of hospitals who have MDs in different time combinations. The number of hospitals that only have an MD executive in 2012, but at no other time, is only 6. The majority of hospitals (187) who ever have a clinical executive have one in every time period. 
-
-\import{Tables}{change_num_table_2012.tex}
 
 \section{HRRP and HVBP Programs}\label{app:programs}
 
@@ -537,9 +549,54 @@ In October 2011, the Center for Medicare and Medicaid Services (CMS) released a 
 
     The HVBP Program instead rewards hospitals with high quality or significant improvement in quality. Specifically, CMS deducts Medicare payments by 2\% from all eligible hospitals, collects this sum, and divides it among the rewarded hospitals. Several quality and cost measures surrounding safety, efficiency, cost reductions, clinical outcomes, and community engagement are combined to create a single score metric for each hospital. Hospitals are then compared to the average and are rewarded for being above average quality or for showing improvement (\cite{CMS_2023}). 
 
+    \section{Supplemental Analyses}
+
+    \subsection{Binned Treatment}\label{app:binned}
+
+    In Section \ref{sec:clinical}, I present intensive margin results by binning hospitals according to the fraction of their executive team with clinical experience. There, I find that the intensive margin does matter for how hospitals change readmissions after the incentive change. One concern could be that this result is driven by a difference in the total size of hospital executive teams, the denominator of that fraction. In this section, I use the same estimating equation, but I limit to only nonprofit hospitals with 7 or less executives in total, removing outliers of executive team size. The difference in readmission rate response is still driven by teams with a fraction of clinical executives above the median. 
+
+        \begin{figure}[ht!]
+     \caption{Effect of Clinical Training on Readmission Rates, Binned Treatment}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{$\rho \leq \eta$}
+         \includegraphics[width=\textwidth]{Objects/cont_belowmedread_md_nomd_size_synth_graph.pdf}
+         \label{fig:belowmed_read_synth_clinical}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{$\rho > \eta$}
+         \includegraphics[width=\textwidth]{Objects/cont_abovemedread_md_nomd_size_synth_graph.pdf}
+         \label{fig:abovemed_read_synth_clinical}
+     \end{subfigure}
+        \label{fig:cont_clinicalsynthdid}
+    \end{figure}
+
+            \begin{figure}[ht!]
+     \caption{Effect of Clinical Training on Mortality Rates, Binned Treatment}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{$\rho \leq \eta$}
+         \includegraphics[width=\textwidth]{Objects/cont_belowmedmort_md_nomd_size_synth_graph.pdf}
+         \label{fig:belowmed_read_synth_clinical}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{$\rho > \eta$}
+         \includegraphics[width=\textwidth]{Objects/cont_abovemedmort_md_nomd_size_synth_graph.pdf}
+         \label{fig:abovemed_read_synth_clinical}
+     \end{subfigure}
+        \label{fig:cont_clinicalsynthdid}
+    \end{figure}
 
 
-    \section{Selective Patient Practices}\label{app:casemix}
+    
+
+    \subsection{Selective Patient Practices}\label{app:casemix}
 
     A method hospitals have been shown to employ in order to decrease readmission rates is being more selective with which patients to admit to the hospital (\cite{gupta2021impacts}). One hypothesis behind a more drastic quality decrease by non-clinical teams is that they may be more willing to participate in such practices, while executives with clinical training prioritize care for all types of patients. 
 
@@ -553,60 +610,23 @@ In October 2011, the Center for Medicare and Medicaid Services (CMS) released a 
     \end{figure}
 
 
-\section{Results By Condition}\label{app:condition}
+\subsection{Results By Condition}\label{app:condition}
 
 
-\import{Tables}{MD_noMD_readmort_condition_synth.tex}
+\import{Tables}{condition_synthdid_table.tex}
 
-\section{TWFE Regression and Event Study Results}\label{app:fullsample}
+\subsection{TWFE Regression and Event Study Results}\label{app:fullsample}
 
-While I ultimately employ a synthetic difference-in-differences framework, I also present the coefficient estimates and event study tables under a typical TWFE model specification. That is, there is no weighting of the control group or time periods. Table \ref{tab:forprofit_readmort_fullsample} shows coefficient estimates for the three specifications under Equation \ref{eq:forprofit}. Columns (1)-(3) show coefficient estimates for the weighted average readmission rate outcome, and columns (4)-(6) show coefficient estimates from the weighted average mortality outcome. Generally, these results are qualitatively identical to the synthetic difference-in-difference specification results. There is a statistically significant difference in readmission rate response between for-profits and NFPs with a clinical executive. Specifically, for-profits decrease their readmission rates by .4ppts more than NFPs with a clinical executive. There is no difference (statistically or in magnitude) between readmission rate responses of for-profits compared to all NFPs and NFPs without clincal executives. 
+\subsubsection{Effect of Clinically Trained Executives on Response to Financial Incentive on Quality}
 
-Similarly to the synthetic diff-in-diff estimates, there is no statistical difference in mortality between any of the hospital types, but the magnitude difference between for-profits and NFPs with clinical executives is much larger. This oculd be due to the noisiness of mortality as a measure. 
-
-\import{Tables}{forprofit_readmort_fullsample.tex}
-
-Further, I present coefficient estimates in Table \ref{tab:MD_noMD_readmort_fullsample} directly comparing NFPs with and without clinical executives for both readmission and mortality rates. Again, these results are very similar to the main results of the paper, with only slightly larger magnitudes. NFPs without a clinical executive respond to the pay-for-performance incentives by decreasing readmission and mortality rates more aggressively than NFPs with clinical executives. 
-
-\import{Tables}{MD_noMD_readmort_fullsample.tex}
-
-Finally, I present these results in typical event study form in Figure \ref{fig:es_plot}, which show no evidence of significant pre-trends driving the findings. 
+\import{Tables}{main_twfe_match_tab.tex}
 
 \begin{figure}[ht!]
-     \caption{TWFE Event Study Results}
-     \centering
-          \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{}
-         \includegraphics[width=\textwidth]{Objects/read_forprofit_es_graph.pdf}
-         \label{fig:es_plota}
-     \end{subfigure}%
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{}
-         \includegraphics[width=\textwidth]{Objects/read_MD_es_graph.pdf}
-         \label{fig:es_plotb}
-     \end{subfigure}%
-     \vspace{5mm}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{}
-         \includegraphics[width=\textwidth]{Objects/mort_forprofit_es_graph.pdf}
-         \label{fig:es_plotc}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{}
-         \includegraphics[width=\textwidth]{Objects/mort_MD_es_graph.pdf}
-         \label{fig:es_plotd}
-     \end{subfigure}
-        \label{fig:es_plot}
-    \end{figure}
-
-
+    \centering
+    \includegraphics[width=.99\linewidth]{Objects/main_twfe_match_eventstudy.pdf}
+    \caption{Effect of Clinical Executives; Event Study Results}
+    \label{fig:main_twfe_match_es}
+\end{figure}
 
 
 
