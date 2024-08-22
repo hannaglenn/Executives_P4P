@@ -553,7 +553,7 @@ In October 2011, the Center for Medicare and Medicaid Services (CMS) released a 
 
     \subsection{Binned Treatment}\label{app:binned}
 
-    In Section \ref{sec:clinical}, I present intensive margin results by binning hospitals according to the fraction of their executive team with clinical experience. There, I find that the intensive margin does matter for how hospitals change readmissions after the incentive change. One concern could be that this result is driven by a difference in the total size of hospital executive teams, the denominator of that fraction. In this section, I use the same estimating equation, but I limit to only nonprofit hospitals with 7 or less executives in total, removing outliers of executive team size. The difference in readmission rate response is still driven by teams with a fraction of clinical executives above the median. 
+    In Section \ref{sec:clinical}, I present intensive margin results by binning hospitals according to the fraction of their executive team with clinical experience. There, when comparing hospitals with greater than the median (20\%) to less than the median fraction of clinical executives, I find that the difference in response is driven by hospitals with a fraction greater than the median. One concern could be that this result is driven by a difference in the total size of hospital executive teams, the denominator of that fraction. In this section, I use the same estimating equation, but I limit to only nonprofit hospitals with 7 or less executives in total, removing outliers of executive team size. The results are shown in Figure \ref{fig:cont_clinicalsynthdid_read_size}, and show that the response is still driven by hospitals with a fraction of clinical executives above the median. 
 
         \begin{figure}[ht!]
      \caption{Effect of Clinical Training on Readmission Rates, Binned Treatment}
@@ -571,8 +571,10 @@ In October 2011, the Center for Medicare and Medicaid Services (CMS) released a 
          \includegraphics[width=\textwidth]{Objects/cont_abovemedread_md_nomd_size_synth_graph.pdf}
          \label{fig:abovemed_read_synth_clinical}
      \end{subfigure}
-        \label{fig:cont_clinicalsynthdid}
+        \label{fig:cont_clinicalsynthdid_read_size}
     \end{figure}
+
+    I also present results with mortality as the dependent variable, shown in Figure \ref{fig:cont_clinicalsynthdid_size}. These results do not differ from the main finding in that there is no statistical difference in response for hospitals with different types of leadership teams with above or below the median clinically trained executives. 
 
             \begin{figure}[ht!]
      \caption{Effect of Clinical Training on Mortality Rates, Binned Treatment}
@@ -590,7 +592,7 @@ In October 2011, the Center for Medicare and Medicaid Services (CMS) released a 
          \includegraphics[width=\textwidth]{Objects/cont_abovemedmort_md_nomd_size_synth_graph.pdf}
          \label{fig:abovemed_read_synth_clinical}
      \end{subfigure}
-        \label{fig:cont_clinicalsynthdid}
+        \label{fig:cont_clinicalsynthdid_size}
     \end{figure}
 
 
@@ -598,7 +600,7 @@ In October 2011, the Center for Medicare and Medicaid Services (CMS) released a 
 
     \subsection{Selective Patient Practices}\label{app:casemix}
 
-    A method hospitals have been shown to employ in order to decrease readmission rates is being more selective with which patients to admit to the hospital (\cite{gupta2021impacts}). One hypothesis behind a more drastic quality decrease by non-clinical teams is that they may be more willing to participate in such practices, while executives with clinical training prioritize care for all types of patients. 
+    A method hospitals have been shown to employ in order to decrease readmission rates is being more selective with which patients to admit to the hospital (\cite{gupta2021impacts}), as only admitting healthy patients mechanically decreases readmission rates. One hypothesis behind a more drastic quality decrease by non-clinical teams is that they may be more willing to participate in such practices, while executives with clinical training are less likely to turn patients away. 
 
     To test this, I employ case mix index as the outcome in specification \ref{eq:clinical} to determine whether one type of hospital differentially changes patient composition after pay-for-performance incentives, where the same identification assumptions hold. I present the estimated difference in Figure \ref{fig:main_cmi_clinical}, comparing hospitals that never have a clinical executive to hospitals that always have a clinical executive. Neither type of hospital drastically changes case mix index after the incentive change, and there is no estimated differential response in complexity of patients seen in the hospital. Thus, the estimated difference in readmission rate response between clinical and non-clinical executives is not due to differentially changing case mix. 
 
@@ -613,13 +615,24 @@ In October 2011, the Center for Medicare and Medicaid Services (CMS) released a 
 \subsection{Results By Condition}\label{app:condition}
 
 
+In the main body of the paper, the main dependent variables I consider are weighted averages of readmission and mortality rates for several conditions relevant to the policy changes, weighted by the number of patients seen with each condition. Here, I investigate whether the findings are driven by any particular condition. The conditions I consider are heart attack (AMI), heart failure, and pneumonia, which are the conditions that go into the calculation for HRRP penalties. Thus, I consider the effect of clinically trained executives on readmission and mortality rates for each condition individually. I estimate equation \ref{eq:clinical} with these outcome variables. 
+
+I present the resulting estimates and standard errors in Table \ref{tab:results_by_condition}. Columns (1)-(3) show results for readmission rate outcomes in each condition. The main finding, that clinically trained executives lead hospitals to have higher readmission rates after pay-for-performance policies, is primarily driven by patients with pneumonia. While magnitudes are positive for all conditions, pneumonia has the largest magnitude and is the only statistically significant estimate. Columns (4)-(6) present results for mortality rates of each condition. Similarly to the results for weighted average mortality, there are no statistically significant results here. However, pneumonia has the largest positive magnitude, just like pneumonia readmissions. 
+
 \import{Tables}{condition_synthdid_table.tex}
 
-\subsection{TWFE Regression and Event Study Results}\label{app:fullsample}
+
+\subsection{Robustness to Other Estimations}\label{app:fullsample}
+
+In analyses presented in the main body of the paper, I use a synthetic difference-in-differences approach to identify the effect of clinically trained executives. I choose this as the main estimation strategy due to potential unobserved differences correlated with executive choice, where synthetic DiD assures parallel trends by choosing the optimal composition of control and treatment hospitals. In this section, I present results under three different estimation techniques for robustness: classic two way fixed effects, two-way fixed effects with manual weights that balance case mix index and penalties of hospitals with different leadership teams, and synthetic control. 
 
 \subsubsection{Effect of Clinically Trained Executives on Response to Financial Incentive on Quality}
 
+In Section \ref{sec:clinical}, I first establish the effect of clinically trained executives on response to change in incentives on quality using a synthetic difference-in-differences approach. Now, I present results using various estimation techniques in Table \ref{tab:main_twfe_match} in order to assess to robustness of this finding. 
+
 \import{Tables}{main_twfe_match_tab.tex}
+
+Additionally, I estimate an event study version of the two way fixed effects specifications. The estimates and 95\% confidence intervals are shown in Figure \ref{fig:main_twfe_match_es}. These confirm the main findings with slightly noisier estimates, and show that the difference in response in readmission rates occurs in 2013 and 2014, one and two years after the policy changes. The mortality results confirm the main findings, that there is no difference in response in mortality rates. 
 
 \begin{figure}[ht!]
     \centering
@@ -629,6 +642,10 @@ In October 2011, the Center for Medicare and Medicaid Services (CMS) released a 
 \end{figure}
 
 
+
+\subsubsection{Are Clinical Executives Less Profit Driven?}
+
+\subsubsection{Signaling vs. Managing Decomposition}
 
 
 
