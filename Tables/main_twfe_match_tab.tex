@@ -1,25 +1,24 @@
 \begin{table}[ht!]
 
-\caption{\label{tab:main_twfe_match}Effect of Clinically Trained Executive; TWFE and Matched Sample}
+\caption{\label{tab:main_twfe_match}Effect of Clinically Trained Executive, Various Estimations}
 \centering
-\begin{tabular}[t]{lcccc}
+\begin{tabular}[t]{lcccccl}
 \toprule
-\multicolumn{1}{c}{} & \multicolumn{2}{c}{TWFE} & \multicolumn{2}{c}{Matched Sample} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
-\addlinespace[0.3em]
-\multicolumn{1}{c}{ } & \multicolumn{1}{c}{Readmission} & \multicolumn{1}{c}{Mortality} & \multicolumn{1}{c}{Readmission} & \multicolumn{1}{c}{Mortality} \\
-\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3} \cmidrule(l{3pt}r{3pt}){4-4} \cmidrule(l{3pt}r{3pt}){5-5}
- & (1) & (2) & (3) & (4)\\
+\multicolumn{1}{c}{\underline{ }} & \multicolumn{3}{c}{\underline{Readmission Rate}} & \multicolumn{3}{c}{\underline{Mortality Rate}} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{TWFE} & \multicolumn{1}{c}{Matched} & \multicolumn{1}{c}{SC} & \multicolumn{1}{c}{TWFE} & \multicolumn{1}{c}{Matched} & \multicolumn{1}{c}{SC} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3} \cmidrule(l{3pt}r{3pt}){4-4} \cmidrule(l{3pt}r{3pt}){5-5} \cmidrule(l{3pt}r{3pt}){6-6} \cmidrule(l{3pt}r{3pt}){7-7}
+ & (1) & (2) & (3) & (4) & (5) & (6)\\
 \midrule
-Always Clinical Exec x Post Program & 0.42$^{**}$ & 0.11 & 0.65$^{*}$ & 0.03\\
- & (0.15) & (0.15) & (0.3) & (0.4)\\
- &  &  &  & \\
-Hospital FE & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
-Year FE & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
+Ever Clinical Exec x Post Program & 0.42$^{**}$ & 0.65$^{*}$ & 0.25 & 0.11 & 0.03 & 0.06\\
+ & (0.15) & (0.3) & (0.14) & (0.15) & (0.4) & (0.12)\\
+ &  &  &  &  &  & \\
+Hospital FE & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
+Year FE & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
 \addlinespace
-Observations & 2,387 & 2,381 & 1,025 & 1,023\\
+Observations & 2,387 & 1,025 & 1,640 & 2,381 & 1,023 & 1,640\\
 \bottomrule
-\multicolumn{5}{l}{\textsuperscript{} Standard errors are clustered at the hospital level.}\\
-\multicolumn{5}{l}{\textsuperscript{} Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1}\\
+\multicolumn{7}{l}{\textsuperscript{} Standard errors are clustered at the hospital level.}\\
+\multicolumn{7}{l}{\textsuperscript{} Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1}\\
 \end{tabular}
 \end{table}
