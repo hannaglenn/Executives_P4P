@@ -1,0 +1,24 @@
+\begin{table}[ht!]
+
+\caption{\label{tab:signal_manage_mort_estimators}Signaling vs. Managing Decomp. (mortmission Rates), Various Estimations}
+\centering
+\begin{tabular}[t]{lcccccl}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Signaling Effect} & \multicolumn{3}{c}{Managing Effect} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{TWFE} & \multicolumn{1}{c}{Matched} & \multicolumn{1}{c}{SC} & \multicolumn{1}{c}{TWFE} & \multicolumn{1}{c}{Matched} & \multicolumn{1}{c}{SC} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3} \cmidrule(l{3pt}r{3pt}){4-4} \cmidrule(l{3pt}r{3pt}){5-5} \cmidrule(l{3pt}r{3pt}){6-6} \cmidrule(l{3pt}r{3pt}){7-7}
+ & (1) & (2) & (3) & (4) & (5) & (6)\\
+\midrule
+Estimate & -0.01 & -0.23 & 0.02 & 0.14 & -0.05 & 0.11\\
+ & (0.08) & (0.18) & (0.06) & (0.11) & (0.28) & (0.08)\\
+ &  &  &  &  &  & \\
+Hospital FE & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
+Year FE & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$\\
+\addlinespace
+Observations & 3,005 & 670 & 3,005 & 1,595 & 320 & 2,040\\
+\bottomrule
+\multicolumn{7}{l}{\textsuperscript{} Standard errors are clustered at the hospital level.}\\
+\multicolumn{7}{l}{\textsuperscript{} Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1}\\
+\end{tabular}
+\end{table}
