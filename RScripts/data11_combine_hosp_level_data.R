@@ -22,7 +22,7 @@ hc_readm_2013 <- read_csv(paste0(raw_data_path, "/Hospital Compare/vwhqi_readm_r
 hc_readm_2014 <- read_csv(paste0(raw_data_path, "/Hospital Compare/vwhqi_readm_reduction_2014.csv"))
 hc_readm_2015 <- read_csv(paste0(raw_data_path, "/Hospital Compare/vwhqi_readm_reduction_2015.csv"))
 # Data that I created on leadership teams from the tax forms
-ein_leadership_data <- read_rds(paste0(created_data_path, "ein_leadership_changes_data.rds"))
+ein_leadership_data <- read_rds(paste0(created_data_path, "ein_leadership_changes_data4.rds"))
 # Data that I created on outcomes from Hospital Compare
 outcomes_data <- read_rds(paste0(created_data_path, "hosp_outcomes.rds"))
 # read in case mix index
@@ -68,7 +68,7 @@ AHA <- AHA %>%
   select(-count, -sum)
   # 3,766
 
-AHA <- complete(AHA, MCRNUM, YEAR=2009:2015) %>%
+AHA <- complete(AHA, MCRNUM, YEAR=2009:2014) %>%
   group_by(MCRNUM) %>%
   fill(CNTRL, .direction="downup") %>%
   ungroup()
@@ -77,11 +77,11 @@ AHA <- complete(AHA, MCRNUM, YEAR=2009:2015) %>%
 matches <- rbind(AHA_ein_matches, manual_matched_eins)
 
 matches <- matches %>%
-  mutate(year=2008) %>%
+  mutate(year=2010) %>%
   filter(!is.na(ein_hosp)) %>%
   select(-ein_sys)
 
-matches <- complete(matches,ID, year=2008:2015) %>%
+matches <- complete(matches,ID, year=2010:2014) %>%
   group_by(ID) %>%
   fill(ein_hosp, .direction="downup") %>%
   ungroup()
@@ -97,7 +97,7 @@ observe <- matches %>%
 
 # only keep rows that had values in that data set
 matches <- matches %>%
-  mutate(drop=ifelse(year %in% c(2010,2011,2012,2013,2014) & is.na(num_execs),1,0)) %>%
+  mutate(drop=ifelse(is.na(num_execs),1,0)) %>%
   group_by(ein_hosp) %>%
   mutate(drop=sum(drop, na.rm=T)) %>%
   ungroup() %>%
@@ -114,14 +114,11 @@ hospital_data <- hospital_data %>%
   group_by(ID) %>%
   fill(MCRNUM, .direction="downup") %>%
   ungroup() %>%
-  select(ID, ein_hosp, MCRNUM, MSTATE, YEAR, CNTRL, MAPP5, MAPP8, FTMT, PHYGP, FTRNTF, SUBS, SYSID, EHLTH, MNGT, 
-         num_execs, num_doctors, ever_cmo, any_change, no_changes_2010_2014, num_doc_change, no_num_md_change_2010_2014,
-         md_change, no_md_change_2010_2014, num_exec_change, no_num_execs_change_2010_2014, ceo_change, no_ceo_change_2010_2014) %>%
   rename(year=YEAR)
 
 # Join HCRIS data ############
 HCRIS <- HCRIS %>%
-  select(provider_number, year, beds, hrrp_payment, operating_expenses, uncomp_care)
+  select(provider_number, year, beds, hrrp_payment, hvbp_payment)
 
 hospital_data <- hospital_data %>%
    left_join(HCRIS, by=c("year", "MCRNUM"="provider_number"))
@@ -129,10 +126,16 @@ hospital_data <- hospital_data %>%
 # drop data I don't need anymore
 rm(AHA_ein_matches, AHA, ein_leadership_data, manual_matched_eins)
 
-# # create indicator for whether the hospital was penalized (from HCRIS data)
+# create indicator for whether the hospital was HRRP penalized (from HCRIS data)
 hospital_data <- hospital_data %>%
-   mutate(penalized_HCRIS=ifelse(hrrp_payment>0,1,0)) %>%
-   mutate(penalized_HCRIS=ifelse(year>=2012 & is.na(hrrp_payment),0,penalized_HCRIS))
+   mutate(penalized_hrrp_HCRIS=ifelse(hrrp_payment>0,1,0)) %>%
+   mutate(penalized_hrrp_HCRIS=ifelse(year>=2012 & is.na(hrrp_payment),0,penalized_hrrp_HCRIS))
+
+# create indicator for whether the hospital was HVBP incentivized (from HCRIS data)
+hospital_data <- hospital_data %>%
+  mutate(hvbp_payment = abs(hvbp_payment)) %>%
+  mutate(payment_hvbp_HCRIS=ifelse(hvbp_payment>0,1,0)) %>%
+  mutate(payment_hvbp_HCRIS=ifelse(year>=2012 & is.na(hvbp_payment),0,payment_hvbp_HCRIS))
 
 # Join Hospital Compare HRRP Data ##################
 hc_readm_2012 <- hc_readm_2012 %>%
@@ -200,11 +203,6 @@ observe <- hospital_data %>%
 #   mutate(penalized_HC = ifelse(is.na(penalized_HC), penalized_HCRIS, penalized_HC))
 
 
-# # Look at mean of penalized over time to compare
- penalized_means <- hospital_data %>%
-   group_by(year) %>%
-   summarise_at(c("penalized_HCRIS", "penalized_HC"), list(mean), na.rm=T)
-
 rm(hc_readm, hc_readm_2012, hc_readm_2013, hc_readm_2014, hc_readm_2015, hc_dups, observe, HCRIS, matches, impact)
 
 # Join outcomes data ###############
@@ -219,6 +217,65 @@ hospital_data <- hospital_data %>%
          ever_pen_hf = sum(pen_hf, na.rm=T),
          ever_pen_pnem = sum(pen_pnem, na.rm=T)) %>%
   ungroup() 
+
+# create other penalty combinations
+hospital_data <- hospital_data %>%
+  mutate(ever_pen_ha_only=ifelse(ever_pen_ha>=1 & ever_pen_hf==0 & ever_pen_pnem==0,1,0), 
+         ever_pen_hf_only=ifelse(ever_pen_hf>=1 & ever_pen_ha==0 & ever_pen_pnem==0,1,0), 
+         ever_pen_pnem_only=ifelse(ever_pen_pnem>=1 & ever_pen_hf==0 & ever_pen_ha==0,1,0), 
+         ever_pen_ami_hf = ifelse(ever_pen_hf>=1 & ever_pen_ha>=1 & ever_pen_pnem==0,1,0),
+         ever_pen_ami_pneum = ifelse(ever_pen_hf==0 & ever_pen_pnem>=1 & ever_pen_ha==1,1,0),
+         ever_pen_hf_pneum = ifelse(ever_pen_hf>=1 & ever_pen_pnem>=1 & ever_pen_ha>=0,1,0),
+         ever_pen_all = ifelse(ever_pen_hf>=1 & ever_pen_ha>=1 & ever_pen_pnem>=1,1,0)) %>%
+  mutate(academic = ifelse(MAPP5==1,1,0)) %>%
+  select(-MAPP5)
+
+# remove hospitals with less than 15 beds
+hospital_data <- hospital_data %>%
+  group_by(ID) %>%
+  mutate(maxbeds=max(beds, na.rm=T)) %>%
+  ungroup() %>%
+  filter(maxbeds>=15) %>%
+  select(-maxbeds)
+
+# fill ID
+hospital_data <- hospital_data %>%
+  group_by(MCRNUM) %>%
+  fill(ID, .direction="downup") %>%
+  ungroup() %>%
+  filter(!is.na(ID)) 
+
+# Remove hospitals that change from nonprofit to for-profit or vice versa
+hospital_data <- hospital_data %>%
+  mutate(profit_status = ifelse(CNTRL %in% c(12,13,14,15,16,23),"nonprofit","forprofit"))
+
+hospital_data <- hospital_data %>%
+  mutate(NFP = ifelse(profit_status=="nonprofit", 1, 0),
+         FP = ifelse(profit_status=="forprofit",1,0)) %>%
+  group_by(ID) %>%
+  arrange(year) %>%
+  mutate(lag_NFP = dplyr::lag(NFP)) %>%
+  ungroup() %>%
+  filter(NFP==lag_NFP | !is.na(num_execs))
+
+# Create ever received payment
+hospital_data <- hospital_data %>%
+  group_by(ID) %>%
+  mutate(ever_hvbp = ifelse(sum(payment_hvbp_HCRIS, na.rm=T)>0,1,0)) %>%
+  ungroup()
+
+# create ever variables from AHA
+hospital_data <- hospital_data %>%
+  mutate(part_of_system = ifelse(is.na(SYSID),0,1)) %>%
+  mutate(ever_subs = ifelse(SUBS==1,1,NA)) %>%
+  mutate(ever_part_of_system=ifelse(part_of_system==1,1,NA)) %>%
+  group_by(ID) %>%
+  fill(ever_part_of_system, ever_subs, .direction = "downup") %>%
+  ungroup() %>%
+  mutate(ever_part_of_system=ifelse(is.na(ever_part_of_system),0,ever_part_of_system)) %>%
+  mutate(ever_subs = ifelse(is.na(ever_subs),0,ever_subs))
+
+
 
 # find out the percentile of the hospital's highest rate in the first year they were penalized
 perc <- hospital_data %>%
@@ -236,17 +293,10 @@ perc <- hospital_data %>%
 
 hospital_data <- hospital_data %>%
   left_join(perc, by = "MCRNUM") %>%
-  mutate(ever_pen_ha = ifelse(ever_pen_ha>0,1,0),
-         ever_pen_hf = ifelse(ever_pen_hf>0,1,0),
-         ever_pen_pnem = ifelse(ever_pen_pnem>0,1,0)) %>%
   mutate(has_any_md = ifelse(num_doctors>0, 1, 0)) %>%
   mutate(ever_penalized = ifelse(ever_penalized>=1,1,0)) 
 
-
-# matching for the different samples #############
 hospital_data <- hospital_data %>%
-  mutate(profit_status = ifelse(CNTRL %in% c(12,13,14,15,16,23),"nonprofit","forprofit")) %>%
-  filter(!(!is.na(num_execs) & profit_status=="forprofit")) %>%
   mutate(FP=ifelse(profit_status=="forprofit",1,0))
 
 hospital_data <- hospital_data %>%
@@ -254,6 +304,10 @@ hospital_data <- hospital_data %>%
   mutate(ever_has_md = ifelse(sum(has_any_md, na.rm=T)>0,1,0)) %>%
   ungroup() %>%
   mutate(ever_has_md = ifelse(profit_status=="forprofit",NA,ever_has_md)) 
+
+# only keep years 2010 - 2015
+hospital_data <- hospital_data %>%
+  filter(year<2016 & year>2008)
 
 # matching for FP - NFP
 match_data <- hospital_data %>%
@@ -357,7 +411,6 @@ num_leadership <- hospital_data %>%
   summarise(n=n())
 
 # now combine all nonprofits and for-profits into a single category and compare means
-
 means <- hospital_data %>%
   group_by(year, profit_status) %>%
   summarise_if(is.numeric, list(mean), na.rm=T) %>%
@@ -375,10 +428,13 @@ num_leadership <- hospital_data %>%
   group_by(profit_status) %>%
   summarise(n=n())
 
+hospital_data <- hospital_data %>%
+  mutate(ever_ceo_md = ifelse(ever_ceo_md>0,1,0))
+
   
 
 # save the data #####
-saveRDS(hospital_data, paste0(created_data_path, "all_hospital_data.rds"))
+saveRDS(hospital_data, paste0(created_data_path, "all_hospital_data3.rds"))
 
 observe <- hospital_data %>%
   filter(no_md_change_2010_2014==1) %>%
