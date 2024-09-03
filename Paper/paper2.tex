@@ -164,7 +164,11 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     I test empirically whether having clinically trained executives matters in how hospitals respond to the pay-for-performance policies effective in 2012. The quality metrics targeted by the programs are readmission and mortality rates, so I use these as outcomes. I limit the sample to hospitals who always have clinical executives or never have clinical executives. That is, the hospitals in this analysis do not change their propensity to hire a clinical executive during the sample period.\footnote{An important assumption for this analysis is that this sample selection is not correlated with the program enactment. I investigate this assumption in Section \ref{sec:changes}, and find no evidence that hospitals are more or less likely to change their propensity to hire a clinical executive because of the pay-for-performance programs. }
     
-    I ultimately employ a synthetic difference-in-differences estimation strategy that mirrors two-way-fixed effects, where the key independent variable is the interaction between having clinically trained executives and being in years after pay-for-performance took effect. All hospitals had incentive to improve quality in response to the policy change, as penalties and payments are determined by comparing quality among hospitals. Thus, I leverage the timing of the policy change, rather than the policies themselves. One may be concerned about potential differences in quality trends between clinical and non-clinical executive team hospitals leading to a violation in the parallel trends assumption. This is why I implement a synthetic difference-in-differences estimation strategy (\cite{arkhangelsky2021synthetic}). That is, non-clinical team hospitals with trends similar to clinical team hospitals in readmission, mortality, and baseline case mix before the programs are more heavily weighted, as well as time periods that balance pre- and post-program outcomes for non-clinical teams. I present the unweighted two-way-fixed-effects specification equation for clarity, and the identification assumptions are conceptually similar for synthetic difference-in-differences. In Appendix \ref{app:otherestimations}, I show that the findings are robust to using two way fixed effects, matching, or synthetic control. 
+    I ultimately employ a synthetic difference-in-differences estimation strategy that mirrors two-way-fixed effects, where the key independent variable is the interaction between having clinically trained executives and being in years after pay-for-performance took effect. All hospitals had incentive to improve quality in response to the policy change, as penalties and payments are determined by comparing quality among hospitals. Thus, I leverage the timing of the policy change, rather than the policies themselves. 
+    
+    One may be concerned about potential differences in quality trends between clinical and non-clinical executive team hospitals leading to a violation in the parallel trends assumption. This is why I implement a synthetic difference-in-differences estimation strategy (\cite{arkhangelsky2021synthetic}). In particular, I weight more heavily any non-clinical team hospitals with pre-trends similar to clinical team hospitals in readmission, mortality, and baseline case mix. Further, I more heavily weight time periods that balance pre- and post-program outcomes for non-clinical teams. [description of weight distribution here]
+    
+    I present the unweighted two-way-fixed-effects specification equation for clarity, and the identification assumptions are conceptually similar for synthetic difference-in-differences. In Appendix \ref{app:otherestimations}, I show that the findings are robust to using two way fixed effects, matching, or synthetic control. 
 
     \begin{equation}
     \label{eq:clinical}
@@ -646,7 +650,26 @@ Additionally, I estimate an event study version of the two way fixed effects spe
 
 \subsubsection{Are Clinical Executives Less Profit Driven?}
 
+In Section \ref{sec:forprofit}, I test empirically whether nonprofits with different leadership teams respond differently to the incentive change than for-profit hospitals using a synthetic difference-in-differences methodology. Here, I present results from various other estimation strategies. In Table \ref{tab:forprofit_estimators}, I present estimates and standard errors with weighted average readmission rate as the outcome. These results confirm what is shown in the main body of the paper, that nonprofits without clinically trained executives act similarly to for-profits, but nonprofits with clinically trained executives do not. 
+
+\import{Tables}{fp_always_estimators_read_tab.tex}
+
+While the results in the main body of the paper for mortality rates as the dependent variable do not indicate differences in response, I still present the estimates from other estimations in Table \ref{tab:forprofit_mort_estimators}. These results do not contradict what I show in the main body of the paper, as I still see small and statistically insiginificant estimates. 
+
+\import{Tables}{fp_always_estimators_mort_tab.tex}
+
 \subsubsection{Signaling vs. Managing Decomposition}
+
+In Section \ref{sec:sig_man}, I test empirically whether clinical executives make a difference because of a signaling or managing effect. That is, I leverage the timing of hiring clinically trained executives. Here, I present results from the same specification, but various estimation strategies. In Table \ref{tab:signal_manage_read_estimators}, I present estimates and standard errors with weighted average readmission rate as the outcome. These results confirm what is shown in the main body of the paper, that the managing effect is driving the findings.  
+
+
+\import{Tables}{signal_manage_estimators_read_tab.tex}
+
+While the results in the main body of the paper for mortality rates as the dependent variable do not indicate differences in response, I still present the estimates from other estimation strategies in Table \ref{tab:signal_manage_mort_estimators}. These results do not contradict what I show in the main body of the paper, as I still see small and statistically insiginificant estimates. Therefore, there is no opposing signaling vs. managing effect. 
+
+
+\import{Tables}{signal_manage_estimators_mort_tab.tex}
+
 
 
 
