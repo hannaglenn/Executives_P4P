@@ -158,7 +158,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     For the purposes of this paper, I focus mainly on executive teams as a whole instead of specific positions. The main reason for this is because the organization of teams varies so drastically across hospitals that a specific position, even if it exists in two different hospitals, can be meaningfully different. I drop anyone who is solely a board member, and focus on those who have executive in their title, or are labeled as a president or vice president of a department. I create various hospital-level characterizations based on their executive team, such as the existence of a clinically trained executive, the number of clinically trained executives, the number of total executives, and whether the hospital has a Chief Medical Officer. Additionally, I examine changes in propensity to hire a clinical executive. Summary statistics for these variables are shown in Table \ref{leader_sumstats}. On average, NFP hospitals in my sample have 4 executives and .4 clinically trained executives. Sixty-one percent of the sample never changes propensity to hire a clinically trained executive, and 33\% of NFPs in the sample have a Chief Medical Officer at some point. 
 
-    \import{Tables}{leader_sumstats.tex}
+    %\import{Tables}{leader_sumstats.tex}
 
     I combine the resulting sample of not-for-profits with all for-profits in the AHA survey. The outcomes I consider are readmission and mortality rates, which are directly targeted in the pay-for-performance policies, and are found in the CMS Hospital Compare data. I combine rates for pneumonia, AMI, and heart failure (the relevant HRRP conditions) into a weighted average based on the number of patients in each condition. Additionally, I include several relevant hospital characteristics from the AHA survey: number of beds, and whether the hospital is an academic medical center, is physician owned, or is system affiliated. Case mix index, a measure of overall patient complexity, comes from the CMS Case Mix Index files. Whether the hospital was penalized under HRRP or received payments under HVBP is found in the HCRIS data. 
 
@@ -176,12 +176,12 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     I plot weighted average readmission and mortality rates across time for different hospital types in Figure \ref{fig:weighted_read_mort_graph}, where I adjust both rates by baseline patient complexity. Pay-for-performance incentive changes are shown as a dotted line between 2011 and 2012. For-profit hospitals have the highest readmission rates prior to 2012. While the readmission rate trend behaves similarly across hospital types prior to the programs, there are notable trend differences after the programs. For-profits decrease readmissions drastically. NFP trends depend on the presence of an executive MD, where those without a clinically trained executive respond drastically, more similarly to for-profits, than those with a clinically trained executive. In mortality rates, NFPs with a clinically trained executive have the lowest rates before the programs, but differentially continue with an increasing trend in mortality after the programs. While this is purely descriptive evidence, the trends in outcomes point to more similar behavior between for-profits and NFPs without a clinically trained executive in comparison to NFPs with a clinically trained executive.
 
-    \begin{figure}[ht!]
-    \centering
-        \caption{Outcomes Over Time}
-        \includegraphics[width=\textwidth]{Objects/weighted_read_mort_adjusted_graph.pdf}
-        \label{fig:weighted_read_mort_graph}
-    \end{figure}
+    %\begin{figure}[ht!]
+    %\centering
+        %\caption{Outcomes Over Time}
+        %\includegraphics[width=\textwidth]{Objects/weighted_read_mort_adjusted_graph.pdf}
+        %\label{fig:weighted_read_mort_graph}
+    %\end{figure}
 
 
     \section{Modelling Hospital Response to Pay-for-Performance}\label{sec:model}
@@ -313,76 +313,76 @@ sorting=ynt,citestyle=authoryear]{biblatex}
      Panel \ref{fig:read_synth_plota} compares readmission rate responses among for-profits and all NFPs, and shows that on average, there is no difference in how these types of hospitals change readmission rates in response to the incentive changes. However, when the comparison group is limited to NFPs with a clinical executive, panel \ref{fig:read_synth_plotb} shows that there is a differential response to the program between these hospital types. In particular, for-profits decrease readmission rates by .3 more than NFPs with a clinical executive, an additional 3 patient readmission decrease relative to the average number of patients. While numerically small, this difference in response is non-existent between for-profits and NFPs without a clinical executive (panel \ref{fig:read_synth_plotc}), indicating some, if minor, differences in objectives resulting from having a clinical executive. 
 
 
-     \begin{figure}
-     \caption{Readmission Rate Synthetic Difference in Differences Results}
-     \centering
-          \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{For-Profit and All NFP}
-         \includegraphics[width=\textwidth]{Objects/read_fp_nfp_synth_graph.pdf}
-         \label{fig:read_synth_plota}
-     \end{subfigure}%
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{For-Profit and NFP w/ MD Exec}
-         \includegraphics[width=\textwidth]{Objects/read_fp_md_synth_graph.pdf}
-         \label{fig:read_synth_plotb}
-     \end{subfigure}%
-     \vspace{5mm}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{For-Profit and NFP w/out MD Exec}
-         \includegraphics[width=\textwidth]{Objects/read_fp_nomd_synth_graph.pdf}
-         \label{fig:read_synth_plotc}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{NFP w/ and w/out MD Exec}
-         \includegraphics[width=\textwidth]{Objects/read_md_nomd_synth_graph.pdf}
-         \label{fig:read_synth_plotd}
-     \end{subfigure}
-        \label{fig:read_synth_plot}
-    \end{figure}
+    %  \begin{figure}
+    %  \caption{Readmission Rate Synthetic Difference in Differences Results}
+    %  \centering
+    %       \begin{subfigure}[b]{0.45\textwidth}
+    %      \centering
+    %      \caption{For-Profit and All NFP}
+    %      \includegraphics[width=\textwidth]{Objects/read_fp_nfp_synth_graph.pdf}
+    %      \label{fig:read_synth_plota}
+    %  \end{subfigure}%
+    %  \hfill
+    %  \begin{subfigure}[b]{0.45\textwidth}
+    %      \centering
+    %      \caption{For-Profit and NFP w/ MD Exec}
+    %      \includegraphics[width=\textwidth]{Objects/read_fp_md_synth_graph.pdf}
+    %      \label{fig:read_synth_plotb}
+    %  \end{subfigure}%
+    %  \vspace{5mm}
+    %  \hfill
+    %  \begin{subfigure}[b]{0.45\textwidth}
+    %      \centering
+    %      \caption{For-Profit and NFP w/out MD Exec}
+    %      \includegraphics[width=\textwidth]{Objects/read_fp_nomd_synth_graph.pdf}
+    %      \label{fig:read_synth_plotc}
+    %  \end{subfigure}
+    %  \hfill
+    %  \begin{subfigure}[b]{0.45\textwidth}
+    %      \centering
+    %      \caption{NFP w/ and w/out MD Exec}
+    %      \includegraphics[width=\textwidth]{Objects/read_md_nomd_synth_graph.pdf}
+    %      \label{fig:read_synth_plotd}
+    %  \end{subfigure}
+    %     \label{fig:read_synth_plot}
+    % \end{figure}
 
     Next, in panel \ref{fig:read_synth_plotd}, I directly compare NFPs with and without a clinical executive. NFPs without a clinically trained executive lowered readmission rates by .24 ppts more than NFPs with a clinically trained executive. 
 
     I now shift to discussing differential responses of mortality rates. I present estimated differences in mortality rates between different hospital types in Figure \ref{fig:mort_synth_plot}. Panel \ref{fig:mort_synth_plota} compares for-profit and all NFP mortality rates after the pay-for-performance incentives. These results show that there is no difference, both statistically and in magnitude, between mortality rates of for-profits and not-for-profits after the programs. This result holds when the comparison group is limited to NFPs without a clinical executive (panel \ref{fig:mort_synth_plotc}). However, when comparing for-profits to NFPs with a clinical executive, the magnitude of the difference in mortality trends jumps to -.11. While still statistically insignificant, I argue that this still indicates a difference in behavior between the hospital types, particularly due to the documented noisiness of mortality measures (\cite{mackenzie2016measuring}). 
 
-     \begin{figure}
-     \caption{Mortality Rate Synthetic Difference in Differences Results}
-     \centering
-          \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{For-Profit and All NFP}
-         \includegraphics[width=\textwidth]{Objects/mort_fp_nfp_synth_graph.pdf}
-         \label{fig:mort_synth_plota}
-     \end{subfigure}%
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{For-Profit and NFP w/ MD Exec}
-         \includegraphics[width=\textwidth]{Objects/mort_fp_md_synth_graph.pdf}
-         \label{fig:mort_synth_plotb}
-     \end{subfigure}%
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{For-Profit and NFP w/out MD Exec}
-         \includegraphics[width=\textwidth]{Objects/mort_fp_nomd_synth_graph.pdf}
-         \label{fig:mort_synth_plotc}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{NFP w/ and w/out MD Exec}
-         \includegraphics[width=\textwidth]{Objects/mort_md_nomd_synth_graph.pdf}
-         \label{fig:mort_synth_plotd}
-     \end{subfigure}
-        \label{fig:mort_synth_plot}
-    \end{figure}
+    %  \begin{figure}
+    %  \caption{Mortality Rate Synthetic Difference in Differences Results}
+    %  \centering
+    %       \begin{subfigure}[b]{0.45\textwidth}
+    %      \centering
+    %      \caption{For-Profit and All NFP}
+    %      \includegraphics[width=\textwidth]{Objects/mort_fp_nfp_synth_graph.pdf}
+    %      \label{fig:mort_synth_plota}
+    %  \end{subfigure}%
+    %  \hfill
+    %  \begin{subfigure}[b]{0.45\textwidth}
+    %      \centering
+    %      \caption{For-Profit and NFP w/ MD Exec}
+    %      \includegraphics[width=\textwidth]{Objects/mort_fp_md_synth_graph.pdf}
+    %      \label{fig:mort_synth_plotb}
+    %  \end{subfigure}%
+    %  \hfill
+    %  \begin{subfigure}[b]{0.45\textwidth}
+    %      \centering
+    %      \caption{For-Profit and NFP w/out MD Exec}
+    %      \includegraphics[width=\textwidth]{Objects/mort_fp_nomd_synth_graph.pdf}
+    %      \label{fig:mort_synth_plotc}
+    %  \end{subfigure}
+    %  \hfill
+    %  \begin{subfigure}[b]{0.45\textwidth}
+    %      \centering
+    %      \caption{NFP w/ and w/out MD Exec}
+    %      \includegraphics[width=\textwidth]{Objects/mort_md_nomd_synth_graph.pdf}
+    %      \label{fig:mort_synth_plotd}
+    %  \end{subfigure}
+    %     \label{fig:mort_synth_plot}
+    % \end{figure}
 
     I also directly estimate the difference in mortality rates among NFPs with and without clinical experience in panel \ref{fig:mort_synth_plotd}. Again, the difference is not statistically significant, but the coefficient compared to the true nulls in panels \ref{fig:mort_synth_plota} and \ref{fig:mort_synth_plotc} indicates NFPs without a clinical executive potentially decrease mortality more aggressively than NFPs with a clinical executive. In Appendix \ref{app:condition}, I show that these results are mainly driven by pneumonia patients.  
 
@@ -445,7 +445,7 @@ Additionally, under certain assumptions that I discuss in Section \ref{sec:ident
 
     The variable $\text{Program Exposed}_{h}$ is an indicator for whether the hospital eventually was penalized under HRRP or received payments under HVBP. The estimates from this analysis are presented in Table \ref{tab:change_analysis}. Changes in any clinically trained executive are less likely to occur in 2012-2014 relative to 2010, indicating that executive teams are actually becoming more stable over time along the dimension of hiring clinically trained executives. Further, hospitals who end up being penalized through HRRP or receiving payments through HVBP are not more likely to change their propensity to hire any clinically trained executive. Results are similar when considering changes in the number of clinically trained executives. Thus, it seems unlikely that endogenous team formation is biasing the estimates.
 
-     \import{Tables}{change_analysis.tex}
+     % \import{Tables}{change_analysis.tex}
 
     Finally, I assume that no other unobserved changes occurred in 2012 that are correlated with both hospital performance and type. 
 
@@ -529,12 +529,12 @@ In this section, I compare the in-sample NFPs to the out-of-sample NFPs along ob
 
 Here, I present descriptive statistics of executive team changes. In Figure \ref{fig:change_graph}, I show the average rate of MD executives to total executives, the percent of hospitals who fire an MD, and the percent of hospitals who hire an MD. The fraction of MD executives remains stable over time at approximately .22. Similarly, the percent of hospitals who hire an MD over time remains stable at approximately 21\%. There is a small increase in the percent of hospitals who fire an MD in 2011, but even with this increase firing is not common and stable, ranging from 12\% to 13\%. 
 
-\begin{figure}[ht!]
-    \centering
-    \caption{Executive Team Changes Over Time}
-    \includegraphics[width=\textwidth]{Objects/change_graph.pdf}
-    \label{fig:change_graph}
-\end{figure}
+% \begin{figure}[ht!]
+%     \centering
+%     \caption{Executive Team Changes Over Time}
+%     \includegraphics[width=\textwidth]{Objects/change_graph.pdf}
+%     \label{fig:change_graph}
+% \end{figure}
 
 Additionally, I present the number of hospitals who change their propensity to hire a clinically trained executive at different times in Table \ref{tab:change_timing}. I break the timing up into pre-2012, 2012, and post-2012. I show the number of hospitals who have MDs in different time combinations. The number of hospitals that only have an MD executive in 2012, but at no other time, is only 6. The majority of hospitals (187) who ever have a clinical executive have one in every time period. 
 
@@ -560,47 +560,47 @@ While I ultimately employ a synthetic difference-in-differences framework, I als
 
 Similarly to the synthetic diff-in-diff estimates, there is no statistical difference in mortality between any of the hospital types, but the magnitude difference between for-profits and NFPs with clinical executives is much larger. This oculd be due to the noisiness of mortality as a measure. 
 
-\import{Tables}{forprofit_readmort_fullsample.tex}
+%\import{Tables}{forprofit_readmort_fullsample.tex}
 
 Further, I present coefficient estimates in Table \ref{tab:MD_noMD_readmort_fullsample} directly comparing NFPs with and without clinical executives for both readmission and mortality rates. Again, these results are very similar to the main results of the paper, with only slightly larger magnitudes. NFPs without a clinical executive respond to the pay-for-performance incentives by decreasing readmission and mortality rates more aggressively than NFPs with clinical executives. 
 
-\import{Tables}{MD_noMD_readmort_fullsample.tex}
+%\import{Tables}{MD_noMD_readmort_fullsample.tex}
 
 Finally, I present these results in typical event study form in Figure \ref{fig:es_plot}, which show no evidence of significant pre-trends driving the findings. 
 
-\begin{figure}[ht!]
-     \caption{TWFE Event Study Results}
-     \centering
-          \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{}
-         \includegraphics[width=\textwidth]{Objects/read_forprofit_es_graph.pdf}
-         \label{fig:es_plota}
-     \end{subfigure}%
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{}
-         \includegraphics[width=\textwidth]{Objects/read_MD_es_graph.pdf}
-         \label{fig:es_plotb}
-     \end{subfigure}%
-     \vspace{5mm}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{}
-         \includegraphics[width=\textwidth]{Objects/mort_forprofit_es_graph.pdf}
-         \label{fig:es_plotc}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{}
-         \includegraphics[width=\textwidth]{Objects/mort_MD_es_graph.pdf}
-         \label{fig:es_plotd}
-     \end{subfigure}
-        \label{fig:es_plot}
-    \end{figure}
+% \begin{figure}[ht!]
+%      \caption{TWFE Event Study Results}
+%      \centering
+%           \begin{subfigure}[b]{0.45\textwidth}
+%          \centering
+%          \caption{}
+%          \includegraphics[width=\textwidth]{Objects/read_forprofit_es_graph.pdf}
+%          \label{fig:es_plota}
+%      \end{subfigure}%
+%      \hfill
+%      \begin{subfigure}[b]{0.45\textwidth}
+%          \centering
+%          \caption{}
+%          \includegraphics[width=\textwidth]{Objects/read_MD_es_graph.pdf}
+%          \label{fig:es_plotb}
+%      \end{subfigure}%
+%      \vspace{5mm}
+%      \hfill
+%      \begin{subfigure}[b]{0.45\textwidth}
+%          \centering
+%          \caption{}
+%          \includegraphics[width=\textwidth]{Objects/mort_forprofit_es_graph.pdf}
+%          \label{fig:es_plotc}
+%      \end{subfigure}
+%      \hfill
+%      \begin{subfigure}[b]{0.45\textwidth}
+%          \centering
+%          \caption{}
+%          \includegraphics[width=\textwidth]{Objects/mort_MD_es_graph.pdf}
+%          \label{fig:es_plotd}
+%      \end{subfigure}
+%         \label{fig:es_plot}
+%     \end{figure}
 
 
 
@@ -609,9 +609,9 @@ Finally, I present these results in typical event study form in Figure \ref{fig:
 
 While I present the graphical representation of results in the main text, I also present a table of coefficients and standard errors for readmission and mortality rates in Tables \ref{tab:forprofit_readmort_synth} and \ref{tab:MD_noMD_readmort_synth}.
 
-\import{Tables}{forprofit_readmort_synth.tex}
+%\import{Tables}{forprofit_readmort_synth.tex}
 
-\import{Tables}{MD_noMD_readmort_synth.tex}
+%\import{Tables}{MD_noMD_readmort_synth.tex}
 
 
     
