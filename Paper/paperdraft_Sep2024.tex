@@ -166,7 +166,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
     
     I ultimately employ a synthetic difference-in-differences estimation strategy that mirrors two-way-fixed effects, where the key independent variable is the interaction between having clinically trained executives and being in years after pay-for-performance took effect. All hospitals had incentive to improve quality in response to the policy change, as penalties and payments are determined by comparing quality among hospitals. Thus, I leverage the timing of the policy change, rather than the policies themselves. 
     
-    One may be concerned about potential differences in quality trends between clinical and non-clinical executive team hospitals leading to a violation in the parallel trends assumption. This is why I implement a synthetic difference-in-differences estimation strategy (\cite{arkhangelsky2021synthetic}). In particular, I weight more heavily any non-clinical team hospitals with pre-trends similar to clinical team hospitals in readmission, mortality, and baseline case mix. Further, I more heavily weight time periods that balance pre- and post-program outcomes for non-clinical teams. [description of weight distribution here]
+    One may be concerned about potential differences in quality trends between clinical and non-clinical executive team hospitals leading to a violation in the parallel trends assumption. This is why I implement a synthetic difference-in-differences estimation strategy (\cite{arkhangelsky2021synthetic}). In particular, I weight more heavily any non-clinical team hospitals with pre-trends similar to clinical team hospitals in readmission, mortality, and baseline case mix. Further, I more heavily weight time periods that balance pre- and post-program outcomes for non-clinical teams. The control group consists of approximately 240 hospitals, and I show the fairly uniform distribution of their weights in Appendix \ref{app:sumstats}. 
     
     I present the unweighted two-way-fixed-effects specification equation for clarity, and the identification assumptions are conceptually similar for synthetic difference-in-differences. In Appendix \ref{app:otherestimations}, I show that the findings are robust to using two way fixed effects, matching, or synthetic control. 
 
@@ -294,7 +294,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
     \subsection{Estimation}
 
 
-    The hypothesis driven from this theory is that clinically trained executives put more weight on quality of care before the financial incentives on quality began. To investigate this hypothesis empirically, I merge all general for-profit hospitals in the AHA data to the sample of nonprofit hospitals. Then, I compare readmission and mortality rates of always clinical executives and never clinical executives to for-profit hospitals after the incentive change. While I do not have information on leadership teams of for-profit hospitals, on average, they have revealed through their ownership status that they more heavily weigh profit. Thus, comparing different executive team behavior to for-profit behavior helps reveal how profit driven certain leadership teams are. Thus, I estimate the weighted synthetic difference-in-differences version of
+    The hypothesis driven from the theory described in Section \ref{sec:forprofit} is that clinically trained executives put more weight on quality of care before the financial incentives on quality began. To investigate this hypothesis empirically, I merge all general for-profit hospitals in the AHA survey to my sample of nonprofit hospitals. Then, I compare readmission and mortality rates of always clinical executives and never clinical executives to for-profit hospitals after the incentive change. While I do not have information on leadership teams of for-profit hospitals, on average, they have revealed through their ownership status that they more heavily weigh profit. Thus, comparing different executive team behavior to for-profit behavior helps reveal how profit driven certain leadership teams are. Thus, I estimate the weighted synthetic difference-in-differences version of
 
     \begin{equation}
     \label{eq:forprofit}
@@ -542,6 +542,36 @@ Using the hospital Medicare ID number found in the AHA survey, I merge the execu
 \import{Tables}{specialty_sumstats.tex}
 
 \newpage
+
+\begin{figure}
+    \centering
+    \caption{Control Group Weights, Readmission and Baseline Case Mix}
+    \includegraphics[width=0.8\linewidth]{Objects/main_read_control_weights.pdf}
+    \label{fig:main_read_control_weights}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \caption{Time Weights, Readmission and Baseline Case Mix}
+    \includegraphics[width=0.8\linewidth]{Objects/main_read_time_weights.pdf}
+    \label{fig:main_read_time_weights}
+\end{figure}
+
+\newpage
+
+\begin{figure}
+    \centering
+    \caption{Control Group Weights, Mortality and Baseline Case Mix}
+    \includegraphics[width=0.8\linewidth]{Objects/main_mort_control_weights.pdf}
+    \label{fig:main_mort_control_weights}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \caption{Time Weights, Mortality and Baseline Case Mix}
+    \includegraphics[width=0.8\linewidth]{Objects/main_mort_time_weights.pdf}
+    \label{fig:main_mort_time_weights}
+\end{figure}
 
 
 
