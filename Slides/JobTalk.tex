@@ -290,8 +290,8 @@ Evidence from Pay-for-Performance}}
 \begin{block}{\normalsize Gaps in Literature}
     \small 
     \begin{enumerate}
-        \item Limited to large, publicly traded firms: reason to believe this does not extend to nonprofit setting
-        \item Direct responses to policy changes are not well-understood
+        \item Nonprofit firms: reason to believe these findings might not inform leadership in other settings
+        \item Direct responses to policy changes
     \end{enumerate}
 \end{block}
 \end{frame}
@@ -305,32 +305,38 @@ Evidence from Pay-for-Performance}}
 
 \vspace{5mm}
 
-\textbf{Hospital care makes up a third of health care spending} \scriptsize (\cite{cms2024nhe}) \normalsize
-\begin{itemize}
-    \item A majority of hospitals are nonprofit and their objectives are not as clear as classic for-profit firms
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{Hospital care makes up a third of health care spending} \scriptsize (\cite{cms2024nhe}) \normalsize
+
+\vspace{2mm}
+    
+    \begin{itemize}
+        \item Nonprofits drive the hospital industry \scriptsize (\cite{ASPE_2023}) \normalsize
+    \end{itemize}
 
 \vspace{5mm}
 
-\textbf{Policies often aim to improve the value of health care delivery}
+    \item \textbf{Policies often aim to improve the value of health care delivery}
 
-\vspace{3mm}
+\vspace{2mm}
 
     \begin{wideitemize}
         \item It is unclear how hospital leaders view value
-        \item Or whether they might play a role in achieving this goal
+        \item Or whether they might play a role in achieving better value
     \end{wideitemize}
+
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}{Research Question}
     \centering
     \large
-    Does having executives with clinical training affect response to pay-for-performance incentives of nonprofit hospitals?
+    Does having executives with clinical training affect response to pay-for-performance incentives of nonprofit hospitals in the US?
 \end{frame}
 
 \begin{frame}{Why Clinical Training?}
 
-\textbf{Physician executives could be good or bad}
+\textbf{Do physicians make good firm leaders?}
 
 \vspace{2mm}
 
@@ -354,7 +360,7 @@ Evidence from Pay-for-Performance}}
 \vspace{2mm}
 
 \begin{wideitemize}
-    \item Non-clinical reduce readmissions by blank more than clinical
+    \item Non-clinical reduce readmission by 2\% more than clinical
     \item Non-clinical executive teams behave like profit-driven hospitals
 \end{wideitemize}
 \end{frame}
@@ -378,15 +384,16 @@ Evidence from Pay-for-Performance}}
 \end{frame}
 
 \begin{frame}{Rest of Talk}
-    Theoretical Motivation
-
-    \vspace{4mm}
 
     Setting and Data Collection
 
     \vspace{4mm}
 
     About Executive Teams
+
+    \vspace{4mm}
+
+    Theoretical Motivation
 
     \vspace{4mm}
 
@@ -402,6 +409,212 @@ Evidence from Pay-for-Performance}}
 \end{frame}
 
 
+
+\section{Setting and Data Collection}
+
+\begin{transitionframe}
+\centering \LARGE
+    \textcolor{black}{Setting and Data Collection}
+\end{transitionframe}
+
+\begin{frame}{Nonprofit Hospital Executives}\label{nonprofithospexec}
+\textbf{What do executives do?}
+
+\vspace{1mm}
+
+\begin{wideitemize}
+    \item Board of directors selects executives
+    \item Executives handle the day-to-day operations of the hospital \hyperlink{executivejob}{\beamergotobutton{executive job}} 
+\end{wideitemize}
+
+\vspace{7mm}
+
+\textbf{Executive teams}
+
+\vspace{1mm}
+
+\begin{wideitemize}
+    \item Lots of variation in what executive teams look like
+    \item Typically CEO and CFO, sometimes CMO 
+    \item I focus on the team as a whole instead of specific executive roles
+\end{wideitemize}
+
+\end{frame}
+
+\begin{frame}{}
+    \begin{tikzpicture}
+        % First image in the top-left
+        \node[anchor=north west] at (0, 4) {\includegraphics[width=0.7\textwidth]{Graphics/990_snip_frontpage.PNG}};
+        % Second image in the middle
+        \node[anchor=north west] (img2) at (2.5, 1.5) {\includegraphics[width=0.75\textwidth]{Graphics/Screenshot 2024-10-03 160258.png}};
+        \draw[line width=1mm, eggplant] (img2.north west) rectangle (img2.south east);
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Data Collection Process}
+    \begin{enumerate}
+        \item Get list of Employee Identification Numbers (EIN) that represent nonprofit hospitals
+
+        \vspace{5mm}
+        \item Download tax forms from 2009-2015 from Nonprofit Explorer API
+
+        \vspace{5mm}
+        \item Use Optimal Character Recognition to extract text from all of these documents
+
+        \vspace{5mm}
+        \item Write string cleaning algorithms to extract the correct name, title, position of each entry
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Merge to Other Data}
+    \textbf{Hospital:} link EIN and ID number from the American Hospital Association (AHA) Survey based on name and location
+
+    \vspace{1mm}
+    \begin{itemize}
+        \item \underline{AHA} data for hospital demographics
+        \item \underline{Hospital Compare} data for readmission and mortality rates
+        \item Center for Medicare and Medicaid Services (CMS) \underline{Case Mix Index file} for patient complexity
+        \item \underline{Health Care Cost Report Information System (HCRIS)} for information on pay-for-performance rewards or penalties
+    \end{itemize}
+
+    \vspace{7mm}
+
+    \textbf{Physician:} I use executives that self-identify as MD in the tax form data
+
+    \vspace{1mm}
+
+    \begin{itemize}
+        \item Manually match physician executives to \underline{NPPES} NPI number
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{About Pay-for-Performance Policies}
+    Policies enacted in 2012 that either penalized for low quality or rewarded for high quality
+
+    \vspace{3mm}
+
+    \textbf{Hospital Readmissions Reduction Program}
+    \begin{itemize}
+        \item If hospitals have above average readmission rates they get 1-3\% lower reimbursement rates
+        \item Pneumonia, Heart Attack (AMI), Heart Failure
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \textbf{Hospital Value-Based Purchasing Program}
+    \begin{itemize}
+        \item safety, efficiency, cost reductions, clinical outcomes, and community engagement, improvement combined into single score metric
+        \item ``good" hospitals rewarded
+    \end{itemize}
+
+
+    \begin{block}{\normalsize Takeaway}
+        \normalsize Most hospitals had incentive to improve quality to try to avoid meaningful penalties, which were not perfectly predictable
+    \end{block}
+\end{frame}
+
+\section{About Executive Teams}
+
+\begin{transitionframe}
+\centering \LARGE
+    \textcolor{black}{Descriptive Statistics}
+\end{transitionframe}
+
+\begin{frame}{Executive Teams}
+    \begin{table}[ht!]
+        \centering
+        \begin{tabular}[t]{lccc}
+        \toprule
+         & Ever & Always & Never\\
+         & Clinical Exec & Clinical Exec &  Clinical Exec \\
+        \midrule
+        Number of Executives & 4.85 & 5.25 & 3.11\\
+        \addlinespace[0.2em]
+        Fraction Clinical Execs & 0.20 & 0.26 & 0.0\\
+        \addlinespace[0.2em]
+        Has Clinical CEO & 0.25 & 0.11 & 0.0\\
+        \addlinespace[0.2em]
+        Has CMO & 0.53 & 0.45 & 0.15\\
+        \addlinespace[0.6em]
+        Number of Hospitals & 391 & 56 & 445\\
+        \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Doctors on Executive Teams (N=813)}
+    \begin{table}[ht!]
+    \centering
+    \begin{tabular}[t]{p{6cm} c}
+    \toprule
+     & Mean\\
+    \midrule
+    Age & 52.5\\
+    Female & 0.11\\
+    CEO & 0.16\\
+    CMO & 0.31\\
+    \addlinespace[0.3em]
+    \multicolumn{2}{l}{\textbf{Specialty}}\\
+    \hspace{1em}Internal Medicine & 0.32\\
+    \hspace{1em}Family Medicine & 0.17\\
+    \hspace{1em}Emergency Medicine & 0.11\\
+    \hspace{1em}Surgery & 0.09\\
+    \hspace{1em}Anesthesiologist & 0.04\\
+    \hspace{1em}Other & 0.28\\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Average Team Changes Over Time}
+\centering 
+    \includegraphics[width=.8\textwidth]{Objects/change_means.pdf}
+\end{frame}
+
+\begin{frame}{Changes are not correlated with policy exposure}
+\centering \small
+\begin{equation*}\label{eq:change2}
+    \text{change}_{ht} = \sum_{j=2011}^{2014}\beta_j(\mathbf{1}\{t=j\}\times \text{Program Exposed})_{ht} + \alpha_h + \epsilon_{ht},
+    \end{equation*}
+
+    \btVFill
+
+    \includegraphics[width=.7\textwidth]{Objects/change_analysis_plot.pdf}
+    
+\end{frame}
+
+\begin{frame}{Hospital Statistics}
+\vspace{-2mm}
+    \begin{table}[ht!]
+    \centering
+    \begin{tabular}[t]{lccc}
+     & Ever & Always & Never\\
+      & Clinical Exec & Clinical Exec & Clinical Exec\\
+    \midrule
+    \addlinespace[0.3em]
+    \multicolumn{4}{l}{\textbf{Hospital Characteristics}}\\
+    \hspace{1em}Academic Med. Center & 0.41 & 0.52 & 0.24\\
+    \hspace{1em}Number Beds & 231 & 222 & 116\\
+    \hspace{1em}Physician Owned & 0.01 & 0.02 & 0.02\\
+    \hspace{1em}System Affiliated & 0.58 & 0.52 & 0.44\\
+    \addlinespace[0.3em]
+    \multicolumn{4}{l}{\textbf{Penalty/Payment Variables}}\\
+    \hspace{1em}Ever Received HVBP Incentive & 0.79 & 0.75 & 0.62\\
+    \hspace{1em}Penalized for One Condition & 0.18 & 0.20 & 0.13\\
+    \hspace{1em}Penalized for AMI + HF/Pneum. & 0.09 & 0.09 & 0.06\\
+    \hspace{1em}Penalized for HF + Pneumonia & 0.41 & 0.39 & 0.34\\
+    \hspace{1em}Penalized for All Conditions & 0.30 & 0.27 & 0.22\\
+    Num. Hospitals & 391 & 56 & 445\\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Raw Outcomes, controlling for baseline case mix index}
+\centering
+    \includegraphics[width=.9\textwidth]{Objects/outcomes_graph_presentation.pdf}
+\end{frame}
 
 \section{Theoretical Framework}
 
@@ -476,251 +689,77 @@ $\pi'(\theta)$:
     \end{enumerate}
 \end{frame}
 
-\section{Setting and Data Collection}
-
-\begin{transitionframe}
-\centering \LARGE
-    \textcolor{black}{Setting and Data Collection}
-\end{transitionframe}
-
-\begin{frame}{Nonprofit Hospital Executives}\label{nonprofithospexec}
-\textbf{What do executives do?}
-\begin{wideitemize}
-    \item Board of directors selects executives
-    \item Executives handle the day-to-day operations of the hospital \hyperlink{executivejob}{\beamergotobutton{executive job}} 
-\end{wideitemize}
-
-\vspace{7mm}
-
-\textbf{Executive teams}
-\begin{wideitemize}
-    \item Lots of variation in what executive teams look like
-    \item Typically CEO and CFO, sometimes CMO 
-\end{wideitemize}
-
-\vspace{7mm}
-
-Usable data on executives is rare
-\end{frame}
-
-\begin{frame}{}
-    \begin{tikzpicture}
-        % First image in the top-left
-        \node[anchor=north west] at (0, 4) {\includegraphics[width=0.7\textwidth]{Graphics/990_snip_frontpage.PNG}};
-        % Second image in the middle
-        \node[anchor=north west] (img2) at (2.5, 1.5) {\includegraphics[width=0.75\textwidth]{Graphics/Screenshot 2024-10-03 160258.png}};
-        \draw[line width=1mm, eggplant] (img2.north west) rectangle (img2.south east);
-    \end{tikzpicture}
-\end{frame}
-
-\begin{frame}{Data Collection Process}
-    \begin{enumerate}
-        \item Get list of Employee Identification Numbers (EIN) that represent nonprofit hospitals
-
-        \vspace{5mm}
-        \item Download tax forms from 2009-2015 from Nonprofit Explorer API
-
-        \vspace{5mm}
-        \item Use Optimal Character Recognition to extract text from all of these documents
-
-        \vspace{5mm}
-        \item Write string cleaning algorithms to extract the correct name, title, position of each entry
-    \end{enumerate}
-\end{frame}
-
-\begin{frame}{Merge to Other Hospital Data}
-    I create links between EIN and ID number from the American Hospital Association Survey (AHA) based on hospital name and location
-
-    \vspace{7mm}
-    Merge to:
-
-    \vspace{2mm}
-    \begin{itemize}
-        \item AHA data for hospital demographics
-        \item Hospital Compare data for readmission and mortality rates
-        \item Center for Medicare and Medicaid Services (CMS) Case Mix Index file for patient complexity
-        \item Health Care Cost Report Information System (HCRIS) for information on pay-for-performance rewards or penalties
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Merge to Physician Data}
-    I use executives that self-identify as MD 
-
-    \vspace{8mm}
-
-    To verify, I match all executive names to database of all registered physicians and match NPI by hand
-\end{frame}
-
-\begin{frame}{About Pay-for-Performance Policies}
-    Policies enacted in 2012 that either penalized for low quality or rewarded for high quality
-
-    \vspace{3mm}
-
-    \textbf{Hospital Readmissions Reduction Program}
-    \begin{itemize}
-        \item If hospitals have above average readmission rates they get 1-3\% lower reimbursement rates
-        \item Pneumonia, Heart Attack (AMI), Heart Failure
-    \end{itemize}
-
-    \vspace{3mm}
-
-    \textbf{Hospital Value-Based Purchasing Program}
-    \begin{itemize}
-        \item safety, efficiency, cost reductions, clinical outcomes, and community engagement, improvement combined into single score metric
-        \item ``good" hospitals rewarded
-    \end{itemize}
-
-    \pause
-
-    \begin{block}{\normalsize Takeaway}
-        \normalsize All hospitals in the middle of the distribution had incentive to improve quality to try to avoid penalties, which were not perfectly predictable
-    \end{block}
-\end{frame}
-
-\section{About Executive Teams}
-
-\begin{transitionframe}
-\centering \LARGE
-    \textcolor{black}{Descriptive Statistics}
-\end{transitionframe}
-
-\begin{frame}{Executive Teams}
-    \begin{table}[ht!]
-        \centering
-        \begin{tabular}[t]{lccc}
-        \toprule
-         & Ever & Always & Never\\
-         & Clinical Exec & Clinical Exec &  Clinical Exec \\
-        \midrule
-        Number Executives & 4.85 & 5.25 & 3.11\\
-        Frac Clinical Execs & 0.20 & 0.26 & 0\\
-        Frac Int. Medicine Execs & 0.06 & 0.10 & 0.0\\
-        Has a CMO & 0.53 & 0.45 & 0.15\\
-        Has Clinical CEO & 0.25 & 0.11 & 0.0\\
-        \addlinespace[0.6em]
-        Num. Hospitals & 391 & 56 & 445\\
-        \bottomrule
-        \end{tabular}
-    \end{table}
-\end{frame}
-
-\begin{frame}{Doctors on Executive Teams (N=813)}
-    \begin{table}[ht!]
-    \centering
-    \begin{tabular}[t]{p{6cm} c}
-    \toprule
-     & Mean\\
-    \midrule
-    Age & 52.5\\
-    Female & 0.11\\
-    CEO & 0.16\\
-    CMO & 0.31\\
-    \addlinespace[0.3em]
-    \multicolumn{2}{l}{\textbf{Specialty}}\\
-    \hspace{1em}Internal Medicine & 0.32\\
-    \hspace{1em}Family Medicine & 0.17\\
-    \hspace{1em}Emergency Medicine & 0.11\\
-    \hspace{1em}Surgery & 0.09\\
-    \hspace{1em}Anesthesiologist & 0.04\\
-    \hspace{1em}Other & 0.28\\
-    \bottomrule
-    \end{tabular}
-    \end{table}
-\end{frame}
-
-\begin{frame}{Average Team Changes Over Time}
-\centering 
-    \includegraphics[width=.8\textwidth]{Objects/change_means.pdf}
-\end{frame}
-
-\begin{frame}{Changes are not correlated with policy exposure}
-\centering \small
-\begin{equation*}\label{eq:change2}
-    \text{change}_{ht} = \sum_{j=2011}^{2014}\beta_j(\mathbf{1}\{t=j\}\times \text{Program Exposed})_{ht} + \alpha_h + \epsilon_{ht},
-    \end{equation*}
-
-    \btVFill
-
-    \includegraphics[width=.6\textwidth]{Objects/change_analysis_plot.pdf}
-    
-\end{frame}
-
-\begin{frame}{Hospital Statistics}
-\vspace{-2mm}
-    \begin{table}[ht!]
-    \centering
-    \begin{tabular}[t]{lccc}
-     & Ever & Always & Never\\
-      & Clinical Exec & Clinical Exec & Clinical Exec\\
-    \midrule
-    \addlinespace[0.3em]
-    \multicolumn{4}{l}{\textbf{Hospital Characteristics}}\\
-    \hspace{1em}Academic Med. Center & 0.41 & 0.52 & 0.24\\
-    \hspace{1em}Number Beds & 231 & 222 & 116\\
-    \hspace{1em}Physician Owned & 0.01 & 0.02 & 0.02\\
-    \hspace{1em}System Affiliated & 0.58 & 0.52 & 0.44\\
-    \addlinespace[0.3em]
-    \multicolumn{4}{l}{\textbf{Penalty/Payment Variables}}\\
-    \hspace{1em}Ever Received HVBP Incentive & 0.79 & 0.75 & 0.62\\
-    \hspace{1em}Penalized for One Condition & 0.18 & 0.20 & 0.13\\
-    \hspace{1em}Penalized for AMI + HF/Pneum. & 0.09 & 0.09 & 0.06\\
-    \hspace{1em}Penalized for HF + Pneumonia & 0.41 & 0.39 & 0.34\\
-    \hspace{1em}Penalized for All Conditions & 0.30 & 0.27 & 0.22\\
-    Num. Hospitals & 391 & 56 & 445\\
-    \bottomrule
-    \end{tabular}
-    \end{table}
-\end{frame}
-
-\begin{frame}{}
-    \includegraphics[width=\textwidth]{out}
-\end{frame}
-
 
 \section{Effect of Clinical Leadership on Response}
 
 \begin{transitionframe}
 \centering \LARGE
-    \textcolor{black}{Effect of Clinical Leadership on Response}
+    \textcolor{black}{Effect of Clinical Leadership on Response to P4P}
 \end{transitionframe}
 
 \begin{frame}{Estimation}\label{est_equation}
+    \textbf{Compare always clinical to never clinical hospital executive teams:}
 
-    \vspace{5mm}\large
+    \vspace{3mm}\large
     \begin{equation*}
     y_{ht} = \beta \text{ (clinical training x post 2012)}_{ht} + \gamma_{h} + \delta_t + \epsilon_{ht}
     \end{equation*}
-    \begin{itemize}
-        \item Compare always to never clinical executives
-        \item Leverage the timing of the programs
-    \end{itemize}
 
-    \vspace{8mm}
-
-    Identifies the effect of having a clinically trained executive on readmission and mortality rates after pay-for-performance
-
-    \vspace{2mm}
-    
-    \begin{itemize}
-        \item Assume that hospitals would have had parallel trends absent clinical executives
-    \end{itemize}
-
-    \btVFill
+    \vspace{5mm}
     \normalsize
-    \hyperlink{synthdid_equation}{\beamergotobutton{weighted}} \hyperlink{match_equation}{\beamergotobutton{matching}}
+    \begin{wideitemize}
+        \item $y_{ht}$: weighted average readmission/ mortality rates
+        \item Leverage the \textit{timing} of the programs
+    \end{wideitemize}
+
+    \vspace{5mm}
+
+    Different methods:
+    \begin{itemize}
+        \item No weights
+        \item \textbf{``Synthetic DiD" type weights} \hyperlink{synthdid_equation}{\beamergotobutton{weighted}}
+        \item Coarsened exact matching \hyperlink{match_equation}{\beamergotobutton{CEM}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Identification}
+\begin{wideitemize}
+    \item Trends would have continued in a parallel manner
+    \item No other 2012 event correlated with the composition of leadership team and the outcomes
+    \item No other hospital characteristics that are perfectly correlated with clinical leadership are driving the results
+    \item No anticipation of the incentive changes
+\end{wideitemize}
 \end{frame}
 
 \begin{frame}{Readmission Rates}\label{main:readrates}
-\centering
-    \includegraphics[width=.45\textwidth]{Objects/read_md_nomd_synth_graph.pdf}
+    \begin{columns}
+    \column{0.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Objects/read_md_nomd_synth_graph.pdf}
+    \column{0.5\textwidth}
+        \begin{wideitemize}
+            \item Non-clinical teams reduce readmissions by .3 ppts more than clinical teams 
+            \item Small relative to average readmission rate of 21
+            \item Large difference relative to the average effect of these programs (1ppt)
+        \end{wideitemize}
+        
+        \vspace{7mm}
 
-    \btVFill
-    
-    \hyperlink{int_margin}{\beamergotobutton{intensive margin}}
+        \hyperlink{int_margin}{\beamergotobutton{intensive margin}}
+        
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Mortality Rates}
-    
+    \begin{columns}
+    \column{0.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Objects/mort_md_nomd_synth_graph.pdf}
+    \column{0.5\textwidth}
+        \begin{wideitemize}
+            \item No statistical difference in mortality between clinical and non-clinical teams
+        \end{wideitemize}
+    \end{columns}
 \end{frame}
 
 \section{Comparison to For-Profit Hospitals}
@@ -732,18 +771,47 @@ Usable data on executives is rare
 
 \begin{frame}{Estimation}
 
-    \vspace{5mm}\large
+    \textbf{Compare both nonprofit leadership team types to the response of for-profits:}
+
+    \vspace{3mm}\large
     \begin{equation*}
     y_{ht} = \beta \text{ (for-profit x post 2012)}_{ht} + \gamma_{h} + \delta_t + \epsilon_{ht}
     \end{equation*}
+
+    \vspace{5mm}
+    \normalsize
+
+    Comparison group:
     \begin{itemize}
-        \item Two comparison groups: clinical and non-clinical executive teams
+        \item nonprofit clinical; nonprofit non-clinical
     \end{itemize}
+
+    \vspace{5mm}
+
+    Synthetic diff-in-diff type weights
 
 \end{frame}
 
-\begin{frame}{Results}
-    
+\begin{frame}{Readmission Rate}
+    \begin{columns}
+    \column{0.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Objects/fp_read_md_synth_graph.pdf}
+    \column{0.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Objects/fp_read_nomd_synth_graph.pdf}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Mortality Rate}
+    \begin{columns}
+    \column{0.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Objects/fp_mort_md_synth_graph.pdf}
+    \column{0.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Objects/fp_mort_nomd_synth_graph.pdf}
+    \end{columns}
 \end{frame}
 
 \section{Signaling vs. Managing}
@@ -753,24 +821,108 @@ Usable data on executives is rare
     \textcolor{black}{Signaling vs. Managing}
 \end{transitionframe}
 
-\begin{frame}{Estimation}
+\begin{frame}{Hypotheses}
+    \textbf{Clinical leaders represent underlying $\alpha$}
+
+\vspace{2mm}
     
+    \begin{wideitemize}
+        \item Timing of the clinical leader doesn't matter \item Clinical leader represents underlying objectives of the hospital
+    \end{wideitemize}
+
+    \vspace{10mm}
+
+    \textbf{Clinical leaders effectively change $\alpha$}
+
+\vspace{2mm}
+    
+    \begin{wideitemize}
+        \item Timing of the clinical leader does matter
+        \item Clinical leaders manage the hospital differently
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Estimation}
+    \begin{figure}[ht!]
+\begin{center}
+ 
+ \begin{tabular}{| m{17em} |}
+ \hline
+ Signaling:\\ [0.5ex]
+ \hline\hline 
+ \vspace{2mm}
+ Treat Group:  \hspace{15mm} Never MD \\
+ \vspace{2mm}
+ Comparison Group: \hspace{3mm} Ever MD  \\
+ [1ex]
+ \hline
+ \end{tabular}
+\hfil   %<---
+ \begin{tabular}{|m{19em}|}
+ \hline
+ Managing:\\ [0.5ex]
+ \hline\hline
+ \vspace{2mm}
+ Treat Group: \hspace{11mm} MD in 2012 \\
+ \vspace{2mm}
+ Comparison Group:  Ever MD (not in 2012)  \\
+ [1ex]
+ \hline
+ \end{tabular}
+ 
+\end{center}
+ \end{figure}
+
 \end{frame}
 
 \begin{frame}{Results}
-    
+    \begin{table}[ht!]
+\centering
+\begin{tabular}[t]{lcccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{\underline{Weighted Avg. Readmission Rate}} & \multicolumn{2}{c}{\underline{Weighted Avg. Mortality Rate}} \\
+ & (1) & (2) & (3) & (4)\\
+\midrule
+Signaling Effect & -0.01 &  & 0.03 & \\
+ & (0.07) &  & (0.06) & \\
+Managing Effect &  & 0.17 &  & 0.12\\
+ &  & (0.1) &  & (0.09)\\
+ &  &  &  & \\
+Observations & 3,005 & 1,595 & 3,005 & 1,595\\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{frame}
 
 \begin{frame}{Conclusion}
-    
-\end{frame}
+    \textbf{We know very little about whether leaders matter in health care}
 
-\begin{frame}{Future Work}
-    
+    \vspace{2mm}
+
+    \begin{wideitemize}
+        \item In this paper, I show that non-clinically trained hospital executives internalize financial incentives on quality more than clinically trained executives
+        \item Nonprofit objectives are not all created equal, and financial incentives might not be the only way to improve value in health care
+    \end{wideitemize}
+
+    \vspace{5mm}
+
+    \textbf{Future Work}
+
+    \vspace{2mm}
+
+    \begin{itemize}
+        \item Effects of mandated gender and racial diversity on hospital behavior
+        \item Networks of executives over time 
+        \item Are leaders correlated with hospital fraudulent behavior?
+    \end{itemize}
 \end{frame}
 
 \begin{transitionframe}
 \centering \Large
+    Thank you! 
+
+    \vspace{3mm}
+    
     \textcolor{black}{hkagele@emory.edu}
 \end{transitionframe}
 
