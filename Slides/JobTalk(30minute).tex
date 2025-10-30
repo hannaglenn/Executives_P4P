@@ -230,7 +230,7 @@ Evidence from Pay-for-Performance}}
     \large Evidence from Pay-for-Performance
 };
 % Author 
-\node[below=1cm] (author) at (title.south){\large Hanna Glenn};
+\node[below=1cm] (author) at (title.south){\large Hanna Glenn, Emory University};
 % Date
 \node[below=0.25cm] (date) at (author.south){\today};
 \end{tikzpicture}
@@ -331,8 +331,7 @@ Evidence from Pay-for-Performance}}
 \vspace{2mm}
     
     \begin{wideitemize}
-        \item Should nonprofits receive the benefits that they do? 
-        \item Push to make nonprofits act more like nonprofits
+        \item Mixed evidence about nonprofit behavior
     \end{wideitemize}
     \end{enumerate}
 \end{frame}
@@ -440,55 +439,39 @@ Evidence from Pay-for-Performance}}
     Hospital Value-Based Purchasing Program
     \begin{itemize}
         \item Score metric determines rewards
+        \item Rewards high metric
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Preview of Main Findings}
+% \begin{frame}{Contribution}
+% \large
+%     \textbf{Hospital Executives/Board of Directors}
 
-\large
-
-\textbf{Non-clinical executive teams respond more to financial incentives on quality}
-
-\vspace{3mm}
-
-\begin{wideitemize}
-    \item Through readmission rates
-\end{wideitemize}
-\end{frame}
-
-\begin{frame}{Contribution}
-\large
-    \textbf{Hospital Executives/Board of Directors}
-
-\vspace{2mm}
+% \vspace{2mm}
     
-    \begin{wideitemize}
-        \normalsize \item Physician board members $\implies$ lower public donations \scriptsize (\cite{brickley2010board}) \normalsize
-        \normalsize \item No correlation b/w CEOs and hospital productivity in England \scriptsize (\cite{janke2019impact})\normalsize
-        \normalsize \item Public hospitals in Chile improved when older physicians left CEO \scriptsize (\cite{otero2022managers}) \normalsize
-    \end{wideitemize}
+%     \begin{wideitemize}
+%         \normalsize \item Physician board members $\implies$ lower public donations \scriptsize (\cite{brickley2010board}) \normalsize
+%         \normalsize \item No correlation b/w CEOs and hospital productivity in England \scriptsize (\cite{janke2019impact})\normalsize
+%         \normalsize \item Public hospitals in Chile improved when older physicians left CEO \scriptsize (\cite{otero2022managers}) \normalsize
+%     \end{wideitemize}
 
-    \vspace{5mm}\pause
+%     \vspace{5mm}\pause
 
-    \textbf{Hospital Response to Pay-for-Performance}
+%     \textbf{Hospital Response to Pay-for-Performance}
 
-\vspace{2mm}
+% \vspace{2mm}
     
-    \begin{wideitemize}
-        \normalsize \item Hospitals decreased readmissions \scriptsize (\cite{gupta2021impacts}) 
+%     \begin{wideitemize}
+%         \normalsize \item Hospitals decreased readmissions \scriptsize (\cite{gupta2021impacts}) 
 
-        \vspace{-.5mm}
+%         \vspace{-.5mm}
         
-        \normalsize \item Market concentration and systems affect response 
-        \scriptsize (\cite{kunz2024assessing}) 
+%         \normalsize \item Market concentration and systems affect response 
+%         \scriptsize (\cite{kunz2024assessing}) 
         
-        \normalsize\item Rewards had little impact on quality \scriptsize (\cite{norton2018moneyball}; \cite{friedson2019so})
-    \end{wideitemize}
-\end{frame}
-
-
-
-
+%         \normalsize\item Rewards had little impact on quality \scriptsize (\cite{norton2018moneyball}; \cite{friedson2019so})
+%     \end{wideitemize}
+% \end{frame}
 
 \section{Setting and Data Collection}
 
@@ -538,41 +521,13 @@ Evidence from Pay-for-Performance}}
     \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Data Collection Process}
-\begin{center}
-\begin{tikzpicture}[
-    node distance=3.1cm and 1.8cm,
-    every node/.style={align=center, font=\normalsize},
-    process/.style={rectangle, draw, rounded corners, text centered, minimum width=2.5cm, minimum height=2cm, fill=purple!30},
-    output/.style={rectangle, draw, text centered, minimum width=2.7cm, minimum height=2.5cm, fill=purple},
-    extract/.style={rectangle, draw, rounded corners, text centered, minimum width=2.5cm, minimum height=2cm, fill=sage!30},
-    arrow/.style={thick, ->, >=stealth}
-]
-
-% Nodes
-\node (step1) [process] {Hospital \\EINs};\pause
-\node (step2) [process, right of=step1] {Download \\PDFs};
-\draw[arrow] (step1) -- (step2); \pause
-\node (step3) [process, right of=step2] {Extract\\text};
-\draw[arrow] (step2) -- (step3); 
-% New green box below step3
-\node (extract) [extract, below of=step3, yshift=0.5cm] {Optical\\Character\\Recognition}; 
-\draw[arrow] (extract) -- (step3);\pause
-\node (step4) [process, right of=step3] {String\\cleaning\\algorithms};
-\draw[arrow] (step3) -- (step4); \pause
-\node (output) [output, right of=step4, text=white] {Executive\\Name\\Position\\Title};
-\draw[arrow] (step4) -- (output);
-\end{tikzpicture}
-\end{center}
-\end{frame}
-
 
 \begin{frame}{Merge to Other Data}
 
 \large
     \textbf{Hospital:} 
 
-    \vspace{2mm}
+    \vspace{1mm}
     \begin{wideitemize}
         \item AHA
         \item Hospital Compare
@@ -580,19 +535,19 @@ Evidence from Pay-for-Performance}}
         \item Health Care Cost Report Information System (HCRIS)
     \end{wideitemize}
 
-    \vspace{7mm}
+    \vspace{4mm}
 
     \textbf{Physician:} 
 
-    \vspace{2mm}
+    \vspace{1mm}
 
     \begin{itemize}
         \item Manually match physician executives to NPPES NPI number
     \end{itemize}
 
-    \vspace{5mm}
+    \vspace{4mm}
 
-    \textbf{Years 2010-2014}
+    \textbf{Years: 2009-2015}
 \end{frame}
 
 
@@ -672,10 +627,8 @@ CQO & 0.09\\
 \multicolumn{4}{l}{\textbf{Penalty/Payment Variables}}\\
 \hspace{1em}Ever Received HVBP Incentive & 0.79 & 0.77 & 0.59\\
 \hspace{1em}Penalized for one condition & 0.19 & 0.25 & 0.13\\
-\hspace{1em}Penalized for AMI + HF & 0.07 & 0.05 & 0.03\\
-\hspace{1em}Penalized for AMI + Pneumonia & 0.02 & 0.02 & 0.02\\
-\hspace{1em}Penalized for HF + Pneumonia & 0.41 & 0.40 & 0.33\\
-\hspace{1em}Penalized for All Conditions & 0.31 & 0.31 & 0.20\\
+\hspace{1em}Penalized for two conditions & 0.50 & 0.47 & 0.38\\
+\hspace{1em}Penalized for all Conditions & 0.31 & 0.31 & 0.20\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -852,38 +805,20 @@ CQO & 0.09\\
     Different methods:
     \begin{itemize}
         \item No weights
-        \item \textbf{``Synthetic DiD" type weights} 
+        \item \textbf{Weights based on outcomes pre-2012} 
         \item Coarsened exact matching 
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Identification Assumptions}
+\begin{frame}{Identification Assumptions}\label{ident}
 
 \large
 \begin{wideitemize}
     \item Parallel trends
     \item No other 2012 event correlated with executive team and outcomes
     \item No hospital characteristics perfectly correlated with executive team
-    \item No anticipation of incentive changes
-    \item Stability in clinical executives not correlated with incentive change
+    \item Stability in clinical executives not correlated with incentive change \hyperlink{changes}{\beamergotobutton{analysis}}
 \end{wideitemize}
-\end{frame}
-
-\begin{frame}{Average Team Changes Over Time}
-\centering 
-    \includegraphics[width=.8\textwidth]{Objects/change_means.pdf}
-\end{frame}
-
-\begin{frame}{Changes are not correlated with policy exposure}
-\centering \small
-\begin{equation*}\label{eq:change2}
-    \text{change}_{ht} = \sum_{j=2011}^{2014}\beta_j(\mathbf{1}\{t=j\}\times \text{Program Exposed})_{ht} + \alpha_h + \epsilon_{ht},
-    \end{equation*}
-
-    \btVFill
-
-    \includegraphics[width=.7\textwidth]{Objects/change_analysis_plot.pdf}
-    
 \end{frame}
 
 \begin{frame}{Readmission Rates}\label{main:readrates}
@@ -965,87 +900,22 @@ CQO & 0.09\\
     \end{columns}
 \end{frame}
 
-\begin{frame}{Mortality Rate}
+\begin{frame}{Mortality Rate}\label{forprofmort}
     \begin{columns}
-    \column{0.5\textwidth}
+    \column{0.45\textwidth}
         \centering
         \includegraphics[width=.9\textwidth]{Objects/fp_mort_md_synth_graph.pdf}
-    \column{0.5\textwidth}
+    \column{0.45\textwidth}
         \centering
         \includegraphics[width=.9\textwidth]{Objects/fp_mort_nomd_synth_graph.pdf}
     \end{columns}
+
+    \hyperlink{unobserved}{\beamergotobutton{unobserved}}
 \end{frame}
 
 \section{Unobserved}
 
-\begin{transitionframe}
-\centering \LARGE
-    \textcolor{black}{Driven by Unobserved Compositional Differences?}
-\end{transitionframe}
 
-\begin{frame}{Driven by Unobserved Compositional Differences?}
-\large
-
-\textbf{Concern:} presence of clinicians may not matter but is correlated with some unobserved hospital `type', possibly time varying
-
-\vspace{3mm}
-\begin{wideitemize}
-    \item if true, we should see a difference in response no matter the timing of having a clinical executive
-\end{wideitemize}
-\end{frame}
-
-\begin{frame}{Robustness Check}
-\large
-    \begin{figure}[ht!]
-\begin{center}
- 
- \begin{tabular}{| m{15em} |}
- \hline \vspace{1mm}
- \textbf{Signaling Effect:}\\ [0.5ex]
- \hline\hline 
- \vspace{2mm}
- Treat Group:  \hspace{15mm} Never MD \\
- \vspace{2mm}
- Comparison Group: \hspace{3mm} Ever MD  \\
- [1ex]
- \hline
- \end{tabular}
-\hfil   %<---
- \begin{tabular}{|m{18em}|}
- \hline \vspace{1mm}
- \textbf{Clinician Effect:}\\ [0.5ex]
- \hline\hline
- \vspace{2mm}
- Treat Group: \hspace{11mm} MD in 2012 \\
- \vspace{2mm}
- Comparison Group:  MD not in 2012  \\
- [1ex]
- \hline
- \end{tabular}
- 
-\end{center}
- \end{figure}
-
-\end{frame}
-
-\begin{frame}{Results}
-    \begin{table}[ht!]
-\centering
-\begin{tabular}[t]{lcccc}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{\underline{Weighted Avg. Readmission Rate}} & \multicolumn{2}{c}{\underline{Weighted Avg. Mortality Rate}} \\
- & (1) & (2) & (3) & (4)\\
-\midrule
-Signaling Effect & -0.01 &  & 0.03 & \\
- & (0.07) &  & (0.06) & \\
-Clinician Effect &  & 0.17 &  & 0.12\\
- &  & (0.1) &  & (0.09)\\
- &  &  &  & \\
-Observations & 3,005 & 1,595 & 3,005 & 1,595\\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{frame}
 
 \begin{frame}{Summary}
 \large
@@ -1312,5 +1182,89 @@ Observations & 2,387 & 1,025 & 1,640 & 2,381 & 1,023 & 1,640\\
 \hyperlink{main:readrates}{\beamerreturnbutton{main results}}
 \end{frame}
 
-\end{document}
+\begin{frame}{Average Team Changes Over Time}\label{changes}
+\centering 
+    \includegraphics[width=.8\textwidth]{Objects/change_means.pdf}
+\end{frame}
 
+\begin{frame}{Changes are not correlated with policy exposure}
+\centering \small
+\begin{equation*}\label{eq:change2}
+    \text{change}_{ht} = \sum_{j=2011}^{2014}\beta_j(\mathbf{1}\{t=j\}\times \text{Program Exposed})_{ht} + \alpha_h + \epsilon_{ht},
+    \end{equation*}
+
+    \btVFill
+
+    \includegraphics[width=.7\textwidth]{Objects/change_analysis_plot.pdf}
+
+    \hyperlink{ident}{\beamerreturnbutton{back}}
+    
+\end{frame}
+
+\begin{frame}{Driven by Unobserved Compositional Differences?}\label{unobserved}
+\large
+
+\textbf{Concern:} presence of clinicians may not matter but is correlated with some unobserved hospital `type', possibly time varying
+
+\vspace{3mm}
+\begin{wideitemize}
+    \item if true, we should see a difference in response no matter the timing of having a clinical executive
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{Robustness Check}
+\large
+    \begin{figure}[ht!]
+\begin{center}
+ 
+ \begin{tabular}{| m{15em} |}
+ \hline \vspace{1mm}
+ \textbf{Signaling Effect:}\\ [0.5ex]
+ \hline\hline 
+ \vspace{2mm}
+ Treat Group:  \hspace{15mm} Never MD \\
+ \vspace{2mm}
+ Comparison Group: \hspace{3mm} Ever MD  \\
+ [1ex]
+ \hline
+ \end{tabular}
+\hfil   %<---
+ \begin{tabular}{|m{18em}|}
+ \hline \vspace{1mm}
+ \textbf{Clinician Effect:}\\ [0.5ex]
+ \hline\hline
+ \vspace{2mm}
+ Treat Group: \hspace{11mm} MD in 2012 \\
+ \vspace{2mm}
+ Comparison Group:  MD not in 2012  \\
+ [1ex]
+ \hline
+ \end{tabular}
+ 
+\end{center}
+ \end{figure}
+
+\end{frame}
+
+\begin{frame}{Results}
+    \begin{table}[ht!]
+\centering
+\begin{tabular}[t]{lcccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{\underline{Weighted Avg. Readmission Rate}} & \multicolumn{2}{c}{\underline{Weighted Avg. Mortality Rate}} \\
+ & (1) & (2) & (3) & (4)\\
+\midrule
+Signaling Effect & -0.01 &  & 0.03 & \\
+ & (0.07) &  & (0.06) & \\
+Clinician Effect &  & 0.17 &  & 0.12\\
+ &  & (0.1) &  & (0.09)\\
+ &  &  &  & \\
+Observations & 3,005 & 1,595 & 3,005 & 1,595\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\hyperlink{forprofmort}{\beamerreturnbutton{back}}
+\end{frame}
+
+\end{document}

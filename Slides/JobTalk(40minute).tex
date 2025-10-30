@@ -230,7 +230,7 @@ Evidence from Pay-for-Performance}}
     \large Evidence from Pay-for-Performance
 };
 % Author 
-\node[below=1cm] (author) at (title.south){\large Hanna Glenn};
+\node[below=1cm] (author) at (title.south){\large Hanna Glenn, Emory University};
 % Date
 \node[below=0.25cm] (date) at (author.south){\today};
 \end{tikzpicture}
@@ -331,8 +331,7 @@ Evidence from Pay-for-Performance}}
 \vspace{2mm}
     
     \begin{wideitemize}
-        \item Should nonprofits receive the benefits that they do? 
-        \item Push to make nonprofits act more like nonprofits
+        \item \large Mixed evidence on nonprofit hospital behavior
     \end{wideitemize}
     \end{enumerate}
 \end{frame}
@@ -372,7 +371,7 @@ Evidence from Pay-for-Performance}}
 \vspace{2mm}
 
     \begin{wideitemize}
-        \item \normalsize Unclear how leaders interact with this goal
+        \item \large Unclear how leaders interact with this goal
     \end{wideitemize}
 
     \end{enumerate}
@@ -440,6 +439,7 @@ Evidence from Pay-for-Performance}}
     Hospital Value-Based Purchasing Program
     \begin{itemize}
         \item Score metric determines rewards
+        \item Rewards high metric
     \end{itemize}
 \end{frame}
 
@@ -453,6 +453,7 @@ Evidence from Pay-for-Performance}}
 
 \begin{wideitemize}
     \item Through readmission rates
+    \item Non-clinical executive teams behave like profit-driven hospitals
 \end{wideitemize}
 \end{frame}
 
@@ -485,8 +486,6 @@ Evidence from Pay-for-Performance}}
         \normalsize\item Rewards had little impact on quality \scriptsize (\cite{norton2018moneyball}; \cite{friedson2019so})
     \end{wideitemize}
 \end{frame}
-
-
 
 
 
@@ -538,34 +537,6 @@ Evidence from Pay-for-Performance}}
     \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Data Collection Process}
-\begin{center}
-\begin{tikzpicture}[
-    node distance=3.1cm and 1.8cm,
-    every node/.style={align=center, font=\normalsize},
-    process/.style={rectangle, draw, rounded corners, text centered, minimum width=2.5cm, minimum height=2cm, fill=purple!30},
-    output/.style={rectangle, draw, text centered, minimum width=2.7cm, minimum height=2.5cm, fill=purple},
-    extract/.style={rectangle, draw, rounded corners, text centered, minimum width=2.5cm, minimum height=2cm, fill=sage!30},
-    arrow/.style={thick, ->, >=stealth}
-]
-
-% Nodes
-\node (step1) [process] {Hospital \\EINs};\pause
-\node (step2) [process, right of=step1] {Download \\PDFs};
-\draw[arrow] (step1) -- (step2); \pause
-\node (step3) [process, right of=step2] {Extract\\text};
-\draw[arrow] (step2) -- (step3); 
-% New green box below step3
-\node (extract) [extract, below of=step3, yshift=0.5cm] {Optical\\Character\\Recognition}; 
-\draw[arrow] (extract) -- (step3);\pause
-\node (step4) [process, right of=step3] {String\\cleaning\\algorithms};
-\draw[arrow] (step3) -- (step4); \pause
-\node (output) [output, right of=step4, text=white] {Executive\\Name\\Position\\Title};
-\draw[arrow] (step4) -- (output);
-\end{tikzpicture}
-\end{center}
-\end{frame}
-
 
 \begin{frame}{Merge to Other Data}
 
@@ -589,10 +560,6 @@ Evidence from Pay-for-Performance}}
     \begin{itemize}
         \item Manually match physician executives to NPPES NPI number
     \end{itemize}
-
-    \vspace{5mm}
-
-    \textbf{Years 2010-2014}
 \end{frame}
 
 
@@ -602,11 +569,6 @@ Evidence from Pay-for-Performance}}
 \centering \LARGE
     \textcolor{black}{Descriptive Statistics}
 \end{transitionframe}
-
-\begin{frame}{Sample Definitions}
-\centering
-    \includegraphics[scale=.75]{Graphics/2010.png}
-\end{frame}
 
 \begin{frame}{Executive Teams}
 \begin{table}[ht!]
@@ -619,6 +581,7 @@ Evidence from Pay-for-Performance}}
 \addlinespace[0.3em]
 Number Executives & 4.82 & 5.19 & 2.86\\
 Fraction Clinical Execs & 0.20 & 0.26 & 0.00\\
+Fraction Int. Medicine Execs & 0.06 & 0.08 & 0.00\\
 Has a CMO & 0.55 & 0.52 & 0.07\\
 Has Clinical CEO & 0.25 & 0.10 & 0.00\\
 \addlinespace[0.6em]
@@ -990,11 +953,11 @@ CQO & 0.09\\
 
 \vspace{3mm}
 \begin{wideitemize}
-    \item if true, we should see a difference in response no matter the timing of having a clinical executive
+    \item if true, difference in response should hold when timing of clinician changes
 \end{wideitemize}
 \end{frame}
 
-\begin{frame}{Robustness Check}
+\begin{frame}{Driven by Unobserved Compositional Differences?}
 \large
     \begin{figure}[ht!]
 \begin{center}
@@ -1313,4 +1276,3 @@ Observations & 2,387 & 1,025 & 1,640 & 2,381 & 1,023 & 1,640\\
 \end{frame}
 
 \end{document}
-

@@ -231,8 +231,10 @@ Evidence from Pay-for-Performance}}
 };
 % Author 
 \node[below=1cm] (author) at (title.south){\large Hanna Glenn};
+% Affiliation
+\node[below=0.15cm] (affiliation) at (author.south){\large The University of Queensland};
 % Date
-\node[below=0.25cm] (date) at (author.south){\today};
+\node[below=0.5cm] (date) at (affiliation.south){\today};
 \end{tikzpicture}
     
 \end{frame}
@@ -259,55 +261,50 @@ Evidence from Pay-for-Performance}}
     \end{tikzpicture}
 \end{frame}
 
+
+
+
+
 \begin{frame}{Leadership Characteristics and Firm Behavior/Performance}
-
 \large
-
-\textbf{Gender}
-\begin{itemize}
-    \item \normalsize Female board members $\implies$ lower firm value, less employment reduction \\ \scriptsize(\cite{ahern2012changing}; \cite{matsa2013female}) \normalsize
-    \item Female executives $\implies$ female wage distribution \scriptsize (\cite{flabbi2019female}) \normalsize
-\end{itemize}
-
-\vspace{4mm}
-
-\textbf{Prior Experience}
-\begin{itemize}
-    \item \normalsize General background CEOs paid more \scriptsize (\cite{custodio2013generalists}) \normalsize
-    \item Background matters for acquisitions \scriptsize(\cite{custodio2013ceos}) \normalsize
-
-\vspace{1mm}
-    
-    \item Military experience CEOs \scriptsize (\cite{benmelech2015military})
-\end{itemize}
-
-\vspace{4mm}
-
-\textbf{Age}
-\begin{itemize}
-    \item \normalsize Young male CEOs more aggressive in M\&A \scriptsize (\cite{levi2010deal})
-\end{itemize}
-
-
-\end{frame}
-
-\begin{frame}{Gaps in Literature}
-    \large
-    \begin{enumerate}
-        \item Findings are limited to large, publicly traded firms
-
-\vspace{2mm}
-        
+\begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+    \textbf{Characteristics:}
         \begin{itemize}
-            \item \normalsize Different objectives/incentives in other types of firms (nonprofits)
+            \item \tikz[baseline]{\node[anchor=base] (L1) {Gender};}
+            \item \tikz[baseline]{\node[anchor=base] (L2) {Experience};}
+            \item \tikz[baseline]{\node[anchor=base] (L3) {Age};}
         \end{itemize}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+    \textbf{Firm Outcomes:}
+        \begin{itemize}
+            \item \tikz[baseline]{\node[anchor=base] (R1) {Value};}
+            \item \tikz[baseline]{\node[anchor=base] (R2) {Employees};}
+            \item \tikz[baseline]{\node[anchor=base] (R3) {M\&A};}
+            \item \tikz[baseline]{\node[anchor=base] (R4) {Leader Salaries};}
+        \end{itemize}
+    \end{column}
+\end{columns}
 
-        \vspace{10mm}
-        
-        \item Unclear whether leadership matters when policies cause exogenous 
-        
-        change in incentives
-    \end{enumerate}
+% Now draw arrows between the nodes
+\begin{tikzpicture}[overlay, remember picture]
+    \draw[->, thick, shorten >=15pt] (L1.east) to [out=0, in=180] (R1.west);
+    \draw[->, thick, shorten >=15pt] (L1.east) to [out=0, in=180] (R2.west);
+    \draw[->, thick, shorten >=15pt] (L2.east) to [out=0, in=180] (R3.west);
+    \draw[->, thick, shorten >=15pt] (L2.east) to [out=0, in=180] (R4.west);
+    \draw[->, thick, shorten >=15pt] (L3.east) to [out=0, in=180] (R3.west);
+\end{tikzpicture}
+
+\vspace{1.5em}\pause
+
+\textbf{Gaps in Literature:}
+\vspace{2mm}
+\begin{enumerate}
+    \item Findings are limited to large, publicly traded firms
+    \item Unclear in the context of exogenous policy shocks
+\end{enumerate}
+
 \end{frame}
 
 
@@ -323,60 +320,21 @@ Evidence from Pay-for-Performance}}
     \end{block}
 
 
-\vspace{10mm} \large \pause
+\vspace{10mm} \large
 
 \begin{enumerate}
-    \item \textbf{Nonprofits drive the hospital industry} \scriptsize (\cite{ASPE_2023}) 
+    \item Nonprofits drive the hospital industry \scriptsize (\cite{ASPE_2023}) \large
+
+    \vspace{3mm}
+
+    \item Policies often aim to improve the value of health care delivery
 
 \vspace{2mm}
     
-    \begin{wideitemize}
-        \item Should nonprofits receive the benefits that they do? 
-        \item Push to make nonprofits act more like nonprofits
-    \end{wideitemize}
-    \end{enumerate}
-\end{frame}
-
-%\begin{frame}{Addressing the Gaps}
-    %\centering
-    %\begin{tikzpicture}
-        % First image (top-left)
-        %\node[anchor=north west] (img1) at (0, 3) {\includegraphics[width=0.75\textwidth]{Graphics/nonprofit_screenshot1.png}};
-        %\draw[line width=.45mm, lightcyan] (img1.north west) rectangle (img1.south east);
-        
-        % Second image (slightly down and right of the first image)
-        %\node[anchor=north west] (img2) at (0, 0) {\includegraphics[width=0.75\textwidth]{Graphics/nonprofit_screenshot2.png}};
-        %\draw[line width=.45mm, lightcyan] (img2.north west) rectangle (img2.south east);
-
-    %\end{tikzpicture}
-%\end{frame}
-
-\begin{frame}{Addressing the Gaps}
-
-    \Large
-    \begin{block}{}
-    \begin{center}
-    I examine the role of leadership in nonprofit hospitals
-    
-    responding to policy incentives
-    \end{center}
-    \end{block}
-
-
-\vspace{18mm} \large
-
-\begin{enumerate}
-    \setcounter{enumi}{1}
-    \item  \large \textbf{Policies often aim to improve the value of health care delivery}
-
-\vspace{2mm}
-
-    \begin{wideitemize}
-        \item \normalsize Unclear how leaders interact with this goal
-    \end{wideitemize}
 
     \end{enumerate}
 \end{frame}
+
 
 \begin{frame}{Research Question}
     \centering
@@ -392,141 +350,30 @@ Evidence from Pay-for-Performance}}
     of nonprofit hospitals in the US?
 \end{frame}
 
-\begin{frame}{Why Clinical Training?}
-
-\large
-
-\textbf{Do physicians make good firm leaders?}
-
-\vspace{2mm}
-
-\begin{wideitemize}
-    \item Relevant expertise \scriptsize (\cite{Stajduhar_2023}, \cite{Ahmed_2022}) \large
-
-    
-    \item Lack of business training \scriptsize (\cite{HarvardBusinessReview2018})
-\end{wideitemize}
-
-\vspace{12mm}
-
-\textbf{Potentially correlated with how the leader values quality versus profit}
-\end{frame}
-
-\begin{frame}{Pay-for-Performance Incentives}
+\begin{frame}{More Details}
     \large
-    \begin{block}{\Large Main Takeaway of P4P:}
-        \large 
-        \centering
-        \vspace{1mm}
-        Hospitals now have financial incentives to improve quality
+    I leverage several 2012 pay-for-performance initiatives
 
-        \vspace{1mm}
-    \end{block}
-
-    \vspace{6mm}
-    
-    \textbf{Quality: 30-day readmissions \& 30-day mortality}
-
-    \vspace{5mm}
-
-    Hospital Readmissions Reduction Program
-    \begin{itemize}
-        \item Penalized high readmissions
-        \item Pneumonia, Heart Attack (AMI), Heart Failure
-    \end{itemize}
-
-    \vspace{5mm}
-
-    Hospital Value-Based Purchasing Program
-    \begin{itemize}
-        \item Score metric determines rewards
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Preview of Main Findings}
-
-\large
-
-\textbf{Non-clinical executive teams respond more to financial incentives on quality}
-
-\vspace{3mm}
-
-\begin{wideitemize}
-    \item Through readmission rates
-\end{wideitemize}
-\end{frame}
-
-\begin{frame}{Contribution}
-\large
-    \textbf{Hospital Executives/Board of Directors}
-
-\vspace{2mm}
-    
+    \vspace{2mm}
     \begin{wideitemize}
-        \normalsize \item Physician board members $\implies$ lower public donations \scriptsize (\cite{brickley2010board}) \normalsize
-        \normalsize \item No correlation b/w CEOs and hospital productivity in England \scriptsize (\cite{janke2019impact})\normalsize
-        \normalsize \item Public hospitals in Chile improved when older physicians left CEO \scriptsize (\cite{otero2022managers}) \normalsize
+        \item Penalty (reward) for below (above) average \hspace{-8mm} $\underbrace{\text{quality}}_{\text{30-day read \& mort}}$
+        \item \textit{Changes the relationship between revenue and quality in objective function}
     \end{wideitemize}
 
-    \vspace{5mm}\pause
+    \vspace{10mm}
 
-    \textbf{Hospital Response to Pay-for-Performance}
+    Why clinical training?
 
-\vspace{2mm}
-    
+    \vspace{2mm}
     \begin{wideitemize}
-        \normalsize \item Hospitals decreased readmissions \scriptsize (\cite{gupta2021impacts}) 
-
-        \vspace{-.5mm}
-        
-        \normalsize \item Market concentration and systems affect response 
-        \scriptsize (\cite{kunz2024assessing}) 
-        
-        \normalsize\item Rewards had little impact on quality \scriptsize (\cite{norton2018moneyball}; \cite{friedson2019so})
+        \item Potentially correlated with hospital's preferences towards revenue versus patient welfare
     \end{wideitemize}
+    
 \end{frame}
-
-
-
 
 
 \section{Setting and Data Collection}
 
-\begin{transitionframe}
-\centering \LARGE
-    \textcolor{black}{Setting and Data Collection}
-\end{transitionframe}
-
-\begin{frame}{About the Executives}\label{nonprofithospexec}
-
-\large
-\textbf{What do they do?}
-
-\vspace{2mm}
-
-\begin{wideitemize}
-    \item Board of directors selects executives
-    \item Executives handle the day-to-day operations of the hospital 
-    \item Quality often improved from the top down \scriptsize (\cite{silow2011reducing})
-\end{wideitemize}
-
-\vspace{3mm} \pause 
-
-\textbf{Executive teams}
-
-\vspace{2mm}
-
-\begin{wideitemize}
-    \item Lot of variation in team organization
-    \item CEO and CFO
-    \item I focus on the team as a whole instead of specific executive roles
-\end{wideitemize}
-
-\btVFill
-
-\hyperlink{executivejob}{\beamergotobutton{improving quality}} 
-
-\end{frame}
 
 \begin{frame}{}
     \begin{tikzpicture}
@@ -538,75 +385,46 @@ Evidence from Pay-for-Performance}}
     \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Data Collection Process}
-\begin{center}
-\begin{tikzpicture}[
-    node distance=3.1cm and 1.8cm,
-    every node/.style={align=center, font=\normalsize},
-    process/.style={rectangle, draw, rounded corners, text centered, minimum width=2.5cm, minimum height=2cm, fill=purple!30},
-    output/.style={rectangle, draw, text centered, minimum width=2.7cm, minimum height=2.5cm, fill=purple},
-    extract/.style={rectangle, draw, rounded corners, text centered, minimum width=2.5cm, minimum height=2cm, fill=sage!30},
-    arrow/.style={thick, ->, >=stealth}
-]
 
-% Nodes
-\node (step1) [process] {Hospital \\EINs};\pause
-\node (step2) [process, right of=step1] {Download \\PDFs};
-\draw[arrow] (step1) -- (step2); \pause
-\node (step3) [process, right of=step2] {Extract\\text};
-\draw[arrow] (step2) -- (step3); 
-% New green box below step3
-\node (extract) [extract, below of=step3, yshift=0.5cm] {Optical\\Character\\Recognition}; 
-\draw[arrow] (extract) -- (step3);\pause
-\node (step4) [process, right of=step3] {String\\cleaning\\algorithms};
-\draw[arrow] (step3) -- (step4); \pause
-\node (output) [output, right of=step4, text=white] {Executive\\Name\\Position\\Title};
-\draw[arrow] (step4) -- (output);
-\end{tikzpicture}
-\end{center}
-\end{frame}
-
-
-\begin{frame}{Merge to Other Data}
+\begin{frame}{Final Data Set}
 
 \large
+
+    \textbf{Executives:} 
+
+    \vspace{1mm}
+
+    \begin{itemize}
+        \item Top level C-suite employees scraped from 990s
+    \end{itemize}
+
+    \vspace{4mm}
+
     \textbf{Hospital:} 
 
-    \vspace{2mm}
+    \vspace{1mm}
     \begin{wideitemize}
-        \item AHA
-        \item Hospital Compare
-        \item CMS Case Mix Index
-        \item Health Care Cost Report Information System (HCRIS)
+        \item AHA, Hospital Compare, CMS Case Mix Index, HCRIS
     \end{wideitemize}
 
-    \vspace{7mm}
+    \vspace{4mm}
 
     \textbf{Physician:} 
 
-    \vspace{2mm}
+    \vspace{1mm}
 
     \begin{itemize}
         \item Manually match physician executives to NPPES NPI number
     \end{itemize}
 
-    \vspace{5mm}
+    \vspace{8mm}
 
-    \textbf{Years 2010-2014}
+    \textbf{Years: 2010-2014}
 \end{frame}
 
 
 \section{About Executive Teams}
 
-\begin{transitionframe}
-\centering \LARGE
-    \textcolor{black}{Descriptive Statistics}
-\end{transitionframe}
-
-\begin{frame}{Sample Definitions}
-\centering
-    \includegraphics[scale=.75]{Graphics/2010.png}
-\end{frame}
 
 \begin{frame}{Executive Teams}
 \begin{table}[ht!]
@@ -628,59 +446,8 @@ Num. Hospitals & 452 & 62 & 385\\
 \end{table}
 \end{frame}
 
-\begin{frame}{Doctors on Executive Teams (N=941)}
-\begin{table}[ht!]
-\centering
-\begin{tabular}[t]{lc}
-\toprule
-& Mean\\
-\midrule
-Age & 52.56\\
-Female & 0.11\\
-CEO & 0.15\\
-CMO & 0.36\\
-CQO & 0.09\\
-\addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Specialty}}\\
-\hspace{1em}Internal Medicine & 0.32\\
-\hspace{1em}Family Medicine & 0.18\\
-\hspace{1em}Surgery & 0.14\\
-\hspace{1em}Emergency Medicine \hspace{4mm} & 0.11\\
-\hspace{1em}Pediatrics & 0.06\\
-\hspace{1em}Other & 0.16\\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{frame}
 
 
-\begin{frame}{Hospital Statistics}\label{sumstats}
-\vspace{-3mm}
-\begin{table}[ht!]
-\centering
-\begin{tabular}[t]{lccc}
- & Ever & Always & Never\\
-  & Clinical Exec &Clinical Exec &Clinical Exec\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Hospital Characteristics}}\\
-\hspace{1em}Academic Med. Center & 0.41 & 0.51 & 0.20\\
-\hspace{1em}Number Beds & 227 & 218 & 102\\
-\hspace{1em}Physician Owned & 0.01 & 0.02 & 0.02\\
-\hspace{1em}System Affiliated & 0.57 & 0.56 & 0.42\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Penalty/Payment Variables}}\\
-\hspace{1em}Ever Received HVBP Incentive & 0.79 & 0.77 & 0.59\\
-\hspace{1em}Penalized for one condition & 0.19 & 0.25 & 0.13\\
-\hspace{1em}Penalized for AMI + HF & 0.07 & 0.05 & 0.03\\
-\hspace{1em}Penalized for AMI + Pneumonia & 0.02 & 0.02 & 0.02\\
-\hspace{1em}Penalized for HF + Pneumonia & 0.41 & 0.40 & 0.33\\
-\hspace{1em}Penalized for All Conditions & 0.31 & 0.31 & 0.20\\
-\bottomrule
-\end{tabular}
-\end{table}
-\hyperlink{forprofitstats}{\beamergotobutton{for-profit stats}}
-\end{frame}
 
 \begin{frame}{Raw Outcomes, controlling for baseline case mix index}\label{outcomes}
 \begin{center}
@@ -688,139 +455,6 @@ CQO & 0.09\\
 \end{center}
     \btVFill
     \hyperlink{fp_outcomes}{\beamergotobutton{with for-profit}}
-\end{frame}
-
-\section{Theoretical Framework}
-
-\begin{transitionframe}
-\centering \LARGE
-    \textcolor{black}{Theoretical Framework}
-\end{transitionframe}
-
-\begin{frame}{Hospital Objectives: Profit versus Patient Welfare}
-    \Large
-    \centering
-
-    \vspace{2mm}
-    
-    \begin{equation*}
-        \max_{\theta}\hspace{2mm} \alpha\pi(\theta) + (1-\alpha)u(\theta)
-    \end{equation*}
-
-\end{frame}
-
-\begin{frame}[noframenumbering]{Hospital Objectives: Profit versus Patient Welfare} \Large
-    \begin{equation*}
-\max_{\theta}\hspace{2mm}\alpha
-\tikz[baseline]{
-    \node[draw=sage,rounded corners,anchor=base] (m1)
-    {$\pi(\theta)$};
-    \node[above of=m1, text=sage, yshift=5mm] (l1) {profit};
-    \draw[-,sage] (l1) -- (m1);
-}
-+ (1-\alpha)\hspace{-11mm}
-\tikz[baseline]{
-    \node[draw=sage,rounded corners,anchor=base] (m2)
-    {$u(\theta)$};
-    \node[above of=m2, text=sage, yshift=5mm] (l2) {patient welfare};
-    \draw[-,sage] (l2) -- (m2);
-}
-\end{equation*}
-\end{frame}
-
-\begin{frame}[noframenumbering]{Hospital Objectives: Profit versus Patient Welfare} \Large
-    \begin{equation*}
-\max_{\theta}\hspace{2mm}\alpha\pi(\hspace{-5mm}
-\tikz[baseline]{
-    \node[draw=purple,rounded corners,anchor=base] (m1)
-    {$\theta$};
-    \node[above of=m1, text=purple, yshift=5mm] (l1) {quality};
-    \draw[-,purple] (l1) -- (m1);
-}
-\hspace{-5mm}) + (1-\alpha)u(\hspace{-5mm}
-\tikz[baseline]{
-    \node[draw=purple,rounded corners,anchor=base] (m2)
-    {$\theta$};
-    \node[above of=m2, text=purple, yshift=5mm] (l2) {quality};
-    \draw[-,purple] (l2) -- (m2);
-}
-\hspace{-5mm})
-\end{equation*}
-\end{frame}
-
-\begin{frame}[noframenumbering]{Hospital Objectives: Profit versus Patient Welfare} \Large
-    \begin{equation*}
-\max_{\theta}\hspace{-4mm}
-\tikz[baseline]{
-    \node[draw=earthyellow,rounded corners,anchor=base] (m1)
-    {$\alpha$};
-    \node[above of=m1, text=earthyellow, yshift=5mm] (l1) {weight on\\profit};
-    \draw[-,earthyellow] (l1) -- (m1);
-}
-\hspace{-8mm}\pi(\theta) + \hspace{-7mm}
-\tikz[baseline]{
-    \node[draw=earthyellow,rounded corners,anchor=base] (m2)
-    {$(1-\alpha)$};
-    \node[above of=m2, text=earthyellow, yshift=5mm] (l2) {weight on\\patient welfare};
-    \draw[-,earthyellow] (l2) -- (m2);
-}
-\hspace{-7mm}u(\theta)
-\end{equation*}
-\end{frame}
-
-
-\begin{frame}{Choice of Quality ($\theta$)}\label{choiceofquality}
-
-\vspace{9mm}
-
-\Large
-
-    \begin{columns}
-    \begin{column}{0.5\textwidth}
-    \begin{center}
-        \underline{Fee-for-Service}
-
-        \vspace{3mm}
-
-            $\pi$ $\downarrow$ in $\theta$
-    \end{center}
-    \end{column}
-    \begin{column}{0.5\textwidth}  %%<--- here
-    \begin{center}
-        \underline{Pay-for-Performance}
-
-        \vspace{3mm}
-
-
-            $\pi$ $\uparrow$ in $\theta$
-    \end{center}
-    \end{column}
-\end{columns}
-
-\btVFill
-
-\begin{block}{\Large Fee-for-service to Pay-for-performance}
-    \centering
-    \vspace{3mm}
-    Higher $\alpha$ $\implies$ larger response
-
-    \vspace{3mm}
-\end{block}
-
-\hyperlink{choiceofqualityapp}{\beamergotobutton{more details}}
-\end{frame}
-
-\begin{frame}{Informing the Empirical Analysis}
-
-\large
-
-        \textbf{Response to P4P is tied to underlying objectives $\alpha$}
-        \vspace{3mm}
-        \begin{wideitemize}
-            \item Ownership status is important to underlying objectives
-            \item It's reasonable that priorities of leaders are also an important factor
-        \end{wideitemize}
-
 \end{frame}
 
 
@@ -852,38 +486,24 @@ CQO & 0.09\\
     Different methods:
     \begin{itemize}
         \item No weights
-        \item \textbf{``Synthetic DiD" type weights} 
+        \item \textbf{Weights based on outcomes pre-2012} 
         \item Coarsened exact matching 
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Identification Assumptions}
+\begin{frame}{Identification Assumptions}\label{ident}
 
 \large
 \begin{wideitemize}
     \item Parallel trends
     \item No other 2012 event correlated with executive team and outcomes
     \item No hospital characteristics perfectly correlated with executive team
-    \item No anticipation of incentive changes
-    \item Stability in clinical executives not correlated with incentive change
+    \item Stability in clinical executives not correlated with incentive change \hyperlink{changes}{\beamergotobutton{analysis}}
+    \begin{itemize}
+        \item No correlation between 2012 and likelihood of changing propensity to hire clinical executive
+        \item No correlation between exposure to policies and likelihood of changing propensity
+    \end{itemize}
 \end{wideitemize}
-\end{frame}
-
-\begin{frame}{Average Team Changes Over Time}
-\centering 
-    \includegraphics[width=.8\textwidth]{Objects/change_means.pdf}
-\end{frame}
-
-\begin{frame}{Changes are not correlated with policy exposure}
-\centering \small
-\begin{equation*}\label{eq:change2}
-    \text{change}_{ht} = \sum_{j=2011}^{2014}\beta_j(\mathbf{1}\{t=j\}\times \text{Program Exposed})_{ht} + \alpha_h + \epsilon_{ht},
-    \end{equation*}
-
-    \btVFill
-
-    \includegraphics[width=.7\textwidth]{Objects/change_analysis_plot.pdf}
-    
 \end{frame}
 
 \begin{frame}{Readmission Rates}\label{main:readrates}
@@ -965,132 +585,51 @@ CQO & 0.09\\
     \end{columns}
 \end{frame}
 
-\begin{frame}{Mortality Rate}
+\begin{frame}{Mortality Rate}\label{forprofmort}
     \begin{columns}
-    \column{0.5\textwidth}
+    \column{0.45\textwidth}
         \centering
         \includegraphics[width=.9\textwidth]{Objects/fp_mort_md_synth_graph.pdf}
-    \column{0.5\textwidth}
+    \column{0.45\textwidth}
         \centering
         \includegraphics[width=.9\textwidth]{Objects/fp_mort_nomd_synth_graph.pdf}
     \end{columns}
+
+    \hyperlink{unobserved}{\beamergotobutton{unobserved}}
 \end{frame}
 
 \section{Unobserved}
 
-\begin{transitionframe}
-\centering \LARGE
-    \textcolor{black}{Driven by Unobserved Compositional Differences?}
-\end{transitionframe}
 
-\begin{frame}{Driven by Unobserved Compositional Differences?}
-\large
-
-\textbf{Concern:} presence of clinicians may not matter but is correlated with some unobserved hospital `type', possibly time varying
-
-\vspace{3mm}
-\begin{wideitemize}
-    \item if true, we should see a difference in response no matter the timing of having a clinical executive
-\end{wideitemize}
-\end{frame}
-
-\begin{frame}{Robustness Check}
-\large
-    \begin{figure}[ht!]
-\begin{center}
- 
- \begin{tabular}{| m{15em} |}
- \hline \vspace{1mm}
- \textbf{Signaling Effect:}\\ [0.5ex]
- \hline\hline 
- \vspace{2mm}
- Treat Group:  \hspace{15mm} Never MD \\
- \vspace{2mm}
- Comparison Group: \hspace{3mm} Ever MD  \\
- [1ex]
- \hline
- \end{tabular}
-\hfil   %<---
- \begin{tabular}{|m{18em}|}
- \hline \vspace{1mm}
- \textbf{Clinician Effect:}\\ [0.5ex]
- \hline\hline
- \vspace{2mm}
- Treat Group: \hspace{11mm} MD in 2012 \\
- \vspace{2mm}
- Comparison Group:  MD not in 2012  \\
- [1ex]
- \hline
- \end{tabular}
- 
-\end{center}
- \end{figure}
-
-\end{frame}
-
-\begin{frame}{Results}
-    \begin{table}[ht!]
-\centering
-\begin{tabular}[t]{lcccc}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{\underline{Weighted Avg. Readmission Rate}} & \multicolumn{2}{c}{\underline{Weighted Avg. Mortality Rate}} \\
- & (1) & (2) & (3) & (4)\\
-\midrule
-Signaling Effect & -0.01 &  & 0.03 & \\
- & (0.07) &  & (0.06) & \\
-Clinician Effect &  & 0.17 &  & 0.12\\
- &  & (0.1) &  & (0.09)\\
- &  &  &  & \\
-Observations & 3,005 & 1,595 & 3,005 & 1,595\\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{frame}
 
 \begin{frame}{Summary}
 \large
     \textbf{We know very little about whether leaders matter in health care}
 
+    \vspace{2mm}
+
     \begin{wideitemize}
         \item This paper: non-clinical executive teams internalize financial incentives more
     \end{wideitemize}
 
-    \vspace{5mm}
+    \vspace{8mm}
     
     \textbf{Implications}
-    \begin{itemize}
+
+    \vspace{2mm}
+    \begin{wideitemize}
         \item Despite all being nonprofits, hospitals with clinician leaders act more like we would expect nonprofits to
         \item In the absence of clinical leadership, nonprofits just act like for-profits
-    \end{itemize}
+    \end{wideitemize}
 
     \vspace{5mm}
 
-    \textbf{Future Work}
-
-    \begin{itemize}
-        \item Effects of mandated gender and racial diversity on hospital behavior
-        \item Networks of executives over time 
-        \item Are leaders correlated with hospital fraudulent behavior?
-    \end{itemize}
+    \begin{center}
+        \Large Thank you! 
+    \end{center}
 \end{frame}
 
-\begin{transitionframe}
-\centering 
-%\includegraphics[width=.2\textwidth]{Graphics/HannaGlenn_headshot.jpg}
 
-\vspace{5mm}
-
-\Large
-    Thank you! 
-
-    \vspace{15mm}
-    
-    \textcolor{black}{\faEnvelope \hspace{2mm} hanna.glenn@emory.edu}
-
-    \vspace{2mm}
-    
-    \textcolor{black}{\faTwitter \hspace{2mm} @hannalynnglenn}
-\end{transitionframe}
 
 
 
@@ -1169,6 +708,57 @@ $\pi'(\theta)$:
 \scriptsize (\cite{silow2011reducing}) \hspace{4mm}
 \hyperlink{nonprofithospexec}{\beamerreturnbutton{Nonprofit Hosp Execs}}
     
+\end{frame}
+
+\begin{frame}{Doctors on Executive Teams (N=941)}
+\begin{table}[ht!]
+\centering
+\begin{tabular}[t]{lc}
+\toprule
+& Mean\\
+\midrule
+Age & 52.56\\
+Female & 0.11\\
+CEO & 0.15\\
+CMO & 0.36\\
+CQO & 0.09\\
+\addlinespace[0.3em]
+\multicolumn{2}{l}{\textbf{Specialty}}\\
+\hspace{1em}Internal Medicine & 0.32\\
+\hspace{1em}Family Medicine & 0.18\\
+\hspace{1em}Surgery & 0.14\\
+\hspace{1em}Emergency Medicine \hspace{4mm} & 0.11\\
+\hspace{1em}Pediatrics & 0.06\\
+\hspace{1em}Other & 0.16\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Hospital Statistics}\label{sumstats}
+\vspace{-3mm}
+\begin{table}[ht!]
+\centering
+\begin{tabular}[t]{lccc}
+ & Ever & Always & Never\\
+  & Clinical Exec &Clinical Exec &Clinical Exec\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Hospital Characteristics}}\\
+\hspace{1em}Academic Med. Center & 0.41 & 0.51 & 0.20\\
+\hspace{1em}Number Beds & 227 & 218 & 102\\
+\hspace{1em}Physician Owned & 0.01 & 0.02 & 0.02\\
+\hspace{1em}System Affiliated & 0.57 & 0.56 & 0.42\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Penalty/Payment Variables}}\\
+\hspace{1em}Ever Received HVBP Incentive & 0.79 & 0.77 & 0.59\\
+\hspace{1em}Penalized for one condition & 0.19 & 0.25 & 0.13\\
+\hspace{1em}Penalized for two conditions & 0.50 & 0.47 & 0.38\\
+\hspace{1em}Penalized for all Conditions & 0.31 & 0.31 & 0.20\\
+\bottomrule
+\end{tabular}
+\end{table}
+\hyperlink{forprofitstats}{\beamergotobutton{for-profit stats}}
 \end{frame}
 
 \begin{frame}{For-Profit and Nonprofit Statistics}\label{forprofitstats}
@@ -1312,5 +902,120 @@ Observations & 2,387 & 1,025 & 1,640 & 2,381 & 1,023 & 1,640\\
 \hyperlink{main:readrates}{\beamerreturnbutton{main results}}
 \end{frame}
 
-\end{document}
+\begin{frame}{Average Team Changes Over Time}\label{changes}
+\centering 
+    \includegraphics[width=.8\textwidth]{Objects/change_means.pdf}
+\end{frame}
 
+\begin{frame}{Changes are not correlated with policy exposure}
+\centering \small
+\begin{equation*}\label{eq:change2}
+    \text{change}_{ht} = \sum_{j=2011}^{2014}\beta_j(\mathbf{1}\{t=j\}\times \text{Program Exposed})_{ht} + \alpha_h + \epsilon_{ht},
+    \end{equation*}
+
+    \btVFill
+
+    \includegraphics[width=.7\textwidth]{Objects/change_analysis_plot.pdf}
+
+    \hyperlink{ident}{\beamerreturnbutton{back}}
+    
+\end{frame}
+
+\begin{frame}{Driven by Unobserved Compositional Differences?}\label{unobserved}
+\large
+
+\textbf{Concern:} presence of clinicians may not matter but is correlated with some unobserved hospital `type', possibly time varying
+
+\vspace{3mm}
+\begin{wideitemize}
+    \item if true, we should see a difference in response no matter the timing of having a clinical executive
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{Robustness Check}
+\large
+    \begin{figure}[ht!]
+\begin{center}
+ 
+ \begin{tabular}{| m{15em} |}
+ \hline \vspace{1mm}
+ \textbf{Signaling Effect:}\\ [0.5ex]
+ \hline\hline 
+ \vspace{2mm}
+ Treat Group:  \hspace{15mm} Never MD \\
+ \vspace{2mm}
+ Comparison Group: \hspace{3mm} Ever MD  \\
+ [1ex]
+ \hline
+ \end{tabular}
+\hfil   %<---
+ \begin{tabular}{|m{18em}|}
+ \hline \vspace{1mm}
+ \textbf{Clinician Effect:}\\ [0.5ex]
+ \hline\hline
+ \vspace{2mm}
+ Treat Group: \hspace{11mm} MD in 2012 \\
+ \vspace{2mm}
+ Comparison Group:  MD not in 2012  \\
+ [1ex]
+ \hline
+ \end{tabular}
+ 
+\end{center}
+ \end{figure}
+
+\end{frame}
+
+\begin{frame}{Results}
+    \begin{table}[ht!]
+\centering
+\begin{tabular}[t]{lcccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{\underline{Weighted Avg. Readmission Rate}} & \multicolumn{2}{c}{\underline{Weighted Avg. Mortality Rate}} \\
+ & (1) & (2) & (3) & (4)\\
+\midrule
+Signaling Effect & -0.01 &  & 0.03 & \\
+ & (0.07) &  & (0.06) & \\
+Clinician Effect &  & 0.17 &  & 0.12\\
+ &  & (0.1) &  & (0.09)\\
+ &  &  &  & \\
+Observations & 3,005 & 1,595 & 3,005 & 1,595\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\hyperlink{forprofmort}{\beamerreturnbutton{back}}
+\end{frame}
+
+\begin{frame}{Leadership Characteristics and Firm Behavior/Performance}
+
+\large
+
+\textbf{Gender}
+\begin{itemize}
+    \item \normalsize Female board members $\implies$ lower firm value, less employment reduction \\ \scriptsize(\cite{ahern2012changing}; \cite{matsa2013female}) \normalsize
+    \item Female executives $\implies$ female wage distribution \scriptsize (\cite{flabbi2019female}) \normalsize
+\end{itemize}
+
+\vspace{4mm}
+
+\textbf{Prior Experience}
+\begin{itemize}
+    \item \normalsize General background CEOs paid more \scriptsize (\cite{custodio2013generalists}) \normalsize
+    \item Background matters for acquisitions \scriptsize(\cite{custodio2013ceos}) \normalsize
+
+\vspace{1mm}
+    
+    \item Military experience CEOs \scriptsize (\cite{benmelech2015military})
+\end{itemize}
+
+\vspace{4mm}
+
+\textbf{Age}
+\begin{itemize}
+    \item \normalsize Young male CEOs more aggressive in M\&A \scriptsize (\cite{levi2010deal})
+\end{itemize}
+
+\end{frame}
+
+\end{document}
