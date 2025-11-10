@@ -113,38 +113,6 @@ sorting=ynt,citestyle=authoryear]{biblatex}
     Due to data limitations, many of these studies focus on large, publicly traded firms in the US. \citeauthor{brickley2010board} (\citeyear{brickley2010board}) have the only study to my knowledge in the US nonprofit context considering hospital board of directors. Using exogenous variation in expected Medicare profits, the authors find that having an internal board of directors increases CEO compensation, and having physician board members decreases public donations (\cite{brickley2010board}). Additionally, two studies focus on hospital performance in other countries. \citeauthor{janke2019impact} (\citeyear{janke2019impact}) use data from England to study whether CEOs affect hospital production, and find no association (\cite{janke2019impact}). However, \citeauthor{otero2022managers} (\citeyear{otero2022managers}) investigate the role of CEOs in public hospitals in Chile, and finds an 8\% decrease in mortality rates for hospitals with top managers. Further, a major contributor of this quality improvement is the exodus of older physicians as CEOs (\cite{otero2022managers}). I contribute to our knowledge of how executive team characteristics affect firm behaviors by (1) considering the important setting of nonprofit hospitals, which serve the majority of patients in the US, (2) considering a unique and relevant executive characteristic, and (3) observing firm behavior in the presence of an exogenous incentive change. 
 
     Additionally, I contribute to our understanding of how providers respond to pay-for-performance incentives in health care. The most in depth study of how hospitals respond to the Hospital Readmissions Reduction Program, one of the two large pay-for-performance initiatives, is \citeauthor{gupta2021impacts} (\citeyear{gupta2021impacts}). This study finds that hospitals decreased readmissions by 5\% and mortality rates by 2\% on average as a result of the program, confirming prior studies (\cite{mellor2017does}; \cite{ziedan2018essays}; \cite{ody2019decreases}; \cite{gupta2021impacts}). Around 40\% of the decrease in readmissions is due to selective patient practices. Further, market concentration and hospital systems play a large role in how hospitals respond to the program (\cite{kunz2024assessing}). Research on the other large pay-for-performance initiative, the Hospital Value Based Purchasing Program, generally finds that the program had no effect on underlying hospital quality (\cite{us2015hospital}; \cite{norton2018moneyball}; \cite{friedson2019so}). This paper contributes to our understanding of how characteristics of hospitals affect response to pay-for-performance incentives. 
-
-    \section{Theoretical Framework}\label{sec:theory}
-
-    Consider a simplified model of hospital objectives, in which hospitals choose a level of quality of care that maximizes an objective function capturing the trade-off between profit and patient welfare. That is, 
-    
-    $$\max_{\theta}\hspace{2mm}\alpha\pi(\theta) + (1-\alpha) u(\theta),$$
-
-    \noindent where $\pi(\theta)$ is a profit function depending on quality $\theta$, $u(.)$ is extra utility gained from patient welfare, which is increasing and concave in quality $\theta$, and $\alpha\in[0,1]$ captures the weight placed on profit vs. patient welfare. There is an implicit stay-open condition throughout the model.
-
-    I consider hospital choice of quality under pay-for-performance. In a world where performance is not incentivized through financial gain (as in traditional fee-for-service settings), hospital profit $\pi$ is maximized when the quantity of patients is maximized. However, pay-for-performance incentives incorporate quality into the profit function (\cite{dranove2011health}). Therefore, hospitals that only value financial profit will only consider quality if it is an input to the profit function, and therefore will respond more drastically to pay-for-performance than a hospital who values quality as an input to patient welfare before the incentives. 
-    
-    I will now formalize this intuition mathematically. For simplicity, I abstract away from quality having a direct impact on quantity of patients or price.\footnote{As long as the relationship between quality and quantity/price are not correlated with $\alpha$, this does not change the conclusion of the model.} Taking the first order condition yields: 
-
-    $$(1-\alpha)u'(\theta) = -\alpha \pi'(\theta),$$
-
-    \noindent where marginal benefit equals marginal cost of increasing quality. Solving for $u'(\theta)$ and differentiating with respect to $\alpha$,
-
-    $$\frac{du'(\theta)}{d\alpha} = \frac{-1}{(1-\alpha)^2}\pi'(\theta).$$
-
-    Now, consider incentives when the hospital is in a strictly fee-for-service environment. That is, quality benefits patients, but hospitals do not directly derive profit from having a high quality. Then, assuming there is a positive cost to increasing quality, $\pi(\theta)$ is decreasing in $\theta$. Then $\frac{du'(\theta)}{d\alpha} > 0$. Using the Implicit Function Theorem, I can write $\frac{d\theta}{d\alpha}$ as 
-    $\frac{du'(\theta)/d\alpha}{du'(\theta)/d\theta}<0$, revealing that in a fee-for-service setting, the more weight the hospital places on profit, the lower quality of care chosen at baseline.
-
-    Next, assume the hospital is in a pay-for-performance setting, where quality benefits patients and directly increases profit. Then, assuming the marginal financial benefit of increasing quality is greater than the marginal financial cost, $\pi(\theta)$ is increasing in $\theta$. Then $\frac{du'(\theta)}{d\alpha} < 0$, revealing that in a pay-for-performance setting, the more weight placed on profit, the higher quality of care chosen by the hospital. I combine the results found in each scenario into one response function that depends on $\alpha$, where $\theta_{p4p}$ is quality under pay-for-performance incentives and $\theta_{ffs}$ is quality under fee-for-service only. That is, 
-
-    \begin{align*}
-        \frac{d\Delta\theta}{d\alpha}&=\frac{d(\theta_{p4p}-\theta_{ffs})}{d\alpha}\\
-        &=\frac{d\theta_{p4p}}{d\alpha}-\frac{d\theta_{ffs}}{d\alpha}\\
-        &> 0.
-    \end{align*}
-
-
-    The first prediction of the model is that, all else held equal, hospitals that value profit will have a lower quality than those who value patient welfare in a fee-for-service setting. Second, a hospital's change in quality once pay-for-performance is enacted depends on how much weight the hospital places on profit vs. patient welfare. Particularly, hospitals with higher weight on profit respond more than hospitals with higher weight on patient welfare. Therefore, factors that affect weight $\alpha$ will be correlated with choice of quality, and with how quality changes under new pay-for-performance incentives. In this paper, I test the hypothesis that clinical experience on a hospital's leadership team is a factor that is correlated with weight $\alpha$, and thus affects response to pay-for-performance incentives. 
     
 
     \section{Setting and Data}
@@ -290,77 +258,11 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     \section{Potential Mechanisms}
 
-    The specific aspects of leadership that link executives to employees to patient outcomes are nearly impossible to observe. As the data on this topic progresses, these granular details of leadership will become more accessible to analyze. For the purpose of this paper, it is important for policymakers to understand why there is a behavioral difference in clinician versus non-clinician leaders, as this might affect the types of incentives they will respond to. 
+    While uncovering that there is some foundational difference in clinical and non-clinical hospital leaders is important in its own right, it is especially relevant to understand why this difference might come about. In this Section, I present several theoretical predictions consistent with the observed difference in quality after pay-for-performance incentives, and  test the predictions empirically. First, I investigate whether clinicians are actively managing hospitals differently or whether they are a signal of underlying preferences of the hospital by leveraging the timing of clinical leaders relative to the incentives in Section \ref{sec:sig_man}. Second, the difference could be driven by the altruism, or patient-centered focus, of clinicians. I investigate this in Section \ref{sec:forprofit}, comparing the response of nonprofits with different leadership teams to the response of for-profit hospitals on average. Third, I consider the altruism versus expertise argument using a heterogeneity analysis of different physician specialties in Section \ref{sec:expertise}. In Section \ref{sec:selection}, I consider whether different types of executives might have different propensities to engage in "gaming" through selective patient practices. Finally, I analyze whether different executives change investment behavior in response to the incentives in Section \ref{sec:investment}.
 
-    There are several hypotheses that I test given the data available. First, as the theoretical predictions in Section \ref{sec:theory} state, it is possible that clinicians are less financially driven than non-clinicians, and thus respond less drastically to financial incentives. I test this empirically in Section \ref{sec:forprofit}, comparing the response of nonprofits with different leadership teams to the response of for-profit hospitals on average. Second, I investigate whether clinicians are actively managing hospitals differently or whether they are a signal of underlying preferences of the hospital by leveraging the timing of clinical leaders relative to the incentives in Section \ref{sec:sig_man}. Third, in Section \ref{sec:selection}, I consider whether different types of executives might have different propensities to engage in "gaming" through selective patient practices. In Section \ref{sec:conditions}, I dig deeper into the specific conditions driving the main result, and whether these can help uncover the types of leadership changes made. Similarly, I analyze whether different executives change investment behavior in response to the incentives in Section \ref{sec:investment}. Finally, I consider the altruism versus expertise argument using a heterogeneity analysis of different physician specialties in Section \ref{sec:expertise}.
+    \subsection{Signaling versus Managing}\label{sec:sig_man}
 
-
-    \subsection{Financial vs. Patient Driven}\label{sec:forprofit}
-
-
-    The typical theoretical prediction surrounding quality and pay-for-performance given different valuations of finances vs. patient welfare, shown in Section \ref{sec:theory}, certainly support the idea that, if all else is equal, clinician leaders value patients at baseline more than non-clinician leaders. To investigate this hypothesis empirically, I merge all general for-profit hospitals in the AHA survey to my sample of nonprofit hospitals. I then compare readmission and mortality rates of always clinical executives and never clinical executives to for-profit hospitals after the incentive change. 
-    
-    While I do not have information on leadership teams of for-profit hospitals, on average, they have revealed through their ownership status that they more heavily weigh profit. Thus, comparing different executive team behavior to for-profit behavior helps reveal how profit driven certain leadership teams are. Thus, I estimate the weighted synthetic difference-in-differences version of
-
-    \begin{equation}
-    \label{eq:forprofit}
-    y_{ht} = \beta \text{ (for-profit x post 2012)}_{ht} + \gamma_{h} + \delta_t + \epsilon_{ht}
-    \end{equation}
-
-    \noindent where $y_{ht}$ is one of the readmission or mortality rate outcomes discussed in Section \ref{sec:hrrp}, for-profit$_{ht}$ is an indicator for having for-profit ownership status, and $\gamma$ and $\delta$ are hospital and time fixed effects. In my estimation, nonprofits in the comparison group are more heavily weighted if their pre-trends are more similar to for-profits, and time periods are weighted to balance pre and post trends for for-profit hospitals. These weights follow the synthetic difference-in-differences approach, which is more robust to the parallel trends assumption. 
-    
-    I create two subsets of data to compare the response of for-profits to the response of the subsets of nonprofits based on executive team. First, I limit only to for-profits and nonprofits that always have clinically trained executives. Second, I limit to for-profits and nonprofits that never have clinically trained executives.\footnote{I assume that the sample selection of stable leadership teams is not correlated with the policy changes. Please see Section \ref{sec:sig_man} for the analysis and discussion of this assumption.} I show summary statistics of relevant variables for for-profit hospitals in Appendix \ref{app:sumstats}. Again, I employ a synthetic difference-in-differences strategy to rely less heavily on a strong parallel trends assumption for different types of hospitals. 
-
-    The identification assumptions I make here are largely similar to those in Section \ref{sec:clinical}, only now incorporate for-profit hospitals. First, I assume that, absent the change in incentives, the weighted composition of for-profits and the relevant comparison group would have had parallel trends in outcomes. I also assume that there is no anticipation of the policy changes prior to 2012, which is reasonable as the rules of the policies were announced in October of 2011. Finally, I assume no other changes correlated with both hospital type (for-profit, nonprofit with and without clinically trained executives) and quality occurred in conjunction with the 2012 pay-for-performance policies.
-
-    The estimates and graphical representation of the effect of being for-profit is shown in Figure \ref{fig:read_synth_plot}. In panel \ref{fig:read_synth_plotb}, the average treatment effect shows the effect of being for-profit compared to nonprofit with clinical executives on readmission rates after pay-for-performance changes. I find that for-profits decrease readmission rates by .3 (standard error .12) more than nonprofits with clinically trained executives. That is, for-profits respond more aggressively to the incentive change than nonprofits with clinical leadership. This difference is nearly identical to the difference between clinical and non-clinical teams shown in Section \ref{sec:clinical}. So, unsurprisingly, panel \ref{fig:read_synth_plotc} shows no such difference when comparing for-profits to nonprofits without clinically trained executives. Not only is the estimate not statistically significant, but the magnitude indicates a precise zero. That is, a lack of clinically trained executives leads nonprofits to act like for-profits in terms of readmission rates when responding to this incentive change. 
-
-         \begin{figure}[ht!]
-     \caption{Comparison to For-Profit: Readmission}
-     \centering
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{For-Profit and Always Clinical Exec}
-         \includegraphics[width=\textwidth]{Objects/fp_read_md_synth_graph.pdf}
-         \label{fig:read_synth_plotb}
-     \end{subfigure}%
-     \vspace{5mm}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{For-Profit and Never Clinical Exec}
-         \includegraphics[width=\textwidth]{Objects/fp_read_nomd_synth_graph.pdf}
-         \label{fig:read_synth_plotc}
-     \end{subfigure}
-        \label{fig:read_synth_plot}
-    \end{figure}
-
-    Next, I present estimated differences in mortality rates between different hospital types in Figure \ref{fig:mort_synth_plot}. In panel \ref{fig:mort_synth_plotb}, the estimated difference is between for-profits and nonprofits with clinically trained executives. The magnitude of the difference in mortality rates is .08, where clinical team hospitals continue on an increasing trend and for-profits remain stable in mortality rate. While I cannot rule out a lack of differential response, the documented noisiness of mortality measures (\cite{mackenzie2016measuring}) may mean that the true effect is different from zero. However, the estimated difference in mortality between for-profits and nonprofits without clinically trained executives is certainly zero with a magnitude of .03, shown in panel \ref{fig:mort_synth_plotc}.  
-
-
-    \begin{figure}[ht!]
-     \caption{Comparison to For-Profit: Mortality}
-     \centering
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{For-Profit and Always Clinical Exec}
-         \includegraphics[width=\textwidth]{Objects/fp_mort_md_synth_graph.pdf}
-         \label{fig:mort_synth_plotb}
-     \end{subfigure}%
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{For-Profit and Never Clinical Exec}
-         \includegraphics[width=\textwidth]{Objects/fp_mort_nomd_synth_graph.pdf}
-         \label{fig:mort_synth_plotc}
-     \end{subfigure}
-        \label{fig:mort_synth_plot}
-    \end{figure}
-    
-
-    \subsection{Signaling vs. Managing}\label{sec:sig_man}
-
-    Given that having clinically trained executives does affect hospital response to financial incentives on quality, an important distinction is whether the existing clinical leaders \textit{reveal} the underlying objectives of the hospital, or \textit{manage} the hospital differently. Up to this point, I have limited the sample of nonprofit hospitals to those that don't change their propensity to hire a clinically trained executive over the sample period, which combines any signaling and managing effects. However, under the assumption that hiring or firing these types of executives is not correlated with the pay-for-performance policy changes, such changes can be leveraged to decompose the effect into signaling versus managing. Since this decomposition depends heavily on the assumption that clinical executive hiring is not endogenous, I first investigate leadership changes in response to the policy change. I provide details of the decomposition estimation in Section \ref{sec:decomp}
+    Given that having clinically trained executives does affect hospital response to financial incentives on quality, an important distinction is whether the existing clinical leaders \textit{reveal} the underlying objectives of the hospital, or \textit{manage} the hospital differently. In the main analysis, I limited the sample of nonprofit hospitals to those that don't change their propensity to hire a clinically trained executive over the sample period, which combines any signaling and managing effects. However, under the assumption that hiring or firing these types of executives is not correlated with the pay-for-performance policy changes, such changes can be leveraged to decompose the effect into signaling versus managing. Specifically, if the difference is driven by underlying preferences of the hospital, the observed difference in quality will still hold whether the hospital had a clinical executive at any point in time, even if they were not a leader in 2012 when the policies took effect. Alternatively, if the observed difference is driven by managing, then the difference should only be observed when there is a clinician in leadership during the policy enactment. Since this decomposition depends heavily on the assumption that clinical executive hiring is not endogenous, I first investigate leadership changes in response to the policy change. I provide details of the decomposition estimation in Section \ref{sec:decomp}
 
     \subsubsection{Analysis of Executive Team Changes} \label{sec:changes}
 
@@ -438,24 +340,133 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     \import{Tables}{MD_noMD_readmort_decomp_synth.tex}
 
+    \subsection{Financially Driven versus Patient Driven}\label{sec:forprofit}
 
-    \subsection{Patient Selection}\label{sec:selection}
-
+    Consider a simplified model of hospital objectives, in which hospitals choose a level of quality of care that maximizes an objective function capturing the trade-off between profit and patient welfare. That is, 
     
+    $$\max_{\theta}\hspace{2mm}\alpha\pi(\theta) + (1-\alpha) u(\theta),$$
 
+    \noindent where $\pi(\theta)$ is a profit function depending on quality $\theta$, $u(.)$ is extra utility gained from patient welfare, which is increasing and concave in quality $\theta$, and $\alpha\in[0,1]$ captures the weight placed on profit vs. patient welfare. There is an implicit stay-open condition throughout the model.
 
-    \subsection{Specific Conditions (rename later)}\label{sec:conditions}
-
-
-    \subsection{Changes in Investment}\label{sec:investment}
-
+    I consider hospital choice of quality under pay-for-performance. In a world where performance is not incentivized through financial gain (as in traditional fee-for-service settings), hospital profit $\pi$ is maximized when the quantity of patients is maximized. However, pay-for-performance incentives incorporate quality into the profit function (\cite{dranove2011health}). Therefore, hospitals that only value financial profit will only consider quality if it is an input to the profit function, and therefore will respond more drastically to pay-for-performance than a hospital who values quality as an input to patient welfare before the incentives. 
     
+    I will now formalize this intuition mathematically. For simplicity, I abstract away from quality having a direct impact on quantity of patients or price.\footnote{As long as the relationship between quality and quantity/price are not correlated with $\alpha$, this does not change the conclusion of the model.} Taking the first order condition yields: 
 
-    \subsection{Altruism vs. Expertise}\label{sec:expertise}
+    $$(1-\alpha)u'(\theta) = -\alpha \pi'(\theta),$$
 
-    While most doctors take a hippocratic oath to provide care with integrity and compassion, doctors with training in certain specialties may be more equipped to improve care for certain patients. Since the pay-for-performance incentive programs directly target three conditions, physicians with knowledge of these conditions may be especially suited to respond to the policies. Specifically, a pulmonologist typically treats pneumonia, and a cardiologist typically treats heart failure and heart attack patients, which are the three conditions considered in the HRRP penalties. Both of these specialties are under the umbrella of internal medicine, which is the most granular specialty type in my data.
+    \noindent where marginal benefit equals marginal cost of increasing quality. Solving for $u'(\theta)$ and differentiating with respect to $\alpha$,
 
-    I limit the sample of hospitals to those who always have some type of clinical executive over the sample period. Then, I estimate the difference in readmission and mortality rates after pay-for-performance among hospitals who do and do not have an internal medicine clinical executive. I lose a significant fraction of the sample with this limitation: there are 60 hospitals that consistently have an internal medicine executive or only a different specialty executive. The summary statistics for these samples are in Appendix \ref{app:sumstats}. I present the results from this comparison in Figure \ref{fig:specialty}.
+    $$\frac{du'(\theta)}{d\alpha} = \frac{-1}{(1-\alpha)^2}\pi'(\theta).$$
+
+    Now, consider incentives when the hospital is in a strictly fee-for-service environment. That is, quality benefits patients, but hospitals do not directly derive profit from having a high quality. Then, assuming there is a positive cost to increasing quality, $\pi(\theta)$ is decreasing in $\theta$. Then $\frac{du'(\theta)}{d\alpha} > 0$. Using the Implicit Function Theorem, I can write $\frac{d\theta}{d\alpha}$ as 
+    $\frac{du'(\theta)/d\alpha}{du'(\theta)/d\theta}<0$, revealing that in a fee-for-service setting, the more weight the hospital places on profit, the lower quality of care chosen at baseline.
+
+    Next, assume the hospital is in a pay-for-performance setting, where quality benefits patients and directly increases profit. Then, assuming the marginal financial benefit of increasing quality is greater than the marginal financial cost, $\pi(\theta)$ is increasing in $\theta$. Then $\frac{du'(\theta)}{d\alpha} < 0$, revealing that in a pay-for-performance setting, the more weight placed on profit, the higher quality of care chosen by the hospital. I combine the results found in each scenario into one response function that depends on $\alpha$, where $\theta_{p4p}$ is quality under pay-for-performance incentives and $\theta_{ffs}$ is quality under fee-for-service only. That is, 
+
+    \begin{align*}
+        \frac{d\Delta\theta}{d\alpha}&=\frac{d(\theta_{p4p}-\theta_{ffs})}{d\alpha}\\
+        &=\frac{d\theta_{p4p}}{d\alpha}-\frac{d\theta_{ffs}}{d\alpha}\\
+        &> 0.
+    \end{align*}
+
+
+    The first prediction of the model is that, all else held equal, hospitals that value profit will have a lower quality than those who value patient welfare in a fee-for-service setting. Second, a hospital's change in quality once pay-for-performance is enacted depends on how much weight the hospital places on profit vs. patient welfare. Particularly, hospitals with higher weight on profit respond more than hospitals with higher weight on patient welfare. Therefore, factors that affect weight $\alpha$ will be correlated with choice of quality, and with how quality changes under new pay-for-performance incentives. In this paper, I test the hypothesis that clinical experience on a hospital's leadership team is a factor that is correlated with weight $\alpha$, and thus affects response to pay-for-performance incentives. To investigate this hypothesis empirically, I merge all general for-profit hospitals in the AHA survey to my sample of nonprofit hospitals. I then compare readmission and mortality rates of always clinical executives and never clinical executives to for-profit hospitals after the incentive change. 
+    
+    While I do not have information on leadership teams of for-profit hospitals, on average, they have revealed through their ownership status that they more heavily weigh profit, and therefore have an $\alpha$ close to 1. This is not inconsistent with previous work positing that nonprofits and for-profits act similarly on average (\cite{duggan2002hospital}). In fact, my data is consistent with this idea when nonprofits are not broken down by leadership teams. However, comparing different executive team behavior to for-profit behavior helps reveal how profit driven certain leadership teams are, which could actually help us understand why there are similarities between nonprofits and for-profits on average. I estimate the weighted synthetic difference-in-differences version of
+
+    \begin{equation}
+    \label{eq:forprofit}
+    y_{ht} = \beta \text{ (for-profit x post 2012)}_{ht} + \gamma_{h} + \delta_t + \epsilon_{ht}
+    \end{equation}
+
+    \noindent where $y_{ht}$ is one of the readmission or mortality rate outcomes discussed in Section \ref{sec:hrrp}, for-profit$_{ht}$ is an indicator for having for-profit ownership status, and $\gamma$ and $\delta$ are hospital and time fixed effects. In my estimation, nonprofits in the comparison group are more heavily weighted if their pre-trends are more similar to for-profits, and time periods are weighted to balance pre and post trends for for-profit hospitals. These weights follow the synthetic difference-in-differences approach, which is more robust to the parallel trends assumption. 
+    
+    I create two subsets of data to compare the response of for-profits to the response of the subsets of nonprofits based on executive team. First, I limit only to for-profits and nonprofits that always have clinically trained executives. Second, I limit to for-profits and nonprofits that never have clinically trained executives.\footnote{I assume that the sample selection of stable leadership teams is not correlated with the policy changes. Please see Section \ref{sec:sig_man} for the analysis and discussion of this assumption.} I show summary statistics of relevant variables for for-profit hospitals in Appendix \ref{app:sumstats}. Again, I employ a synthetic difference-in-differences strategy to rely less heavily on a strong parallel trends assumption for different types of hospitals. 
+
+    The identification assumptions I make here are largely similar to those in Section \ref{sec:clinical}, only now incorporate for-profit hospitals. First, I assume that, absent the change in incentives, the weighted composition of for-profits and the relevant comparison group would have had parallel trends in outcomes. I also assume that there is no anticipation of the policy changes prior to 2012, which is reasonable as the rules of the policies were announced in October of 2011. Finally, I assume no other changes correlated with both hospital type (for-profit, nonprofit with and without clinically trained executives) and quality occurred in conjunction with the 2012 pay-for-performance policies.
+
+    The estimates and graphical representation of the effect of being for-profit is shown in Figure \ref{fig:read_synth_plot}. In panel \ref{fig:read_synth_plotb}, the average treatment effect shows the effect of being for-profit compared to nonprofit with clinical executives on readmission rates after pay-for-performance changes. I find that for-profits decrease readmission rates by .3 (standard error .12) more than nonprofits with clinically trained executives. That is, for-profits respond more aggressively to the incentive change than nonprofits with clinical leadership. This difference is nearly identical to the difference between clinical and non-clinical teams shown in Section \ref{sec:clinical}. So, unsurprisingly, panel \ref{fig:read_synth_plotc} shows no such difference when comparing for-profits to nonprofits without clinically trained executives. Not only is the estimate not statistically significant, but the magnitude indicates a precise zero. That is, a lack of clinically trained executives leads nonprofits to act like for-profits in terms of readmission rates when responding to this incentive change. 
+
+         \begin{figure}[ht!]
+     \caption{Comparison to For-Profit: Readmission}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{For-Profit and Always Clinical Exec}
+         \includegraphics[width=\textwidth]{Objects/fp_read_md_synth_graph.pdf}
+         \label{fig:read_synth_plotb}
+     \end{subfigure}%
+     \vspace{5mm}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{For-Profit and Never Clinical Exec}
+         \includegraphics[width=\textwidth]{Objects/fp_read_nomd_synth_graph.pdf}
+         \label{fig:read_synth_plotc}
+     \end{subfigure}
+        \label{fig:read_synth_plot}
+    \end{figure}
+
+    Next, I present estimated differences in mortality rates between different hospital types in Figure \ref{fig:mort_synth_plot}. In panel \ref{fig:mort_synth_plotb}, the estimated difference is between for-profits and nonprofits with clinically trained executives. The magnitude of the difference in mortality rates is .08, where clinical team hospitals continue on an increasing trend and for-profits remain stable in mortality rate. While I cannot rule out a lack of differential response, the documented noisiness of mortality measures (\cite{mackenzie2016measuring}) may mean that the true effect is different from zero. However, the estimated difference in mortality between for-profits and nonprofits without clinically trained executives is certainly zero with a magnitude of .03, shown in panel \ref{fig:mort_synth_plotc}.  
+
+
+    \begin{figure}[ht!]
+     \caption{Comparison to For-Profit: Mortality}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{For-Profit and Always Clinical Exec}
+         \includegraphics[width=\textwidth]{Objects/fp_mort_md_synth_graph.pdf}
+         \label{fig:mort_synth_plotb}
+     \end{subfigure}%
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{For-Profit and Never Clinical Exec}
+         \includegraphics[width=\textwidth]{Objects/fp_mort_nomd_synth_graph.pdf}
+         \label{fig:mort_synth_plotc}
+     \end{subfigure}
+        \label{fig:mort_synth_plot}
+    \end{figure}
+
+    \subsection{Driven by Expertise}\label{sec:expertise}
+
+    It may be that the observed difference in quality after pay-for-performance could be correlated with the expertise of leadership teams. While most doctors take a hippocratic oath to provide care with integrity and compassion, doctors with training in certain specialties may be more equipped to improve care for certain patients. Since the pay-for-performance incentive programs directly target three conditions, physicians with knowledge of these conditions may be especially suited to respond to the policies. Specifically, a pulmonologist typically treats pneumonia, and a cardiologist typically treats heart failure and heart attack patients, which are the three conditions considered in the HRRP penalties. Both of these specialties are under the umbrella of internal medicine, which is the most granular specialty type in my data. 
+    
+    Consider an extension to the model discussed in Section \ref{sec:forprofit}, where I now introduce a measure of expertise $\lambda$. To capture the role of hospital leadership expertise in shaping quality decisions, we introduce a binary variable $\lambda \in \{0,1\}$, where $\lambda=1$ indicates high expertise and $\lambda=0$ indicates low expertise. Expertise affects the marginal cost of quality improvements: hospitals with high expertise can implement quality enhancements more efficiently, reducing the effective cost of quality.
+
+    The hospital’s objective function becomes:
+    \begin{equation}
+        \max_{\theta} \alpha \big[R(\theta) - \frac{c(\theta)}{1+\lambda}\big] + (1 - \alpha) u(\theta),
+    \end{equation}
+
+    \noindent where $R(\theta)$ is revenue, which depends on quality,
+    $c(\theta)(1 + \lambda)$ is the cost of quality, increasing and convex in $\theta$, scaled by expertise, $u(\theta)$ is patient welfare, increasing and concave in $\theta$, $\alpha \in [0,1]$ is the weight on profit relative to patient welfare. The hospital's first-order condition under fee-for-service and pay-for-performance is then:
+
+    \[
+    F_{ffs}(\theta,\alpha,\lambda) = (1-\alpha)u'(\theta) - \alpha\frac{c'(\theta)}{1+\lambda} = 0,
+    \]
+
+    \[
+    F_{p4p}(\theta,\alpha,\lambda) = (1-\alpha)u'(\theta) - \alpha\Bigg[\frac{c'(\theta)}{1+\lambda} - R'(\theta)\Bigg] = 0.
+    \]
+
+    \noindent I make the following assumptions on patient welfare, cost, and revenue: $u'(\theta) > 0,\; u''(\theta) < 0,\; c'(\theta) > 0,\; c''(\theta) > 0,\; R'(\theta) > 0,\; R''(\theta) \approx 0$. By the Implicit Function Theorem.
+    \begin{align}
+    \frac{d\theta}{d\lambda} &= -\frac{\partial F/\partial \lambda}{\partial F/\partial \theta}\\
+    &= -\frac{\alpha c'(\theta)/(1+\lambda)^2}{(1-\alpha)u''(\theta)-\alpha\big[c''(\theta)/(1+\lambda)-R''(\theta)\big]}\\
+    &>0. 
+    \end{align}
+
+    I now want to compare the change in $\theta$ when going from fee-for-service to pay-for-performance depending on different levels of $\lambda$. 
+    \begin{align}
+        \frac{\partial \Delta \theta}{\partial \lambda} &= \frac{\partial\theta_{p4p}}{\partial \lambda} - \frac{\partial\theta_{ffs}}{\partial \lambda}\\
+        &= \frac{-\alpha c'(\theta)/(1+\lambda)^2}{(1-\alpha)u''(\theta)-\alpha\big[c''(\theta)/(1+\lambda)-R''(\theta)\big]} - \frac{-\alpha c'(\theta)/(1+\lambda)^2}{(1-\alpha)u''(\theta)-\alpha\big[c''(\theta)/(1+\lambda)\big]}.
+    \end{align}
+
+    Since $\theta_{p4p}>\theta_{ffs}$, $u(\theta_{p4p}>u(\theta_{ffs}$ (that is, less negative). Therefore, the pay-for-performance denominator is less negative than the fee-for-service denominator. Hence, $\frac{\partial\theta_{p4p}}{\partial \lambda} > \frac{\partial\theta_{ffs}}{\partial \lambda}$. This implies that for higher expertise, the response to pay-for-performance policies will be greater. 
+
+    To test this empirically, I limit the sample of hospitals to those who always have some type of clinical executive over the sample period. Then, I estimate the difference in readmission and mortality rates after pay-for-performance among hospitals who do and do not have an internal medicine clinical executive. I lose a significant fraction of the sample with this limitation: there are 60 hospitals that consistently have an internal medicine executive or only a different specialty executive. The summary statistics for these samples are in Appendix \ref{app:sumstats}. I present the results from this comparison in Figure \ref{fig:specialty}.
 
     \begin{figure}[ht!]
      \caption{Effect of Internal Medicine Training on Quality}
@@ -478,6 +489,46 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     While I am limited in power due to the small sample size of hospitals in this analysis, I provide evidence that hospitals with internal medicine executives may change readmission rates differentially compared to teams with clinical executives of other specialty types. The estimated effect of having an internal medicine executive is -.38 (standard error .24), where internal medicine executives decrease readmissions at a faster rate than other specialty types. The results for mortality rates are similar (still not statistically significant), but smaller in magnitude and smaller relative to the main results. This is probably due to the specialty-specific conditions being more relevant for the readmission rate penalties than the quality rewards. 
 
+
+
+
+
+
+    \subsection{Patient Selection}\label{sec:selection}
+
+    \citeauthor{gupta2021impacts} (\citeyear{gupta2021impacts}) finds that a large portion of hospital readmission reductions are due to hospitals being less willing to readmit patients from their own hospital, while they will still readmit patients coming from other hospitals. Given the differential response to the HRRP by clinical and non-clinical hospital leaders, the natural question arises as to whether there is a differential propensity to game the system, as considered in previous work (\cite{gupta2021impacts}). While I do not have patient level data, I can test empirically whether the overall patient population of hospitals changes differentially for clinician or non-clinician leaders. 
+
+    I use three outcomes to test this hypothesis. First, the CMS Case Mix Index files provide an aggregate measure of patient complexity for each hospital in each year. A higher index implies the patient population in the hospital is more complex in their treatment requirement. Additionally, I consider the population of patients treated in the hospital with public insurance, either Medicare or Medicaid. These outcomes will indicate if certain types of leadership teams attempt to cost shift relative to others after the penalties or rewards took effect. 
+
+    I estimate the same synthetic difference-in-differences equation discussed in Section \ref{sec:clinical}. The results of these estimations are presented in Figure \ref{fig:selection}. All of the treatment effects in these estimations are insignificant and null in magnitude, suggesting that there is no evidence of the overall patient population of hospitals changing differentially based on leadership team. This does not mean that there is no change in specific readmission behavior as found in \citeauthor{gupta2021impacts} (\citeyear{gupta2021impacts}), but a limitation of this data only allows me to look at the aggregate patient population as opposed to specifically readmissions. 
+
+    \begin{figure}[ht!]
+     \caption{Patient Population as Outcomes}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{Case Mix Index}
+         \includegraphics[width=\textwidth]{Objects/cmi_md_nomd_synth_graph.pdf}
+         \label{fig:cmi}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{Medicare Percent Discharges}
+         \includegraphics[width=\textwidth]{Objects/mcare_md_nomd_synth_graph.pdf}
+         \label{fig:mcare}
+     \end{subfigure}%
+        \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{Medicaid Percent Discharges}
+         \includegraphics[width=\textwidth]{Objects/mcaid_md_nomd_synth_graph.pdf}
+         \label{fig:mcaid}
+     \end{subfigure}
+        \label{fig:selection}
+    \end{figure}
+
+
+    \subsection{Changes in Investment}\label{sec:investment}
 
 
     \section{Conclusion}

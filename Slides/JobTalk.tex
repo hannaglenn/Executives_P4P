@@ -230,7 +230,8 @@ Evidence from Pay-for-Performance}}
     \large Evidence from Pay-for-Performance
 };
 % Author 
-\node[below=1cm] (author) at (title.south){\large Hanna Glenn};
+\node[below=1cm] (author) at (title.south){\large Hanna Glenn \\
+University of Queensland};
 % Date
 \node[below=0.25cm] (date) at (author.south){\today};
 \end{tikzpicture}
@@ -538,33 +539,33 @@ Evidence from Pay-for-Performance}}
     \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Data Collection Process}
-\begin{center}
-\begin{tikzpicture}[
-    node distance=3.1cm and 1.8cm,
-    every node/.style={align=center, font=\normalsize},
-    process/.style={rectangle, draw, rounded corners, text centered, minimum width=2.5cm, minimum height=2cm, fill=purple!30},
-    output/.style={rectangle, draw, text centered, minimum width=2.7cm, minimum height=2.5cm, fill=purple},
-    extract/.style={rectangle, draw, rounded corners, text centered, minimum width=2.5cm, minimum height=2cm, fill=sage!30},
-    arrow/.style={thick, ->, >=stealth}
-]
+%\begin{frame}{Data Collection Process}
+%\begin{center}
+%\begin{tikzpicture}[
+    %node distance=3.1cm and 1.8cm,
+    %every node/.style={align=center, font=\normalsize},
+    %process/.style={rectangle, draw, rounded corners, %text centered, minimum width=2.5cm, minimum height=2cm, fill=purple!30},
+    %output/.style={rectangle, draw, text centered, minimum width=2.7cm, minimum height=2.5cm, fill=purple},
+    %extract/.style={rectangle, draw, rounded corners, text centered, minimum width=2.5cm, minimum height=2cm, fill=sage!30},
+    %arrow/.style={thick, ->, >=stealth}
+%]
 
 % Nodes
-\node (step1) [process] {Hospital \\EINs};\pause
-\node (step2) [process, right of=step1] {Download \\PDFs};
-\draw[arrow] (step1) -- (step2); \pause
-\node (step3) [process, right of=step2] {Extract\\text};
-\draw[arrow] (step2) -- (step3); 
+%\node (step1) [process] {Hospital \\EINs};\pause
+%\node (step2) [process, right of=step1] {Download \\PDFs};
+%\draw[arrow] (step1) -- (step2); \pause
+%\node (step3) [process, right of=step2] {Extract\\text};
+%\draw[arrow] (step2) -- (step3); 
 % New green box below step3
-\node (extract) [extract, below of=step3, yshift=0.5cm] {Optical\\Character\\Recognition}; 
-\draw[arrow] (extract) -- (step3);\pause
-\node (step4) [process, right of=step3] {String\\cleaning\\algorithms};
-\draw[arrow] (step3) -- (step4); \pause
-\node (output) [output, right of=step4, text=white] {Executive\\Name\\Position\\Title};
-\draw[arrow] (step4) -- (output);
-\end{tikzpicture}
-\end{center}
-\end{frame}
+%\node (extract) [extract, below of=step3, yshift=0.5cm] {Optical\\Character\\Recognition}; 
+%\draw[arrow] (extract) -- (step3);\pause
+%\node (step4) [process, right of=step3] {String\\cleaning\\algorithms};
+%\draw[arrow] (step3) -- (step4); \pause
+%\node (output) [output, right of=step4, text=white] {Executive\\Name\\Position\\Title};
+%\draw[arrow] (step4) -- (output);
+%\end{tikzpicture}
+%\end{center}
+%\end{frame}
 
 
 \begin{frame}{Merge to Other Data}
@@ -574,7 +575,7 @@ Evidence from Pay-for-Performance}}
 
     \vspace{2mm}
     \begin{wideitemize}
-        \item AHA
+        \item American Hospital Association
         \item Hospital Compare
         \item CMS Case Mix Index
         \item Health Care Cost Report Information System (HCRIS)
@@ -895,13 +896,7 @@ CQO & 0.09\\
             
             \item Large relative to effect of HRRP (1ppt)
         \end{wideitemize}
-        
-        \vspace{20mm}
 
-        \hyperlink{int_margin}{\beamergotobutton{intensive margin}}
-        \hyperlink{cmi}{\beamergotobutton{due to patient selection?}}
-        \hyperlink{specifications}{\beamergotobutton{specifications}}
-        \hyperlink{specialty}{\beamergotobutton{specialty}}
         
     \end{columns}
 \end{frame}
@@ -922,6 +917,37 @@ CQO & 0.09\\
         \end{wideitemize}
     \end{columns}
 \end{frame}
+
+\begin{frame}{Intensive Margin}
+\large
+    \begin{equation*}
+    y_{ht} = \beta \left(\mathbb{1}\{\rho \leq \eta\}\text{ x post 2012}\right)_{ht} + \gamma_{h} + \delta_t + \epsilon_{ht}
+    \end{equation*}
+
+    \begin{equation*}
+    y_{ht} = \beta \left(\mathbb{1}\{\rho > \eta\}\text{ x post 2012}\right)_{ht} + \gamma_{h} + \delta_t + \epsilon_{ht}
+    \end{equation*}
+
+    \vspace{10mm}
+
+    \begin{itemize}
+        \item $\rho$: fraction of clinical executives
+        \item $\eta$: median fraction of clinically trained executives (.2)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Intensive Margin: Readmission Rates}
+    \begin{columns}
+    \column{0.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Objects/cont_belowmedread_md_nomd_synth_graph.pdf}
+    \column{0.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Objects/cont_abovemedread_md_nomd_synth_graph.pdf}
+    \end{columns}
+\end{frame}
+
+
 
 \section{Comparison to For-Profit Hospitals}
 
@@ -1042,6 +1068,14 @@ Observations & 3,005 & 1,595 & 3,005 & 1,595\\
 \end{table}
 \end{frame}
 
+\begin{frame}{Other Mechanisms}
+\large
+    \begin{wideitemize}
+        \item Not driven by changes in patient population
+        \item Driven primarily by pneumonia
+    \end{wideitemize}
+\end{frame}
+
 \begin{frame}{Summary}
 \large
     \textbf{We know very little about whether leaders matter in health care}
@@ -1050,7 +1084,7 @@ Observations & 3,005 & 1,595 & 3,005 & 1,595\\
         \item This paper: non-clinical executive teams internalize financial incentives more
     \end{wideitemize}
 
-    \vspace{5mm}
+    \vspace{10mm}
     
     \textbf{Implications}
     \begin{itemize}
@@ -1058,15 +1092,8 @@ Observations & 3,005 & 1,595 & 3,005 & 1,595\\
         \item In the absence of clinical leadership, nonprofits just act like for-profits
     \end{itemize}
 
-    \vspace{5mm}
 
-    \textbf{Future Work}
 
-    \begin{itemize}
-        \item Effects of mandated gender and racial diversity on hospital behavior
-        \item Networks of executives over time 
-        \item Are leaders correlated with hospital fraudulent behavior?
-    \end{itemize}
 \end{frame}
 
 \begin{transitionframe}
@@ -1080,11 +1107,8 @@ Observations & 3,005 & 1,595 & 3,005 & 1,595\\
 
     \vspace{15mm}
     
-    \textcolor{black}{\faEnvelope \hspace{2mm} hanna.glenn@emory.edu}
+    \textcolor{black}{\faEnvelope \hspace{2mm} hanna.glenn@uq.edu.au}
 
-    \vspace{2mm}
-    
-    \textcolor{black}{\faTwitter \hspace{2mm} @hannalynnglenn}
 \end{transitionframe}
 
 
