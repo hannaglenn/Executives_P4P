@@ -199,7 +199,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     The estimated difference in readmission and mortality rates between hospitals with and without clinical executives is shown in Figure \ref{fig:clinicalsynthdid}. Estimate $\beta$ is represented by the difference in slope after pay-for-performance incentives began. Panel \ref{fig:read_synth_clinical} shows the estimated difference in readmission rates, and reveals that non-clinical teams decrease readmissions by 0.3 (standard error 0.13) more than clinical teams. This is a relatively small magnitude given an average readmission rate of 21\%. However, \citeauthor{gupta2021impacts} (\citeyear{gupta2021impacts}) finds that hospitals overall decrease readmissions by around 3 percentage points due to the program, so this reveals a meaningful difference in behavior relative to the overall behavior change. Using estimates from \citeauthor{gupta2021impacts} (\citeyear{gupta2021impacts}), a 1 percentage point reduction in readmissions across three penalized conditions corresponds to approximately \$110 million in avoided Medicare reimbursements annually. Our results indicate that hospitals led by non-clinical executive teams achieve an additional 0.3 percentage point reduction in readmissions compared to those led by clinical teams. Under the same assumptions, this differential accounts for approximately \$33 million in annual avoided spending—equivalent to 30\% of the savings associated with a 1 percentage point reduction for these conditions. This back-of-the-envelope calculation reflects the incremental contribution of leadership composition to payer-side savings.
     
-    In panel \ref{fig:mort_synth_clinical}, I show the estimated difference in mortality for always clinical and never clinical leadership teams after 2012. While the magnitude of the difference is similar to that for readmission rates (relative to the mean), mortality is a noisy measure, and I cannot rule out null effects. 
+    In Figure \ref{fig:mort_synth_clinical}, I show the estimated difference in mortality for always-clinical and never-clinical leadership teams after 2012. While the magnitude of the difference is similar to that of readmission rates (relative to the mean), mortality is a noisy measure, and I cannot rule out the possibility of a null effect. 
 
      \begin{figure}[ht!]
      \caption{Effect of Clinical Training on Readmission and Mortality Rates}
@@ -222,7 +222,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     \subsection{Intensive Margin}
 
-    Additionally, I estimate the intensive margin of clinical leadership: whether the fraction of clinically trained executives matters for response to financial incentive changes. I categorize hospitals with clinically trained executives into two bins: above the median and below median fraction of clinically trained executives. Again, I present the unweighted version of the synthetic difference-in-differences that I ultimately employ:
+    Additionally, I estimate the intensive margin of clinical leadership: whether the fraction of clinically trained executives affects the response to financial incentive changes. I categorize hospitals into two bins: above the median and below the median fraction of clinically trained executives. Again, I present the unweighted version of the synthetic difference-in-differences that I ultimately employ:
 
     \begin{equation}
     \label{eq:clinical_continuous_onefourth}
@@ -233,9 +233,9 @@ sorting=ynt,citestyle=authoryear]{biblatex}
     y_{ht} = \beta \left(\mathbbm{1}\{\rho > \eta\}\text{ x post 2012}\right)_{ht} + \gamma_{h} + \delta_t + \epsilon_{ht},
     \end{equation}
 
-    \noindent where $\rho$ is the fraction of clinical executives on hospital $h$'s executive team, $\eta$ is the median fraction of clinically trained executives, which is .2 in this sample, and $\gamma$ and $\delta$ are hospital and time fixed effects. 
+    \noindent where $\rho$ is the fraction of clinical executives on hospital $h$'s executive team, $\eta$ is the median fraction of clinically trained executives, which is 0.2 in this sample, and $\gamma$ and $\delta$ are hospital and time fixed effects. 
 
-    I present the results of this estimation with readmission rates as the outcome in Figure \ref{fig:cont_clinicalsynthdid}. In panel \ref{fig:belowmed_read_synth_clinical}, I compare executive teams with no clinical training to those with a fraction of clinically trained executives up to the median value, 20\%. With an average treatment effect of .21 (standard error .31), hospitals having this range of clinically trained executives are not driving the main finding. However, in panel \ref{fig:abovemed_read_synth_clinical}, I compare hospitals with no clinically trained executives to hospitals with a fraction of clinically trained executives over the median of 20\%. I find that hospitals without clinically trained executives decrease readmissions by .6 (standard error .14) more than hospitals with clinically trained executives. Thus, while the entire readmission rate response is not driven by highly clinical teams, the effect is exacerbated for these teams that have more clinicians than the median hospital.\footnote{This result holds even when limiting the sample to hospitals with a similar total executive team sizes (Appendix \ref{app:binned})}
+    I present the estimation results for readmission rates as the outcome in Figure \ref{fig:cont_clinicalsynthdid}. In Figure \ref{fig:belowmed_read_synth_clinical}, I compare executive teams with no clinical training to those with a fraction of clinically trained executives up to the median value (20\%). With an average treatment effect of 0.21 (standard error 0.31), hospitals having this range of clinically trained executives do not appear to drive the main finding. However, in panel \ref{fig:abovemed_read_synth_clinical}, I compare hospitals with no clinically trained executives to hospitals with a fraction of clinically trained executives over the median of 20\%. I find that hospitals without clinically trained executives decrease readmissions by 0.6 (standard error 0.14) more than hospitals with clinically trained executives. Thus, while the entire readmission rate response is not driven by teams with a higher proportion of clinically trained executives, the effect is exacerbated for hospitals that have a higher proportion of clinicians.\footnote{This result holds even when limiting the sample to hospitals with a similar total executive team size (Appendix \ref{app:binned})}
 
     \begin{figure}[ht!]
      \caption{Effect of Clinical Training on Readmission Rates, Binned Treatment}
@@ -256,7 +256,7 @@ sorting=ynt,citestyle=authoryear]{biblatex}
         \label{fig:cont_clinicalsynthdid}
     \end{figure}
 
-    I present the estimation results for mortality as an outcome in Figure \ref{fig:cont_clinicalsynthdid_mort}. Unsurprisingly given the noisiness in the main findings for mortality, it is unclear whether there is any intensive margin effect for mortality. Both average treatment effect magnitudes are lower than that for the main result with high standard errors. Thus, the intensive margin does not seem to matter as much as it does for decreasing readmission rates. 
+    I present the estimation results for mortality in Figure \ref{fig:cont_clinicalsynthdid_mort}. Unsurprisingly given the noisiness in the main findings for mortality, it is unclear whether there is any intensive margin effect. Both average treatment effect estimates are smaller than those in the primary analysis and are associated with large standard errors. Thus, the intensive margin appears less influential for mortality than for reducing readmission rates.
 
 
     \begin{figure}[ht!]
@@ -280,26 +280,9 @@ sorting=ynt,citestyle=authoryear]{biblatex}
 
     \subsection{Clinical CEO}
 
-        Additionally, I consider the same comparison of clinical and non-clinical leaders, but only for CEOs. That is, do the results hold when considering only the most top manager instead of the executive team as a whole? I compare hospitals with a CEO trained as a doctor to hospitals without a CEO trained as a doctor using the same synthetic difference-in-differences strategy. I present the average treatment effect and standard errors of this estimation in Table . There is no difference in response when only considering clinical CEOs as the treatment since the effects are statistically insignificant or smaller in magnitude. This highlights the importance of considering executive teams as a whole as opposed to just upper managers. 
+        Additionally, I consider the same comparison of clinical and non-clinical leaders, but only for CEOs. Specifically, I examine whether the results hold when focusing solely on the CEO rather than the entire executive team. I compare hospitals led by a clinically trained CEO to those led by a non-clinical CEO using the same synthetic difference-in-differences strategy. I present the average treatment effect and standard errors of this estimation in Table \ref{tab:mainanalysis_ceo}. There is no difference in response when only considering clinical CEOs as the treatment since the effects are statistically insignificant or smaller in magnitude. This highlights the importance of considering executive teams as a whole as opposed to just upper managers. 
 
-    \begin{figure}[ht!]
-     \caption{Effect of CEO Clinical Training on Readmission and Mortality Rates}
-     \centering
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{Readmission Rate}
-         \includegraphics[width=\textwidth]{Objects/ceo_read_md_nomd_synth_graph.pdf}
-         \label{fig:ceo_read_synth_clinical}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \caption{Mortality Rate}
-         \includegraphics[width=\textwidth]{Objects/ceo_mort_md_nomd_synth_graph.pdf}
-         \label{fig:ceo_mort_synth_clinical}
-     \end{subfigure}
-        \label{fig:ceo_clinicalsynthdid}
-    \end{figure}
+   \import{Tables}{ceo_table.tex}
 
 
     \section{Potential Mechanisms}
