@@ -13,7 +13,7 @@ library(MatchIt)
 AHA_ein_matches <- read_rds(paste0(created_data_path,"AHA_ein_matches.rds"))
 manual_matched_eins <- read_rds(paste0(created_data_path, "manual_matched_eins.rds"))
 # Data from AHA 
-AHA <- read_csv(paste0(raw_data_path, "/allAHAvariables_20092017.csv"))
+AHA <- read_csv(paste0(raw_data_path, "/AHAdata_20052023.csv"))
 # HCRIS data that has HRRP penalty information (and beds)
 HCRIS <- read_csv(paste0(raw_data_path, "/final_HCRIS_data.csv"))
 # Hospital Compare data that also has penalty information
@@ -22,7 +22,7 @@ hc_readm_2013 <- read_csv(paste0(raw_data_path, "/Hospital Compare/vwhqi_readm_r
 hc_readm_2014 <- read_csv(paste0(raw_data_path, "/Hospital Compare/vwhqi_readm_reduction_2014.csv"))
 hc_readm_2015 <- read_csv(paste0(raw_data_path, "/Hospital Compare/vwhqi_readm_reduction_2015.csv"))
 # Data that I created on leadership teams from the tax forms
-ein_leadership_data <- read_rds(paste0(created_data_path, "ein_leadership_changes_data4.rds"))
+ein_leadership_data <- read_rds(paste0(created_data_path, "ein_leadership_changes_data.rds"))
 # Data that I created on outcomes from Hospital Compare
 outcomes_data <- read_rds(paste0(created_data_path, "hosp_outcomes.rds"))
 # read in case mix index
@@ -53,10 +53,10 @@ impact2015 <- read_csv(paste0(raw_data_path, "/HospCaseMix/impact2015.csv"))%>%
 # start with AHA hospitals to include both for-profit and not-for-profit
 AHA <- AHA %>%
   filter(FSTCD<=56 & (CNTRL==23 | (CNTRL>=12 & CNTRL<=16) | (CNTRL>=31 & CNTRL<=33)) & SERV==10)
-  # 4,475 hospitals
+# 4,475 hospitals
 
 AHA <- AHA %>%
-  select(ID, MCRNUM, YEAR, CNTRL, MSTATE, MAPP5, MAPP8, FTMT, PHYGP, FTRNTF, SUBS, SYSID, EHLTH, MNGT)
+  select(ID, MCRNUM, YEAR, CNTRL, MSTATE, MAPP5, MAPP8, FTMT, PHYGP, FTRNTF, SUBS, SYSID, EHLTH, MNGT, MADMIN)
 
 # Remove hospitals not in the data for enough relevant years
 AHA <- AHA %>%
@@ -66,7 +66,7 @@ AHA <- AHA %>%
   filter(sum>=5) %>%
   ungroup() %>%
   select(-count, -sum)
-  # 3,766
+# 3,766
 
 AHA <- complete(AHA, MCRNUM, YEAR=2009:2014) %>%
   group_by(MCRNUM) %>%
@@ -93,7 +93,7 @@ matches <- matches %>%
 
 observe <- matches %>%
   distinct(ein_hosp)
-  # 1133 eins
+# 1133 eins
 
 # only keep rows that had values in that data set
 matches <- matches %>%
@@ -103,7 +103,7 @@ matches <- matches %>%
   ungroup() %>%
   filter(drop==0) %>%
   select(-drop)
-  #850 EINs
+#850 EINs
 
 # join matches to AHA data
 hospital_data <- AHA %>%
@@ -118,18 +118,19 @@ hospital_data <- hospital_data %>%
 
 # Join HCRIS data ############
 HCRIS <- HCRIS %>%
-  select(provider_number, year, beds, hrrp_payment, hvbp_payment)
+  select(provider_number, year, beds, hrrp_payment, hvbp_payment, tot_discharges, mcare_discharges, mcaid_discharges, labor_costs, movableequipment_purch,
+         fixedequipment_purch, build_purch, land_purch, landimpr_purch, tot_operating_exp)
 
 hospital_data <- hospital_data %>%
-   left_join(HCRIS, by=c("year", "MCRNUM"="provider_number"))
- 
+  left_join(HCRIS, by=c("year", "MCRNUM"="provider_number"))
+
 # drop data I don't need anymore
 rm(AHA_ein_matches, AHA, ein_leadership_data, manual_matched_eins)
 
 # create indicator for whether the hospital was HRRP penalized (from HCRIS data)
 hospital_data <- hospital_data %>%
-   mutate(penalized_hrrp_HCRIS=ifelse(hrrp_payment>0,1,0)) %>%
-   mutate(penalized_hrrp_HCRIS=ifelse(year>=2012 & is.na(hrrp_payment),0,penalized_hrrp_HCRIS))
+  mutate(penalized_hrrp_HCRIS=ifelse(hrrp_payment>0,1,0)) %>%
+  mutate(penalized_hrrp_HCRIS=ifelse(year>=2012 & is.na(hrrp_payment),0,penalized_hrrp_HCRIS))
 
 # create indicator for whether the hospital was HVBP incentivized (from HCRIS data)
 hospital_data <- hospital_data %>%
@@ -376,13 +377,13 @@ match_data <- hospital_data %>%
   filter(!is.na(num_execs)) %>%
   filter(year==2010) %>%
   select(MCRNUM, has_any_md, beds, 
-           patnum_heartfailure_readmission, patnum_heartattack_readmission, patnum_pneum_readmission,
+         patnum_heartfailure_readmission, patnum_heartattack_readmission, patnum_pneum_readmission,
          ever_penalized, ever_pen_hf, ever_pen_ha, ever_pen_pnem) %>%
   na.omit()
 
 match <- matchit(has_any_md ~ beds + ever_pen_hf + ever_pen_ha + ever_pen_pnem + patnum_heartfailure_readmission + patnum_heartattack_readmission + patnum_pneum_readmission,
-                data = match_data,
-                method = "cem")
+                 data = match_data,
+                 method = "cem")
 
 matched_data <- match.data(match) %>%
   select(MCRNUM, weights) %>%
@@ -431,24 +432,11 @@ num_leadership <- hospital_data %>%
 hospital_data <- hospital_data %>%
   mutate(ever_ceo_md = ifelse(ever_ceo_md>0,1,0))
 
-  
+
 
 # save the data #####
-saveRDS(hospital_data, paste0(created_data_path, "all_hospital_data3.rds"))
+saveRDS(hospital_data, paste0(created_data_path, "all_hospital_data.rds"))
 
 observe <- hospital_data %>%
   filter(no_md_change_2010_2014==1) %>%
   distinct(ein_hosp)
-
-
-
-
-
-
-
-
-
-
-
-
-

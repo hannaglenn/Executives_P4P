@@ -822,57 +822,6 @@ cont_abovemed_mort_plot_size <- synthdid_plot(cont_abovemed_mort_did_size, facet
 ggsave(cont_abovemed_mort_plot_size, filename=paste0(objects_path,"cont_abovemedmort_md_nomd_size_synth_graph.pdf"), width=5.5, height=6, units="in")
 
 
-# FIGURE 16: case mix index as outcome ####
-main_analysis_data <- hospital_data %>%
-  filter(no_num_md_change_2010_2014==1 & !is.na(ever_has_md)) %>%
-  mutate(never_has_md=ifelse(ever_has_md==1,0,1),
-         post_2012 = ifelse(year>2012,1,0)) %>%
-  mutate(did=post_2012*ever_has_md) %>%
-  mutate(count=1) %>%
-  group_by(ID, year) %>%
-  mutate(sum=sum(count)) %>%
-  ungroup() %>%
-  filter(!(sum==2 & is.na(weightedavg_read))) %>%
-  select(-count, -sum)
-
-cmi_data <- main_analysis_data %>%
-  filter(year!=2015) %>%
-  select(ID, year, cmiv, did) %>%
-  na.omit() %>%
-  mutate(count=1) %>%
-  group_by(ID) %>%
-  mutate(min=min(year[did==1])) %>%
-  mutate(sum=sum(count)) %>%
-  ungroup() %>%
-  filter(sum==5) %>%
-  filter(min!=2014) %>%
-  select(-sum, -count, -min) %>%
-  mutate(ID=as.factor(ID))
-cmi_panel <- panel.matrices(as.data.frame(cmi_data))
-
-cmi_did <- synthdid_estimate(cmi_panel$Y, cmi_panel$N0, cmi_panel$T0)
-
-cmi_se = sqrt(vcov(cmi_did))
-
-main_cmi_plot <- synthdid_plot(cmi_did, facet.vertical=FALSE,
-                               control.name='Never Clinical Exec', treated.name='Always Clinical Exec',
-                               lambda.comparable=TRUE, se.method = 'none',
-                               lambda.plot.scale = 0,
-                               trajectory.linetype = 1, line.width=.8, effect.curvature=-.4,
-                               trajectory.alpha=1, effect.alpha=0,
-                               diagram.alpha=0, onset.alpha=1) +
-  theme(legend.position=c(.5,-.095), legend.direction='horizontal',
-        legend.key=element_blank(), legend.background=element_blank(),
-        strip.background=element_blank(), strip.text.x = element_blank(),
-        text = element_text(size=18)) + ylim(0.5,2) +
-  scale_color_manual(values = c("For-profit" = "#D65828", "Never Clinical Exec" = "#AED1EC", "Ever Clinical Exec" ="#6BAED6", "Always Clinical Exec" = "#2C6B8E"))  +
-  annotate(geom="label", x=2013.1, y=2, 
-           label=paste0("ATT (s.e.) = ", round(cmi_did,2)," (",round(cmi_se,2),")"), 
-           size=4,
-           fill="gray90") 
-ggsave(main_cmi_plot, filename=paste0(objects_path,"cmi_md_nomd_synth_graph.pdf"), width=5.5, height=6, units="in")
-
-
 # TABLE 8: results by condition ####
 
 condition_analysis_data <- hospital_data %>%
@@ -1956,3 +1905,129 @@ signal_manage_estimators_tab <- knitr::kable(estimates, format="latex",
   add_footnote(c("Standard errors are clustered at the hospital level.",
                  "Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1"), notation="none")
 write(signal_manage_estimators_tab, "Tables/signal_manage_estimators_mort_tab.tex")
+
+
+# ANALYSIS INCLUDING NURSES #######
+# create variable for ever has md or nurse
+
+observe <- hospital_data %>%
+  filter(is.na(num_doc_nurse) & !is.na(num_doctors))
+
+hospital_data <- hospital_data %>%
+  group_by(ID) %>%
+  mutate(ever_md_nurse = ifelse(sum(num_doc_nurse,na.rm=T)>0,1,0)) %>%
+  ungroup
+
+main_analysis_data_nurses <- hospital_data %>%
+  filter(no_num_md_nurse_change_2010_2014==1 & !is.na(ever_md_nurse)) %>%
+  mutate(never_has_md_nurse=ifelse(ever_md_nurse==1,0,1),
+         post_2012 = ifelse(year>2012,1,0)) %>%
+  mutate(did=post_2012*ever_md_nurse) %>%
+  mutate(count=1) %>%
+  group_by(ID, year) %>%
+  mutate(sum=sum(count)) %>%
+  ungroup() %>%
+  filter(!(sum==2 & is.na(weightedavg_read))) %>%
+  select(-count, -sum)
+
+# Readmission
+wa_read_data <- main_analysis_data_nurses %>%
+  filter(year!=2015) %>%
+  select(ID, year, weightedavg_read, did, cmiv) %>%
+  na.omit() %>%
+  mutate(count=1) %>%
+  group_by(ID) %>%
+  mutate(min=min(year[did==1])) %>%
+  mutate(sum=sum(count)) %>%
+  ungroup() %>%
+  filter(sum==5) %>%
+  filter(min!=2014) %>%
+  select(-sum, -count, -min) %>%
+  mutate(ID=as.factor(ID))
+wa_read_panel <- panel.matrices(as.data.frame(wa_read_data))
+X_mat_wa_read <- wa_read_data %>%
+  select(ID, year, cmiv) %>%
+  reshape2::melt(id.var=c("ID", "year")) %>%
+  nest_by(variable) %>%
+  mutate(X=list(dcast(data.table(wa_read_data), ID~year) %>%
+                  .[data.table(ID=rownames(wa_read_panel$Y)), on="ID"] %>%
+                  .[, ID := NULL] %>%
+                  as.matrix()
+  )) %>%
+  .$X %>%
+  abind(along=2)
+
+wa_read_did <- synthdid_estimate(wa_read_panel$Y, wa_read_panel$N0, wa_read_panel$T0, X=X_mat_wa_read)
+
+sprintf('point estimate: %1.2f', wa_read_did)
+wa_read_se = sqrt(vcov(wa_read_did))
+
+main_read_plot <- synthdid_plot(wa_read_did, facet.vertical=FALSE,
+                                control.name='Never Clinical Exec', treated.name='Always Clinical Exec',
+                                lambda.comparable=TRUE, se.method = 'none',
+                                lambda.plot.scale = 0,
+                                trajectory.linetype = 1, line.width=.8, effect.curvature=-.4,
+                                trajectory.alpha=1, effect.alpha=0,
+                                diagram.alpha=0, onset.alpha=1) +
+  theme(legend.position=c(.5,-.095), legend.direction='horizontal',
+        legend.key=element_blank(), legend.background=element_blank(),
+        strip.background=element_blank(), strip.text.x = element_blank(),
+        text = element_text(size=18)) + ylim(19.5,22.5) +
+  scale_color_manual(values = c("For-profit" = "#D65828", "Never Clinical Exec" = "#AED1EC", "Ever Clinical Exec" ="#6BAED6", "Always Clinical Exec" = "#2C6B8E"))  +
+  annotate(geom="label", x=2013.1, y=22.5, 
+           label=paste0("ATT (s.e.) = ", round(wa_read_did,2)," (",round(wa_read_se,2),")"), 
+           size=4,
+           fill="gray90") 
+ggsave(main_read_plot, filename=paste0(objects_path,"nurses_read_md_nomd_synth_graph.pdf"), width=5.5, height=6, units="in")
+
+
+# Mortality
+wa_mort_data <- main_analysis_data_nurses %>%
+  filter(year!=2015) %>%
+  select(ID, year, weightedavg_mort, did, cmiv) %>%
+  na.omit() %>%
+  mutate(count=1) %>%
+  group_by(ID) %>%
+  mutate(min=min(year[did==1])) %>%
+  mutate(sum=sum(count)) %>%
+  ungroup() %>%
+  filter(sum==5) %>%
+  filter(min!=2014) %>%
+  select(-sum, -count, -min) %>%
+  mutate(ID=as.factor(ID))
+wa_mort_panel <- panel.matrices(as.data.frame(wa_mort_data))
+X_mat_wa_mort <- wa_mort_data %>%
+  select(ID, year, cmiv) %>%
+  reshape2::melt(id.var=c("ID", "year")) %>%
+  nest_by(variable) %>%
+  mutate(X=list(dcast(data.table(wa_mort_data), ID~year) %>%
+                  .[data.table(ID=rownames(wa_mort_panel$Y)), on="ID"] %>%
+                  .[, ID := NULL] %>%
+                  as.matrix()
+  )) %>%
+  .$X %>%
+  abind(along=2)
+
+wa_mort_did <- synthdid_estimate(wa_mort_panel$Y, wa_mort_panel$N0, wa_mort_panel$T0, X=X_mat_wa_mort)
+
+sprintf('point estimate: %1.2f', wa_mort_did)
+wa_mort_se = sqrt(vcov(wa_mort_did))
+
+main_mort_plot <- synthdid_plot(wa_mort_did, facet.vertical=FALSE,
+                                control.name='Never Clinical Exec', treated.name='Always Clinical Exec',
+                                lambda.comparable=TRUE, se.method = 'none',
+                                lambda.plot.scale = 0,
+                                trajectory.linetype = 1, line.width=.8, effect.curvature=-.4,
+                                trajectory.alpha=1, effect.alpha=0,
+                                diagram.alpha=0, onset.alpha=1) + ylim(12,13) +
+  theme(legend.position=c(.5,-.095), legend.direction='horizontal',
+        legend.key=element_blank(), legend.background=element_blank(),
+        strip.background=element_blank(), strip.text.x = element_blank(),
+        text = element_text(size=18))  +
+  scale_color_manual(values = c("For-profit" = "#D65828", "Never Clinical Exec" = "#AED1EC", "Ever Clinical Exec" ="#6BAED6", "Always Clinical Exec" = "#2C6B8E"))  +
+  annotate(geom="label", x=2013.1, y=13, 
+           label=paste0("ATT (s.e.) = ", round(wa_mort_did,2)," (",round(wa_mort_se,2),")"), 
+           size=4,
+           fill="gray90") 
+ggsave(main_mort_plot, filename=paste0(objects_path,"nurses_mort_md_nomd_synth_graph.pdf"), width=5.5, height=6, units="in")
+

@@ -81,7 +81,7 @@ cleaned_text <- cleaned_text %>%
 cleaned_text <- cleaned_text %>%
   mutate(cmo = ifelse(position1=="cmo" | position2 == "cmo" | position1 == "chief medical officer" | position2 == "chief medical officer", 1,0)) %>%
   mutate(cmo = ifelse(is.na(cmo),0,cmo))
-  
+
 executive_data <- cleaned_text %>%
   mutate(vp = ifelse(pos1_vp==1 | pos2_vp==1, 1, 0)) %>%
   filter(position == "executive") %>%
@@ -107,7 +107,7 @@ for (i in seq_along(eins)){
   data <- complete(data, year=2009:2016, id)
   
   max_id <- max(data$id)
-
+  
   for (j in 1:max_id){
     name_data <- data %>%
       filter(id==j) %>%
@@ -278,8 +278,6 @@ names_data <- names_data %>%
 
 # manually add EINs of docs I can find ####
 executive_names <- executive_names %>%
-  mutate(npi=npi.x, t_class=t_class.x) %>%
-  select(-npi.x, -npi.y, -t_class.x, -t_class.y) %>%
   mutate(npi=ifelse(ein=="10198331" & name=="katheryn resinbrink", 1124067194, npi),
          npi=ifelse(ein=="10211494" & name=="richard goldstein", 1811967698, npi),
          npi=ifelse(ein=="10211503" & name=="david hyde", 1144288341, npi),
@@ -784,7 +782,10 @@ executive_names <- executive_names %>%
 # change doctor of NPIs that didn't match
 executive_names <- executive_names %>%
   mutate(doctor=ifelse(doctor==1 & is.na(npi),0,doctor)) %>%
-  mutate(doctor=ifelse(is.na(doctor),0,doctor))
+  mutate(doctor=ifelse(is.na(doctor),0,doctor)) %>%
+  mutate(doc_nurse = ifelse(title=="rn",1,NA)) %>%
+  mutate(doc_nurse = ifelse(is.na(doc_nurse) & doctor==1,1,doc_nurse)) %>%
+  mutate(doc_nurse = ifelse(is.na(doc_nurse),0,doc_nurse))
 
 # join specialty to columns that don't already have it
 npidata <- npidata %>%
@@ -795,7 +796,7 @@ executive_names <- executive_names %>%
 executive_names <- executive_names %>%
   mutate(t_class=ifelse(is.na(t_class), t_class2, t_class)) %>%
   select(-t_class2)
-  # every observation that is a doctor has an npi number (000 for those I could not match but confirmed they are a doctor)
+# every observation that is a doctor has an npi number (000 for those I could not match but confirmed they are a doctor)
 
 
 
@@ -815,11 +816,11 @@ executive_data <- executive_data %>%
   ungroup() %>%
   mutate(present_2010_2014 = ifelse(in_2010==1 & in_2011==1 & in_2012==1 & in_2013==1 & in_2014==1, 1, 0)) %>%
   mutate(present_2010_2014 = ifelse(is.na(present_2010_2014), 0, present_2010_2014)) 
-  # 91% of observations are in the data
+# 91% of observations are in the data
 
 # keep a record of those that aren't to see if we can manually fill in some missing info caused by OCR
 #executive_data_notin20102014 <- executive_data_filled %>%
-  #filter(present_2010_2014==0)
+#filter(present_2010_2014==0)
 
 # saveRDS(executive_data_notin20102014, paste0(created_data_path, "executive_data_notin20102014.rds"))
 # write.csv(executive_data_notin20102014, paste0(created_data_path, "executive_data_notin20102014.csv"))
@@ -864,6 +865,33 @@ executive_data <- executive_data %>%
 observe <- executive_data %>%
   distinct(ein, year, num_doctors, no_num_md_change_2010_2014, no_md_change_2010_2014)
 
+# changes in doctor or nurse over time 
+doc_nurse_over_time <- executive_data %>%
+  group_by(ein, year) %>%
+  mutate(num_doc_nurse = sum(doc_nurse)) %>%
+  ungroup() %>%
+  distinct(ein, year, num_doc_nurse)
+
+doc_nurse_over_time <- doc_nurse_over_time %>%
+  group_by(ein) %>%
+  arrange(year) %>%
+  mutate(lag_num_doc_nurse = dplyr::lag(num_doc_nurse)) %>%
+  ungroup() %>%
+  mutate(num_doc_nurse_change = num_doc_nurse-lag_num_doc_nurse) %>%
+  mutate(any_doc_nurse_change = ifelse((num_doc_nurse>0 & lag_num_doc_nurse==0) | (num_doc_nurse==0 & lag_num_doc_nurse>0),1,0)) %>%
+  select(ein, year, num_doc_nurse, num_doc_nurse_change, any_doc_nurse_change) %>%
+  mutate(hire_doc_nurse = ifelse(num_doc_nurse_change>0,1,0),
+         fire_doc_nurse = ifelse(num_doc_nurse_change<0,1,0))
+
+executive_data <- executive_data %>%
+  left_join(doc_nurse_over_time, by=c("ein", "year")) %>%
+  mutate(no_num_md_nurse_change_2010_2014 = ifelse(num_doc_nurse_change!=0 & year %in% c(2010,2011,2012,2013,2014),1,NA)) %>%
+  mutate(no_md_nurse_change_2010_2014 = ifelse(any_doc_nurse_change!=0 & year %in% c(2010,2011,2012,2013,2014),1,NA)) %>%
+  group_by(ein) %>%
+  mutate(no_num_md_nurse_change_2010_2014 = ifelse(sum(no_num_md_nurse_change_2010_2014,na.rm=T)==0,1,0)) %>%
+  mutate(no_md_nurse_change_2010_2014 = ifelse(sum(no_md_nurse_change_2010_2014,na.rm=T)==0,1,0)) %>%
+  ungroup() 
+
 # figure out whether having MD ceo changed over time
 detect_changes <- executive_data %>% 
   mutate(ceo_md = ifelse(ceo==1 & doctor==1,1,0)) %>%
@@ -903,7 +931,7 @@ executive_data <- executive_data %>%
          t_class = ifelse(npi==1295825396,"Personal Emergency Response Attendant",t_class),
          t_class = ifelse(npi==1316089170, "Physical Therapist", t_class),
          npi = ifelse(npi==1073638466,0,npi)
-         )
+  )
 
 observe <- executive_data %>%
   filter(npi==0 & is.na(t_class)) %>%
@@ -960,7 +988,7 @@ executive_data <- executive_data %>%
          t_class = ifelse(name=="robin womeodu" & npi==0, "Internal Medicine", t_class),
          t_class = ifelse(name=="david chen" & npi==0, "Internal Medicine", t_class),
          t_class = ifelse(name=="stephen krenytzky", "Pediatrics", t_class)
-         )
+  )
 
 # create hospital level indicator for whether they have internal medicine or other type of doctor
 executive_data <- executive_data %>%
@@ -979,14 +1007,14 @@ executive_data <- executive_data %>%
 
 # aggregate to the hospital level
 ein_leadership_changes_data <- executive_data %>%
-  distinct(ein, year, num_execs, num_doctors, num_int_med_doctors, ever_cmo, ever_ceo_md, hire, fire, num_doc_change, no_num_md_change_2010_2014,
-           no_md_change_2010_2014, no_ceo_change_2010_2014)
+  distinct(ein, year, num_execs, num_doctors, num_doc_nurse, num_int_med_doctors, ever_cmo, ever_ceo_md, hire, hire_doc_nurse, fire, fire_doc_nurse, num_doc_change, no_num_md_change_2010_2014,
+           no_md_change_2010_2014, no_ceo_change_2010_2014, num_doc_nurse_change, no_num_md_nurse_change_2010_2014, no_md_nurse_change_2010_2014)
 
-saveRDS(ein_leadership_changes_data, paste0(created_data_path, "ein_leadership_changes_data4.rds"))
+saveRDS(ein_leadership_changes_data, paste0(created_data_path, "ein_leadership_changes_data.rds"))
 
 num <- ein_leadership_changes_data %>%
   distinct(ein)
-  # 911
+# 911
 
 
 # join MDPPAS physician info to individual data
@@ -1040,7 +1068,14 @@ doc_exec_data <- executive_data %>%
   fill(min_age, sex, grad_year, ever_cmo, ever_ceo, .direction="downup") %>%
   ungroup() %>%
   distinct(npi, ever_ceo, ever_cmo, t_class, int_med_doc, min_age, sex, grad_year)
-  # no duplicates
+# no duplicates
 
 # save data to create summary stats table 
 saveRDS(doc_exec_data, paste0(created_data_path, "doc_exec_data.rds"))
+num <- ein_leadership_changes_data %>%
+  distinct(ein)
+# 911
+
+
+
+
