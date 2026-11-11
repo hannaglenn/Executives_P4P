@@ -1,0 +1,253 @@
+main_outcome,panel,type,moderator,group,est,se,n_type1,n_type0,N,half,p
+all_read,A,Physician CEO (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.1733321098522796,0.05990016272889846,30,340,2201,high competition,0.0038075179397758173
+all_read,A,Physician CEO (agreement),HRR (primary),clinical-led (type 1),-0.41258115208834883,0.09822250720083826,30,340,2201,high competition,2.663559847931187e-5
+all_read,A,Physician CEO (agreement),HRR (primary),gap (type 1 - type 0),-0.23924904223606924,0.11558162970461569,30,340,2201,high competition,0.038456339976350756
+all_read,A,Physician CEO (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.330933926883533,0.10528104279518187,24,361,2277,low competition,0.0016703271188626965
+all_read,A,Physician CEO (agreement),HRR (primary),clinical-led (type 1),-0.8709567213276619,0.1701076510329446,24,361,2277,low competition,3.05482819993877e-7
+all_read,A,Physician CEO (agreement),HRR (primary),gap (type 1 - type 0),-0.5400227944441289,0.1996288512339014,24,361,2277,low competition,0.006827683955222827
+all_read,A,Physician CEO (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.16286570118770333,0.06014815009031925,25,359,2272,low margin,0.0067742563823333215
+all_read,A,Physician CEO (agreement),MG operating margin (2009-11),clinical-led (type 1),-0.5220888879913979,0.15164612366492292,25,359,2272,low margin,5.757022661135365e-4
+all_read,A,Physician CEO (agreement),MG operating margin (2009-11),gap (type 1 - type 0),-0.3592231868036946,0.16211947653284967,25,359,2272,low margin,0.026705688202588014
+all_read,A,Physician CEO (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.3612723916002147,0.09630012791190931,29,342,2206,high margin,1.7576182825936235e-4
+all_read,A,Physician CEO (agreement),MG operating margin (2009-11),clinical-led (type 1),-0.4935602978135379,0.09195841561910173,29,342,2206,high margin,7.996311508584582e-8
+all_read,A,Physician CEO (agreement),MG operating margin (2009-11),gap (type 1 - type 0),-0.1322879062133232,0.1347220856154238,29,342,2206,high margin,0.32613342554612196
+all_mort,A,Physician CEO (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.010290199141979397,0.06425918409438248,31,340,2195,high competition,0.8727740604061878
+all_mort,A,Physician CEO (agreement),HRR (primary),clinical-led (type 1),0.22202128576422903,0.11449877441299426,31,340,2195,high competition,0.052492658509524906
+all_mort,A,Physician CEO (agreement),HRR (primary),gap (type 1 - type 0),0.23231148490620843,0.13051833516667055,31,340,2195,high competition,0.07508994474641881
+all_mort,A,Physician CEO (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",0.12000565913520655,0.09286791304814895,24,360,2273,low competition,0.1962813978501946
+all_mort,A,Physician CEO (agreement),HRR (primary),clinical-led (type 1),-0.29001193907671113,0.13853888616738522,24,360,2273,low competition,0.036316916765460845
+all_mort,A,Physician CEO (agreement),HRR (primary),gap (type 1 - type 0),-0.4100175982119177,0.16639145195817254,24,360,2273,low competition,0.013732917619794812
+all_mort,A,Physician CEO (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.03724690412263509,0.07122936034081959,26,358,2271,low margin,0.6010333748008534
+all_mort,A,Physician CEO (agreement),MG operating margin (2009-11),clinical-led (type 1),0.2460225115297803,0.17866753432034765,26,358,2271,low margin,0.16851689104122217
+all_mort,A,Physician CEO (agreement),MG operating margin (2009-11),gap (type 1 - type 0),0.2087756074071452,0.19178337595468675,26,358,2271,low margin,0.2763298007197085
+all_mort,A,Physician CEO (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.04658630208999271,0.07014811286101426,29,342,2197,high margin,0.5066177311208744
+all_mort,A,Physician CEO (agreement),MG operating margin (2009-11),clinical-led (type 1),-0.046769704015918255,0.09332644126568099,29,342,2197,high margin,0.6162719094131128
+all_mort,A,Physician CEO (agreement),MG operating margin (2009-11),gap (type 1 - type 0),-0.09335600610591097,0.11598677730086744,29,342,2197,high margin,0.420886100541353
+all_read,A,Clinical CEO: physician or nurse (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.18216429979995025,0.05796069060313436,35,335,2201,high competition,0.0016728647594940298
+all_read,A,Clinical CEO: physician or nurse (agreement),HRR (primary),clinical-led (type 1),-0.36842934829482454,0.09930488956774391,35,335,2201,high competition,2.0719159174477546e-4
+all_read,A,Clinical CEO: physician or nurse (agreement),HRR (primary),gap (type 1 - type 0),-0.18626504849487432,0.11546546225156254,35,335,2201,high competition,0.10670827755556245
+all_read,A,Clinical CEO: physician or nurse (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.3313350591822019,0.08651132737182009,30,355,2277,low competition,1.2816327298537808e-4
+all_read,A,Clinical CEO: physician or nurse (agreement),HRR (primary),clinical-led (type 1),-0.7610367773514699,0.17898940720871853,30,355,2277,low competition,2.1200832484926325e-5
+all_read,A,Clinical CEO: physician or nurse (agreement),HRR (primary),gap (type 1 - type 0),-0.42970171816926805,0.1994523828408124,30,355,2277,low competition,0.031208225517335212
+all_read,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.16229383623490493,0.06606505552892335,32,352,2272,low margin,0.01402680914240426
+all_read,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),clinical-led (type 1),-0.48411661957539487,0.14730421446704672,32,352,2272,low margin,0.0010143754948285146
+all_read,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),gap (type 1 - type 0),-0.3218227833404899,0.1609086093664475,32,352,2272,low margin,0.04549652974995334
+all_read,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.32424050119212505,0.08435308930600834,33,338,2206,high margin,1.211197626826827e-4
+all_read,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),clinical-led (type 1),-0.5031402484165652,0.09635301758551554,33,338,2206,high margin,1.7715194833852915e-7
+all_read,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),gap (type 1 - type 0),-0.17889974722444013,0.12873033279001062,33,338,2206,high margin,0.16461243450259488
+all_mort,A,Clinical CEO: physician or nurse (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.011016028918405635,0.06289822502694051,36,335,2195,high competition,0.8609692064517442
+all_mort,A,Clinical CEO: physician or nurse (agreement),HRR (primary),clinical-led (type 1),0.19311144377014003,0.11461113842138372,36,335,2195,high competition,0.09200258564326702
+all_mort,A,Clinical CEO: physician or nurse (agreement),HRR (primary),gap (type 1 - type 0),0.20412747268854567,0.1301290516343114,36,335,2195,high competition,0.11672855506967796
+all_mort,A,Clinical CEO: physician or nurse (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",0.09889516878669592,0.0833606947218939,30,354,2273,low competition,0.23548312077312034
+all_mort,A,Clinical CEO: physician or nurse (agreement),HRR (primary),clinical-led (type 1),-0.3654315905240143,0.13343503947067958,30,354,2273,low competition,0.006169240501380315
+all_mort,A,Clinical CEO: physician or nurse (agreement),HRR (primary),gap (type 1 - type 0),-0.4643267593107102,0.15697433302980404,30,354,2273,low competition,0.0030966335577845474
+all_mort,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.06595852390519175,0.06932322262522125,33,351,2271,low margin,0.3413690810881506
+all_mort,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),clinical-led (type 1),0.168215070584278,0.16827098374223917,33,351,2271,low margin,0.3174713388607468
+all_mort,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),gap (type 1 - type 0),0.10225654667908626,0.18177256516153276,33,351,2271,low margin,0.5737398854400173
+all_mort,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.03219654690448054,0.06471859748544477,33,338,2197,high margin,0.6188469099544641
+all_mort,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),clinical-led (type 1),-0.09435295688363166,0.10308649826551018,33,338,2197,high margin,0.3600449269459113
+all_mort,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),gap (type 1 - type 0),-0.1265495037881122,0.12015266818975079,33,338,2197,high margin,0.2922313626600691
+all_read,A,Physician executive (990),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.22752650867825167,0.07036638800569887,244,238,2861,high competition,0.0012230284846409581
+all_read,A,Physician executive (990),HRR (primary),clinical-led (type 1),-0.2671810895749819,0.057467116057052084,244,238,2861,high competition,3.33085192993146e-6
+all_read,A,Physician executive (990),HRR (primary),gap (type 1 - type 0),-0.03965458089673021,0.09067187687816104,244,238,2861,high competition,0.6618636527882431
+all_read,A,Physician executive (990),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.4563569098648431,0.09211162295547373,212,272,2863,low competition,7.255752347848022e-7
+all_read,A,Physician executive (990),HRR (primary),clinical-led (type 1),-0.3896822092281218,0.08118603919841251,212,272,2863,low competition,1.5877085082876532e-6
+all_read,A,Physician executive (990),HRR (primary),gap (type 1 - type 0),0.0666747006367213,0.12138076526807143,212,272,2863,low competition,0.5827981952061148
+all_read,A,Physician executive (990),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.25283369578269244,0.05408241655003676,216,262,2823,low margin,2.9399604008594963e-6
+all_read,A,Physician executive (990),MG operating margin (2009-11),clinical-led (type 1),-0.27820098974417873,0.0616915519892854,216,262,2823,low margin,6.496601949938406e-6
+all_read,A,Physician executive (990),MG operating margin (2009-11),gap (type 1 - type 0),-0.025367293961486275,0.08161985813361095,216,262,2823,low margin,0.7559541409069076
+all_read,A,Physician executive (990),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.42482768145984356,0.11176940225796955,240,248,2901,high margin,1.4415398684970815e-4
+all_read,A,Physician executive (990),MG operating margin (2009-11),clinical-led (type 1),-0.3497230485034236,0.07235851130393917,240,248,2901,high margin,1.3435669690743969e-6
+all_read,A,Physician executive (990),MG operating margin (2009-11),gap (type 1 - type 0),0.07510463295641995,0.13297224326762155,240,248,2901,high margin,0.5722000362110518
+all_mort,A,Physician executive (990),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.05948479409909753,0.0775640951645409,245,238,2855,high competition,0.44313415468841894
+all_mort,A,Physician executive (990),HRR (primary),clinical-led (type 1),0.019972813116043958,0.04979511744012005,245,238,2855,high competition,0.6883466263624305
+all_mort,A,Physician executive (990),HRR (primary),gap (type 1 - type 0),0.07945760721514149,0.09251902004352973,245,238,2855,high competition,0.3904373121979957
+all_mort,A,Physician executive (990),HRR (primary),"non-clinical-led (type 0, reweighted)",0.1219218318722091,0.14657754676321333,212,271,2857,low competition,0.40552712636930444
+all_mort,A,Physician executive (990),HRR (primary),clinical-led (type 1),-0.08933752039591288,0.0817880643583662,212,271,2857,low competition,0.27469901632967036
+all_mort,A,Physician executive (990),HRR (primary),gap (type 1 - type 0),-0.21125935226812198,0.16788170291976653,212,271,2857,low competition,0.20825355407473192
+all_mort,A,Physician executive (990),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.057415273612352935,0.11373405427211669,217,261,2822,low margin,0.6136849686798305
+all_mort,A,Physician executive (990),MG operating margin (2009-11),clinical-led (type 1),0.014258682213385235,0.053764230520219704,217,261,2822,low margin,0.7908495452303292
+all_mort,A,Physician executive (990),MG operating margin (2009-11),gap (type 1 - type 0),0.07167395582573817,0.12583294006889903,217,261,2822,low margin,0.5689516531567953
+all_mort,A,Physician executive (990),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.0450779480004689,0.08757521490535222,240,248,2890,high margin,0.6067388525823034
+all_mort,A,Physician executive (990),MG operating margin (2009-11),clinical-led (type 1),-0.06758724833565274,0.07328183893069752,240,248,2890,high margin,0.3563763246016744
+all_mort,A,Physician executive (990),MG operating margin (2009-11),gap (type 1 - type 0),-0.02250930033518384,0.11365702915048198,240,248,2890,high margin,0.8430092089799932
+all_read,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",-0.27313923729659695,0.0595897817469114,46,647,4042,high competition,4.569092278163913e-6
+all_read,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),-0.35632918108174144,0.10135081553147798,46,647,4042,high competition,4.3843138363137854e-4
+all_read,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),-0.08318994378514448,0.11919249575926538,46,647,4042,high competition,0.4852108701241626
+all_read,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",-0.3666793266471608,0.05783406909608952,41,664,4102,low competition,2.294732190713898e-10
+all_read,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),-0.5714749219220426,0.13994322009697102,41,664,4102,low competition,4.4339530201027366e-5
+all_read,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),-0.20479559527488186,0.15176302320664917,41,664,4102,low competition,0.1771946198907097
+all_read,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.26495239752352373,0.05252761960069558,49,676,4173,low margin,4.5575934114726e-7
+all_read,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),-0.3582446703281531,0.08881283104342487,49,676,4173,low margin,5.490447608768427e-5
+all_read,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),-0.09329227280462939,0.10297693259164226,49,676,4173,low margin,0.36496066921983095
+all_read,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.43826076891165755,0.0678598987380428,38,635,3971,high margin,1.0587346550288742e-10
+all_read,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),-0.536555119269028,0.12179246103071922,38,635,3971,high margin,1.0554642023907683e-5
+all_read,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),-0.09829435035737047,0.13991784904769905,38,635,3971,high margin,0.4823582170442086
+all_mort,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",-0.03439798774014857,0.05778998724930011,46,646,4034,high competition,0.5516937454114543
+all_mort,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),0.08354688996013508,0.0781443011755135,46,646,4034,high competition,0.2850083668095677
+all_mort,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),0.11794487770028365,0.096734863497624,46,646,4034,high competition,0.22274580769421753
+all_mort,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",-0.024889424963803232,0.09794063411070338,41,663,4090,low competition,0.7993969287618288
+all_mort,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),-0.09078347255583857,0.13149536087863212,41,663,4090,low competition,0.4899470973112193
+all_mort,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),-0.06589404759203533,0.16253426548064673,41,663,4090,low competition,0.6851714995733045
+all_mort,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.038597063859981,0.07000959131636801,49,674,4164,low margin,0.5814204398074544
+all_mort,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),0.13172679854089475,0.09059972602084586,49,674,4164,low margin,0.14596222895826436
+all_mort,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),0.17032386240087574,0.11386426108860398,49,674,4164,low margin,0.13469273130297504
+all_mort,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.03899263091080201,0.0529301450453757,38,635,3960,high margin,0.4613163784545563
+all_mort,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),-0.15917070449385406,0.08400681349555864,38,635,3960,high margin,0.05812743203201619
+all_mort,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),-0.12017807358305205,0.09965520742461735,38,635,3960,high margin,0.22784111841921184
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",-0.2923484788167073,0.04302307000567987,89,604,4042,high competition,1.081952744775761e-11
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),-0.34549105236471556,0.06620164546020156,89,604,4042,high competition,1.8011686458142963e-7
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),-0.0531425735480083,0.07951803596496931,89,604,4042,high competition,0.5039367351357008
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",-0.36285518333532424,0.050609046889583245,75,630,4102,low competition,7.512433343800899e-13
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),-0.4689256478511265,0.11165948561476152,75,630,4102,low competition,2.6738192895354238e-5
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),-0.10607046451580225,0.12270210402929564,75,630,4102,low competition,0.38733791352097624
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.27120975829700017,0.04491928996721051,85,640,4173,low margin,1.5631424774267937e-9
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),-0.310910173643521,0.06637935949185352,85,640,4173,low margin,2.8155241350943497e-6
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),-0.03970041534652087,0.08013806412452815,85,640,4173,low margin,0.620317632865492
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.3893932262602596,0.05077148929618381,79,594,3971,high margin,1.7263392887009138e-14
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),-0.4786049123352662,0.09358915078273751,79,594,3971,high margin,3.155859997043646e-7
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),-0.08921168607500661,0.10618607918123767,79,594,3971,high margin,0.4008271837307281
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",-0.020180354924643023,0.044004356039372125,88,604,4034,high competition,0.6465221344826908
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),0.02079147037521183,0.08097172567156546,88,604,4034,high competition,0.7973528943803404
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),0.04097182529985485,0.09161567798965764,88,604,4034,high competition,0.6547204634953291
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",-0.014900330603047653,0.06324690742257506,74,630,4090,low competition,0.8137509359617174
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),-0.15037068708369283,0.12882636904449282,74,630,4090,low competition,0.24311535407152995
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),-0.13547035648064518,0.14329289268120418,74,630,4090,low competition,0.3444502299065362
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.01923691194547836,0.05770920988125505,83,640,4164,low margin,0.7388760278257853
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),0.06879132452763456,0.08019903647934594,83,640,4164,low margin,0.3910263855374267
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),0.08802823647311292,0.09898463341433995,83,640,4164,low margin,0.3738353472049089
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.013162103859892383,0.04921168431993578,79,594,3960,high margin,0.7891158407160466
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),-0.15593326357193993,0.07834396899520589,79,594,3960,high margin,0.04655050403159986
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),-0.16909536743183232,0.09207193625295276,79,594,3960,high margin,0.06627530666489496
+all_read,A,Physician CEO (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.19807554340315567,0.05495199210542789,46,411,2712,high competition,3.127306123781486e-4
+all_read,A,Physician CEO (990 measure),HRR (primary),clinical-led (type 1),-0.4318937033401815,0.09074106232771419,46,411,2712,high competition,1.9395006932300496e-6
+all_read,A,Physician CEO (990 measure),HRR (primary),gap (type 1 - type 0),-0.23381815993702582,0.10650054423439378,46,411,2712,high competition,0.028130297526057207
+all_read,A,Physician CEO (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.37469879337445405,0.09124492398604087,31,428,2714,low competition,4.016706392504913e-5
+all_read,A,Physician CEO (990 measure),HRR (primary),clinical-led (type 1),-0.6668074494204879,0.129382199249481,31,428,2714,low competition,2.5528680691242353e-7
+all_read,A,Physician CEO (990 measure),HRR (primary),gap (type 1 - type 0),-0.2921086560460338,0.15910608592131187,31,428,2714,low competition,0.06636706210925798
+all_read,A,Physician CEO (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.15815184729291926,0.05592485378906567,30,426,2693,low margin,0.00468493285869746
+all_read,A,Physician CEO (990 measure),MG operating margin (2009-11),clinical-led (type 1),-0.5943289130602133,0.1291702075950784,30,426,2693,low margin,4.202051203729974e-6
+all_read,A,Physician CEO (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),-0.43617706576729404,0.13955061620907394,30,426,2693,low margin,0.0017745284656441001
+all_read,A,Physician CEO (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.4052313906518656,0.08829566594437463,47,413,2733,high margin,4.443468023763591e-6
+all_read,A,Physician CEO (990 measure),MG operating margin (2009-11),clinical-led (type 1),-0.4334192743856771,0.08355875557306014,47,413,2733,high margin,2.1370860423061702e-7
+all_read,A,Physician CEO (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),-0.028187883733811557,0.12188925656449993,47,413,2733,high margin,0.8171142584912838
+all_mort,A,Physician CEO (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.05821166751824578,0.06514425848622263,47,411,2706,high competition,0.3715461497791522
+all_mort,A,Physician CEO (990 measure),HRR (primary),clinical-led (type 1),0.17878515275901516,0.09384748368448478,47,411,2706,high competition,0.05677218149503681
+all_mort,A,Physician CEO (990 measure),HRR (primary),gap (type 1 - type 0),0.23699682027726093,0.11387654486772361,47,411,2706,high competition,0.03741805003812515
+all_mort,A,Physician CEO (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",0.025090308628066885,0.07955436855969109,31,427,2708,low competition,0.7524688381410112
+all_mort,A,Physician CEO (990 measure),HRR (primary),clinical-led (type 1),-0.4812851495495282,0.1569192536536972,31,427,2708,low competition,0.002161552586766036
+all_mort,A,Physician CEO (990 measure),HRR (primary),gap (type 1 - type 0),-0.5063754581775951,0.1753184081964131,31,427,2708,low competition,0.003873070811928259
+all_mort,A,Physician CEO (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.01373934764642291,0.06853521687377243,31,425,2692,low margin,0.8411119603128758
+all_mort,A,Physician CEO (990 measure),MG operating margin (2009-11),clinical-led (type 1),0.17575006400256452,0.15564023789567658,31,425,2692,low margin,0.25881047301250626
+all_mort,A,Physician CEO (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),0.16201071635614162,0.169296143929696,31,425,2692,low margin,0.3385842294841522
+all_mort,A,Physician CEO (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.005639509191537452,0.06269547504139066,47,413,2722,high margin,0.9283262987972005
+all_mort,A,Physician CEO (990 measure),MG operating margin (2009-11),clinical-led (type 1),-0.23232962135757934,0.14619021126188467,47,413,2722,high margin,0.11200885877994572
+all_mort,A,Physician CEO (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),-0.2266901121660419,0.15814458055623187,47,413,2722,high margin,0.1517333177093923
+all_read,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.2029874273682857,0.05364456570215395,52,405,2712,high competition,1.5436957008085534e-4
+all_read,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),clinical-led (type 1),-0.3957786820068232,0.09307206019008098,52,405,2712,high competition,2.1150127474273676e-5
+all_read,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),gap (type 1 - type 0),-0.1927912546385375,0.10780215874745464,52,405,2712,high competition,0.07371467596743299
+all_read,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.36953735918164365,0.07534424694310762,38,421,2714,low competition,9.359281996546958e-7
+all_read,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),clinical-led (type 1),-0.6000767453735345,0.13380521311092336,38,421,2714,low competition,7.301529623131903e-6
+all_read,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),gap (type 1 - type 0),-0.23053938619189088,0.15444422332486668,38,421,2714,low competition,0.13551489568402403
+all_read,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.15435201580105978,0.05872770930233509,38,418,2693,low margin,0.008582148874046965
+all_read,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),clinical-led (type 1),-0.5463519653734217,0.12906456385746562,38,418,2693,low margin,2.3042237300701235e-5
+all_read,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),-0.3919999495723619,0.14086408400434514,38,418,2693,low margin,0.005388803465804675
+all_read,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.3644634159931112,0.0810337940925335,52,408,2733,high margin,6.870161944362484e-6
+all_read,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),clinical-led (type 1),-0.43320960540072073,0.0832504603057252,52,408,2733,high margin,1.9536958508626727e-7
+all_read,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),-0.0687461894076095,0.11639551849437665,52,408,2733,high margin,0.5547712134037563
+all_mort,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.049907725779472285,0.06309385542734264,53,405,2706,high competition,0.4289394952947043
+all_mort,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),clinical-led (type 1),0.15654887686306043,0.09285121110269426,53,405,2706,high competition,0.09179220046409109
+all_mort,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),gap (type 1 - type 0),0.2064566026425327,0.11187174066280409,53,405,2706,high competition,0.06496833933786182
+all_mort,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",0.03556730534025961,0.07378813375144821,38,420,2708,low competition,0.629792228646689
+all_mort,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),clinical-led (type 1),-0.49289289788697005,0.14322860025704084,38,420,2708,low competition,5.7892155690879e-4
+all_mort,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),gap (type 1 - type 0),-0.5284602032272296,0.1606462161006043,38,420,2708,low competition,0.0010033342546033766
+all_mort,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.043465025482240724,0.06452385858621801,39,417,2692,low margin,0.5005483629196339
+all_mort,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),clinical-led (type 1),0.1296818177384501,0.14634074681129472,39,417,2692,low margin,0.3755294682887846
+all_mort,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),0.08621679225620939,0.15964673929960924,39,417,2692,low margin,0.5891644055330877
+all_mort,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.007790048358418081,0.06023272270326035,52,408,2722,high margin,0.8970945593943537
+all_mort,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),clinical-led (type 1),-0.2584893938742977,0.1427437532731838,52,408,2722,high margin,0.07016204759508929
+all_mort,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),-0.25069934551587963,0.15399286692965694,52,408,2722,high margin,0.10352632033995489
+all_mort,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),clinical-led (type 1),0.6494417747500305,0.1706920599642183,NA,NA,NA,high competition minus low competition,1.4194358757130206e-4
+all_mort,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),gap (type 1 - type 0),0.7349168058697624,0.19576131667509736,NA,NA,NA,high competition minus low competition,1.7393260823191428e-4
+all_mort,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.0854750311197319,0.09708513416176559,NA,NA,NA,high competition minus low competition,0.37863552232145264
+all_mort,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),clinical-led (type 1),0.3881712116127478,0.2044294334869689,NA,NA,NA,low margin minus high margin,0.057590389040405934
+all_mort,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),0.336916137772089,0.22181272378791175,NA,NA,NA,low margin minus high margin,0.12878223081273776
+all_mort,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.051255073840658805,0.0882683930470138,NA,NA,NA,low margin minus high margin,0.5614608526852989
+all_mort,A,Clinical CEO: physician or nurse (agreement),HRR (primary),clinical-led (type 1),0.5585430342941543,0.17589946790365057,NA,NA,NA,high competition minus low competition,0.0014965394044081303
+all_mort,A,Clinical CEO: physician or nurse (agreement),HRR (primary),gap (type 1 - type 0),0.6684542319992559,0.20389828667597262,NA,NA,NA,high competition minus low competition,0.0010440806965930406
+all_mort,A,Clinical CEO: physician or nurse (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.10991119770510156,0.10442792795060349,NA,NA,NA,high competition minus low competition,0.2925666820969126
+all_mort,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),clinical-led (type 1),0.26256802746790964,0.1973371482874574,NA,NA,NA,low margin minus high margin,0.1833353139820581
+all_mort,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),gap (type 1 - type 0),0.22880605046719846,0.21789430721916536,NA,NA,NA,low margin minus high margin,0.2936821848142111
+all_mort,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.03376197700071121,0.09483778812071171,NA,NA,NA,low margin minus high margin,0.7218427412407913
+all_mort,A,Physician CEO (990 measure),HRR (primary),clinical-led (type 1),0.6600703023085434,0.18284146783796884,NA,NA,NA,high competition minus low competition,3.0611564439559004e-4
+all_mort,A,Physician CEO (990 measure),HRR (primary),gap (type 1 - type 0),0.743372278454856,0.2090560014052091,NA,NA,NA,high competition minus low competition,3.7675560334719604e-4
+all_mort,A,Physician CEO (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.08330197614631267,0.10282349911693803,NA,NA,NA,high competition minus low competition,0.4178566622737565
+all_mort,A,Physician CEO (990 measure),MG operating margin (2009-11),clinical-led (type 1),0.40807968536014383,0.21353093808864623,NA,NA,NA,low margin minus high margin,0.055991304201846
+all_mort,A,Physician CEO (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),0.3887008285221835,0.23166979239592472,NA,NA,NA,low margin minus high margin,0.09338172328660965
+all_mort,A,Physician CEO (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.01937885683796036,0.09288594372993504,NA,NA,NA,low margin minus high margin,0.8347365648208078
+all_mort,A,Physician CEO (agreement),HRR (primary),clinical-led (type 1),0.5120332248409402,0.17973033222741638,NA,NA,NA,high competition minus low competition,0.004387106508717706
+all_mort,A,Physician CEO (agreement),HRR (primary),gap (type 1 - type 0),0.6423290831181261,0.2114737598366005,NA,NA,NA,high competition minus low competition,0.002386334901203893
+all_mort,A,Physician CEO (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.13029585827718596,0.1129322452375507,NA,NA,NA,high competition minus low competition,0.24860166046787946
+all_mort,A,Physician CEO (agreement),MG operating margin (2009-11),clinical-led (type 1),0.29279221554569856,0.20157359067950645,NA,NA,NA,low margin minus high margin,0.1463535662233665
+all_mort,A,Physician CEO (agreement),MG operating margin (2009-11),gap (type 1 - type 0),0.3021316135130562,0.22412897135626564,NA,NA,NA,low margin minus high margin,0.17765011675948383
+all_mort,A,Physician CEO (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.009339397967357624,0.09997189361277457,NA,NA,NA,low margin minus high margin,0.9255697142365993
+all_mort,A,Physician executive (990),HRR (primary),clinical-led (type 1),0.10931033351195683,0.0957540661923221,NA,NA,NA,high competition minus low competition,0.2536312183058365
+all_mort,A,Physician executive (990),HRR (primary),gap (type 1 - type 0),0.2907169594832635,0.19168733720581493,NA,NA,NA,high competition minus low competition,0.1293625077390189
+all_mort,A,Physician executive (990),HRR (primary),"non-clinical-led (type 0, reweighted)",-0.18140662597130663,0.1658347553253417,NA,NA,NA,high competition minus low competition,0.27399887283674507
+all_mort,A,Physician executive (990),MG operating margin (2009-11),clinical-led (type 1),0.08184593054903798,0.09088905544946553,NA,NA,NA,low margin minus high margin,0.3678522581842378
+all_mort,A,Physician executive (990),MG operating margin (2009-11),gap (type 1 - type 0),0.094183256160922,0.16956370213491048,NA,NA,NA,low margin minus high margin,0.5785905392866794
+all_mort,A,Physician executive (990),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.012337325611884033,0.14354390745305567,NA,NA,NA,low margin minus high margin,0.9315076774464268
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),0.17116215745890467,0.1521599609602313,NA,NA,NA,high competition minus low competition,0.2606386052685098
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),0.17644218178050003,0.17007729285960468,NA,NA,NA,high competition minus low competition,0.29953852728397734
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",-0.00528002432159537,0.07704904054535401,NA,NA,NA,high competition minus low competition,0.9453652524318951
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),0.2247245880995745,0.11211450811619895,NA,NA,NA,low margin minus high margin,0.04502506409786698
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),0.25712360390494526,0.1351857947328012,NA,NA,NA,low margin minus high margin,0.05717093959560285
+all_mort,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",-0.032399015805370746,0.07584288218892897,NA,NA,NA,low margin minus high margin,0.669243873565376
+all_mort,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),0.17433036251597367,0.1529626154941496,NA,NA,NA,high competition minus low competition,0.25441438694314283
+all_mort,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),0.183838925292319,0.18914285942439726,NA,NA,NA,high competition minus low competition,0.3310714173675858
+all_mort,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",-0.00950856277634534,0.11371917356488721,NA,NA,NA,high competition minus low competition,0.9333630013343502
+all_mort,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),0.2908975030347488,0.1235534502502051,NA,NA,NA,low margin minus high margin,0.018551317883856423
+all_mort,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),0.2905019359839278,0.15131500361860115,NA,NA,NA,low margin minus high margin,0.05487699415707223
+all_mort,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",3.955670508210135e-4,0.08776641231592745,NA,NA,NA,low margin minus high margin,0.9964039116360884
+all_read,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),clinical-led (type 1),0.2042980633667113,0.16299154408645153,NA,NA,NA,high competition minus low competition,0.21005021382644462
+all_read,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),gap (type 1 - type 0),0.03774813155335338,0.18834628626291708,NA,NA,NA,high competition minus low competition,0.8411530787624433
+all_read,A,Clinical CEO: physician or nurse (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",0.16654993181335795,0.09249051290157653,NA,NA,NA,high competition minus low competition,0.07174631535802631
+all_read,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),clinical-led (type 1),-0.11314235997270095,0.15358483253509425,NA,NA,NA,low margin minus high margin,0.4613190096134759
+all_read,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),-0.3232537601647524,0.1827309686067416,NA,NA,NA,low margin minus high margin,0.07689143008750288
+all_read,A,Clinical CEO: physician or nurse (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.21011140019205143,0.1000770684269413,NA,NA,NA,low margin minus high margin,0.03577320416135561
+all_read,A,Clinical CEO: physician or nurse (agreement),HRR (primary),clinical-led (type 1),0.39260742905664536,0.2046916436618512,NA,NA,NA,high competition minus low competition,0.055105525096151436
+all_read,A,Clinical CEO: physician or nurse (agreement),HRR (primary),gap (type 1 - type 0),0.24343666967439373,0.23046371947411812,NA,NA,NA,high competition minus low competition,0.2908354510656395
+all_read,A,Clinical CEO: physician or nurse (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",0.14917075938225166,0.10413285465609062,NA,NA,NA,high competition minus low competition,0.15199955575452553
+all_read,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),clinical-led (type 1),0.01902362884117037,0.17601828199817302,NA,NA,NA,low margin minus high margin,0.9139341575492856
+all_read,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),gap (type 1 - type 0),-0.14292303611604978,0.206065715606626,NA,NA,NA,low margin minus high margin,0.4879457095710225
+all_read,A,Clinical CEO: physician or nurse (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.16194666495722013,0.10714492632648148,NA,NA,NA,low margin minus high margin,0.13066797852474488
+all_read,A,Physician CEO (990 measure),HRR (primary),clinical-led (type 1),0.23491374608030635,0.15803067384212,NA,NA,NA,high competition minus low competition,0.1371449944489165
+all_read,A,Physician CEO (990 measure),HRR (primary),gap (type 1 - type 0),0.058290496109007994,0.19146047242034567,NA,NA,NA,high competition minus low competition,0.7607836664478349
+all_read,A,Physician CEO (990 measure),HRR (primary),"non-clinical-led (type 0, reweighted)",0.17662324997129838,0.10651458862321811,NA,NA,NA,high competition minus low competition,0.09727566678401418
+all_read,A,Physician CEO (990 measure),MG operating margin (2009-11),clinical-led (type 1),-0.16090963867453617,0.15384085336175843,NA,NA,NA,low margin minus high margin,0.29558472373358496
+all_read,A,Physician CEO (990 measure),MG operating margin (2009-11),gap (type 1 - type 0),-0.4079891820334825,0.1852872509110617,NA,NA,NA,low margin minus high margin,0.027670396221353484
+all_read,A,Physician CEO (990 measure),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.24707954335894633,0.10451657235046015,NA,NA,NA,low margin minus high margin,0.0180777077674922
+all_read,A,Physician CEO (agreement),HRR (primary),clinical-led (type 1),0.45837556923931305,0.19642880099609827,NA,NA,NA,high competition minus low competition,0.019619526623709565
+all_read,A,Physician CEO (agreement),HRR (primary),gap (type 1 - type 0),0.3007737522080597,0.23067464396882037,NA,NA,NA,high competition minus low competition,0.1922719910686473
+all_read,A,Physician CEO (agreement),HRR (primary),"non-clinical-led (type 0, reweighted)",0.15760181703125342,0.12112855760302536,NA,NA,NA,high competition minus low competition,0.19322012878043704
+all_read,A,Physician CEO (agreement),MG operating margin (2009-11),clinical-led (type 1),-0.02852859017785997,0.17734964625217764,NA,NA,NA,low margin minus high margin,0.8722031073834654
+all_read,A,Physician CEO (agreement),MG operating margin (2009-11),gap (type 1 - type 0),-0.22693528059037138,0.21079080867973055,NA,NA,NA,low margin minus high margin,0.28166346546998067
+all_read,A,Physician CEO (agreement),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.19840669041251136,0.11354080585911687,NA,NA,NA,low margin minus high margin,0.08055960206415394
+all_read,A,Physician executive (990),HRR (primary),clinical-led (type 1),0.12250111965313992,0.09946679038071383,NA,NA,NA,high competition minus low competition,0.21810672980831117
+all_read,A,Physician executive (990),HRR (primary),gap (type 1 - type 0),-0.10632928153345152,0.15150801772074984,NA,NA,NA,high competition minus low competition,0.4827999685477509
+all_read,A,Physician executive (990),HRR (primary),"non-clinical-led (type 0, reweighted)",0.22883040118659145,0.11591367324202921,NA,NA,NA,high competition minus low competition,0.04836525510180373
+all_read,A,Physician executive (990),MG operating margin (2009-11),clinical-led (type 1),0.07152205875924489,0.09508733745861747,NA,NA,NA,low margin minus high margin,0.45194746546532333
+all_read,A,Physician executive (990),MG operating margin (2009-11),gap (type 1 - type 0),-0.10047192691790623,0.1560237761412481,NA,NA,NA,low margin minus high margin,0.5196061272336627
+all_read,A,Physician executive (990),MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.17199398567715113,0.12416644901500365,NA,NA,NA,low margin minus high margin,0.16599471699347285
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),0.12343459548641095,0.12980947033784307,NA,NA,NA,high competition minus low competition,0.3416599518042083
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),0.052927890967793954,0.14621533564213515,NA,NA,NA,high competition minus low competition,0.7173625615069104
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",0.07050670451861696,0.06642484610283765,NA,NA,NA,high competition minus low competition,0.2884850912978929
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),0.16769473869174517,0.11473948104633688,NA,NA,NA,low margin minus high margin,0.14387113630851098
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),0.04951127072848574,0.13303229958739743,NA,NA,NA,low margin minus high margin,0.7097627003767621
+all_read,B,"Clinical CEO: physician or nurse (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.1181834679632594,0.0677900194461607,NA,NA,NA,low margin minus high margin,0.08126802204915579
+all_read,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),clinical-led (type 1),0.2151457408403012,0.17278915666211508,NA,NA,NA,high competition minus low competition,0.21308231295630709
+all_read,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),gap (type 1 - type 0),0.12160565148973738,0.19297374499694106,NA,NA,NA,high competition minus low competition,0.5285854444339855
+all_read,B,"Physician CEO (combined, incl. for-profits)",HRR (primary),"non-clinical-led (type 0, reweighted)",0.09354008935056385,0.08304048191608591,NA,NA,NA,high competition minus low competition,0.259979482183745
+all_read,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),clinical-led (type 1),0.1783104489408749,0.15073527298501566,NA,NA,NA,low margin minus high margin,0.23683380795273504
+all_read,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),gap (type 1 - type 0),0.005002077552741083,0.17372752553386103,NA,NA,NA,low margin minus high margin,0.9770299550298096
+all_read,B,"Physician CEO (combined, incl. for-profits)",MG operating margin (2009-11),"non-clinical-led (type 0, reweighted)",0.17330837138813382,0.08581443163974695,NA,NA,NA,low margin minus high margin,0.0434278647974242

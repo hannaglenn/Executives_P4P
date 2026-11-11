@@ -1,6 +1,27 @@
 library(dplyr)
 library(readr)
 
+if (!exists("raw_data_path")) source("./RScripts/paths.R")   # 11 Nov: so the script runs on its own
+# 11 Nov: the raw yearly folders sit in RawData/HCRIS/HCRIS_v1996 on your machine; fall back to RawData/HCRIS_v1996.
+# Outputs (final_HCRIS_v1996.csv) still go to raw_data_path, where HCRIS_combine.R and data02 look for them.
+hcris_raw_dir <- file.path(raw_data_path, "HCRIS", "HCRIS_v1996")
+if (!dir.exists(hcris_raw_dir)) hcris_raw_dir <- file.path(raw_data_path, "HCRIS_v1996")
+cat("Reading raw HCRIS v1996 folders from:", hcris_raw_dir, "\n")
+# 11 Nov: find a raw file inside a year folder, whatever its case or sub-folder (e.g. HOSP10_2012_NMRC.CSV, hosp10_2012_nmrc.csv,
+# HOSP10FY2012/HOSP10FY2012/...). Matches files whose name contains the year and ends in _ALPHA / _NMRC / _RPT .csv.
+find_raw <- function(dir, stem) {
+  part <- base::sub(".*_", "", stem); yr <- base::regmatches(stem, base::regexpr("[0-9]{4}", stem))   # base:: because a session function called sub() can mask it
+  f <- list.files(dir, pattern = "\\.csv$", recursive = TRUE, ignore.case = TRUE, full.names = TRUE)
+  hit <- f[grepl(yr, basename(f)) & grepl(paste0("_", part, "\\.csv$"), basename(f), ignore.case = TRUE)]
+  if (length(hit)) return(hit[1])
+  if (!dir.exists(dir)) { message("  Folder does not exist: ", dir); return(NA_character_) }
+  all_f <- list.files(dir, recursive = TRUE)
+  message("  No *", yr, "*_", part, ".csv in ", dir, ". It contains: ",
+          if (length(all_f)) paste(head(all_f, 8), collapse = ", ") else "(nothing)",
+          if (any(grepl("\\.zip$", all_f, ignore.case = TRUE))) "  <- unzip these first" else "")
+  NA_character_
+}
+
 #### Thank you to my advisor, Ian McCarthy, for writing this code and making it publicly available. If interested, you can find this resource
 #### at https://ianmccarthyecon.netlify.app/resources/
 
@@ -58,6 +79,12 @@ hcris.vars = rbind(hcris.vars,c('medrecords_expenses','A000000','01700','0200','
 hcris.vars = rbind(hcris.vars,c('mcaid_beddays','S300001','00100','0500','numeric'))
 hcris.vars = rbind(hcris.vars,c('mcare_beddays','S300001','00100','0400','numeric'))
 hcris.vars = rbind(hcris.vars,c('total_beddays','S300001','00100','0600','numeric'))
+# added 6 Nov: observation and inpatient days (2552-96 S-3 Part I: line 26 = observation bed days, line 12 = total hospital;
+# columns 4 = Title XVIII, 6 = total all patients - same columns as mcare_beddays / total_beddays above)
+hcris.vars = rbind(hcris.vars,c('obs_days_tot','S300001','02600','0600','numeric'))
+hcris.vars = rbind(hcris.vars,c('obs_days_mcare','S300001','02600','0400','numeric'))
+hcris.vars = rbind(hcris.vars,c('inpt_days_tot','S300001','01200','0600','numeric'))
+hcris.vars = rbind(hcris.vars,c('inpt_days_mcare','S300001','01200','0400','numeric'))
 
 
 
@@ -67,12 +94,17 @@ colnames(hcris.vars)=c("variable","WKSHT_CD","LINE_NUM","CLMN_NUM","source")
 
 # Import data -------------------------------------------------------------
 
+hcris_list <- list()
 for (i in 2006:2011) {
-  HCRIS.alpha=read_csv(paste0(raw_data_path, "/HCRIS_v1996/HOSPFY",i,"/HOSP_",i,"_ALPHA.csv"),
+  dir_i <- file.path(hcris_raw_dir, paste0("HOSPFY", i))
+  f_alpha <- find_raw(dir_i, paste0("HOSP_", i, "_ALPHA")); f_nmrc <- find_raw(dir_i, paste0("HOSP_", i, "_NMRC"))
+  f_rpt   <- find_raw(dir_i, paste0("HOSP_", i, "_RPT"))
+  if (anyNA(c(f_alpha, f_nmrc, f_rpt))) { message("Skipping ", i, ": raw files not found in ", dir_i); next }
+  HCRIS.alpha=read_csv(f_alpha,
                        col_names=c('RPT_REC_NUM','WKSHT_CD','LINE_NUM','CLMN_NUM','ITM_VAL_NUM'))
-  HCRIS.numeric=read_csv(paste0(raw_data_path, "/HCRIS_v1996/HOSPFY",i,"/HOSP_",i,"_NMRC.csv"),
+  HCRIS.numeric=read_csv(f_nmrc,
                          col_names=c('RPT_REC_NUM','WKSHT_CD','LINE_NUM','CLMN_NUM','ITM_VAL_NUM'))
-  HCRIS.report=read_csv(paste0(raw_data_path, "/HCRIS_v1996/HOSPFY",i,"/HOSP_",i,"_RPT.csv"),
+  HCRIS.report=read_csv(f_rpt,
                         col_names=c('RPT_REC_NUM','PRVDR_CTRL_TYPE_CD','PRVDR_NUM','NPI',
                                     'RPT_STUS_CD','FY_BGN_DT','FY_END_DT','PROC_DT',
                                     'INITL_RPT_SW','LAST_RPT_SW','TRNSMTL_NUM','FI_NUM',
@@ -96,14 +128,13 @@ for (i in 2006:2011) {
                             by="report")
   }
   assign(paste("final.reports.",i,sep=""),final.reports)
-  if (i==2006) {
-    final.hcris.v1996=final.reports.2006
-  } else {
-    final.hcris.v1996=rbind(final.hcris.v1996,get(paste0("final.reports.",i)))
-  }
+  hcris_list[[as.character(i)]] <- final.reports
   
 }
 
+if (!length(hcris_list)) stop("No raw HCRIS v1996 years were read - nothing written. Check the folder printed at the top.")
+final.hcris.v1996 <- bind_rows(hcris_list)
+cat("\nv1996: years read", paste(names(hcris_list), collapse = ", "), "\n")
 final.hcris.v1996 <- final.hcris.v1996 %>%
   mutate(HIT_purch = NA,
          HIT_assets = NA) %>%

@@ -5,16 +5,18 @@ library(tidyr)
 library(dplyr)
 library(tibble)
 
+
+
 # This script loops through the extracted hospital text and creates a data frame with the 
 # desired information.
 
 # read the code that creates clean_text()
-source("paths.R")
-source("function1_clean_text.R")
+source("RScripts/paths.R")
+source("RScripts/function1_clean_text.R")
 
 
 # read in AHA_ein_list
-AHA_ein_list <- readRDS(paste0(created_data_path,"/AHA_ein_list.rds"))
+AHA_ein_list <- readRDS(paste0(created_data_path,"AHA_ein_list.rds"))
 
 # read in AHA_ein_list_errors (scraped text data from manual pdfs)
 AHA_ein_list_errors1a <- readRDS(paste0(created_data_path,"/AHA_ein_list_errors1a.rds"))
@@ -142,6 +144,8 @@ cleaned_text <- AHA_ein_data_frame %>%
   mutate(name = paste0(first_name, " ", last_name)) %>%
   mutate(year = as.double(year)) %>%
   mutate(year = year-1)
+
+
 
 # fill in missing information where OCR failed 
 cleaned_text <- cleaned_text %>%
@@ -2173,6 +2177,8 @@ cleaned_text <- cleaned_text %>%
   
 cleaned_text <- cleaned_text %>%
   distinct()
+
+
 
 
 saveRDS(cleaned_text, paste0(created_data_path, "cleaned_text.rds"))

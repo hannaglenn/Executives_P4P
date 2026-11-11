@@ -1,0 +1,69 @@
+role,id,ccn,state,system,reason,type_990,type_combined,d_main,d_e1
+Physician CEO,042103881,220086,MA,"CareGroup, Inc.",C timing (990 CEO is the HIMSS CEO 1-2 years later / earlier),1,0,-0.03880226384483092,-0.05098517564600505
+Physician CEO,135564934,330169,NY,Continuum Health Partners,D 990 CEO is the HIMSS system CEO,0,1,-0.016134659784135585,-0.08297298302184167
+Physician CEO,160393490,330277,NY,Guthrie Healthcare System,"E 990 CEO elsewhere in HIMSS (other office, other entity)",1,0,-0.0058644177719547885,4.272938944302196e-4
+Physician CEO,231352220,390065,PA,WellSpan Health,D 990 CEO is the HIMSS system CEO,0,1,-0.043535164736203696,0.026105613100603747
+Physician CEO,262525968,140202,IL,Advocate Health Care,D 990 CEO is the HIMSS system CEO,0,1,-0.003837822128627197,-0.001230559817994581
+Physician CEO,272305304,500026,WA,Swedish Medical Center,D 990 CEO is the HIMSS system CEO,1,0,-8.57346133240601e-4,0.004666051382364533
+Physician CEO,331065485,500150,WA,Legacy Health System,D 990 CEO is the HIMSS system CEO,1,0,-0.0019676869699254487,3.455053527018914e-4
+Physician CEO,381426919,230151,MI,Botsford Hospital,"E 990 CEO elsewhere in HIMSS (other office, other entity)",0,1,0.005090909467272919,-9.024679337041319e-4
+Physician CEO,410695604,240002,MN,SMDC Health System,F unexplained,0,1,-0.01705287006224647,0.010415196006580973
+Physician CEO,560552787,340047,NC,Wake Forest University Baptist Medical Center,D 990 CEO is the HIMSS system CEO,1,0,-0.03959625942932392,-0.03828994169848954
+Physician CEO,580968382,110143,GA,Wellstar Health System,"E 990 CEO elsewhere in HIMSS (other office, other entity)",1,0,-0.01373245800936651,0.007137171654486213
+Physician CEO,582026750,110184,GA,Wellstar Health System,D 990 CEO is the HIMSS system CEO,1,0,-0.022402495348826115,-0.010168277156719058
+Physician CEO,582032904,110035,GA,Wellstar Health System,"E 990 CEO elsewhere in HIMSS (other office, other entity)",1,0,-0.005055929738167139,0.0022044973887179464
+Physician CEO,720502505,190036,LA,Ochsner Health System,D 990 CEO is the HIMSS system CEO,1,0,-0.003041245466087944,0.016303706685957153
+Physician CEO,900054984,220012,MA,Cape Cod Hospital,C timing (990 CEO is the HIMSS CEO 1-2 years later / earlier),1,0,-0.004511021448337801,0.006343461205981227
+Physician CEO,930591528,380025,OR,Legacy Health System,D 990 CEO is the HIMSS system CEO,1,0,0.001398855757341895,0.0017081272688460047
+Physician CEO,930618975,380089,OR,Legacy Health System,D 990 CEO is the HIMSS system CEO,1,0,-0.004459446588699151,0.005694002611880911
+Clinical CEO,010211501,200033,ME,Eastern Maine Healthcare System,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.0014456685015895934,-0.0015617226088344704
+Clinical CEO,042103565,220084,MA,Emerson Hospital,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.0041957676113562326,-0.0054874562769312435
+Clinical CEO,042103881,220086,MA,"CareGroup, Inc.",C timing (990 CEO is the HIMSS CEO 1-2 years later / earlier),1,0,-0.023758966145031757,-0.03771577544121843
+Clinical CEO,042769210,220100,MA,South Shore Hospital,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.015127092408342188,0.0023500342380549377
+Clinical CEO,050258896,410009,RI,Care New England,D 990 CEO is the HIMSS system CEO,1,0,0.00810749475431731,0.004433559235769921
+Clinical CEO,135564934,330169,NY,Continuum Health Partners,D 990 CEO is the HIMSS system CEO,0,1,-0.0069882748955500534,-0.047444612422554544
+Clinical CEO,141338467,330049,NY,Health Quest,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.005401406254822036,1.3644821035439791e-4
+Clinical CEO,230596940,390115,PA,Aria Health,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.021615178873043497,0.024962941829089508
+Clinical CEO,231352220,390065,PA,WellSpan Health,D 990 CEO is the HIMSS system CEO,0,1,-0.029069448960233252,0.016348676580984003
+Clinical CEO,262525968,140202,IL,Advocate Health Care,D 990 CEO is the HIMSS system CEO,0,1,-0.002293000529477021,-4.477673591977427e-4
+Clinical CEO,272305304,500026,WA,Swedish Medical Center,D 990 CEO is the HIMSS system CEO,1,0,-0.0017326207974926525,0.002644019802669678
+Clinical CEO,310949874,180105,KY,Monroe County Medical Center,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.003992268883387898,-0.027028170162856024
+Clinical CEO,331065485,500150,WA,Legacy Health System,D 990 CEO is the HIMSS system CEO,1,0,-0.0019060374884466921,2.9295705574736153e-5
+Clinical CEO,351142669,150076,IN,Trinity Health,"E 990 CEO elsewhere in HIMSS (other office, other entity)",0,1,-0.006764634056410229,0.0039880496371854784
+Clinical CEO,370661183,140015,IL,"Blessing Corporate Services, Inc.","A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.007551622774024089,0.001082704351153499
+Clinical CEO,381426919,230151,MI,Botsford Hospital,"E 990 CEO elsewhere in HIMSS (other office, other entity)",0,1,0.003944422798498853,-8.308786717900474e-5
+Clinical CEO,381474929,230118,MI,Huron Medical Center,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.006439632338271634,0.0010050787010379425
+Clinical CEO,382146751,230105,MI,Northern Michigan Regional Health System,"B name variant (same person, name link missed)",0,1,0.011011605472454285,-0.007843152909753917
+Clinical CEO,391157876,520076,WI,"Beaver Dam Community Hospitals, Inc.","A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.010732125688315303,-0.0089541869266722
+Clinical CEO,410695604,240002,MN,SMDC Health System,F unexplained,0,1,-0.012636268915851734,0.006983028977242331
+Clinical CEO,420758901,160040,IA,"Wheaton Franciscan Services, Inc.",C timing (990 CEO is the HIMSS CEO 1-2 years later / earlier),0,1,-0.00892018917972634,0.005279071063542501
+Clinical CEO,460517825,290049,NV,Renown Health,D 990 CEO is the HIMSS system CEO,0,1,-0.0010034102613507845,-1.2429201123922984e-4
+Clinical CEO,481203262,170185,KS,St. Luke's Health System,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.010778664800545838,-0.007203965693679301
+Clinical CEO,510069243,080006,DE,"Nanticoke Health Services, Inc.","A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.0029907612112776358,8.229557782865604e-5
+Clinical CEO,520591628,210019,MD,Peninsula Regional Health System,"B name variant (same person, name link missed)",0,1,-0.002585603461825743,1.0395170333593606e-4
+Clinical CEO,550491651,510082,WV,Summersville Memorial Hospital,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.0010371583023543046,-0.003087164814133625
+Clinical CEO,560530233,340050,NC,Southeastern Regional Medical Center,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.0018251309314522846,-0.008461569670935448
+Clinical CEO,560552787,340047,NC,Wake Forest University Baptist Medical Center,D 990 CEO is the HIMSS system CEO,1,0,-0.022374148952037015,-0.027266495737963997
+Clinical CEO,560554202,340041,NC,Caldwell Memorial Hospital,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.003375955059262997,0.0017450764832522975
+Clinical CEO,560636250,340085,NC,Novant Health,C timing (990 CEO is the HIMSS CEO 1-2 years later / earlier),0,1,0.00976408447970796,-0.006592244781397277
+Clinical CEO,561340424,340148,NC,Novant Health,F unexplained,0,1,0,0
+Clinical CEO,580968382,110143,GA,Wellstar Health System,"E 990 CEO elsewhere in HIMSS (other office, other entity)",1,0,-0.00868482358765639,0.0034822647650346455
+Clinical CEO,582026750,110184,GA,Wellstar Health System,D 990 CEO is the HIMSS system CEO,1,0,-0.01410846927181976,-0.0076170352510780415
+Clinical CEO,582032904,110035,GA,Wellstar Health System,"E 990 CEO elsewhere in HIMSS (other office, other entity)",1,0,-0.0025671746253987174,0.0014485584947380309
+Clinical CEO,610594620,180043,KY,Adventist Health System,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.0016158254605552619,-0.015549666642665827
+Clinical CEO,720502505,190036,LA,Ochsner Health System,D 990 CEO is the HIMSS system CEO,1,0,-0.0010654141604871867,0.009996458732774965
+Clinical CEO,742941598,450154,TX,Val Verde Regional Medical Center,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.008435822195359738,0.004002432948045781
+Clinical CEO,752771437,450292,TX,Texas Health Resources,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.013644532645841895,0.006599313031047979
+Clinical CEO,820551704,450890,TX,Baylor Health Care System,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.013447874209274804,0.009160286519277347
+Clinical CEO,850105601,320021,NM,Presbyterian Healthcare Services,D 990 CEO is the HIMSS system CEO,0,1,-0.01882336593163353,0.009203347366279993
+Clinical CEO,850313268,320038,NM,Rehoboth McKinley Christian Health Care Services,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.0037556985223029943,-0.004616041223867509
+Clinical CEO,860181654,030087,AZ,Scottsdale Healthcare,D 990 CEO is the HIMSS system CEO,0,1,-0.0015507425047468562,2.272704224134947e-6
+Clinical CEO,880256932,290002,NV,South Lyon Medical Center,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.0013647426586378061,-0.0011463981128935763
+Clinical CEO,900054984,220012,MA,Cape Cod Hospital,C timing (990 CEO is the HIMSS CEO 1-2 years later / earlier),1,0,-0.0021617378618747837,0.0036169788685078974
+Clinical CEO,912154438,050502,CA,Daughters of Charity Health System,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.004080687851545625,0.0017563439328306257
+Clinical CEO,930618975,380089,OR,Legacy Health System,D 990 CEO is the HIMSS system CEO,1,0,-0.0030903954215670826,0.002807404730702928
+Clinical CEO,931213059,380005,OR,Ashland Community Healthcare Services,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.008419640690888144,0.006231190060646513
+Clinical CEO,940382780,050407,CA,Chinese Hospital,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.004162923976629179,-2.309757031030979e-4
+Clinical CEO,941429628,050283,CA,ValleyCare Health System,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,-0.0022199578296642833,0.001474426532005274
+Clinical CEO,952367304,050222,CA,Sharp HealthCare,"A same CEO named, status differs (credential / hand-check / nurse)",0,1,0.002203440659216835,-0.0019626446635629263
+Clinical CEO,952413054,050597,CA,Citrus Valley Health Partners,D 990 CEO is the HIMSS system CEO,0,1,0.012709586925375972,-0.00855983140976821

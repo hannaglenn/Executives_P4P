@@ -1,0 +1,73 @@
+model,outcome,term,est,se,p,spec,n_by_group,N
+four,all_read,g1_ceo vs g0_none,-0.14560221380564872,0.15554980563164042,0.34924804636243134,RS2 MAIN: change after vs before,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g2_cmo vs g0_none,-0.11551592412925313,0.10247188156660539,0.2596182525105522,RS2 MAIN: change after vs before,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g3_other vs g0_none,0.0807277848597319,0.09923431088652383,0.4159275597945967,RS2 MAIN: change after vs before,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g1_ceo minus g2_cmo,-0.030086289676395594,0.1613557644073587,0.852084559987806,RS2 MAIN: change after vs before,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g1_ceo minus g3_other,-0.22632999866538062,0.16510171683290667,0.1704211349143696,RS2 MAIN: change after vs before,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g2_cmo minus g3_other,-0.19624370898898502,0.11881729096853072,0.09860741385680787,RS2 MAIN: change after vs before,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g1_ceo vs g0_none,-0.18215930877974143,0.10229303735306068,0.07495173115567272,RS2 E1: gradient with exposure,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g2_cmo vs g0_none,0.024022501279365487,0.1067753380859093,0.8219934800315961,RS2 E1: gradient with exposure,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g3_other vs g0_none,0.17699844729689782,0.10352496942347972,0.08731813332205365,RS2 E1: gradient with exposure,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g1_ceo minus g2_cmo,-0.2061818100591069,0.12646361924580743,0.10302445835966156,RS2 E1: gradient with exposure,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g1_ceo minus g3_other,-0.35915775607663925,0.1251321281080666,0.004101757314349967,RS2 E1: gradient with exposure,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_read,g2_cmo minus g3_other,-0.15297594601753234,0.12756842368034557,0.23046270497961888,RS2 E1: gradient with exposure,"g0_none=398, g1_ceo=54, g2_cmo=148, g3_other=155",4478
+four,all_mort,g1_ceo vs g0_none,-0.009183623196448568,0.15160298308536235,0.9516962525475889,RS2 MAIN: change after vs before,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g2_cmo vs g0_none,0.09749250634369837,0.10572616928591085,0.3564645496987558,RS2 MAIN: change after vs before,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g3_other vs g0_none,0.08131637528084505,0.10370431633095359,0.4329711337403837,RS2 MAIN: change after vs before,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g1_ceo minus g2_cmo,-0.10667612954014694,0.14980425402173797,0.47640070390274764,RS2 MAIN: change after vs before,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g1_ceo minus g3_other,-0.09049999847729362,0.15397695868843386,0.5566999305245814,RS2 MAIN: change after vs before,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g2_cmo minus g3_other,0.016176131062853316,0.1149704052152946,0.888108353428382,RS2 MAIN: change after vs before,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g1_ceo vs g0_none,0.05175196540302176,0.12342510468100942,0.6749979681272285,RS2 E1: gradient with exposure,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g2_cmo vs g0_none,0.11196695964615344,0.09502368620464574,0.23867472034192286,RS2 E1: gradient with exposure,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g3_other vs g0_none,0.05209241031345582,0.10484055778589413,0.6192788288790112,RS2 E1: gradient with exposure,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g1_ceo minus g2_cmo,-0.06021499424313168,0.1281695757467359,0.6384927434867009,RS2 E1: gradient with exposure,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g1_ceo minus g3_other,-3.404449104340637e-4,0.13435937664624623,0.9979782918471758,RS2 E1: gradient with exposure,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,all_mort,g2_cmo minus g3_other,0.05987454933269762,0.11116356451390039,0.5901513802891336,RS2 E1: gradient with exposure,"g0_none=397, g1_ceo=55, g2_cmo=148, g3_other=155",4468
+four,hf1,g1_ceo vs g0_none,-1.2753692431556853,1.462143155695974,0.3830664590157183,RS2 MAIN: change after vs before,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g2_cmo vs g0_none,-0.5867520352461976,1.0109496781584089,0.5616470111838474,RS2 MAIN: change after vs before,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g3_other vs g0_none,-1.9364177714131507,1.0947714310057466,0.07692938184293474,RS2 MAIN: change after vs before,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g1_ceo minus g2_cmo,-0.6886172079094878,1.429723074050386,0.6300590288917987,RS2 MAIN: change after vs before,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g1_ceo minus g3_other,0.6610485282574654,1.5279382199509182,0.6652756895265022,RS2 MAIN: change after vs before,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g2_cmo minus g3_other,1.349665736166953,1.118170834153255,0.2274205927521007,RS2 MAIN: change after vs before,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g1_ceo vs g0_none,1.3196865532403825,1.232782729098629,0.284396994235046,RS2 E1: gradient with exposure,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g2_cmo vs g0_none,-0.06095901725870532,0.869505400142357,0.9441079440054321,RS2 E1: gradient with exposure,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g3_other vs g0_none,-0.18663835756924774,1.0606608802562982,0.8603220572128943,RS2 E1: gradient with exposure,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g1_ceo minus g2_cmo,1.3806455704990879,1.2541244931516455,0.2709471527535501,RS2 E1: gradient with exposure,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g1_ceo minus g3_other,1.5063249108096302,1.3788401030315172,0.2746318385180253,RS2 E1: gradient with exposure,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1,g2_cmo minus g3_other,0.12567934031054243,1.0773793680331796,0.9071351799759906,RS2 E1: gradient with exposure,"g0_none=391, g1_ceo=55, g2_cmo=146, g3_other=155",4152
+four,hf1_noceil,g1_ceo vs g0_none,-0.9972906470737746,1.5285153776541434,0.5141063660007184,RS2 MAIN: change after vs before,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g2_cmo vs g0_none,-0.9134760734169726,1.036950087417026,0.3783579883516014,RS2 MAIN: change after vs before,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g3_other vs g0_none,-1.702097048561361,1.1503048640935905,0.13895542821899054,RS2 MAIN: change after vs before,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g1_ceo minus g2_cmo,-0.083814573656802,1.4835319127201076,0.9549461693215039,RS2 MAIN: change after vs before,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g1_ceo minus g3_other,0.7048064014875863,1.591528050686621,0.6578750511597722,RS2 MAIN: change after vs before,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g2_cmo minus g3_other,0.7886209751443883,1.1549702785792444,0.494729252267612,RS2 MAIN: change after vs before,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g1_ceo vs g0_none,0.916415730301726,1.2813014561008669,0.4744715200249987,RS2 E1: gradient with exposure,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g2_cmo vs g0_none,-0.4486423621439616,0.8890971463986901,0.6138366950863328,RS2 E1: gradient with exposure,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g3_other vs g0_none,-0.7587483530700965,1.115647116409568,0.4964429893472779,RS2 E1: gradient with exposure,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g1_ceo minus g2_cmo,1.3650580924456874,1.2770147728170294,0.28509461691353866,RS2 E1: gradient with exposure,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g1_ceo minus g3_other,1.6751640833718224,1.4267509743269693,0.24035054834408995,RS2 E1: gradient with exposure,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+four,hf1_noceil,g2_cmo minus g3_other,0.3101059909261349,1.1085752698516715,0.7796817319569125,RS2 E1: gradient with exposure,"g0_none=358, g1_ceo=50, g2_cmo=140, g3_other=141",3848
+pooled,all_read,g1_ceo vs g0_none,-0.137556007473566,0.15548126029891568,0.3763124304892698,RS2 MAIN: change after vs before,"g0_none=398, g1_ceo=54, g23_nonceo=303",4478
+pooled,all_read,g23_nonceo vs g0_none,-0.00933254259498049,0.0819477359399532,0.9093296850053464,RS2 MAIN: change after vs before,"g0_none=398, g1_ceo=54, g23_nonceo=303",4478
+pooled,all_read,g1_ceo minus g23_nonceo,-0.12822346487858552,0.15214284074119336,0.3993495778807505,RS2 MAIN: change after vs before,"g0_none=398, g1_ceo=54, g23_nonceo=303",4478
+pooled,all_read,g1_ceo vs g0_none,-0.18342815613015342,0.1025272256522739,0.07360390014839188,RS2 E1: gradient with exposure,"g0_none=398, g1_ceo=54, g23_nonceo=303",4478
+pooled,all_read,g23_nonceo vs g0_none,0.09498957707323112,0.08428733752903778,0.2597537791971985,RS2 E1: gradient with exposure,"g0_none=398, g1_ceo=54, g23_nonceo=303",4478
+pooled,all_read,g1_ceo minus g23_nonceo,-0.27841773320338453,0.10891077491745921,0.01057664104229015,RS2 E1: gradient with exposure,"g0_none=398, g1_ceo=54, g23_nonceo=303",4478
+pooled,all_mort,g1_ceo vs g0_none,-0.009849209163371557,0.15141965052538328,0.9481375508283886,RS2 MAIN: change after vs before,"g0_none=397, g1_ceo=55, g23_nonceo=303",4468
+pooled,all_mort,g23_nonceo vs g0_none,0.08873809659899604,0.08752793480583819,0.31066578353644486,RS2 MAIN: change after vs before,"g0_none=397, g1_ceo=55, g23_nonceo=303",4468
+pooled,all_mort,g1_ceo minus g23_nonceo,-0.0985873057623676,0.14058749339972043,0.4831455643084689,RS2 MAIN: change after vs before,"g0_none=397, g1_ceo=55, g23_nonceo=303",4468
+pooled,all_mort,g1_ceo vs g0_none,0.052447716961462165,0.12334898611315423,0.6706924911634786,RS2 E1: gradient with exposure,"g0_none=397, g1_ceo=55, g23_nonceo=303",4468
+pooled,all_mort,g23_nonceo vs g0_none,0.08312843857463965,0.08331575526121791,0.31839976417163157,RS2 E1: gradient with exposure,"g0_none=397, g1_ceo=55, g23_nonceo=303",4468
+pooled,all_mort,g1_ceo minus g23_nonceo,-0.03068072161317749,0.11904349083972447,0.7966176078475818,RS2 E1: gradient with exposure,"g0_none=397, g1_ceo=55, g23_nonceo=303",4468
+pooled,hf1,g1_ceo vs g0_none,-1.3410797179884428,1.462366286939386,0.35911045092182364,RS2 MAIN: change after vs before,"g0_none=391, g1_ceo=55, g23_nonceo=301",4152
+pooled,hf1,g23_nonceo vs g0_none,-1.3325583918003643,0.901776053300414,0.139486931012958,RS2 MAIN: change after vs before,"g0_none=391, g1_ceo=55, g23_nonceo=301",4152
+pooled,hf1,g1_ceo minus g23_nonceo,-0.008521326188078548,1.3718532997257653,0.9950439373633122,RS2 MAIN: change after vs before,"g0_none=391, g1_ceo=55, g23_nonceo=301",4152
+pooled,hf1,g1_ceo vs g0_none,1.3176857205212298,1.2321282240898388,0.2848719950801334,RS2 E1: gradient with exposure,"g0_none=391, g1_ceo=55, g23_nonceo=301",4152
+pooled,hf1,g23_nonceo vs g0_none,-0.0971515909493008,0.8078640260747489,0.9042792846887923,RS2 E1: gradient with exposure,"g0_none=391, g1_ceo=55, g23_nonceo=301",4152
+pooled,hf1,g1_ceo minus g23_nonceo,1.4148373114705306,1.2059433641958544,0.2407074482030738,RS2 E1: gradient with exposure,"g0_none=391, g1_ceo=55, g23_nonceo=301",4152
+pooled,hf1_noceil,g1_ceo vs g0_none,-1.0348616948488871,1.5287088883713844,0.4984367602428982,RS2 MAIN: change after vs before,"g0_none=358, g1_ceo=50, g23_nonceo=281",3848
+pooled,hf1_noceil,g23_nonceo vs g0_none,-1.3374870248779727,0.9370124002372363,0.15346600672048222,RS2 MAIN: change after vs before,"g0_none=358, g1_ceo=50, g23_nonceo=281",3848
+pooled,hf1_noceil,g1_ceo minus g23_nonceo,0.30262533002908554,1.4256012073724778,0.8318893058026814,RS2 MAIN: change after vs before,"g0_none=358, g1_ceo=50, g23_nonceo=281",3848
+pooled,hf1_noceil,g1_ceo vs g0_none,0.9196293475044879,1.280035405296119,0.4724856883767004,RS2 E1: gradient with exposure,"g0_none=358, g1_ceo=50, g23_nonceo=281",3848
+pooled,hf1_noceil,g23_nonceo vs g0_none,-0.589068972633263,0.8427494942271248,0.4845616146170798,RS2 E1: gradient with exposure,"g0_none=358, g1_ceo=50, g23_nonceo=281",3848
+pooled,hf1_noceil,g1_ceo minus g23_nonceo,1.5086983201377508,1.2377216417138595,0.22287006300066683,RS2 E1: gradient with exposure,"g0_none=358, g1_ceo=50, g23_nonceo=281",3848

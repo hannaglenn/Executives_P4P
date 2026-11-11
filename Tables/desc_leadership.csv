@@ -1,0 +1,22 @@
+panel,Statistic,Value,N
+A. Hospitals,Physician CEO (\%),7.3,757
+A. Hospitals,"Clinical CEO, physician or nurse (\%)",8.7,757
+A. Hospitals,Any physician executive (\%),47.0,972
+A. Hospitals,Chief Medical Officer (\%),23.8,972
+A. Hospitals,Executives per hospital (mean),6.3,972
+A. Hospitals,Clinical share of executives (\%),18.2,945
+A. Hospitals,"Annual CEO turnover, 2010--2016 (\%)",13.3,"6,457 hosp.-years"
+B. Physician executives,Physician executives,646,
+B. Physician executives,\hspace{1em}CEO (\%),13.3,646
+B. Physician executives,\hspace{1em}Chief Medical Officer (\%),36.4,646
+B. Physician executives,\hspace{1em}Other executive (\%),50.3,646
+B. Physician executives,Female (\%),11.5,636
+B. Physician executives,Most common specialties,,
+B. Physician executives,\hspace{1em}Internal Medicine (\%),39.7,567
+B. Physician executives,\hspace{1em}Family Medicine (\%),16.8,567
+B. Physician executives,\hspace{1em}Emergency Medicine (\%),7.2,567
+B. Physician executives,\hspace{1em}Surgery (\%),7.2,567
+B. Physician executives,"Median compensation, physician CEOs",\$753,83
+B. Physician executives,"Median compensation, non-physician CEOs",\$475,924
+B. Physician executives,"Median compensation, physician executives",\$364,638
+B. Physician executives,"Median compensation, non-physician executives",\$249,"5,356"

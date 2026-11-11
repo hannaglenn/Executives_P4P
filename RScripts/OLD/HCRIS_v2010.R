@@ -1,6 +1,21 @@
 library(dplyr)
 library(readr)
 
+if (!exists("raw_data_path")) source("./RScripts/paths.R")   # 11 Nov: so the script runs on its own
+# 11 Nov: find a raw file inside a year folder, whatever its case or sub-folder (e.g. HOSP10_2012_NMRC.CSV, hosp10_2012_nmrc.csv,
+# HOSP10FY2012/HOSP10FY2012/...). Matches files whose name contains the year and ends in _ALPHA / _NMRC / _RPT .csv.
+find_raw <- function(dir, stem) {
+  part <- base::sub(".*_", "", stem); yr <- base::regmatches(stem, base::regexpr("[0-9]{4}", stem))   # base:: because a session function called sub() can mask it
+  f <- list.files(dir, pattern = "\\.csv$", recursive = TRUE, ignore.case = TRUE, full.names = TRUE)
+  hit <- f[grepl(yr, basename(f)) & grepl(paste0("_", part, "\\.csv$"), basename(f), ignore.case = TRUE)]
+  if (length(hit)) return(hit[1])
+  all_f <- list.files(dir, recursive = TRUE)
+  message("  No *", yr, "*_", part, ".csv in ", dir, ". It contains: ",
+          if (length(all_f)) paste(head(all_f, 8), collapse = ", ") else "(nothing)",
+          if (any(grepl("\\.zip$", all_f, ignore.case = TRUE))) "  <- unzip these first" else "")
+  NA_character_
+}
+
 #### Thank you to my advisor, Ian McCarthy, for writing this code and making it publicly available. If interested, you can find this resource
 #### at https://ianmccarthyecon.netlify.app/resources/
 
@@ -59,6 +74,12 @@ hcris.vars = rbind(hcris.vars,c('capital_cost_buildings','A000000','00100','0030
 hcris.vars = rbind(hcris.vars,c('capital_cost_movableequip','A000000','00200','00300','numeric'))
 hcris.vars = rbind(hcris.vars,c('operating_expenses','A000000','20000','00300','numeric'))
 hcris.vars = rbind(hcris.vars,c('medrecords_expenses','A000000','01600','00300','numeric'))
+# added 6 Nov: observation and inpatient days (2552-10 S-3 Part I: line 28 = observation bed days, line 14 = total;
+# columns 6 = Title XVIII, 8 = total all patients; discharges above use cols 13 / 15 of the same worksheet)
+hcris.vars = rbind(hcris.vars,c('obs_days_tot','S300001','02800','00800','numeric'))
+hcris.vars = rbind(hcris.vars,c('obs_days_mcare','S300001','02800','00600','numeric'))
+hcris.vars = rbind(hcris.vars,c('inpt_days_tot','S300001','01400','00800','numeric'))
+hcris.vars = rbind(hcris.vars,c('inpt_days_mcare','S300001','01400','00600','numeric'))
 
 
 
@@ -68,12 +89,17 @@ colnames(hcris.vars)=c("variable","WKSHT_CD","LINE_NUM","CLMN_NUM","source")
 
 
 # Import data -------------------------------------------------------------
-for (i in 2010:2016) {
-  HCRIS.alpha=read_csv(paste0(raw_data_path, "/HCRIS_v2010/HOSP10FY",i,"/HOSP10_",i,"_ALPHA.csv"),
+hcris_list <- list()
+for (i in 2010:2017) {
+  dir_i <- paste0(raw_data_path, "/HCRIS/HCRIS_v2010/HOSP10FY", i)
+  f_alpha <- find_raw(dir_i, paste0("HOSP10_", i, "_ALPHA")); f_nmrc <- find_raw(dir_i, paste0("HOSP10_", i, "_NMRC"))
+  f_rpt   <- find_raw(dir_i, paste0("HOSP10_", i, "_RPT"))
+  if (anyNA(c(f_alpha, f_nmrc, f_rpt))) { message("Skipping ", i, ": raw files not found in ", dir_i); next }
+  HCRIS.alpha=read_csv(f_alpha,
                        col_names=c('RPT_REC_NUM','WKSHT_CD','LINE_NUM','CLMN_NUM','ITM_VAL_NUM'))
-  HCRIS.numeric=read_csv(paste0(raw_data_path, "/HCRIS_v2010/HOSP10FY",i,"/HOSP10_",i,"_NMRC.csv"),
+  HCRIS.numeric=read_csv(f_nmrc,
                          col_names=c('RPT_REC_NUM','WKSHT_CD','LINE_NUM','CLMN_NUM','ITM_VAL_NUM'))
-  HCRIS.report=read_csv(paste0(raw_data_path, "/HCRIS_v2010/HOSP10FY",i,"/HOSP10_",i,"_RPT.csv"),
+  HCRIS.report=read_csv(f_rpt,
                         col_names=c('RPT_REC_NUM','PRVDR_CTRL_TYPE_CD','PRVDR_NUM','NPI',
                                     'RPT_STUS_CD','FY_BGN_DT','FY_END_DT','PROC_DT',
                                     'INITL_RPT_SW','LAST_RPT_SW','TRNSMTL_NUM','FI_NUM',
@@ -97,10 +123,8 @@ for (i in 2010:2016) {
                             by="report")
   }
   assign(paste("final.reports.",i,sep=""),final.reports)
-  if (i==2010) {
-    final.hcris.v2010=final.reports.2010
-  } else {
-    final.hcris.v2010=rbind(final.hcris.v2010,get(paste0("final.reports.",i)))
-  }
+  hcris_list[[as.character(i)]] <- final.reports
 }
+final.hcris.v2010 <- bind_rows(hcris_list)
+cat("\nv2010: years read", paste(names(hcris_list), collapse = ", "), "\n")
 write_csv(final.hcris.v2010,paste0(raw_data_path, '/final_HCRIS_v2010.csv'),append=FALSE,col_names=TRUE)

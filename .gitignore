@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+CreatedData/
+.DS_Store
+**/.DS_Store
+.Rhistory
+**/.Rhistory
+.Rproj.user/
+paths.R
+RScripts/paths.R
