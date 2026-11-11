@@ -223,20 +223,22 @@ Evidence from Pay-for-Performance}}
     inner xsep=15pt,
     inner ysep=10pt, 
     minimum width=0.9\textwidth,
-    text width=0.6\textwidth
+    text width=0.8\textwidth
 ] (title) at (current page.center)
 {
-    \LARGE Does Hospital Leadership Matter?  \\[5pt]
-    \large Evidence from Pay-for-Performance
+    \LARGE Profit Pressures in Nonprofit Care:  \\[5pt]
+    \large Executive Response to Financial Incentives in Hospitals
 };
 % Author 
 \node[below=1cm] (author) at (title.south){\large Hanna Glenn \\
 University of Queensland};
 % Date
-\node[below=0.25cm] (date) at (author.south){\today};
+%\node[below=0.25cm] (date) at (author.south){\today};
 \end{tikzpicture}
     
 \end{frame}
+
+\large
 
 \section{Intro}
 
@@ -327,7 +329,7 @@ University of Queensland};
 \vspace{10mm} \large \pause
 
 \begin{enumerate}
-    \item \textbf{Nonprofits drive the hospital industry} \scriptsize (\cite{ASPE_2023}) 
+    \item \textbf{Nonprofits drive the hospital industry in the US} \scriptsize (\cite{ASPE_2023}) 
 
 \vspace{2mm}
     
@@ -413,7 +415,7 @@ University of Queensland};
 \textbf{Potentially correlated with how the leader values quality versus profit}
 \end{frame}
 
-\begin{frame}{Pay-for-Performance Incentives}
+\begin{frame}{Pay-for-Performance Policies}
     \large
     \begin{block}{\Large Main Takeaway of P4P:}
         \large 
@@ -444,6 +446,95 @@ University of Queensland};
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Hospital Incentives Under P4P}
+\large
+    High-quality healthcare is costly to provide
+
+    \vspace{5mm}
+
+    We can think of hospitals trading off financial profit for higher levels of patient welfare, both depending on quality:
+
+    \vspace{3mm} 
+    
+    \begin{equation*}
+\max_{\theta}\hspace{-4mm}
+\tikz[baseline]{
+    \node[draw=earthyellow,rounded corners,anchor=base] (m1)
+    {$\alpha$};
+    \node[above of=m1, text=earthyellow, yshift=5mm] (l1) {weight on\\profit};
+    \draw[-,earthyellow] (l1) -- (m1);
+}
+\hspace{-8mm}\pi(\theta) + \hspace{-7mm}
+\tikz[baseline]{
+    \node[draw=earthyellow,rounded corners,anchor=base] (m2)
+    {$(1-\alpha)$};
+    \node[above of=m2, text=earthyellow, yshift=5mm] (l2) {weight on\\patient welfare};
+    \draw[-,earthyellow] (l2) -- (m2);
+}
+\hspace{-7mm}u(\theta)
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Choice of Quality ($\theta$)}\label{choiceofquality}
+
+\large
+\vspace{5mm}
+
+    \begin{columns}
+    \begin{column}{0.4\textwidth}
+    \begin{center}
+        \underline{Fee-for-Service}
+
+        \vspace{3mm}
+
+            $\pi$ $\downarrow$ in $\theta \implies$
+
+            \vspace{3mm}
+
+            No financial incentive to invest in quality
+    \end{center}
+    \end{column}\pause
+    \begin{column}{0.4\textwidth}  %%<--- here
+    \begin{center}
+        \underline{Pay-for-Performance}
+
+        \vspace{3mm}
+
+
+            $\pi$ $\uparrow$ in $\theta \implies$
+
+            \vspace{3mm}
+
+            gain financial incentive to invest in quality
+    \end{center}
+    \end{column}
+\end{columns}
+
+\btVFill\pause
+
+\begin{block}{\Large Fee-for-service to Pay-for-performance}
+    \centering
+    \vspace{1mm}
+    Firms that value profit will respond to a policy that changes profit \\
+    Higher $\alpha$ $\implies$ larger response
+
+    \vspace{3mm}
+\end{block}
+
+\hyperlink{choiceofqualityapp}{\beamergotobutton{more details}}
+\end{frame}
+
+\begin{frame}{Motivating the Empirical Analysis}
+
+        \textbf{Response to P4P is tied to underlying value of patient welfare $\alpha$}
+        \vspace{3mm}
+        \begin{wideitemize}
+            \item Ownership status is important to underlying objectives
+            \item It's reasonable that priorities of leaders are also an important factor
+        \end{wideitemize}
+
+\end{frame}
+
 \begin{frame}{Preview of Main Findings}
 
 \large
@@ -466,7 +557,7 @@ University of Queensland};
     \begin{wideitemize}
         \normalsize \item Physician board members $\implies$ lower public donations \scriptsize (\cite{brickley2010board}) \normalsize
         \normalsize \item No correlation b/w CEOs and hospital productivity in England \scriptsize (\cite{janke2019impact})\normalsize
-        \normalsize \item Public hospitals in Chile improved when older physicians left CEO \scriptsize (\cite{otero2022managers}) \normalsize
+        \normalsize \item Public hospitals in Chile improved when older physicians left CEO \scriptsize (\cite{munoz2025managers}) \normalsize
     \end{wideitemize}
 
     \vspace{5mm}\pause
@@ -574,14 +665,14 @@ University of Queensland};
     \textbf{Hospital:} 
 
     \vspace{2mm}
-    \begin{wideitemize}
+    \begin{itemize}
         \item American Hospital Association
         \item Hospital Compare
         \item CMS Case Mix Index
         \item Health Care Cost Report Information System (HCRIS)
-    \end{wideitemize}
+    \end{itemize}
 
-    \vspace{7mm}
+    \vspace{5mm}
 
     \textbf{Physician:} 
 
@@ -594,6 +685,10 @@ University of Queensland};
     \vspace{5mm}
 
     \textbf{Years 2010-2014}
+
+    \btVFill
+
+    \normalsize{Note: While nurses are important and interesting, they are much harder to verify}
 \end{frame}
 
 
@@ -604,7 +699,7 @@ University of Queensland};
     \textcolor{black}{Descriptive Statistics}
 \end{transitionframe}
 
-\begin{frame}{Executive Teams}
+\begin{frame}{Executive Teams}\large
 \begin{table}[ht!]
 \centering
 \begin{tabular}[t]{lccc}
@@ -624,7 +719,7 @@ Num. Hospitals & 452 & 62 & 385\\
 \end{table}
 \end{frame}
 
-\begin{frame}{Doctors on Executive Teams (N=941)}
+\begin{frame}{Doctors on Executive Teams (N=941)}\large
 \begin{table}[ht!]
 \centering
 \begin{tabular}[t]{lc}
@@ -650,11 +745,12 @@ CQO & 0.09\\
 \end{frame}
 
 
-\begin{frame}{Hospital Statistics}\label{sumstats}
-\vspace{-3mm}
+\begin{frame}{Hospital Statistics}\label{sumstats}\large
+\vspace{10mm}
 \begin{table}[ht!]
 \centering
 \begin{tabular}[t]{lccc}
+\midrule
  & Ever & Always & Never\\
   & Clinical Exec &Clinical Exec &Clinical Exec\\
 \midrule
@@ -665,22 +761,16 @@ CQO & 0.09\\
 \hspace{1em}Physician Owned & 0.01 & 0.02 & 0.02\\
 \hspace{1em}System Affiliated & 0.57 & 0.56 & 0.42\\
 \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Penalty/Payment Variables}}\\
-\hspace{1em}Ever Received HVBP Incentive & 0.79 & 0.77 & 0.59\\
-\hspace{1em}Penalized for one condition & 0.19 & 0.25 & 0.13\\
-\hspace{1em}Penalized for AMI + HF & 0.07 & 0.05 & 0.03\\
-\hspace{1em}Penalized for AMI + Pneumonia & 0.02 & 0.02 & 0.02\\
-\hspace{1em}Penalized for HF + Pneumonia & 0.41 & 0.40 & 0.33\\
-\hspace{1em}Penalized for All Conditions & 0.31 & 0.31 & 0.20\\
 \bottomrule
 \end{tabular}
 \end{table}
+\btVFill
 \hyperlink{forprofitstats}{\beamergotobutton{for-profit stats}}
 \end{frame}
 
-\begin{frame}{Raw Outcomes, controlling for baseline case mix index}\label{outcomes}
+\begin{frame}{Raw Outcomes (controlling for baseline case mix index)}\label{outcomes}
 \begin{center}
-    \includegraphics[width=.92\textwidth]{Objects/outcomes_graph_presentation.pdf}
+    \includegraphics[width=.9\textwidth]{Objects/outcomes_graph_presentation.pdf}
 \end{center}
     \btVFill
     \hyperlink{fp_outcomes}{\beamergotobutton{with for-profit}}
@@ -688,136 +778,86 @@ CQO & 0.09\\
 
 \section{Theoretical Framework}
 
-\begin{transitionframe}
-\centering \LARGE
-    \textcolor{black}{Theoretical Framework}
-\end{transitionframe}
+% \begin{transitionframe}
+% \centering \LARGE
+%     \textcolor{black}{Theoretical Framework}
+% \end{transitionframe}
 
-\begin{frame}{Hospital Objectives: Profit versus Patient Welfare}
-    \Large
-    \centering
+% \begin{frame}{Nonprofit Hospital Objectives: Profit versus Patient Welfare}
+%     \Large
+%     \centering
 
-    \vspace{2mm}
+%     \vspace{2mm}
     
-    \begin{equation*}
-        \max_{\theta}\hspace{2mm} \alpha\pi(\theta) + (1-\alpha)u(\theta)
-    \end{equation*}
+%     \begin{equation*}
+%         \max_{\theta}\hspace{2mm} \alpha\pi(\theta) + (1-\alpha)u(\theta)
+%     \end{equation*}
 
-\end{frame}
+% \end{frame}
 
-\begin{frame}[noframenumbering]{Hospital Objectives: Profit versus Patient Welfare} \Large
-    \begin{equation*}
-\max_{\theta}\hspace{2mm}\alpha
-\tikz[baseline]{
-    \node[draw=sage,rounded corners,anchor=base] (m1)
-    {$\pi(\theta)$};
-    \node[above of=m1, text=sage, yshift=5mm] (l1) {profit};
-    \draw[-,sage] (l1) -- (m1);
-}
-+ (1-\alpha)\hspace{-11mm}
-\tikz[baseline]{
-    \node[draw=sage,rounded corners,anchor=base] (m2)
-    {$u(\theta)$};
-    \node[above of=m2, text=sage, yshift=5mm] (l2) {patient welfare};
-    \draw[-,sage] (l2) -- (m2);
-}
-\end{equation*}
-\end{frame}
+% \begin{frame}[noframenumbering]{Hospital Objectives: Profit versus Patient Welfare} \Large
+%     \begin{equation*}
+% \max_{\theta}\hspace{2mm}\alpha
+% \tikz[baseline]{
+%     \node[draw=sage,rounded corners,anchor=base] (m1)
+%     {$\pi(\theta)$};
+%     \node[above of=m1, text=sage, yshift=5mm] (l1) {profit};
+%     \draw[-,sage] (l1) -- (m1);
+% }
+% + (1-\alpha)\hspace{-11mm}
+% \tikz[baseline]{
+%     \node[draw=sage,rounded corners,anchor=base] (m2)
+%     {$u(\theta)$};
+%     \node[above of=m2, text=sage, yshift=5mm] (l2) {patient welfare};
+%     \draw[-,sage] (l2) -- (m2);
+% }
+% \end{equation*}
+% \end{frame}
 
-\begin{frame}[noframenumbering]{Hospital Objectives: Profit versus Patient Welfare} \Large
-    \begin{equation*}
-\max_{\theta}\hspace{2mm}\alpha\pi(\hspace{-5mm}
-\tikz[baseline]{
-    \node[draw=purple,rounded corners,anchor=base] (m1)
-    {$\theta$};
-    \node[above of=m1, text=purple, yshift=5mm] (l1) {quality};
-    \draw[-,purple] (l1) -- (m1);
-}
-\hspace{-5mm}) + (1-\alpha)u(\hspace{-5mm}
-\tikz[baseline]{
-    \node[draw=purple,rounded corners,anchor=base] (m2)
-    {$\theta$};
-    \node[above of=m2, text=purple, yshift=5mm] (l2) {quality};
-    \draw[-,purple] (l2) -- (m2);
-}
-\hspace{-5mm})
-\end{equation*}
-\end{frame}
+% \begin{frame}[noframenumbering]{Hospital Objectives: Profit versus Patient Welfare} \Large
+%     \begin{equation*}
+% \max_{\theta}\hspace{2mm}\alpha\pi(\hspace{-5mm}
+% \tikz[baseline]{
+%     \node[draw=purple,rounded corners,anchor=base] (m1)
+%     {$\theta$};
+%     \node[above of=m1, text=purple, yshift=5mm] (l1) {quality};
+%     \draw[-,purple] (l1) -- (m1);
+% }
+% \hspace{-5mm}) + (1-\alpha)u(\hspace{-5mm}
+% \tikz[baseline]{
+%     \node[draw=purple,rounded corners,anchor=base] (m2)
+%     {$\theta$};
+%     \node[above of=m2, text=purple, yshift=5mm] (l2) {quality};
+%     \draw[-,purple] (l2) -- (m2);
+% }
+% \hspace{-5mm})
+% \end{equation*}
+% \end{frame}
 
-\begin{frame}[noframenumbering]{Hospital Objectives: Profit versus Patient Welfare} \Large
-    \begin{equation*}
-\max_{\theta}\hspace{-4mm}
-\tikz[baseline]{
-    \node[draw=earthyellow,rounded corners,anchor=base] (m1)
-    {$\alpha$};
-    \node[above of=m1, text=earthyellow, yshift=5mm] (l1) {weight on\\profit};
-    \draw[-,earthyellow] (l1) -- (m1);
-}
-\hspace{-8mm}\pi(\theta) + \hspace{-7mm}
-\tikz[baseline]{
-    \node[draw=earthyellow,rounded corners,anchor=base] (m2)
-    {$(1-\alpha)$};
-    \node[above of=m2, text=earthyellow, yshift=5mm] (l2) {weight on\\patient welfare};
-    \draw[-,earthyellow] (l2) -- (m2);
-}
-\hspace{-7mm}u(\theta)
-\end{equation*}
-\end{frame}
-
-
-\begin{frame}{Choice of Quality ($\theta$)}\label{choiceofquality}
-
-\vspace{9mm}
-
-\Large
-
-    \begin{columns}
-    \begin{column}{0.5\textwidth}
-    \begin{center}
-        \underline{Fee-for-Service}
-
-        \vspace{3mm}
-
-            $\pi$ $\downarrow$ in $\theta$
-    \end{center}
-    \end{column}
-    \begin{column}{0.5\textwidth}  %%<--- here
-    \begin{center}
-        \underline{Pay-for-Performance}
-
-        \vspace{3mm}
+% \begin{frame}[noframenumbering]{Hospital Objectives: Profit versus Patient Welfare} \Large
+%     \begin{equation*}
+% \max_{\theta}\hspace{-4mm}
+% \tikz[baseline]{
+%     \node[draw=earthyellow,rounded corners,anchor=base] (m1)
+%     {$\alpha$};
+%     \node[above of=m1, text=earthyellow, yshift=5mm] (l1) {weight on\\profit};
+%     \draw[-,earthyellow] (l1) -- (m1);
+% }
+% \hspace{-8mm}\pi(\theta) + \hspace{-7mm}
+% \tikz[baseline]{
+%     \node[draw=earthyellow,rounded corners,anchor=base] (m2)
+%     {$(1-\alpha)$};
+%     \node[above of=m2, text=earthyellow, yshift=5mm] (l2) {weight on\\patient welfare};
+%     \draw[-,earthyellow] (l2) -- (m2);
+% }
+% \hspace{-7mm}u(\theta)
+% \end{equation*}
+% \end{frame}
 
 
-            $\pi$ $\uparrow$ in $\theta$
-    \end{center}
-    \end{column}
-\end{columns}
 
-\btVFill
 
-\begin{block}{\Large Fee-for-service to Pay-for-performance}
-    \centering
-    \vspace{3mm}
-    Higher $\alpha$ $\implies$ larger response
 
-    \vspace{3mm}
-\end{block}
-
-\hyperlink{choiceofqualityapp}{\beamergotobutton{more details}}
-\end{frame}
-
-\begin{frame}{Informing the Empirical Analysis}
-
-\large
-
-        \textbf{Response to P4P is tied to underlying objectives $\alpha$}
-        \vspace{3mm}
-        \begin{wideitemize}
-            \item Ownership status is important to underlying objectives
-            \item It's reasonable that priorities of leaders are also an important factor
-        \end{wideitemize}
-
-\end{frame}
 
 
 \section{Effect of Clinical Leadership on Response}
@@ -830,7 +870,7 @@ CQO & 0.09\\
 \begin{frame}{Estimation}\label{est_equation}
 
 \large
-    \textbf{Compare always clinical to never clinical hospital executive teams:}
+    \textbf{Compare \textit{always clinical} to \textit{never clinical} hospital executive teams:}
 
     \vspace{3mm}\large
     \begin{equation*}
@@ -845,11 +885,11 @@ CQO & 0.09\\
 
     \vspace{8mm}\pause
 
-    Different methods:
+    Methods to address differences in control and treatment:
     \begin{itemize}
         \item No weights
         \item \textbf{``Synthetic DiD" type weights} 
-        \item Coarsened exact matching 
+        \item Coarsened exact matching with hospital characteristics
     \end{itemize}
 \end{frame}
 
@@ -857,11 +897,10 @@ CQO & 0.09\\
 
 \large
 \begin{wideitemize}
-    \item Parallel trends
-    \item No other 2012 event correlated with executive team and outcomes
+    \item Parallel trends of the weighted control \& treatment
     \item No hospital characteristics perfectly correlated with executive team
     \item No anticipation of incentive changes
-    \item Stability in clinical executives not correlated with incentive change
+    \item \textbf{Stability in clinical executives not correlated with the policy}
 \end{wideitemize}
 \end{frame}
 
@@ -882,7 +921,12 @@ CQO & 0.09\\
     
 \end{frame}
 
-\begin{frame}{Readmission Rates}\label{main:readrates}
+\begin{transitionframe}
+    \LARGE \centering
+    Results
+\end{transitionframe}
+
+\begin{frame}{Clinical Exec $\implies$ Readmission Rates}\label{main:readrates}
 \large
     \begin{columns}
     \column{0.5\textwidth}
@@ -891,6 +935,9 @@ CQO & 0.09\\
     \column{0.5\textwidth}
         \begin{wideitemize}
             \item Magnitude: 0.3ppt difference
+            \begin{itemize}
+                \item Statistically significant at the 95\% level
+            \end{itemize}
 
 \vspace{5mm}
             
@@ -901,7 +948,7 @@ CQO & 0.09\\
     \end{columns}
 \end{frame}
 
-\begin{frame}{Mortality Rates}
+\begin{frame}{Clinical Exec $\implies$ Mortality Rates}
 \large
     \begin{columns}
     \column{0.5\textwidth}
@@ -910,16 +957,25 @@ CQO & 0.09\\
     \column{0.5\textwidth}
         \begin{wideitemize}
             \item Magnitude: 0.1ppt 
+            \begin{itemize}
+                \item Not statistically significant
+            \end{itemize}
 
             \vspace{5mm}
             
-            \item Mortality is noisy measure 
+            \item Mortality is a noisy measure 
         \end{wideitemize}
     \end{columns}
 \end{frame}
 
 \begin{frame}{Intensive Margin}
-\large
+    Let's now look at whether having a higher proportion of clinician leaders ($\rho$) matters
+    \begin{itemize}
+        \item $\eta$: median fraction of clinically trained executives (.2)
+    \end{itemize}
+
+    \vspace{4mm}
+
     \begin{equation*}
     y_{ht} = \beta \left(\mathbb{1}\{\rho \leq \eta\}\text{ x post 2012}\right)_{ht} + \gamma_{h} + \delta_t + \epsilon_{ht}
     \end{equation*}
@@ -928,12 +984,6 @@ CQO & 0.09\\
     y_{ht} = \beta \left(\mathbb{1}\{\rho > \eta\}\text{ x post 2012}\right)_{ht} + \gamma_{h} + \delta_t + \epsilon_{ht}
     \end{equation*}
 
-    \vspace{10mm}
-
-    \begin{itemize}
-        \item $\rho$: fraction of clinical executives
-        \item $\eta$: median fraction of clinically trained executives (.2)
-    \end{itemize}
 \end{frame}
 
 \begin{frame}{Intensive Margin: Readmission Rates}
@@ -947,6 +997,16 @@ CQO & 0.09\\
     \end{columns}
 \end{frame}
 
+\begin{frame}{Intensive Margin: Mortality Rates}
+    \begin{columns}
+    \column{0.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Objects/cont_belowmedmort_md_nomd_synth_graph.pdf}
+    \column{0.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Objects/cont_abovemedmort_md_nomd_synth_graph.pdf}
+    \end{columns}
+\end{frame}
 
 
 \section{Comparison to For-Profit Hospitals}
@@ -1007,15 +1067,25 @@ CQO & 0.09\\
 \begin{frame}{Driven by Unobserved Compositional Differences?}
 \large
 
-\textbf{Concern:} presence of clinicians may not matter but is correlated with some unobserved hospital `type', possibly time varying
+\textbf{Question:} Is unobserved hospital type driving both clinical leaders and outcomes, or does clinical leadership affect hospital type?
+\vspace{3mm}
+
+\begin{itemize}
+    \item Presence of clinicians may not matter but is correlated with some unobserved hospital `type'
+\end{itemize}
 
 \vspace{3mm}
 \begin{wideitemize}
-    \item if true, we should see a difference in response no matter the timing of having a clinical executive
+    \item If true, we should see a difference in response no matter the timing of having a clinical executive
 \end{wideitemize}
 \end{frame}
 
-\begin{frame}{Robustness Check}
+\begin{frame}{Signaling versus Clinician Effect}
+\begin{itemize}
+    \item I'm now going to incorporate the ``ever clinician" group of nonprofit hospitals
+\end{itemize}
+
+\vspace{5mm}
 \large
     \begin{figure}[ht!]
 \begin{center}
@@ -1049,7 +1119,7 @@ CQO & 0.09\\
 
 \end{frame}
 
-\begin{frame}{Results}
+\begin{frame}{Results}\normalsize
     \begin{table}[ht!]
 \centering
 \begin{tabular}[t]{lcccc}
@@ -1071,8 +1141,9 @@ Observations & 3,005 & 1,595 & 3,005 & 1,595\\
 \begin{frame}{Other Mechanisms}
 \large
     \begin{wideitemize}
-        \item Not driven by changes in patient population
+        \item Not driven by changes in patient population (no difference in propensity to ``game" the system)
         \item Driven primarily by pneumonia
+        \item The difference exists for all types of doctors, but is stronger for internal medicine 
     \end{wideitemize}
 \end{frame}
 
@@ -1191,7 +1262,7 @@ $\pi'(\theta)$:
 \end{frame}
 
 \begin{frame}{For-Profit and Nonprofit Statistics}\label{forprofitstats}
-\vspace{-3mm}
+\vspace{-3mm}\large
     \begin{table}[ht!]
 \centering
 \begin{tabular}[t]{lcc}
@@ -1284,7 +1355,7 @@ Num. Hospitals & 3059 & 680\\
     
 \end{frame}
 
-\begin{frame}{Results of other specifications}\label{specifications}
+\begin{frame}{Results of other specifications}\label{specifications}\normalsize
     \begin{table}[ht!]
 \centering
 \begin{tabular}[t]{lcccccl}
