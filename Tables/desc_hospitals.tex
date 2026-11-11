@@ -1,0 +1,38 @@
+\begin{table}
+
+\caption{\label{tab:desc_hospitals}Hospital Characteristics, Penalty Exposure, and Outcomes}
+\centering
+\begin{threeparttable}
+\begin{tabular}[t]{lrrrrr}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{All hospitals} & \multicolumn{2}{c}{Mean by CEO type} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+ & Mean & SD & Physician CEO & Other CEO & N\\
+\midrule
+\textbf{A. Hospital characteristics, 2009--2011} &  &  &  &  & \\
+\hspace{1em}Beds & 249 & 209 & 433 & 234 & 757\\
+\hspace{1em}Teaching hospital (\%) & 40.0 &  & 63.6 & 38.2 & 757\\
+\hspace{1em}System member (\%) & 43.3 &  & 50.9 & 42.7 & 757\\
+\hspace{1em}Operating margin (\%) & -1.0 & 10.4 & -1.1 & -1.0 & 757\\
+\hspace{1em}Medicare share of discharges (\%) & 38.2 & 10.1 & 34.5 & 38.4 & 757\\
+\hspace{1em}Case mix index & 1.45 & 0.24 & 1.64 & 1.43 & 757\\
+\addlinespace
+\textbf{B. Penalty exposure, FY2013} &  &  &  &  & \\
+\hspace{1em}Exposure, $E_h$ & 0.026 & 0.041 & 0.035 & 0.026 & 756\\
+\hspace{1em}Penalized in FY2013 (\%) & 70.6 &  & 70.9 & 70.6 & 756\\
+\addlinespace
+\textbf{C. Outcomes, 30-day rates (\%)} &  &  &  &  & \\
+\hspace{1em}Readmission, windows ending 2009--2011 & 21.6 & 1.5 & 21.6 & 21.6 & 755\\
+\hspace{1em}Readmission, windows ending 2012--2014 & 19.9 & 1.3 & 19.8 & 19.9 & 753\\
+\hspace{1em}Mortality, windows ending 2009--2011 & 11.6 & 1.4 & 11.2 & 11.6 & 754\\
+\hspace{1em}Mortality, windows ending 2012--2014 & 11.8 & 1.4 & 11.3 & 11.8 & 752\\
+\midrule
+Hospitals & 757 &  & 55 & 702 & \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes:} Hospitals in the main estimation sample where the Form 990 and HIMSS name the same CEO. Unweighted. Characteristics are averaged over 2009--2011; a hospital is a teaching hospital if it is one in any of those years and a system member if it belongs to a system in all of them. Exposure is the excess of the hospital's weighted FY2013 excess readmission ratio over one (Section \ref{sec:data}). Outcomes are the average of the heart failure and pneumonia rates, averaged within each hospital over the windows shown. N counts hospitals with the variable.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
