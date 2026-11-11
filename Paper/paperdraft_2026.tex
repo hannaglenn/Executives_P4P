@@ -1,0 +1,293 @@
+\documentclass[12pt]{article}
+
+\usepackage{tgtermes}
+\usepackage{epsf}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage{dcolumn}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{mwe}
+\usepackage{url}
+%\usepackage{harvard}
+\usepackage{fancyheadings}
+\usepackage{longtable}
+\usepackage{authblk}
+\usepackage{setspace}
+%\usepackage[nomarkers]{endfloat}
+\usepackage{float}
+\usepackage{bbm}
+%\usepackage{titling}
+\usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{import}
+\usepackage[backend=biber,style=authoryear,
+sorting=nyt,citestyle=authoryear]{biblatex}
+\addbibresource{papercitations.bib}
+%\usepackage[nomarkers,nofiglist,notablist]{endfloat}
+\usepackage{subcaption}
+\usepackage{caption}
+
+\onehalfspacing
+\textwidth 6.5in \oddsidemargin 0in \evensidemargin -0.6in
+\textheight 8.5in \topmargin -0.2in
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\
+		\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\
+		\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\
+		\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{P}[1]{>{\raggedright\tabularxbackslash}p{#1}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\captionsetup{justification=centering,singlelinecheck=false}
+
+
+\newcommand{\xsub}[1]{%
+	\mbox{\scriptsize\begin{tabular}{@{}c@{}}#1\end{tabular}}%
+}
+
+%\renewcommand{\thetable}{\Roman{table}}
+
+\begin{document}
+	
+	
+	
+	
+	\linespread{1.2}\title{\vspace{-0.5in} Profit Pressures in Nonprofit Care:\\ \large Executive Responses to Financial Incentives in Hospitals\thanks{I thank Aliyah Bagro and Vidyah Vedula for their excellent research assistance. I express my deepest thanks to Ian McCarthy for his advice and ongoing helpful feedback. Further, I thank Sara Markowitz, Matt Grennan, Evan Saltzman, and Atul Gupta for their helpful comments. I am grateful to the audiences at EuHEA and ASHEcon conferences, as well as at the University of Queensland, the University of Melbourne, the University of Miami, and the University of Iowa for their insightful feedback.}} 
+	
+	\date{\today}
+	
+	\author{\vspace{10mm}Hanna Glenn\footnote{School of Economics, University of Queensland, hanna.glenn@uq.edu.au.}
+    }
+    
+	
+	\maketitle
+	%\setlength{\droptitle}{-10pt}
+	
+	\vspace{-0.2in}
+	
+	\singlespacing\maketitle
+
+
+ \vspace{3mm}
+	
+    \begin{abstract}
+		{\small
+    This paper examines how executive backgrounds shape organizational responses to financial incentives in mission-driven settings. Using U.S. nonprofit hospitals, I study whether clinically trained executives influence behavior under pay-for-performance policies. Hospitals led by non-clinical executives respond more strongly to quality-based financial incentives than those led by clinically trained leaders. This difference reflects active management rather than organizational objectives and operates through two mechanisms: clinically trained leaders prioritize patient-centered care and possess expertise that lowers the cost of quality improvements. These findings highlight the role of leadership in firm objectives and suggest incentive design should account for managerial heterogeneity.
+        
+         % This paper examines how executive backgrounds affect the impact of financial incentives on performance in mission-driven organizations. In the US, nonprofit hospitals are a dominant provider of health care, and face both financial pressure and pressure to provide community benefit, yet little is known about how executives influence organizational responses under these competing demands. Using pay-for-performance policies, I compare responses to quality-based incentives between executives with clinical training and those without. Hospitals led by non-clinical executives exhibit stronger responses to financial incentives than those led by clinically trained leaders. This difference reflects active management rather than underlying organizational objectives and operates through two mechanisms: clinically trained leaders prioritize patient-centered care and possess expertise that lowers the cost of quality improvements. These findings underscore the importance of leadership characteristics in organizational decision-making and suggest that incentive design should account for managerial heterogeneity.
+        
+         % Firm managers are often seen as key drivers of firm decisions, strategies, and performance. Extensive research links managerial traits to firm outcomes, yet little is known about how hospital executives shape responses to healthcare incentives. Health care policies in the U.S. often focus on improving quality of care without increasing costs, yet it is unclear whether hospital leaders might contribute to this goal. Leveraging pay-for-performance incentives, I estimate the differential response to financial incentives on quality by different types of nonprofit hospital executives: those with and without training as a medical doctor. I find that hospitals led by non-clinical executives respond more strongly to financial incentives than those led by clinically trained executives. The difference is not a signal of underlying hospital objectives, but a difference in active management. Further, the observed difference reflects two mechanisms: clinically trained leaders prioritize patient-centered care and possess expertise that reduces the cost of quality improvements. These findings highlight the role of leadership in firm decision-making and the need to account for executive characteristics when designing incentives.
+		} 
+	\end{abstract}
+	
+	
+	
+	
+	
+
+	
+	\onehalfspacing
+	
+	\newpage
+
+    \section{Introduction}
+
+    Financial incentives are a fundamental tool for shaping organizational behavior, yet firms rarely respond uniformly to them (\cite{cala2022financial}). Executives could play a central role in shaping these responses, influencing strategy, resource allocation, and performance. Prior research links executive heterogeneity such as gender, age, and professional background, to firm outcomes, including financial performance and behaviors like wage setting and mergers.\footnote{\cite{bertrand2003managing}; \cite{matsa2011chipping}; \cite{adams2009women}; \cite{ahern2012changing}; \cite{flabbi2019female}; \cite{benmelech2015military}; \cite{custodio2013generalists}; \cite{frydman2019rising}} While early evidence comes from large, publicly traded corporations, emerging work has pointed to the importance of leadership in public sectors, including public schools and hospitals.\footnote{\cite{best2023individuals}; \cite{bertrand2020glittering}; \cite{choudhury2020managers}; \cite{fenizia2022managers}; \cite{lavy2023effects}} Still, we know little about how leadership traits, particularly those of entire executive teams, interact with shifting organizational objectives.
+
+    This paper examines how specialized executive training shapes organizational behavior when external shocks alter incentives, specifically in the context of private nonprofit hospitals in the U.S. Health care in the U.S. makes up almost 20\% of spending (\cite{CMSNationalHealthExpenditure}), and operates under evolving incentives, reflecting policymakers’ initiatives to enhance quality without increasing costs, even as the U.S. continues to trail other high-income countries on these measures. Additionally, private nonprofit hospitals dominate U.S. health care\footnote{Private nonprofit hospitals account for 50\% of all U.S. hospitals and average 207 beds, compared to for-profit hospitals, which comprise 36\% and average 107 beds, and government hospitals, which make up 14\% and average 175 beds.(\cite{ASPE_2023}).} and operate under dual pressures: financial constraints and mission-driven obligations to deliver community benefit. While existing research consistently finds that leadership influences firm outcomes, it remains unclear whether these effects would extend to private nonprofit hospitals, organizations that are not directly governed publicly or owned by shareholders, yet operate in a policy-intensive environment with shifting incentives.
+    
+    A key executive characteristic in this context is clinical training. Physicians combine clinical and administrative expertise, offering insights that may benefit staff and improve care quality (\cite{Stajduhar_2023}, \cite{Ahmed_2022}). However, hiring physician executives is controversial because many lack formal business training, which can result in inefficient management and reduced quality (\cite{HarvardBusinessReview2018}; \cite{munoz2025managers}). Thus, I estimate how the presence of clinically trained executives on a hospital C-suite team influences decision making. I scrape executive names and titles of nonprofit hospitals in the U.S. from publicly available Tax Form 990s. Combining this with other hospital data, I construct a novel data set of nonprofit hospitals from 2010-2014 containing information on both executive team characteristics and quality metrics.
+    
+    The non-random selection of leaders complicates causal interpretation of direct comparisons between executive teams. Therefore, I leverage pay-for-performance policies enacted in the U.S. as an exogenous shock to hospital incentives on quality and compare changes in readmission and mortality rates between hospitals with and without clinically trained executives using a synthetic difference-in-differences estimation strategy. Assuming the two types of teams would have followed similar trends absent the policy change, I find that hospitals without clinically trained executives respond more strongly to financial incentives than those with clinical executives. In other words, both types of leadership teams reduce readmission rates after the policy change, but hospitals without clinical executives do so at a faster rate. The gap widens in hospitals with a higher share of clinically trained executives but disappears when limiting only to CEOs rather than the entire C-suite, highlighting the importance of expertise on the entire leadership team rather than only the top manager.
+
+    I investigate several mechanisms to explain the observed difference. First, I leverage the timing of clinically trained executives to show that clinicians actively manage hospitals differently, rather than acting as a signal of underlying preferences. Next, I show theoretically that hospitals that prioritize profit over patient welfare respond more strongly to policies that incorporate quality into the profit function. I test this empirically by comparing responses of hospitals with and without clinically trained executives to those of for-profit hospitals, which are known to be more profit-driven by ownership structure. I find that nonprofit hospitals without clinically trained executives respond to quality incentives similarly to for-profits, whereas those with clinically trained executives respond differently. Similarly, I show theoretically that expertise may drive the observed difference, and investigate this empirically by comparing different physician specialties which are more or less knowledgeable about the conditions targeted by the policies. This analysis suggests that expertise is a likely underlying mechanism. Finally, I find that changes in aggregate patient populations and investment decisions do not explain the observed difference in response.
+
+    Outside of health care, many researchers have documented a correlation between executive characteristics and firm actions, beginning with \citeauthor{bertrand2003managing} (\citeyear{bertrand2003managing}), who show that manager fixed effects are an important factor in many firm behaviors and decisions. Greater female representation among executives correlates with higher female employee wages and shifts in corporate strategy (\cite{flabbi2019female}; \cite{matsa2013female}). Young male CEOs tend to be more aggressive in mergers and acquisitions, whereas those with military experience are less aggressive (\cite{levi2010deal}; \cite{benmelech2015military}). CEOs with general managerial ability receive higher pay and achieve better performance (\cite{kaplan2012ceo}; \cite{custodio2013generalists}; \cite{adams2018director}; \cite{frydman2019rising}). Older CEOs are associated with differences in corporate culture (\cite{graham2022corporate}). Finally, Chief Diversity Officers have not been found to influence diversity in university hiring (\cite{bradley2022impact}). Additionally, there is a rich emerging literature on CEOs in the public sector. \citeauthor{choudhury2020managers} (\citeyear{choudhury2020managers}) provide evidence that better incentive alignment between CEOs and middle managers positively affects productivity in public R\&D labs in India; \citeauthor{fenizia2022managers} (\citeyear{fenizia2022managers}) finds that higher quality managers in the public sector improves productivity in Italy; \citeauthor{lavy2023effects} (\citeyear{lavy2023effects}) shows that higher quality CEOs in public schools improve student outcomes (\cite{choudhury2020managers}; \cite{fenizia2022managers}; \cite{lavy2023effects}). 
+    
+    To my knowledge, \citeauthor{brickley2010board} (\citeyear{brickley2010board}) provide the only study in the U.S. setting using the Tax Form 990 executive/board of directors data. Using exogenous variation in expected Medicare profits, the authors find that internal boards increase CEO compensation, while physician board members reduce public donations (\cite{brickley2010board}). Two additional studies examine hospital leadership and performance in other countries. \citeauthor{janke2019impact} (\citeyear{janke2019impact}) use data from England to study whether CEOs affect hospital production, and find no association (\cite{janke2019impact}). However, \citeauthor{munoz2025managers} (\citeyear{munoz2025managers}) investigate the role of CEOs in public hospitals in Chile, and find an 8\% decrease in mortality rates for hospitals with top managers. Further, a major contributor of this quality improvement is the exodus of older physicians as CEOs (\cite{munoz2025managers}). Finally, although not in a hospital context, \citeauthor{la2023impact} (\citeyear{la2023impact}) find that OB-GYNs acquired by financially driven Physician Practice Management Companies (PPMCs) perform more C-sections than those acquired by clinically driven PPMCs (\cite{la2023impact}). Thus, the motivations of the management of health care facilities matter for provider behavior. This paper contributes to understanding how executive team characteristics affect firm behavior by (1) examining the critical setting of private nonprofit hospitals, which serve the majority of health care consumers in the U.S., (2) extending a relevant leadership characteristic to the entire executive team as opposed to CEOs only, and (3) observing behavior under an exogenous incentive change.
+
+    Additionally, this paper contributes to understanding how providers respond to pay-for-performance incentives in health care. The most in-depth study of hospital responses to the Hospital Readmissions Reduction Program (HRRP), one of the two major pay-for-performance initiatives, is by \citeauthor{gupta2021impacts} (\citeyear{gupta2021impacts}). This study finds that hospitals decreased readmissions by 5\% and mortality rates by 2\% on average as a result of the program, confirming prior studies (\cite{mellor2017does}; \cite{ziedan2018essays}; \cite{ody2019decreases}; \cite{gupta2021impacts}). Around 40\% of the decrease in readmissions is due to selective patient practices. Further, market concentration and hospital systems play a large role in how hospitals respond to the program (\cite{kunz2024assessing}). Research on the other large pay-for-performance initiative, the Hospital Value Based Purchasing Program, generally concludes that the program had no effect on underlying hospital quality (\cite{us2015hospital}; \cite{norton2018moneyball}; \cite{friedson2019so}). This paper extends this literature by examining how hospital leadership characteristics shape responses to pay-for-performance incentives.
+    
+
+\section{Institutional Background}
+
+\subsection{Executives and Hospital Performance}
+
+    Paragraph about "executives matter for firm outcomes" 
+
+    Paragraph about how executives change management practice
+
+    Paragraph about how expertise matters
+
+    Paragraph about managers in public/mission driven organizations
+
+    Paragraph about hospital managers specifically 
+
+    Paragraph about what hospital executive teams look like 
+
+    Paragraph on the gap in the literature?? maybe 
+
+\subsection{The Hospital Readmissions Reduction Program}
+
+Pay-for-performance programs tie a provider's payment to measured quality rather than to the volume of care alone. The Affordable Care Act (ACA) introduced two such programs for U.S. hospitals: the Hospital Readmissions Reduction Program (HRRP), which penalizes hospitals with excess readmissions, and the Hospital Value-Based Purchasing Program (HVBP), which redistributes payments toward hospitals with higher measured quality. I focus on HRRP for several reasons. First, its penalty depends on a single, well-defined outcome, it was large enough to matter to hospital finances, and the measure that determined the first round of penalties was fixed before the program was announced.
+
+HRRP was established by Section 3025 of the ACA in March 2010. The Centers for Medicare \& Medicaid Services (CMS) finalized the details of the program in the fiscal year (FY) 2012 Inpatient Prospective Payment System final rule in August 2011, and the first penalties took effect on October 1, 2012, the start of FY2013.% TODO: confirm the Federal Register display and publication dates of the FY2012 IPPS final rule
+\ The program initially targeted three conditions: acute myocardial infarction (AMI), heart failure, and pneumonia. CMS later added chronic obstructive pulmonary disease (COPD) and elective hip and knee replacement for FY2015, announced in August 2013, and coronary artery bypass graft (CABG) surgery for FY2017, announced in August 2014, when it also widened the pneumonia cohort (\cite{kff_hrrp}). I use these later additions in Section \ref{sec:coordination} as a second source of variation.
+
+For each condition, CMS calculates an excess readmission ratio (ERR): the hospital's risk-adjusted predicted number of readmissions divided by the number expected for an average hospital treating the same patients. A readmission is any unplanned admission to any acute care hospital within 30 days of discharge, for any cause.\footnote{Planned readmissions have been excluded since FY2014, and a condition only counts toward the penalty if the hospital has at least 25 eligible discharges in it. Critical access hospitals, Maryland hospitals, and psychiatric, rehabilitation, long-term care, children's, and cancer hospitals are not subject to HRRP (\cite{kff_hrrp}).} A ratio above one means the hospital readmitted more patients than expected. The penalty grows with how far each ratio is above one, weighted by that condition's share of the hospital's Medicare base payments:
+\begin{equation}
+\text{Penalty}_{h} = \min\left\{ \sum_{c} \frac{B_{hc}}{B_{h}} \max\{ERR_{hc} - 1,\, 0\},\ \bar{p}_{t} \right\}
+\end{equation}
+where $B_{hc}$ is the hospital's base operating payments for discharges in condition $c$, $B_{h}$ is its total base operating payments, and $\bar{p}_{t}$ is the cap: 1\% in FY2013, 2\% in FY2014, and 3\% from FY2015 onward. The penalty is applied as a reduction in base operating payments for every Medicare fee-for-service discharge, not only for discharges in the targeted conditions. Beginning in FY2019, CMS compares hospitals within peer groups defined by their share of patients dually eligible for Medicare and Medicaid, but this change falls after my study period.
+
+Each round of penalties is based on three years of discharges. The FY2013 penalties used discharges from July 2008 through June 2011, all of which occurred before the final rule. Hospitals therefore could not change their first penalty, and the ratios behind it give a measure of each hospital's exposure to the program that was set before the program began. The incentive to respond came from later rounds. The FY2014 penalties used discharges from July 2009 through June 2012, and each later window rolled forward by one year. Once the rule was final, every discharge counted toward penalties one to three years later, so hospitals had a reason to act as soon as the details were known rather than wait for the first penalty.
+
+Roughly 64\% of eligible hospitals were penalized in FY2013, for a total of about \$290 million, and by FY2015--FY2017 between 78\% and 79\% of hospitals were penalized each year, for totals of \$420--\$528 million (\cite{kff_hrrp}). In FY2015, the average penalized hospital lost about \$163,000, and about 16\% of hospitals faced penalties between 1\% and 3\% of base operating payments (\cite{medpac_2015}). These amounts are small relative to total Medicare spending, but not relative to hospital finances: the median operating margin of the nonprofit hospitals in my sample was close to zero before the program (Section \ref{sec:data}).
+
+CMS began publishing 30-day readmission rates for AMI, heart failure, and pneumonia on Hospital Compare in 2009. Information about each hospital's readmissions was therefore already public before HRRP. What the program added was a financial consequence. A hospital can lower its measured readmissions without changing the care it provides. Patients who return to the hospital can be placed in observation status, which is billed as outpatient care and does not count as a readmission. A hospital can also record more severe diagnoses for its patients, which raises the number of readmissions it is expected to have and lowers its ratio, or change the coding that determines which patients fall into the targeted cohorts. I examine these responses in Section \ref{sec:gaming}.
+
+HVBP was established by Section 3001 of the ACA and began in the same year as the first HRRP penalties. CMS withholds a share of base operating payments from all eligible hospitals, 1\% in FY2013 rising to 2\% by FY2017, and redistributes it according to a total performance score. Hospitals earn points either for achievement relative to national benchmarks or for improvement over their own baseline (\cite{CMS_2023}). The score initially combined clinical process measures with patient experience measures from the HCAHPS survey, and CMS later added mortality, efficiency, and safety measures.% TODO: confirm the domains and weights by fiscal year
+\ Readmissions are not part of HVBP, so the program does not directly reward the outcome that HRRP penalizes. However, some of the outcomes I use to study mechanisms, including HCAHPS scores and heart failure discharge instructions, are HVBP measures, and I return to this in Section \ref{sec:gaming}. Evaluations of HVBP generally find little change in quality: the program had modest effects on payments and no apparent effect on quality trends (\cite{us2015hospital}), clinical processes or patient experience (\cite{ryan2015early}), or mortality (\cite{figueroa2016association}). One explanation is that the incentive is weak and noisy. A hospital's payment adjustment depends heavily on chance (\cite{friedson2019so}), and hospitals improved most on the measures where the marginal financial incentive was largest (\cite{norton2018moneyball}).
+
+Prior evidence on HRRP finds that readmissions for the targeted conditions fell faster than for other conditions after HRRP was announced (\cite{zuckerman2016readmissions}), with the largest decline in 2013, the first year of penalties (\cite{medpac_2015}). One of the most comprehensive evaluations of the program is by \citeauthor{gupta2021impacts} (\citeyear{gupta2021impacts}), who uses variation in hospitals' exposure to the penalty and finds that hospitals decreased readmissions by 5\% and mortality by 2\% on average as a result of the program, consistent with earlier studies (\cite{mellor2017does}; \cite{ziedan2018essays}). However, around 40\% of the decrease in readmissions is due to selective patient practices rather than better care. Raw declines in readmissions overstate the program's effect on care. Some of the drop among penalized hospitals reflects regression to the mean (\cite{ody2019decreases}), which \citeauthor{gupta2021impacts}'s estimates account for, and some reflects higher coded severity rather than fewer readmissions (\cite{ibrahim2018association}). Penalized hospitals reduced readmissions more than hospitals that were not penalized (\cite{desai2016association}), and penalties fell disproportionately on safety-net and teaching hospitals (\cite{joynt2013characteristics}). Evidence on mortality is mixed. In contrast to the decline that \citeauthor{gupta2021impacts} finds, \citeauthor{wadhera2018association} (\citeyear{wadhera2018association}) link the program to higher mortality among heart failure patients. Finally, market concentration and hospital systems play a large role in how hospitals respond to the program (\cite{kunz2024assessing}).
+
+    
+\section{Leadership in a Model of Hospital Objectives}
+
+\subsection{The Hospital's Objective}
+
+    \subsection{Model Predictions}
+
+    \subsection{Extensions}
+
+\section{Data}
+
+In this section, I describe the data sources combined and used to analyze hospital leadership under pay-for-performance. Ultimately, I employ hospital-level data spanning 2009-2018 containing executive team characteristics and mortality and readmission rates as measures of quality. I include more details on the data construction in Appendix \ref{appendixdata}. 
+
+    \subsection{Executive Identities from Form 990 and HIMSS}
+
+    There are two main sources of hospital executive identities: Part VII of Form 990, which every nonprofit hospital files each year, and the HIMSS Analytics database compiled by the Healthcare Information and Management Systems Society (HIMSS). 
+
+    In Part VII of Form 990, nonprofits list their officers, directors, key employees, and highest compensated employees. All officers must be listed regardless of compensation, so I observe the full executive team rather than only the CEO, which allows me to form team-level characteristics such as the presence of a physician executive or a Chief Medical Officer. The strength of this source is physician status: I verify self-declared physicians against the national registry of health care providers (NPPES). The weaknesses of this source are that (1) it only covers nonprofits, and (2) it can misidentify the hospital's own CEO. Specifically, Part VII lists everyone who held an office during the fiscal year, including officers of affiliated organizations and health systems, and 12.1\% of filings list more than one person in a CEO position. 
+    
+    HIMSS records the executives of each hospital in a set of roles defined by HIMSS. The strength of this source is that each hospital's CEO is recorded in a dedicated role, so it is clear who the hospital's own CEO is, and the database includes for-profit hospitals as well as nonprofits. The weakness is physician status: credentials are missing for 87\% of CEOs in HIMSS. The database is focused on information technology, so its set roles include Chief Information Officer but not Chief Medical Officer, making team-level characteristics imprecise.
+
+    The two sources name the same CEO in 75\% of hospital-years, and each makes errors the other can detect. In the 990s, the identity of the CEO can be wrong: one health system's 2010 filings list a physician as CEO of all three of its hospitals because he held the position for part of the fiscal year, while HIMSS records the interim CEO who replaced him, who is not a physician. Using the 990s alone would classify these hospitals as physician-led. In HIMSS, physician status can be wrong: one hospital's CEO is listed with an ``MD'' credential that most likely refers to the state of Maryland, while the 990 shows the same person is a registered nurse. Where the two sources agree on who the CEO is, I can be more confident in both the CEO's identity and whether they are a physician. My main measure therefore uses hospitals where both sources name the same CEO and takes physician status from the verified 990 data. This excludes the first type of error, because the two sources name different CEOs, and corrects the second, because both sources name the same person and physician status comes from the 990.
+
+    I build the 990 data from two sources. For tax years 2009--2012, I extract Part VII from the filed returns by hand, and from 2013 onward, I use the electronically filed returns released by the IRS in XML format. I assign each return to the calendar year containing the majority of its fiscal-year days, so that hospitals with different fiscal year-ends are aligned. I then clean each listed name, removing titles, credentials, and annotations (for example, ``Jane Smith MD, CEO thru 9/13''), and combine records of the same person within an organization and year. I classify each person's position from the title text: CEO, CFO, COO, CIO, Chief Nursing Officer, Chief Medical Officer, or other executive. I flag executives as physicians when their name or title includes a medical credential and verify each one against NPPES: an executive is confirmed when their name matches exactly one registered physician, and I review cases with several or no matching records by hand.
+
+    To link each organization to a hospital, I match the filers of Form 990 Schedule H, which every organization that operates a hospital must complete, to the American Hospital Association (AHA) Annual Survey in three steps. First, I standardize names and addresses in both sources (for example, resolving ``doing business as'' names and removing terms such as ``Inc.'') and match organization names to AHA hospital names within the same state using Jaro--Winkler string distance. When an organization matches more than one hospital, I score each candidate on whether the city, ZIP code, and street address also agree, and keep the highest-scoring match. A random sample of 100 matches from this step were all correct on manual inspection. Second, for organizations without a name match, I match on street address within the same state and keep the candidate with the most similar name. Third, I search for the remaining organizations by hand and match 176 more. I keep only one-to-one matches, dropping organizations linked to more than one hospital and hospitals linked to more than one organization. 
+
+    \subsection{Hospital Characteristics, Penalty Exposure, and Outcomes}
+
+
+\section{Empirical Strategy}
+
+    \subsection{Differential Responses to Penalty Exposure}
+
+    \subsection{Identifying Assumptions}
+
+\section{Leadership and the Response to P4P}
+
+\section{Which Leaders Matter?}
+
+\section{Heterogeneity in the Returns to Coordination}
+
+\section{Real Improvement or Gaming}
+
+
+
+
+\section{Conclusion}
+
+    This paper examines how executive backgrounds shape organizational responses to financial incentives in mission-driven settings. Using U.S. nonprofit hospitals, I study whether clinically trained executives influence hospital behavior when a policy shock alters incentives for quality. I construct a unique dataset of nonprofit hospitals that includes executive characteristics, hospital traits, and quality outcomes.
+
+    In 2012, two pay-for-performance policies went into effect: one penalized hospitals with high readmission rates, and the other rewarded hospitals with low readmission or mortality rates. These policies significantly affected hospital finances and created strong incentives to improve quality. I leverage this exogenous policy change to estimate how clinically trained executives influence readmission and mortality rates using a synthetic difference-in-differences approach. I find that hospitals without clinically trained executives improve quality more than hospitals with clinically trained executives after the incentive change.
+    
+    I explore several hypotheses to explain this differential response. First, I leverage the timing of clinically trained executive appointments to decompose the effect into signaling versus management. This decomposition shows that having a clinically trained executive in a leadership role during policy implementation is crucial, suggesting the difference reflects management practices rather than underlying hospital preferences. Next, I compare the two types of nonprofits to for-profit hospitals on average, revealing that non-clinical executive teams behave similarly to for-profits. I also examine whether the observed difference reflects the expertise of specific physician specialties by comparing internal medicine executives to others, and find evidence that this may be a contributing mechanism. Finally, I show that the difference is not explained by changes in aggregate patient populations or investment strategies.
+
+    These findings have two key implications. First, leadership composition, not just ownership structure, matters for organizational behavior. While the nonprofit versus for-profit distinction remains important, executive backgrounds is a critical determinant of how hospitals respond to policy incentives. Second, incentive design should account for managerial heterogeneity. Policymakers aiming to improve quality without raising costs must consider how leadership expertise interacts with financial pressures and mission-driven obligations. Understanding these dynamics can inform strategies that better align incentives with quality goals across sectors.
+
+
+    
+
+	
+	\newpage
+
+    \singlespacing
+
+    \printbibliography
+
+    \onehalfspacing
+
+\appendix
+\setcounter{table}{0}
+\renewcommand{\thetable}{A.\arabic{table}}
+\renewcommand{\thefigure}{A.\arabic{figure}}
+
+\newpage
+
+\section{Data}\label{appendixdata}
+
+
+
+
+
+
+
+\section{Pay-for-Performance Programs}\label{app:programs}
+
+In October 2011, the Center for Medicare and Medicaid Services (CMS) released a set of rules under HRRP mandating penalties for hospitals with above average readmission rates. The goal of HRRP is to lower readmissions through better care coordination, less initial stay complications, and better post-care instructions. Beginning in October 2012, hospitals with higher readmission rates than the national average in pneumonia, heart failure, or AMI (after adjusting for demographic characteristics) receive a fixed lower reimbursement rate for all Medicare patients seen in their hospital. In 2015, CMS also included chronic obstructive pulmonary disease, coronary artery bypass graft surgery, and elective primary total hip arthroplasty and/or total knee arthroplasty as conditions which go into the penalty calculation (\cite{CMS}). 
+    
+Penalties are given in the form of a fixed rate reduction of 1-3\% for every Medicare patient regardless of the condition. Further, CMS does not distinguish a necessary readmission from an avoidable readmission; any repeat hospital visit is included in the penalty calculation. Excess readmission rates are calculated using a rolling look-back period of 3 years to determine whether the hospital is penalized. Therefore, hospitals had incentive to react immediately once details of the program were announced in October of 2011. 
+
+The HVBP Program instead rewards hospitals with high quality or significant improvement in quality. Specifically, CMS deducts Medicare payments by 2\% from all eligible hospitals, collects this sum, and divides it among the rewarded hospitals. Several quality and cost measures surrounding safety, efficiency, cost reductions, clinical outcomes, and community engagement are combined to create a single score metric for each hospital. Hospitals are then compared to the average and are rewarded for being above average quality or for showing improvement (\cite{CMS_2023}). 
+
+
+\section{Supplemental Analyses}
+
+    \subsection{Including Nurses as Clinical Executives}\label{app:nurses}
+
+
+    \subsection{Intensive Margin}\label{app:binned}
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+	
+	
+	
+
+
+\end{document}
+
