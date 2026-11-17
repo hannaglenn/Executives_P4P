@@ -347,6 +347,33 @@ Finally, $\theta$ compares hospitals with a clinically trained CEO with comparis
 
 \section{Leadership and the Response to P4P}\label{sec:results}
 
+% Main results table (caption and \label{tab:main_results} are inside the file)
+\input{Tables/main_results.tex}
+
+% Main event-study figure
+\begin{figure}[htbp]
+    \centering
+    \caption{Readmissions by leader type and penalty exposure, relative to 2010}
+    \label{fig:es_main}
+    \includegraphics[width=\textwidth]{Objects/es_main_all_read.pdf}
+    \begin{minipage}{\textwidth}
+        \footnotesize
+        \textit{Notes:} The figure plots the coefficients on type $\times$ exposure $\times$ window from the event-study version of equation \eqref{eq:exposure_triple}, with 95\% confidence intervals, for hospitals with a physician CEO and hospitals with a physician on the executive team, each compared with other hospitals. The reference is the window ending in June 2010. Each window covers the 36 months ending in June of the year shown. The shaded window, ending in June 2011, is the window on which exposure is measured, and is left out of the pooled estimates in Table \ref{tab:main_results}. The dashed line marks the final rule (August 2011). Joint tests that the coefficients for the windows ending in 2008 and 2009 are zero: physician CEO $p = $ [X]; physician on executive team $p = $ [X]. Standard errors are clustered by hospital.
+    \end{minipage}
+\end{figure}
+
+% Appendix: mortality version
+\begin{figure}[htbp]
+    \centering
+    \caption{Mortality by leader type and penalty exposure, relative to 2010}
+    \label{fig:es_main_mort}
+    \includegraphics[width=\textwidth]{Objects/es_main_all_mort.pdf}
+    \begin{minipage}{\textwidth}
+        \footnotesize
+        \textit{Notes:} As Figure \ref{fig:es_main}, with the 30-day mortality rate for heart failure and pneumonia as the outcome.
+    \end{minipage}
+\end{figure}
+
 \section{Which Leaders Matter?}
 
 \section{Heterogeneity in the Returns to Coordination}
