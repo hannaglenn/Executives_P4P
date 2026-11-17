@@ -1,0 +1,42 @@
+\begin{table}
+
+\caption{\label{tab:main_results}Responses to HRRP by physician leadership}
+\centering
+\begin{threeparttable}
+\begin{tabular}[t]{lcccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Physician CEO} & \multicolumn{2}{c}{Physician on executive team} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+ & (1) & (2) & (1) & (2)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{5}{l}{\textbf{A. Readmission rate (\%)}}\\
+\hspace{1em}Type $\times$ Post & $0.035$ & $0.101$ & $0.110$ & $0.102$\\
+\hspace{1em} & (0.242) & (0.223) & (0.112) & (0.112)\\
+\hspace{1em}Type $\times$ Exposure $\times$ Post &  & $-0.476^{**}$ &  & $-0.028$\\
+\hspace{1em} &  & (0.194) &  & (0.123)\\
+\hspace{1em}Pre-trend test, p (2008, 2009) & 0.12 & 0.38 & 0.23 & 0.51\\
+\hspace{1em}Pre-period mean & 21.24 & 21.24 & 21.25 & 21.25\\
+\hspace{1em}Hospitals: type / comparison & 37 / 566 & 37 / 566 & 267 / 336 & 267 / 336\\
+\hspace{1em}Observations & 44 & 44 & 44 & 44\\
+\addlinespace[0.3em]
+\multicolumn{5}{l}{\textbf{B. Mortality rate (\%)}}\\
+\hspace{1em}Type $\times$ Post & $-0.212$ & $-0.239$ & $-0.026$ & $-0.025$\\
+\hspace{1em} & (0.206) & (0.212) & (0.125) & (0.124)\\
+\hspace{1em}Type $\times$ Exposure $\times$ Post &  & $0.168$ &  & $0.228^{**}$\\
+\hspace{1em} &  & (0.182) &  & (0.115)\\
+\hspace{1em}Pre-trend test, p (2008, 2009) & 0.56 & 0.19 & 0.28 & 0.34\\
+\hspace{1em}Pre-period mean & 11.09 & 11.09 & 11.19 & 11.19\\
+\hspace{1em}Hospitals: type / comparison & 37 / 566 & 37 / 566 & 267 / 336 & 267 / 336\\
+\hspace{1em}Observations & 44 & 44 & 44 & 44\\
+\midrule
+Exposure $\times$ Post &  & Yes &  & Yes\\
+Controls, hospital and year fixed effects & Yes & Yes & Yes & Yes\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes:} Columns (1) estimate equation \eqref{eq:clinical} and columns (2) equation \eqref{eq:exposure_triple}. Outcomes are 30-day risk-standardized rates for heart failure and pneumonia, averaged, in windows ending in June 2008--2014; the window ending in 2011, on which exposure is measured, is left out. Post indicates windows ending in 2012 or later. Exposure is the hospital's penalty exposure (equation \eqref{eq:exposure}), standardized. Physician CEO: the Form 990 and HIMSS name the same CEO in 2010 (else 2009), and the CEO is a physician. Physician on executive team: any executive on the hospital's Form 990 is a physician, in the same hospitals. Comparison hospitals are reweighted by entropy balancing to match each type's baseline characteristics (2008--2010), separately for each column. Controls are an indicator for a change of health system and the share of the window after the state's Medicaid expansion. The pre-trend test is a joint test that the event-study coefficients for the windows ending in 2008 and 2009 are zero, relative to 2010 (type $\times$ window in columns (1), type $\times$ exposure $\times$ window in columns (2)). Pre-period mean: weighted mean of the outcome in the windows before 2012. Standard errors clustered by hospital in parentheses. $^{*}$ $p<0.10$, $^{**}$ $p<0.05$, $^{***}$ $p<0.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
