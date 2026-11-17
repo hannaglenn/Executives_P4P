@@ -1,0 +1,25 @@
+\begin{table}
+
+\caption{\label{tab:app_conditions}Exposure Estimate by Condition and Horizon (Readmissions)}
+\centering
+\begin{threeparttable}
+\begin{tabular}[t]{lcccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Physician CEO} & \multicolumn{2}{c}{Physician on executive team} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+ & Estimate & Pre-trend p & Estimate & Pre-trend p\\
+\midrule
+Heart failure and pneumonia (main), to 2014 & $-0.449^{***}$ (0.144) & 0.43 & $0.005$ (0.099) & 0.96\\
+AMI, heart failure and pneumonia, to 2014 & $-0.404^{***}$ (0.123) & 0.12 & $-0.025$ (0.085) & 0.94\\
+Heart failure, to 2014 & $-0.413^{**}$ (0.184) & 0.27 & $0.202$ (0.131) & 0.26\\
+Pneumonia, to 2014 & $-0.478^{***}$ (0.181) & 0.89 & $-0.191$ (0.119) & 0.52\\
+Heart failure, to 2017 & $-0.244$ (0.219) & 0.34 & $0.145$ (0.135) & 0.21\\
+AMI, to 2017 & $-0.195$ (0.161) & 0.16 & $0.001$ (0.122) & 0.96\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes:} Coefficient on type $\times$ exposure $\times$ post from equation \eqref{eq:exposure_triple}, standard errors in parentheses, as in Table \ref{tab:main_results}, column (2), with the outcome and last window shown. Pneumonia stops at the window ending in June 2014 because CMS widened the pneumonia cohort from the next window. $^{*}$ $p<0.10$, $^{**}$ $p<0.05$, $^{***}$ $p<0.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

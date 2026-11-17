@@ -1,0 +1,35 @@
+\begin{table}
+
+\caption{\label{tab:app_robustness}Robustness of the Exposure Estimate (Readmissions)}
+\centering
+\begin{threeparttable}
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Physician CEO} & \multicolumn{3}{c}{Physician on executive team} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+ & Estimate & Pre-trend p & Hospitals & Estimate & Pre-trend p & Hospitals\\
+\midrule
+Main specification & $-0.449^{***}$ (0.144) & 0.43 & 55 / 707 & $0.005$ (0.099) & 0.96 & 359 / 403\\
+Pre-specified: windows 2009--2014, 2011 kept, reference 2011 & $-0.317^{***}$ (0.109) & 0.11 & 54 / 708 & $-0.000$ (0.082) & 0.96 & 358 / 404\\
+No CEO change in 2011--2012 & $-0.456^{***}$ (0.161) & 0.18 & 40 / 514 & $0.008$ (0.117) & 0.20 & 265 / 289\\
+Weights also match readmissions, 2008--2010 & $-0.415^{**}$ (0.163) & 0.58 & 49 / 657 & $0.012$ (0.107) & 1.00 & 325 / 381\\
+Unweighted, baseline characteristics $\times$ Post & $-0.437^{***}$ (0.139) & 0.12 & 55 / 707 & $0.014$ (0.095) & 0.92 & 359 / 403\\
+State $\times$ year fixed effects & $-0.492^{***}$ (0.138) & 0.29 & 55 / 707 & $0.031$ (0.102) & 0.99 & 359 / 403\\
+Standard errors clustered by health system & $-0.449^{***}$ (0.141) & 0.36 & 55 / 707 & $0.005$ (0.097) & 0.96 & 359 / 403\\
+Post = share of the window after the final rule & $-0.475^{**}$ (0.187) &  & 55 / 707 & $0.020$ (0.129) &  & 359 / 403\\
+Binary exposure: penalized in FY2013 & $-0.132$ (0.327) & 0.63 & 55 / 707 & $0.195$ (0.201) & 0.59 & 359 / 403\\
+Leave-out exposure: AMI only & $-0.496^{**}$ (0.210) & 0.10 & 51 / 565 & $0.040$ (0.093) & 0.79 & 336 / 280\\
+Main exposure, same hospitals as the leave-out row & $-0.518^{***}$ (0.159) & 0.18 & 51 / 565 & $0.014$ (0.105) & 0.97 & 336 / 280\\
+\addlinespace[0.3em]
+\multicolumn{7}{l}{\textbf{Alternative CEO measures}}\\
+\hspace{1em}Physician CEO, combined 990 and HIMSS measure & $-0.270^{**}$ (0.126) & 0.04 & 77 / 895 &  &  & \\
+\hspace{1em}Physician CEO, Form 990 measure & $-0.390^{***}$ (0.116) & 0.27 & 78 / 845 &  &  & \\
+\hspace{1em}Physician CEO, combined measure without 990 fallback & $-0.292^{**}$ (0.128) & 0.08 & 73 / 889 &  &  & \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes:} Each row reports the coefficient on type $\times$ exposure $\times$ post from equation \eqref{eq:exposure_triple} for the HF and pneumonia readmission rate, with its standard error in parentheses, the joint pre-trend test for the windows before the reference window, and the number of hospitals of each type and comparison hospitals. Rows change one element of the main specification. Leave-out exposure: the AMI excess readmission ratio on July 2008--June 2011, so chance variation in heart failure and pneumonia readmissions does not enter exposure; the next row uses the main exposure on the same hospitals. The pre-trend test is not reported where the event study is unchanged (post defined by the share of the window). Alternative CEO measures are in the physician CEO columns. $^{*}$ $p<0.10$, $^{**}$ $p<0.05$, $^{***}$ $p<0.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

@@ -1,0 +1,29 @@
+\begin{table}
+
+\caption{\label{tab:added_conditions}Conditions Added to HRRP Later: Responses by Physician Leadership}
+\centering
+\begin{threeparttable}
+\begin{tabular}[t]{lcccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Physician CEO} & \multicolumn{2}{c}{Physician on executive team} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+ & Estimate & Hospitals & Estimate & Hospitals\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{5}{l}{\textbf{A. Readmission rate (\%)}}\\
+\hspace{1em}COPD and hip/knee (added 2013) & $-0.501^{**}$ (0.243) & 55 / 703 & $-0.222$ (0.159) & 359 / 399\\
+\hspace{1em}\hspace{1em}COPD & $-0.548^{*}$ (0.320) & 54 / 702 & $-0.296$ (0.203) & 357 / 399\\
+\hspace{1em}\hspace{1em}Hip/knee replacement & $-0.498^{**}$ (0.232) & 55 / 670 & $-0.130$ (0.158) & 354 / 371\\
+\hspace{1em}CABG (added 2014) & $-0.362$ (0.465) & 53 / 645 & $0.051$ (0.393) & 346 / 352\\
+\addlinespace[0.3em]
+\multicolumn{5}{l}{\textbf{B. Mortality rate (\%)}}\\
+\hspace{1em}COPD (added 2013) & $-0.033$ (0.325) & 54 / 701 & $0.059$ (0.235) & 357 / 398\\
+\hspace{1em}CABG (added 2014) & $0.602^{*}$ (0.351) & 53 / 658 & $-0.146$ (0.310) & 349 / 362\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes:} Each estimate is the coefficient on targeted condition $\times$ post $\times$ type from a regression of the condition's 30-day rate on hospital-by-condition, hospital-by-year and condition-by-year fixed effects, with stroke, which was never penalized, as the comparison condition. Post is the share of the 36-month window after the final rule that added the condition (2 August 2013 for COPD and hip/knee replacement, penalized from FY2015; 4 August 2014 for CABG, penalized from FY2017). Windows end in June 2012--2017 (2013--2017 for CABG); the data contain no window ending in 2016. Comparison hospitals are reweighted by entropy balancing as in Table \ref{tab:main_results}. Hospitals: type / comparison. Standard errors clustered by hospital in parentheses. $^{*}$ $p<0.10$, $^{**}$ $p<0.05$, $^{***}$ $p<0.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
